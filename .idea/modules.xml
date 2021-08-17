@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Crop_Deal.iml" filepath="$PROJECT_DIR$/.idea/modules/Crop_Deal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Crop_Deal.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Crop_Deal.app.iml" />
+    </modules>
+  </component>
+</project>
