@@ -9,4 +9,7 @@
     <string name="name">Name</string>
     <string name="existing_user">Existing User? Sign In</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="userAccount">Choose your desired user account</string>
+    <string name="farmer">Farmer</string>
+    <string name="dealer">Dealer</string>
 </resources>
