@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".SignUpActivity">
+
+    <LinearLayout
+        android:id="@+id/SignUpParent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/appbg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logoImg"
+            android:layout_width="256dp"
+            android:layout_height="114dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/logo_without_text" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:padding="4dp"
+            android:text="@string/sign_up"
+            android:textColor="@color/teal_700"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/nameE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/round_edittext"
+            android:drawableLeft="@drawable/ic_fi_rr_text"
+            android:drawablePadding="6dp"
+            android:ems="10"
+            android:hint="@string/name"
+            android:inputType="text"
+            android:padding="8dp"
+            android:paddingEnd="30dp"
+            android:textColor="@color/inputText"
+            android:textColorHint="@color/textHint"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/emailE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/round_edittext"
+            android:drawableLeft="@drawable/ic_fi_rr_envelope"
+            android:drawablePadding="6dp"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textWebEmailAddress|textPassword"
+            android:padding="8dp"
+            android:textColor="@color/inputText"
+            android:textColorHint="@color/textHint"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/passwordE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/round_edittext"
+            android:drawableLeft="@drawable/ic_fi_rr_lock"
+            android:drawablePadding="6dp"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textColor="@color/inputText"
+            android:textColorHint="@color/textHint"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/signUpBtn"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/signBtnBG"
+            android:hapticFeedbackEnabled="true"
+            android:text="@string/sign_up"
+            android:textColor="@color/white"
+            app:cornerRadius="15dp" />
+
+        <LinearLayout
+            android:layout_width="216dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/existingUserT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:hapticFeedbackEnabled="true"
+            android:padding="2dp"
+            android:text="@string/existing_user"
+            android:textColor="@color/teal_700"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
