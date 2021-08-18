@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Crop Deal</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email ID</string>
+    <string name="password">Password</string>
+    <string name="google_sign_in">Sign In with Google</string>
+    <string name="new_user">New User? Sign Up</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="existing_user">Existing User? Sign In</string>
+    <string name="forgot_password">Forgot Password?</string>
 </resources>
