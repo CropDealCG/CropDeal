@@ -10,7 +10,7 @@
     <color name="signBtnBG">#03A9F4</color>
     <color name="inputText">#2D2C2C</color>
     <color name="textHint">#828080</color>
-    <color name="redFade">#E44D4D</color>
+
     <color name="iconTint">#C8FFFFFF</color>
     <color name="iconTint2">#F0FFFFFF</color>
     <color name="iconTintActive">#FFFFFF</color>
@@ -31,4 +31,73 @@
     <color name="blue">#0000FF</color>
     <color name="violet">#7F00FF</color>
     <color name="magenta">#FF00FF</color>
+
+    <color name="fbBG">#3F51B5</color>
+    <color name="textBG">#DDF4C2</color>
+    <color name="signLytBG">#7EC681</color>
+
+    <color name="marineBlue">#3F51B5</color>
+
+    <color name="lightGreen">#31aa52</color>
+
+    <color name="crimsonRed">#cf2d48</color>
+
+    <color name="deepYellow">#ffb655</color>
+    <color name="lightOrange">#ff7956</color>
+    <color name="lightTurquoise">#71e4bf</color>
+    <color name="turquoise">#00dba8</color>
+    <color name="deepBlue">#0ea8b2</color>
+    <color name="White">#fff</color>
+    <color name="mintGreen">#3DDC84</color>
+    <color name="darkGrey">#33FFFFFF</color>
+    <color name="white2">#FFFFFF</color>
+    <color name="deepGrey">#44000000</color>
+    <color name="blackishGrey">#00000000</color>
+    <color name="oceanBlue">#FF3F51B5</color>
+    <color name="deepRed">#FFF44336</color>
+    <color name="rosePink">#FFE91E63</color>
+    <color name="brightRed">#FFF44336</color>
+
+    <color name="Blue2">#0182fc</color>
+    <color name="darkBlue">#0172fb</color>
+    <color name="yellowTint">#ffc344</color>
+    <color name="yellowTartar">#ffe177</color>
+    <color name="yellowFade">#fff3be</color>
+    <color name="orangeFade">#dc8758</color>
+    <color name="darkGrey2">#5a5a5a</color>
+    <color name="deepOrange">#c86d36</color>
+    <color name="lightPeach">#e8ad8c</color>
+    <color name="lemonYellowFade">#fff0ad</color>
+    <color name="yellowOchre">#feb137</color>
+    <color name="whiteTint">#D3D3D3</color>
+    <color name="lightGrey">#65FFFFFF</color>
+    <color name="blackishGrey2">#00FFFFFF</color>
+    <color name="lightMarineBlue">#647CF6</color>
+    <color name="redFade">#E44D4D</color>
+    <color name="offWhiteFade">#FBF7F7</color>
+    <color name="black_2">#0E0B0B</color>
+    <color name="offBlack">#2C2B2B</color>
+    <color name="brightYellow">#FFB74D</color>
+    <color name="turquoiseFade">#4DB6AC</color>
+    <color name="pink">#F06292</color>
+    <color name="deepRed2">#C3E60000</color>
+    <color name="PeachTint">#FFF59D</color>
+    <color name="brightRed2">#D32F2F</color>
+    <color name="lightOrange2">#FFA000</color>
+    <color name="bloodRed">#B3FF0000</color>
+    <color name="paperWhite">#DDD</color>
+    <color name="darkTurquoise">#009688</color>
+    <color name="holoRed">#CC0000</color>
+    <color name="holoBlue">#00DDFF</color>
+    <color name="bloodRed2">#BEFF0000</color>
+    <color name="lemonYellow">#FBC02D</color>
+    <color name="deepTurquoise">#009688</color>
+    <color name="brightYellow2">#FFC107</color>
+    <color name="lemonYellow2">#FFEB3B</color>
+    <color name="Green">#00FF00</color>
+    <color name="bgColor">#FDF5FF</color>
+    <color name="priceBlue">#1041D5</color>
+    <color name="tealv2">#06AA97</color>
+    <color name="originalYellow">#FF0</color>
+    <color name="bgColor2">#92D5D2</color>
 </resources>
