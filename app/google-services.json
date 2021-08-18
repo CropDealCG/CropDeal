@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "571175692324",
+    "project_id": "cropdeal-a5248",
+    "storage_bucket": "cropdeal-a5248.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571175692324:android:c81329f6b177856e90d0b1",
+        "android_client_info": {
+          "package_name": "com.cg.cropdeal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571175692324-0i7oolehfds1jnv29903ulhvn3s3ddql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEQHsa2nBztrdx21U8piV_x1Y0ATMJcmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571175692324-0i7oolehfds1jnv29903ulhvn3s3ddql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

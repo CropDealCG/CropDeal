@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".SignInActivity">
+    tools:context=".view.SignInActivity">
 
     <LinearLayout
         android:id="@+id/parent_signin"
