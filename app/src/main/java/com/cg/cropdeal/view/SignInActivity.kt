@@ -9,9 +9,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.databinding.ActivitySignInBinding
 import com.cg.cropdeal.viewmodel.SignInVM
+import com.facebook.AccessToken
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -40,11 +45,47 @@ class SignInActivity : AppCompatActivity() {
             val signInIntent = signInVM.getGoogleSignInClient()?.signInIntent
             startActivityForResult(signInIntent,RC_SIGN_IN)
         }
+        binding.facebookLoginBtn.setReadPermissions("email", "public_profile")
+        binding.facebookLoginBtn.registerCallback(signInVM.getFacebookCallBackManager(),object :
+            FacebookCallback<LoginResult> {
+            override fun onSuccess(result: LoginResult?) {
+                handleFacebookAccessToken(result?.accessToken!!)
+            }
+
+            override fun onCancel() {
+                TODO("Not yet implemented")
+            }
+
+            override fun onError(error: FacebookException?) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
         signInVM.getUserLiveData()?.observe(this,{
             if(it!=null){
                 updateUI(null)
             }
         })
+    }
+
+    private fun handleFacebookAccessToken(accessToken: AccessToken) {
+        val credential = FacebookAuthProvider.getCredential(accessToken.token)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+
+                    val user = auth.currentUser
+                    updateUI(user)
+                } else {
+                    // If sign in fails, display a message to the user.
+
+                    Toast.makeText(baseContext, "Authentication failed. ${task.exception?.message}",
+                        Toast.LENGTH_SHORT).show()
+                    updateUI(null)
+                }
+            }
     }
 
     private fun signInWithEmailPassword() {
@@ -88,6 +129,9 @@ class SignInActivity : AppCompatActivity() {
             }catch(e : Exception){
                 Toast.makeText(this,"${e.message}",Toast.LENGTH_LONG).show()
             }
+        }
+        else{
+            signInVM.getFacebookCallBackManager()?.onActivityResult(requestCode,resultCode, data)
         }
     }
 }

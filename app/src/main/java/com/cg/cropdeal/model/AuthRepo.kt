@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import android.widget.Toast
 import com.cg.cropdeal.R
+import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.*
 
 class AuthRepo(private var application: Application?) {
@@ -19,6 +20,7 @@ class AuthRepo(private var application: Application?) {
         .requestIdToken(application?.getString(R.string.default_web_client_id)!!)
         .requestEmail().build()
     private var googleSignInClient : GoogleSignInClient? = null
+    private var callbackManager : CallbackManager? = null
 
     init {
         firebaseAuth = FirebaseAuth.getInstance()
@@ -29,6 +31,8 @@ class AuthRepo(private var application: Application?) {
             loggedOutLiveData!!.postValue(false)
         }
         googleSignInClient = GoogleSignIn.getClient(application?.applicationContext!!,gso)
+
+        callbackManager = CallbackManager.Factory.create()
     }
 
     fun register(email: String?, password: String?) {
@@ -69,5 +73,8 @@ class AuthRepo(private var application: Application?) {
     }
     fun getGoogleSignInClient() : GoogleSignInClient?{
         return googleSignInClient
+    }
+    fun getFacebookCallBackManager() : CallbackManager?{
+        return callbackManager
     }
 }
