@@ -61,15 +61,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         tools:ignore="TouchTargetSizeCheck" />
 
-<!--    <![CDATA[-->
+    <!--    <![CDATA[-->
 
 
-<!--    android:layout_width="wrap_content"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:layout_gravity="center"-->
-<!--    android:orientation="horizontal">-->
+    <!--    android:layout_width="wrap_content"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:layout_gravity="center"-->
+    <!--    android:orientation="horizontal">-->
 
-<!--    ]]>-->
+    <!--    ]]>-->
 
     <EditText
         android:id="@+id/passwordLoginE"
@@ -169,21 +169,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
+
+    <Button
+        android:id="@+id/facebook_login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#1877f2"
+        android:drawableLeft="@drawable/ic_facebook"
+        android:text="@string/facebook_sign_in"
+        android:textColor="#FBF7F7"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/googleLoginBtn" />
+
     <TextView
         android:id="@+id/NewUserT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:padding="2dp"
         android:text="@string/new_user"
         android:textColor="@color/signBtnBG"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/googleLoginBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/facebook_login_btn" />
 
     <TextView
         android:id="@+id/textView2"

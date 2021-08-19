@@ -4,6 +4,7 @@
     <string name="email">Email ID</string>
     <string name="password">Password</string>
     <string name="google_sign_in">Sign In with Google</string>
+    <string name="facebook_sign_in">Sign In with Facebook</string>
     <string name="new_user">New User? Sign Up</string>
     <string name="sign_up">Sign Up</string>
     <string name="name">Name</string>
@@ -12,4 +13,5 @@
     <string name="userAccount">Choose your desired user account</string>
     <string name="farmer">Farmer</string>
     <string name="dealer">Dealer</string>
+
 </resources>
