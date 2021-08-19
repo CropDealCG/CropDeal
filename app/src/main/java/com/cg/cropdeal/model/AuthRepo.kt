@@ -7,12 +7,18 @@ import com.google.firebase.auth.FirebaseAuth
 
 import com.google.firebase.auth.FirebaseUser
 import android.widget.Toast
+import com.cg.cropdeal.R
+import com.google.android.gms.auth.api.signin.*
 
 class AuthRepo(private var application: Application?) {
 
     private var firebaseAuth: FirebaseAuth? = null
     private var userLiveData: MutableLiveData<FirebaseUser>? = null
     private var loggedOutLiveData: MutableLiveData<Boolean>? = null
+    private val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        .requestIdToken(application?.getString(R.string.default_web_client_id)!!)
+        .requestEmail().build()
+    private var googleSignInClient : GoogleSignInClient? = null
 
     init {
         firebaseAuth = FirebaseAuth.getInstance()
@@ -22,6 +28,7 @@ class AuthRepo(private var application: Application?) {
             userLiveData!!.postValue(firebaseAuth!!.currentUser)
             loggedOutLiveData!!.postValue(false)
         }
+        googleSignInClient = GoogleSignIn.getClient(application?.applicationContext!!,gso)
     }
 
     fun register(email: String?, password: String?) {
@@ -59,5 +66,8 @@ class AuthRepo(private var application: Application?) {
 
     fun getLoggedOutLiveData(): MutableLiveData<Boolean>? {
         return loggedOutLiveData
+    }
+    fun getGoogleSignInClient() : GoogleSignInClient?{
+        return googleSignInClient
     }
 }

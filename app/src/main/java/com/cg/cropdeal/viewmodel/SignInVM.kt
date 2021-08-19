@@ -4,20 +4,26 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.cg.cropdeal.model.AuthRepo
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.FirebaseUser
 
 class SignInVM(application: Application) : AndroidViewModel(application) {
     private var authRepo: AuthRepo? = null
     private var userLiveData: MutableLiveData<FirebaseUser>? = null
+    private var googleSignInClient : GoogleSignInClient? = null
 
     init{
         authRepo = AuthRepo(application)
         userLiveData = authRepo!!.getUserLiveData()
+        googleSignInClient = authRepo!!.getGoogleSignInClient()
     }
     fun login(email: String?, password: String?) {
         authRepo?.login(email, password)
     }
     fun getUserLiveData(): MutableLiveData<FirebaseUser>? {
         return userLiveData
+    }
+    fun getGoogleSignInClient() : GoogleSignInClient?{
+        return googleSignInClient
     }
 }
