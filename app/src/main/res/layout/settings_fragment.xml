@@ -5,6 +5,7 @@
     android:id="@+id/parentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/appbg"
     android:padding="5dp"
     tools:context=".view.SettingsFragment">
 
@@ -27,8 +28,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:hint="@string/user_name"
-        android:textColorHint="@color/textHint"
         android:textColor="@color/black"
+        android:textColorHint="@color/textHint"
         app:layout_constraintStart_toEndOf="@+id/profile_user_image"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -171,13 +172,13 @@
         app:layout_constraintTop_toBottomOf="@+id/logout_TV"
         tools:layout_editor_absoluteX="5dp" />
 
-     <TextView
+    <TextView
         android:id="@+id/textView21"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/iconTint"
         android:padding="20dp"
-        android:text="CashCoup All Rights Reserved 2021-25"
+        android:text="CropDeal All Rights Reserved 2021-25"
         android:textAlignment="center"
         android:textColor="@color/inputText"
 
