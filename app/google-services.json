@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "571175692324-g2bo1tvbr9ghvqh8daeh9eg4f9i5omqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cg.cropdeal",
+            "certificate_hash": "12da1020ba89037f96428c5b14e5b1ce5ef1a0be"
+          }
+        },
+        {
           "client_id": "571175692324-0i7oolehfds1jnv29903ulhvn3s3ddql.apps.googleusercontent.com",
           "client_type": 3
         }
