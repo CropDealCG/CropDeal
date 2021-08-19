@@ -7,11 +7,10 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.databinding.ActivitySignUpBinding
 import com.cg.cropdeal.viewmodel.SignUpVM
-import kotlin.math.sign
 
 class SignUpActivity : AppCompatActivity() {
-    lateinit var signUpVM : SignUpVM
-    lateinit var binding : ActivitySignUpBinding
+    private lateinit var signUpVM : SignUpVM
+    private lateinit var binding : ActivitySignUpBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

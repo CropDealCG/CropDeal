@@ -9,8 +9,8 @@ import com.cg.cropdeal.databinding.ActivitySignInBinding
 import com.cg.cropdeal.viewmodel.SignInVM
 
 class SignInActivity : AppCompatActivity() {
-    lateinit var signInVM : SignInVM
-    lateinit var binding : ActivitySignInBinding
+    private lateinit var signInVM : SignInVM
+    private lateinit var binding : ActivitySignInBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
