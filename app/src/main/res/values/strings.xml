@@ -15,7 +15,6 @@
     <string name="dealer">Dealer</string>
     <string name="profile_pic">profile pic</string>
     <string name="edit_profile">  Edit Profile  </string>
-
     <string name="send_feedback">Send Feedback</string>
     <string name="Rate_Us">Rate Us</string>
     <string name="about_us">About Us</string>
@@ -26,5 +25,7 @@
     <string name="new_password_min_6_char">New Password (min 6 char)</string>
     <string name="confirm_new_password">Confirm New Password</string>
     <string name="change_password">Change Password</string>
+    <string name="facebook_app_id">1149003122597016</string>
+    <string name="fb_login_protocol_scheme">fb1149003122597016</string>
 
 </resources>

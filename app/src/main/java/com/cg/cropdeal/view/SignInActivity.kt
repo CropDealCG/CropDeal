@@ -7,11 +7,13 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivitySignInBinding
 import com.cg.cropdeal.viewmodel.SignInVM
 import com.facebook.AccessToken
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
+import com.facebook.FacebookSdk
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -34,6 +36,8 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+        FacebookSdk.setApplicationId(getString(R.string.facebook_app_id))
+        FacebookSdk.sdkInitialize(this)
         binding.signInBtn.setOnClickListener {
             signInWithEmailPassword()
         }
@@ -53,11 +57,10 @@ class SignInActivity : AppCompatActivity() {
             }
 
             override fun onCancel() {
-                TODO("Not yet implemented")
             }
 
             override fun onError(error: FacebookException?) {
-                TODO("Not yet implemented")
+                Toast.makeText(applicationContext,"${error?.message}",Toast.LENGTH_LONG).show()
             }
 
         })
