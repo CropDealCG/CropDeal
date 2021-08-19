@@ -8,11 +8,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import android.widget.Toast
 
-import com.google.firebase.auth.AuthResult
-
-import androidx.annotation.NonNull
-
-import com.google.android.gms.tasks.OnCompleteListener
 class AuthRepo(private var application: Application?) {
 
     private var firebaseAuth: FirebaseAuth? = null

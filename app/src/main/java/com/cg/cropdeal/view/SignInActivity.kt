@@ -17,6 +17,7 @@ class SignInActivity : AppCompatActivity() {
         signInVM = ViewModelProvider(this).get(SignInVM::class.java)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.signInBtn.setOnClickListener {
             signInWithEmailPassword()
         }
