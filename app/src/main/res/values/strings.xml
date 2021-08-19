@@ -13,5 +13,18 @@
     <string name="userAccount">Choose your desired user account</string>
     <string name="farmer">Farmer</string>
     <string name="dealer">Dealer</string>
+    <string name="profile_pic">profile pic</string>
+    <string name="edit_profile">  Edit Profile  </string>
+
+    <string name="send_feedback">Send Feedback</string>
+    <string name="Rate_Us">Rate Us</string>
+    <string name="about_us">About Us</string>
+    <string name="logout">Logout</string>
+    <string name="user_name">User Name</string>
+    <string name="user_email">User Email</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password_min_6_char">New Password (min 6 char)</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="change_password">Change Password</string>
 
 </resources>

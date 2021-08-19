@@ -50,6 +50,7 @@
         android:drawablePadding="6dp"
         android:ems="10"
         android:hint="@string/name"
+
         android:inputType="text"
         android:padding="8dp"
         android:paddingEnd="30dp"
@@ -60,7 +61,11 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
-        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+         />
+
+
+<!--        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" -->
+
 
     <EditText
         android:id="@+id/emailE"

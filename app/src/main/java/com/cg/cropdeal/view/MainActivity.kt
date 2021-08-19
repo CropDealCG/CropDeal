@@ -1,5 +1,6 @@
 package com.cg.cropdeal.view
 
+import android.R
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.settingsBtn.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.content, SettingsFragment()).commit()
+        }
     }
 }
