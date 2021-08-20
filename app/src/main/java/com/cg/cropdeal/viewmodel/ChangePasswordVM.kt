@@ -22,9 +22,9 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
         if (validatePasswordDetails(binding)) {
             val user = Firebase.auth.currentUser
             val credential = EmailAuthProvider
-                .getCredential(user?.email!!, binding.editTextCurrentPassword.text.toString().trim { it<=' ' })
+                .getCredential(user?.email!!, binding.editTextCurrentPassword.editText?.text.toString().trim { it<=' ' })
 
-            val newPassword = binding.editTextNewPassword.text.toString().trim{it<= ' '}
+            val newPassword = binding.editTextNewPassword.editText?.text.toString().trim{it<= ' '}
 
             user?.reauthenticate(credential)?.addOnSuccessListener {
 
@@ -54,13 +54,13 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
 
     private fun validatePasswordDetails(binding: ActivityChangePasswordBinding):Boolean{
 
-        if(TextUtils.isEmpty(binding.editTextNewPassword.text.toString().trim { it<= ' ' })) {
+        if(TextUtils.isEmpty(binding.editTextNewPassword.editText?.text.toString().trim { it<= ' ' })) {
             utilActivity.showSnackbar("Please enter New Password",
                     binding.editTextCurrentPassword)
             return false
         }
 
-        if(TextUtils.isEmpty(binding.editTextConfirmNewPassword.text.toString()
+        if(TextUtils.isEmpty(binding.editTextConfirmNewPassword.editText?.text.toString()
                 .trim { it<= ' ' })) {
             utilActivity.showSnackbar("Please confirm New Password",
                 binding.editTextConfirmNewPassword)
@@ -68,16 +68,16 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
         }
 
 
-        if(binding.editTextConfirmNewPassword.text.toString() !=
-            binding.editTextNewPassword.text.toString()) {
+        if(binding.editTextConfirmNewPassword.editText?.text.toString() !=
+            binding.editTextNewPassword.editText?.text.toString()) {
             utilActivity.showSnackbar(
                 "New Password is not matching with Confirm New Password",
                     binding.changePasswordBtn)
             return false
         }
 
-        if(binding.editTextCurrentPassword.text.toString() ==
-            binding.editTextNewPassword.text.toString()) {
+        if(binding.editTextCurrentPassword.editText?.text.toString() ==
+            binding.editTextNewPassword.editText?.text.toString()) {
             utilActivity.showSnackbar(
                 "New Password shouldn't be same as Current Password",
                 binding.changePasswordBtn
