@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cg.cropdeal">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CropDeal">
+        <activity
+            android:name=".model.UtilActivity"
+            android:exported="true" />
         <activity
             android:name=".view.ChangePasswordActivity"
             android:exported="true" />
@@ -28,12 +31,14 @@
         </activity>
         <activity
             android:name=".view.SignInActivity"
-            android:exported="true"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation">
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:exported="true">
             <meta-data
                 android:name="com.facebook.sdk.ApplicationId"
                 android:value="@string/facebook_app_id" />
-            <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
+            <meta-data
+                android:name="com.facebook.sdk.ClientToken"
+                android:value="@string/facebook_client_token" />
         </activity>
         <activity
             android:name=".view.MainActivity"

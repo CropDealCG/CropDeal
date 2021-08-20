@@ -11,13 +11,13 @@ import com.google.firebase.auth.FirebaseUser
 class SignInVM(application: Application) : AndroidViewModel(application) {
     private var authRepo: AuthRepo? = null
     private var userLiveData: MutableLiveData<FirebaseUser>? = null
-    private var googleSignInClient : GoogleSignInClient? = null
+    //private var googleSignInClient : GoogleSignInClient? = null
     private var callbackManager : CallbackManager? = null
 
     init{
         authRepo = AuthRepo(application)
         userLiveData = authRepo!!.getUserLiveData()
-        googleSignInClient = authRepo!!.getGoogleSignInClient()
+        //googleSignInClient = authRepo!!.getGoogleSignInClient()
         callbackManager = authRepo!!.getFacebookCallBackManager()
     }
     fun login(email: String?, password: String?) {

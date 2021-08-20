@@ -10,7 +10,7 @@ import androidx.lifecycle.MutableLiveData
 import kotlin.reflect.KClass
 
 class SettingsVM(application: Application) : AndroidViewModel(application) {
-    val activityToStart = MutableLiveData<Pair<KClass<*>, Bundle?>>()
+   // val activityToStart = MutableLiveData<Pair<KClass<*>, Bundle?>>()
 
 
     // TODO: Implement the ViewModel

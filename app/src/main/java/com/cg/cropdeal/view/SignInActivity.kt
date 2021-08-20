@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivitySignInBinding
+import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.SignInVM
 import com.facebook.AccessToken
 import com.facebook.FacebookCallback
@@ -28,6 +29,7 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var binding : ActivitySignInBinding
     private lateinit var auth : FirebaseAuth
     private var RC_SIGN_IN = 12
+    private var utilActivity = UtilActivity()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,8 +62,8 @@ class SignInActivity : AppCompatActivity() {
             }
 
             override fun onError(error: FacebookException?) {
-                Toast.makeText(applicationContext,"${error?.message}",Toast.LENGTH_LONG).show()
-            }
+               utilActivity.showSnackbar("${error?.message}",binding.facebookLoginBtn)
+                 }
 
         })
 
@@ -84,8 +86,9 @@ class SignInActivity : AppCompatActivity() {
                 } else {
                     // If sign in fails, display a message to the user.
 
-                    Toast.makeText(baseContext, "Authentication failed. ${task.exception?.message}",
-                        Toast.LENGTH_SHORT).show()
+                    utilActivity.showSnackbar(
+                        "Authentication failed. ${task.exception?.message}",
+                            binding.facebookLoginBtn)
                     updateUI(null)
                 }
             }
@@ -98,7 +101,7 @@ class SignInActivity : AppCompatActivity() {
             signInVM.login(email,password)
             startActivity(Intent(this,MainActivity::class.java))
         }else{
-            Toast.makeText(this,"Please Enter Data", Toast.LENGTH_SHORT).show()
+            utilActivity.showSnackbar("Please Enter Data",binding.passwordLoginE)
         }
     }
 
@@ -130,7 +133,7 @@ class SignInActivity : AppCompatActivity() {
                 val account = task.getResult(ApiException::class.java)!!
                 firebaseAuthWithGoogle(account.idToken!!)
             }catch(e : Exception){
-                Toast.makeText(this,"${e.message}",Toast.LENGTH_LONG).show()
+                utilActivity.showSnackbar("${e.message}",binding.googleLoginBtn)
             }
         }
         else{

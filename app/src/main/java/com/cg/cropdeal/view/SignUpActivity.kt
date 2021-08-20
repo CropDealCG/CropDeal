@@ -6,11 +6,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.databinding.ActivitySignUpBinding
+import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.SignUpVM
+import com.facebook.internal.Utility
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var signUpVM : SignUpVM
     private lateinit var binding : ActivitySignUpBinding
+    private var utilActivity = UtilActivity()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +38,7 @@ class SignUpActivity : AppCompatActivity() {
             signUpVM.register(email,password)
             startActivity(Intent(this,MainActivity::class.java))
         }else{
-            Toast.makeText(this,"Please Enter Data",Toast.LENGTH_SHORT).show()
+            utilActivity.showSnackbar("Please Enter Data",binding.emailE)
         }
     }
 }
