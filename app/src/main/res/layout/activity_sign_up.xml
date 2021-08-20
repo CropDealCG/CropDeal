@@ -13,10 +13,10 @@
 
     <ImageView
         android:id="@+id/logoImg"
-        android:layout_width="245dp"
-        android:layout_height="95dp"
+        android:layout_width="208dp"
+        android:layout_height="84dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -157,8 +157,8 @@
 
     <TextView
         android:id="@+id/existingUserT"
-        android:layout_width="218dp"
-        android:layout_height="37dp"
+        android:layout_width="wrap_content"
+        android:layout_height="31dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:hapticFeedbackEnabled="true"
@@ -176,7 +176,7 @@
         android:id="@+id/selectedDateTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -186,7 +186,7 @@
         android:id="@+id/selectedTimeTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
