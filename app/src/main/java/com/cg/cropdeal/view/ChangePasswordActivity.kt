@@ -17,5 +17,11 @@ class ChangePasswordActivity : AppCompatActivity() {
         _binding = ActivityChangePasswordBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        binding.changePasswordBtn.setOnClickListener {
+            viewModel.changePassword(binding)
+        }
     }
+
+
 }

@@ -25,6 +25,11 @@
     <string name="new_password_min_6_char">New Password (min 6 char)</string>
     <string name="confirm_new_password">Confirm New Password</string>
     <string name="change_password">Change Password</string>
+    <string name="confirm">confirm</string>
+
+
+    //Facebook Strings, Do Not Touch
+
     <string name="facebook_app_id">1149003122597016</string>
     <string name="fb_login_protocol_scheme">fb1149003122597016</string>
     <string name="facebook_client_token">EAAQVAyL33JgBAD2SKVaLZBHiIhyxZA4xhoRmm9KPcNlBUhvZAbPV2vELu9Pa9FTUDdt1YP8ZBZAcaZBpgMXkC07lECKaaZAvvamsz3Ha5ihp3QVO4SYJqGboLlO42sFZCtAfPpeXdGZBih0TqnT5rB8geaktJSZBRCZCVKT97nkfXtueZC7yBsFTa3aShDgnq2R6qUTDDQMxZCWRwunR9OaU5Cwx9</string>

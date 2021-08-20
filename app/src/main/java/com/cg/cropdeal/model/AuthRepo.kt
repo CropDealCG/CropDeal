@@ -20,6 +20,7 @@ class AuthRepo(private var application: Application?) {
         .requestIdToken(application?.getString(R.string.default_web_client_id)!!)
         .requestEmail().build()
     private var googleSignInClient : GoogleSignInClient? = null
+    //facebook callbackmanager
     private var callbackManager : CallbackManager? = null
 
     init {
@@ -32,7 +33,7 @@ class AuthRepo(private var application: Application?) {
         }
         googleSignInClient = GoogleSignIn.getClient(application?.applicationContext!!,gso)
 
-        callbackManager = CallbackManager.Factory.create()
+        callbackManager = CallbackManager.Factory.create() //facebook login
     }
 
     fun register(email: String?, password: String?) {
