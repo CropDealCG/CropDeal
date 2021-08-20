@@ -5,7 +5,7 @@
     android:id="@+id/parentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/appbg"
+
     android:padding="5dp"
     tools:context=".view.SettingsFragment">
 
@@ -43,134 +43,217 @@
         app:layout_constraintStart_toStartOf="@+id/profile_user_name"
         app:layout_constraintTop_toBottomOf="@+id/profile_user_name" />
 
-    <TextView
-        android:id="@+id/editProf_TV"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="@color/iconTint"
-        android:drawablePadding="5dp"
-        android:fontFamily="sans-serif"
-        android:hapticFeedbackEnabled="true"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="@string/edit_profile"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
-        app:drawableStartCompat="@android:drawable/ic_menu_edit"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_user_image" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_user_image">
 
-    <TextView
-        android:id="@+id/changePass_TV"
-        android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/editProf_TV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/iconTint"
+            android:drawablePadding="5dp"
+            android:fontFamily="sans-serif"
+            android:hapticFeedbackEnabled="true"
+            android:paddingStart="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="@string/edit_profile"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/iconTint"
-        android:drawablePadding="5dp"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="@string/change_password"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
-        app:drawableStartCompat="@android:drawable/ic_menu_manage"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProf_TV" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
-    <TextView
-        android:id="@+id/sendFeedback_TV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/iconTint"
-        android:drawablePadding="5dp"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="@string/send_feedback"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
-        app:drawableStartCompat="@android:drawable/sym_action_chat"
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_manage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/changePass_TV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/iconTint"
+            android:drawablePadding="5dp"
+            android:paddingStart="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="@string/change_password"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+            app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.545" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="405dp"
+        android:layout_height="66dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changePass_TV" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
-    <TextView
-        android:id="@+id/rateUs_TV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:background="@color/iconTint"
-        android:drawablePadding="5dp"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="@string/Rate_Us"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
-        app:drawableStartCompat="@android:drawable/btn_star"
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/sym_action_chat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/sendFeedback_TV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/iconTint"
+            android:drawablePadding="5dp"
+            android:paddingStart="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="@string/send_feedback"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout5"
+        android:layout_width="405dp"
+        android:layout_height="66dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sendFeedback_TV" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
 
-    <TextView
-        android:id="@+id/aboutUs_TV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/iconTint"
-        android:drawableStart="@android:drawable/ic_input_get"
-        android:drawablePadding="5dp"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="@string/about_us"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/btn_star"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/aboutUs_TV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/iconTint"
+            android:drawablePadding="5dp"
+            android:paddingStart="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="@string/about_us"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout6"
+        android:layout_width="405dp"
+        android:layout_height="66dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rateUs_TV" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
 
-    <TextView
-        android:id="@+id/logout_TV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/iconTint"
-        android:drawableStart="@android:drawable/ic_lock_power_off"
-        android:drawablePadding="5dp"
-        android:paddingStart="25dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="20dp"
-        android:text="@string/logout"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:drawableTint="@color/textHint"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aboutUs_TV" />
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_lock_power_off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"
-        android:backgroundTint="@color/black"
-        android:foregroundTint="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/logout_TV"
-        tools:layout_editor_absoluteX="5dp" />
+        <TextView
+            android:id="@+id/logout_TV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/iconTint"
+            android:drawablePadding="5dp"
+            android:paddingStart="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="@string/logout"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView6"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <TextView
         android:id="@+id/textView21"
@@ -180,10 +263,9 @@
         android:padding="20dp"
         android:text="CropDeal All Rights Reserved 2021-25"
         android:textAlignment="center"
+
         android:textColor="@color/inputText"
-
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,12 +13,12 @@
 
     <ImageView
         android:id="@+id/logoImg"
-        android:layout_width="256dp"
-        android:layout_height="114dp"
+        android:layout_width="245dp"
+        android:layout_height="95dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_without_text" />
@@ -52,6 +52,7 @@
         android:hint="@string/name"
 
         android:inputType="text"
+        android:minHeight="48dp"
         android:padding="8dp"
         android:paddingEnd="30dp"
         android:textColor="@color/inputText"
@@ -60,8 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
 
 <!--        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" -->
@@ -114,39 +114,83 @@
 
 
     <Button
+        android:id="@+id/DOBbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/signBtnBG"
+        android:drawableLeft="@android:drawable/ic_menu_my_calendar"
+        android:text="Date of Birth"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordE" />
+
+    <Button
+        android:id="@+id/timeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/signBtnBG"
+        android:drawableLeft="@android:drawable/ic_menu_recent_history"
+        android:text="Select Time"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectedDateTV" />
+
+    <Button
         android:id="@+id/signUpBtn"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/signBtnBG"
         android:hapticFeedbackEnabled="true"
         android:text="@string/sign_up"
         android:textColor="@color/white"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordE" />
+        app:layout_constraintTop_toBottomOf="@+id/selectedTimeTV" />
 
     <TextView
         android:id="@+id/existingUserT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="37dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginTop="16dp"
         android:hapticFeedbackEnabled="true"
         android:padding="2dp"
         android:text="@string/existing_user"
         android:textColor="@color/teal_700"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.606"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
+
+    <TextView
+        android:id="@+id/selectedDateTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DOBbtn" />
+
+    <TextView
+        android:id="@+id/selectedTimeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeBtn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
