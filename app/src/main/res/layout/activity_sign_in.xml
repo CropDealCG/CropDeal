@@ -203,7 +203,7 @@
         app:layout_constraintTop_toBottomOf="@+id/facebook_login_btn" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/forgotPasswordT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

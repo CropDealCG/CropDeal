@@ -1,11 +1,19 @@
 package com.cg.cropdeal.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.databinding.ViewDataBindingKtx
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivitySignInBinding
+import com.cg.cropdeal.databinding.CustomForgotPasswordDialogBinding
 import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.SignInVM
 import com.facebook.AccessToken
@@ -56,12 +64,39 @@ class SignInActivity : AppCompatActivity() {
 
             override fun onCancel() {
             }
-
             override fun onError(error: FacebookException?) {
                utilActivity.showSnackbar("${error?.message}",binding.facebookLoginBtn)
                  }
 
         })
+        binding.forgotPasswordT.setOnClickListener {_->
+            val dialog = signInVM.getForgotPasswordDialog(this,R.layout.custom_forgot_password_dialog)
+            val customBinding = CustomForgotPasswordDialogBinding.inflate(layoutInflater)
+            dialog.setView(customBinding.root)
+            customBinding.btnCancel.setOnClickListener {
+                dialog.dismiss()
+            }
+            customBinding.btnOkay.setOnClickListener {
+                if(customBinding.txtInput.text.isEmpty()){
+                    customBinding.txtInput.error = "Please Enter Email"
+                    customBinding.txtInput.requestFocus()
+                }
+                else{
+                    auth.sendPasswordResetEmail(customBinding.txtInput.text.toString())
+                        .addOnCompleteListener{
+                            if(it.isSuccessful){
+                                Toast.makeText(this,"Password Reset Mail Sent Successfully", Toast.LENGTH_LONG).show()
+                                dialog.dismiss()
+                            }
+                            else{
+                                Toast.makeText(this,"${it.exception?.message}", Toast.LENGTH_LONG).show()
+                                dialog.dismiss()
+                            }
+                        }
+                }
+            }
+            dialog.show()
+        }
 
         signInVM.getUserLiveData()?.observe(this,{
             if(it!=null){
