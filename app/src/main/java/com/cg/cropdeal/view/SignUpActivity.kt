@@ -13,8 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.databinding.ActivitySignUpBinding
 import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.SignUpVM
-import com.facebook.internal.Utility
-import java.time.DayOfWeek
+import java.text.SimpleDateFormat
 import java.util.*
 
 class SignUpActivity : AppCompatActivity() {
@@ -23,7 +22,6 @@ class SignUpActivity : AppCompatActivity() {
     private var utilActivity = UtilActivity()
 
 
-    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         signUpVM = ViewModelProvider(this).get(SignUpVM::class.java)
@@ -40,11 +38,20 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding.DOBbtn.setOnClickListener {
-            selectDate()
+            val datePickerDialog = signUpVM.selectDate(this)
+            datePickerDialog.addOnPositiveButtonClickListener { dateInMillis->
+                val date = SimpleDateFormat("MMM dd, yyyy",Locale.getDefault()).format(Date(dateInMillis))
+                binding.selectedDateTV.text = date
+            }
+            datePickerDialog.show(supportFragmentManager,"Date")
         }
 
         binding.timeBtn.setOnClickListener {
-            selectTime()
+            val timePickerDialog = signUpVM.selectTime(this)
+            timePickerDialog.addOnPositiveButtonClickListener { _ ->
+                binding.selectedTimeTV.text = "${timePickerDialog.hour}:${timePickerDialog.minute}"
+            }
+            timePickerDialog.show(supportFragmentManager,"Time")
         }
     }
 
@@ -57,39 +64,5 @@ class SignUpActivity : AppCompatActivity() {
         }else{
             utilActivity.showSnackbar("Please Enter Data",binding.emailE)
         }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.N)
-    fun selectDate(){
-        val cal = Calendar.getInstance()
-        val year = cal.get(Calendar.YEAR)
-        val month = cal.get(Calendar.MONTH)
-        val day = cal.get(Calendar.DAY_OF_MONTH)
-
-
-        val datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener {
-                view, year, monthOfYear, dayOfMonth ->
-
-
-            binding.selectedDateTV.setText("" + dayOfMonth + " " + month + ", " + year)
-
-        }, year, month, day)
-
-        datePicker.show()
-    }
-
-    fun selectTime(){
-        val timePicker: TimePickerDialog
-        val mcurrentTime = Calendar.getInstance()
-        val hour = mcurrentTime.get(Calendar.HOUR_OF_DAY)
-        val minute = mcurrentTime.get(Calendar.MINUTE)
-
-        timePicker = TimePickerDialog(this, object : TimePickerDialog.OnTimeSetListener {
-            override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
-                binding.selectedTimeTV.setText(String.format("%d : %d", hourOfDay, minute))
-            }
-        }, hour, minute, false)
-
-        timePicker.show()
     }
 }

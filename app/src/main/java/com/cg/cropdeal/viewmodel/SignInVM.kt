@@ -17,7 +17,7 @@ class SignInVM(application: Application) : AndroidViewModel(application) {
     init{
         authRepo = AuthRepo(application)
         userLiveData = authRepo!!.getUserLiveData()
-        //googleSignInClient = authRepo!!.getGoogleSignInClient()
+        googleSignInClient = authRepo!!.getGoogleSignInClient()
         callbackManager = authRepo!!.getFacebookCallBackManager()
     }
     fun login(email: String?, password: String?) {

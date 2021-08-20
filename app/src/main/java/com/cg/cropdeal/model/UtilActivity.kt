@@ -11,9 +11,6 @@ open class UtilActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
-
-
     fun showSnackbar(message:String,view: View){
         val snackbar = Snackbar.make(view,message, Snackbar.LENGTH_LONG)
 

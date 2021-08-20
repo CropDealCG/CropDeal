@@ -2,7 +2,6 @@ package com.cg.cropdeal.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.R
@@ -77,12 +76,10 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
-
                     utilActivity.showSnackbar(
                         "Authentication failed. ${task.exception?.message}",
                             binding.facebookLoginBtn)
