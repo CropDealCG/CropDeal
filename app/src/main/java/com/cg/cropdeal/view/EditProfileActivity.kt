@@ -15,7 +15,6 @@ class EditProfileActivity : AppCompatActivity() {
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_edit_profile)
         viewModel = ViewModelProvider(this).get(EditProfileVM::class.java)
         _binding = ActivityEditProfileBinding.inflate(layoutInflater)
         val view = binding.root

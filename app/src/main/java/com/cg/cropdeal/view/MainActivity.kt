@@ -1,7 +1,6 @@
 package com.cg.cropdeal.view
 
 import android.R
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.cg.cropdeal.databinding.ActivityMainBinding
