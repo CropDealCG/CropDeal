@@ -37,6 +37,7 @@ class SignUpActivity : AppCompatActivity() {
             finish()
         }
 
+        //Linking button to Date Selector
         binding.DOBbtn.setOnClickListener {
             val datePickerDialog = signUpVM.selectDate(this)
             datePickerDialog.addOnPositiveButtonClickListener { dateInMillis->
@@ -46,6 +47,7 @@ class SignUpActivity : AppCompatActivity() {
             datePickerDialog.show(supportFragmentManager,"Date")
         }
 
+        //Linking button to Time Picker
         binding.timeBtn.setOnClickListener {
             val timePickerDialog = signUpVM.selectTime(this)
             timePickerDialog.addOnPositiveButtonClickListener { _ ->
