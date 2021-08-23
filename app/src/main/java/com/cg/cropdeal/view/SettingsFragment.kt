@@ -46,6 +46,10 @@ class SettingsFragment : Fragment() {
             val intent = Intent(activity,ChangePasswordActivity::class.java)
             startActivity(intent)
         }
+
+        binding.sendFeedbackTV.setOnClickListener{
+                viewModel.sendFeedback()
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -1,6 +1,7 @@
 package com.cg.cropdeal.model
 
 import android.app.Application
+import android.content.Intent
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -21,4 +22,6 @@ class SettingsRepo(private var application:Application) {
         val user = FirebaseAuth.getInstance().currentUser
         //val reference = FirebaseDatabase.getInstance().getReference(Constants.USERS).child(user?.uid!!)
     }
+
+
 }
