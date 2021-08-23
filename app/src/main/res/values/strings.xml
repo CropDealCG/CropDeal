@@ -42,4 +42,13 @@
     <string name="confirmation">Do You Really Want To Log Out?</string>
     <string name="exit">EXIT</string>
 
+    <string name="aboutUsText1"> CropDeals is an organization aiming to help farmers get best prices
+    for their crops. By using our platform, the need of middleman ends thus removing the profit cutting
+    on selling.
+         Dealers can avail best deals by buying directly from the farmers.</string>
+
+    <string name="aboutUsText2"> Our app provides hassle-free experience to users. We\'re commited to
+    provide best user-experience by bringing out new updates regularly. Feel free to provide your valuable
+    feedback and help us improve.</string>
+
 </resources>
