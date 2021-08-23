@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_layout"
+    app:startDestination="@id/nav_market">
+    <fragment
+        android:id="@+id/nav_market"
+        android:name="com.cg.cropdeal.view.MarketFragment"
+        android:label="Market"
+        tools:layout="@layout/fragment_market"/>
+    <fragment
+        android:id="@+id/nav_invoice"
+        android:name="com.cg.cropdeal.view.InvoiceFragment"
+        android:label="Invoice"
+        tools:layout="@layout/fragment_invoice" />
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.cg.cropdeal.view.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/settings_fragment" />
+
+</navigation>
