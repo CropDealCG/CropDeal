@@ -1,7 +1,9 @@
 package com.cg.cropdeal.model
 
 import android.app.Application
+import android.content.Context
 import android.content.Intent
+import android.text.BoringLayout
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser

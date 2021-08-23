@@ -37,5 +37,7 @@
     <string name="email_id">Email ID</string>
     <string name="location">Location</string>
     <string name="phone">Phone</string>
+    <string name="confirmation">Do You Really Want To Log Out?</string>
+    <string name="exit">EXIT</string>
 
 </resources>
