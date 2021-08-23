@@ -1,15 +1,15 @@
 package com.cg.cropdeal.view
 
-import android.content.Context
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
-import androidx.databinding.ViewDataBindingKtx
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivitySignInBinding
@@ -20,6 +20,7 @@ import com.facebook.AccessToken
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.FacebookSdk
+import com.facebook.appevents.AppEventsLogger
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
@@ -32,7 +33,6 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var signInVM : SignInVM
     private lateinit var binding : ActivitySignInBinding
     private lateinit var auth : FirebaseAuth
-    private var RC_SIGN_IN = 12
     private var utilActivity = UtilActivity()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +44,7 @@ class SignInActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         FacebookSdk.setApplicationId(getString(R.string.facebook_app_id))
         FacebookSdk.sdkInitialize(this)
+//        AppEventsLogger.activateApp(application)
         binding.signInBtn.setOnClickListener {
             signInWithEmailPassword()
         }
@@ -52,10 +53,9 @@ class SignInActivity : AppCompatActivity() {
             finish()
         }
         binding.googleLoginBtn.setOnClickListener {
-            val signInIntent = signInVM.getGoogleSignInClient()?.signInIntent
-            startActivityForResult(signInIntent,RC_SIGN_IN)
+            googleResultLauncher.launch(signInVM.getGoogleSignInClient()?.signInIntent!!)
         }
-        binding.facebookLoginBtn.setReadPermissions("email", "public_profile")
+        binding.facebookLoginBtn.setPermissions("email", "public_profile")
         binding.facebookLoginBtn.registerCallback(signInVM.getFacebookCallBackManager(),object :
             FacebookCallback<LoginResult> {
             override fun onSuccess(result: LoginResult?) {
@@ -105,6 +105,19 @@ class SignInActivity : AppCompatActivity() {
         })
     }
 
+    private val googleResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
+            try {
+                val account = task.getResult(ApiException::class.java)!!
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: Exception) {
+                utilActivity.showSnackbar("$e - ${e.message}", binding.googleLoginBtn)
+            }
+        }
+    }
+
     private fun handleFacebookAccessToken(accessToken: AccessToken) {
         val credential = FacebookAuthProvider.getCredential(accessToken.token)
         auth.signInWithCredential(credential)
@@ -128,7 +141,7 @@ class SignInActivity : AppCompatActivity() {
         val password = binding.passwordLoginE.text.toString()
         if(email.isNotEmpty() && password.isNotEmpty()){
             signInVM.login(email,password)
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this,EditProfileActivity::class.java))
         }else{
             utilActivity.showSnackbar("Please Enter Data",binding.passwordLoginE)
         }
@@ -150,23 +163,13 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun updateUI(currentUser : FirebaseUser?){
-        startActivity(Intent(this,MainActivity::class.java))
+        startActivity(Intent(this,EditProfileActivity::class.java))
         finish()
     }
 
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == RC_SIGN_IN){
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try{
-                val account = task.getResult(ApiException::class.java)!!
-                firebaseAuthWithGoogle(account.idToken!!)
-            }catch(e : Exception){
-                utilActivity.showSnackbar("${e.message}",binding.googleLoginBtn)
-            }
-        }
-        else{
             signInVM.getFacebookCallBackManager()?.onActivityResult(requestCode,resultCode, data)
-        }
     }
 }

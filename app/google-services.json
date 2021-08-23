@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "571175692324",
+    "firebase_url": "https://cropdeal-a5248-default-rtdb.firebaseio.com",
     "project_id": "cropdeal-a5248",
     "storage_bucket": "cropdeal-a5248.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "571175692324-7fs44r8e5hfaicks94eh4dlfet8dt6gc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cg.cropdeal",
+            "certificate_hash": "80ffdc07aa830e579b037789b7a2cb0f1dfd6a84"
+          }
+        },
         {
           "client_id": "571175692324-g2bo1tvbr9ghvqh8daeh9eg4f9i5omqo.apps.googleusercontent.com",
           "client_type": 1,
