@@ -37,5 +37,9 @@
     <string name="email_id">Email ID</string>
     <string name="location">Location</string>
     <string name="phone">Phone</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="confirmation">Do You Really Want To Log Out?</string>
+    <string name="exit">EXIT</string>
 
 </resources>

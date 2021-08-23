@@ -39,6 +39,6 @@ class SignInVM(application: Application) : AndroidViewModel(application) {
         return  facebookCallBackManager
     }
     fun getForgotPasswordDialog(context: Context, layout: Int) : AlertDialog{
-        return utilRepo?.forgotPasswordDialog(context,layout)!!
+        return utilRepo?.customDialog(context,layout)!!
     }
 }

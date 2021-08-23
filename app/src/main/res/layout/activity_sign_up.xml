@@ -39,78 +39,78 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoImg" />
 
-    <EditText
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameE"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="50dp"
+
         android:layout_marginTop="20dp"
-        android:background="@drawable/round_edittext"
-        android:drawableLeft="@drawable/ic_fi_rr_text"
-        android:drawablePadding="6dp"
-        android:ems="10"
-        android:hint="@string/name"
-
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:padding="8dp"
-        android:paddingEnd="30dp"
-        android:textColor="@color/inputText"
-        android:textColorHint="@color/textHint"
-        android:textSize="18sp"
+        android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-    <!--        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" -->
+            android:backgroundTint="@color/lemonYellowFade"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+            android:textSize="16sp" />
 
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailE"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:autoLink="email"
-        android:background="@drawable/round_edittext"
-        android:drawableLeft="@drawable/ic_fi_rr_envelope"
-        android:drawablePadding="6dp"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textWebEmailAddress|textPassword"
-        android:padding="8dp"
-        android:textColor="@color/inputText"
-        android:textColorHint="@color/textHint"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameE"
-        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+        android:layout_marginStart="50dp"
 
-    <EditText
-        android:id="@+id/passwordE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/round_edittext"
-        android:drawableLeft="@drawable/ic_fi_rr_lock"
-        android:drawablePadding="6dp"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:padding="8dp"
-        android:textColor="@color/inputText"
-        android:textColorHint="@color/textHint"
-        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailE"
-        tools:ignore="TouchTargetSizeCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/nameE">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:backgroundTint="@color/lemonYellowFade"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordE"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailE">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:backgroundTint="@color/lemonYellowFade"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <Button
@@ -188,7 +188,7 @@
         android:layout_marginTop="21dp"
         android:layout_marginEnd="5dp"
         android:background="@drawable/round_edittext"
-        android:hint="Date of Birth"
+        android:hint="Age"
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/DOBbtn"

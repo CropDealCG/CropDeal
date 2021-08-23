@@ -20,7 +20,7 @@ class UtilRepo(private var application: Application?) {
         return MaterialTimePicker.Builder().setTimeFormat(TimeFormat.CLOCK_24H).setHour(12).setMinute(0)
             .setTitleText("Select Time").build()
     }
-    fun forgotPasswordDialog(context: Context,layout: Int) : AlertDialog {
+    fun customDialog(context: Context,layout: Int) : AlertDialog {
         val dialog =MaterialAlertDialogBuilder(context)
 //        return dialog.create()
         val layoutInflater =LayoutInflater.from(context)

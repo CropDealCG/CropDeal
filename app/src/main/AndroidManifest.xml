@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CropDeal">
         <activity
+            android:name=".view.NavigationActivity"
+            android:exported="true" />
+        <activity
             android:name=".model.UtilActivity"
             android:exported="true" />
         <activity
@@ -22,8 +25,7 @@
             android:exported="true" />
         <activity
             android:name=".view.SignUpActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".view.SignInActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"

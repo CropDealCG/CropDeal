@@ -1,25 +1,24 @@
 package com.cg.cropdeal.view
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
+
 import android.content.Intent
-import android.os.Build
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TimePicker
-import android.widget.Toast
-import androidx.annotation.RequiresApi
+
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.databinding.ActivitySignUpBinding
 import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.SignUpVM
 import java.text.SimpleDateFormat
+import java.time.Year
 import java.util.*
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var signUpVM : SignUpVM
     private lateinit var binding : ActivitySignUpBinding
     private var utilActivity = UtilActivity()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,8 +40,17 @@ class SignUpActivity : AppCompatActivity() {
         binding.DOBbtn.setOnClickListener {
             val datePickerDialog = signUpVM.selectDate(this)
             datePickerDialog.addOnPositiveButtonClickListener { dateInMillis->
-                val date = SimpleDateFormat("MMM dd, yyyy",Locale.getDefault()).format(Date(dateInMillis))
-                binding.selectedDateTV.text = date
+                val date = SimpleDateFormat("dd/MM/yyyy",Locale.getDefault()).format(Date(dateInMillis))
+                val cal = Calendar.getInstance()
+                val years = cal.get(Calendar.YEAR) - date.substring(date.length-4).toInt()
+                val months = cal.get(Calendar.MONTH) - date.substring(3,5).toInt() +1
+                val days = cal.get(Calendar.DAY_OF_MONTH) - date.substring(0,2).toInt()
+                var age = 0
+                if(months>0 || (months==0 && days>0))
+                    age = years
+                else
+                    age = years-1
+                binding.selectedDateTV.text = "age: " + age.toString() + "yr"
             }
             datePickerDialog.show(supportFragmentManager,"Date")
         }
@@ -58,8 +66,8 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun signUpWithEmailPassword() {
-        val email = binding.emailE.text.toString()
-        val password = binding.passwordE.text.toString()
+        val email = binding.emailE.editText?.text.toString()
+        val password = binding.passwordE.editText?.text.toString()
         if(email.isNotEmpty() && password.isNotEmpty()){
             signUpVM.register(email,password)
             startActivity(Intent(this,MainActivity::class.java))
