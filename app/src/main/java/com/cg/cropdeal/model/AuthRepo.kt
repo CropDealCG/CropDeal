@@ -43,7 +43,7 @@ class AuthRepo(private var application: Application?) {
                         userLiveData!!.postValue(firebaseAuth!!.currentUser)
                     } else {
                         Toast.makeText(application!!.applicationContext,
-                            "Registration Failure: " + task.exception?.message,
+                            "Registration Failure: ${task.exception?.message}" + task.exception?.message,
                             Toast.LENGTH_SHORT).show()
                     }
                 }

@@ -7,28 +7,42 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.cg.cropdeal.databinding.PublishCropBinding
+import com.cg.cropdeal.model.Crops
 import com.cg.cropdeal.viewmodel.CropPublishVM
+import com.google.firebase.auth.FirebaseAuth
 
 class CropPublishFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CropPublishFragment()
-    }
-
     private lateinit var viewModel: CropPublishVM
     private lateinit var binding: PublishCropBinding
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = PublishCropBinding.inflate(inflater,container,false)
+        firebaseAuth = FirebaseAuth.getInstance()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(CropPublishVM::class.java)
+        val cropName = binding.cropname.selectedItem.toString()
+        val cropDesc = binding.cropDescriptionET.editText.toString()
+        val cropQuantity = binding.quantityET.editText.toString().toInt()
+        val cropRate = binding.rateET.editText.toString().toInt()
+        val address = binding.addressET.editText.toString()
+        val userId = firebaseAuth.currentUser?.uid
+        var cropType = "Fruit"
+        binding.radioGroup.setOnCheckedChangeListener { _, i ->
+             when(i){
+                 binding.fruitRadio.id -> cropType = "Fruit"
+                 binding.vegRadio.id -> cropType = "Vegetable"
+             }
+        }
+        viewModel.addCrops(Crops(cropName,cropType,cropQuantity,cropRate,address,cropDesc,userId!!))
     }
 
 }
