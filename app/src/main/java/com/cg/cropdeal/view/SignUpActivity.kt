@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.databinding.ActivitySignUpBinding
+import com.cg.cropdeal.model.Users
 import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.SignUpVM
 import com.google.android.material.textfield.TextInputLayout

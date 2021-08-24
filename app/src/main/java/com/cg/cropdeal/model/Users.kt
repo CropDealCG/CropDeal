@@ -1,4 +1,4 @@
-package com.cg.cropdeal.view
+package com.cg.cropdeal.model
 
 import java.sql.Time
 import java.util.*
