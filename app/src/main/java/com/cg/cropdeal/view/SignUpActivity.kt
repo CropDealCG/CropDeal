@@ -21,14 +21,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var signUpVM : SignUpVM
     private lateinit var binding : ActivitySignUpBinding
     private var utilActivity = UtilActivity()
-
-    lateinit var name: TextInputLayout
-    lateinit var email: EditText
-    lateinit var type: String
-    lateinit var isAdmin: String
-    lateinit var date: TextView
-    lateinit var time: TextView
-    lateinit var signUpButton: Button
+    private var userType = "farmer"
 //    private lateinit var users: Users
 
     private lateinit var rootNode : FirebaseDatabase
@@ -43,15 +36,7 @@ class SignUpActivity : AppCompatActivity() {
         rootNode = FirebaseDatabase.getInstance()
         reference = rootNode.getReference().child(USERS)
 
-
         //Hooks to all xml elements in activity_sign_up.xml using view binding
-        name = binding.nameE
-        //email = binding.emailE
-        type = "farmer"
-        isAdmin = "false"
-        date = binding.selectedDateTV
-        time = binding.selectedTimeTV
-        signUpButton = binding.signUpBtn
 
         //save the data in the Firebase on button click
         binding.signUpBtn.setOnClickListener {
@@ -81,6 +66,13 @@ class SignUpActivity : AppCompatActivity() {
             }
             timePickerDialog.show(supportFragmentManager,"Time")
         }
+        binding.userTypeRG.setOnCheckedChangeListener { _, i ->
+            when(i){
+                binding.farmerRB.id-> userType = "farmer"
+                binding.delaerRB.id-> userType = "dealer"
+            }
+        }
+        binding.userTypeRG.check(binding.farmerRB.id)
     }
 
     private fun signUpWithEmailPassword() {
@@ -89,9 +81,8 @@ class SignUpActivity : AppCompatActivity() {
         if(email.isNotEmpty() && password.isNotEmpty()){
             signUpVM.register(email,password)
             startActivity(Intent(this,NavigationActivity::class.java))
-
             //call Users class
-            val users = Users(name.editText?.text.toString(),email,type,isAdmin,date.text.toString(),time.text.toString())
+            val users = Users(binding.nameE.editText?.text.toString(),email,userType,"false",binding.selectedDateTV.text.toString(),binding.selectedTimeTV.text.toString())
             reference.child(UUID.randomUUID().toString()).setValue(users)
 
             startActivity(Intent(this,MainActivity::class.java))

@@ -2,12 +2,16 @@ package com.cg.cropdeal.model
 
 import androidx.room.*
 
-
-@Entity(tableName = "userID", indices = arrayOf(Index(value = ["id"],
-    unique = true)))
+@Entity(tableName = "userId")
 data class UsersIDRepo
     (
-    @ColumnInfo(name = "id") val userID : String,
-    @ColumnInfo (name = "user") val user: Users
-
+    @PrimaryKey
+    @ColumnInfo(name = "id")
+    val userID : String,
+    @ColumnInfo (name = "userName")
+    val userName: String,
+    @ColumnInfo(name = "userEmail")
+    val userEmail : String,
+    @ColumnInfo(name = "userType")
+    val userType : String,
     )

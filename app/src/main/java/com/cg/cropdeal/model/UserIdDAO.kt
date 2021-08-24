@@ -6,15 +6,14 @@ import com.airbnb.lottie.L
 @Dao
 interface UserIdDAO {
     @Insert
-    suspend fun insert(userID: String, user : Users)
+    suspend fun insert(users : UsersIDRepo)
     @Update
-    suspend fun update(userID: String, user : Users)
+    suspend fun update(users : UsersIDRepo)
     @Delete
-    suspend fun delete(userID: String, user : Users)
-    @Query("select * from userID")
+    suspend fun delete(users : UsersIDRepo)
+    @Query("select * from userId")
     suspend fun getUsers():List<UsersIDRepo>
-
-    @Query("select * from userID where id=:id")
+    @Query("select * from userId where id=:id")
     suspend fun getUsersByID(id:String):List<UsersIDRepo>
 
 }

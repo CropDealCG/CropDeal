@@ -161,7 +161,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+        app:layout_constraintTop_toBottomOf="@+id/userTypeRG" />
 
     <TextView
         android:id="@+id/existingUserT"
@@ -211,7 +211,7 @@
         app:layout_constraintTop_toBottomOf="@+id/selectedDateTV" />
 
     <RadioGroup
-        android:id="@+id/radioGroup2"
+        android:id="@+id/userTypeRG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -222,14 +222,14 @@
         app:layout_constraintTop_toBottomOf="@+id/timeBtn">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/farmerRB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/farmer" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/delaerRB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
