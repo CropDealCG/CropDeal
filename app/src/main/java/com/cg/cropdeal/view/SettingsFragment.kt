@@ -57,6 +57,11 @@ class SettingsFragment : Fragment() {
                 viewModel.sendFeedback()
         }
 
+        binding.aboutUsTV.setOnClickListener {
+            val intent = Intent(activity,AboutUsActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.logoutTV.setOnClickListener {
             val dialog = viewModel.getLogoutDialog(it.context,R.layout.logout_dialog)
             val layoutInflater = LayoutInflater.from(context)
