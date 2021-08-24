@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/lemonYellowFade"
-                android:hint="@string/first_name"
+                android:hint="@string/user_name"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 tools:ignore="SpeakableTextPresentCheck" />
@@ -72,23 +72,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editLocationET"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="@color/lemonYellowFade"
-                android:hint="@string/location"
-                android:inputType="textPersonName" />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/saveProfileButton"
