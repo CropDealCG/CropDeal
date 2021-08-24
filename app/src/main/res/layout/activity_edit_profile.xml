@@ -111,7 +111,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
 
-            android:backgroundTint="#008000"
+            android:background="@drawable/custom_button"
+
             android:text="SAVE"
             app:cornerRadius="15dp" />
 

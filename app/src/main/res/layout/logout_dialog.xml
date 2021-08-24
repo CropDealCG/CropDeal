@@ -38,7 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:backgroundTint="#C70000"
+        android:background="@drawable/custom_button"
+
         android:text="@string/logout"
         android:textStyle="bold"
         app:cornerRadius="15dp"
@@ -52,7 +53,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:backgroundTint="#FFBF00"
+        android:background="@drawable/custom_button"
+
         android:text="@string/exit"
         android:textStyle="bold"
         app:cornerRadius="15dp"

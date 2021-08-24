@@ -107,7 +107,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/signBtnBG"
+        android:background="@drawable/custom_button"
+
         android:text="@string/sign_in"
         android:textColor="@color/white"
         app:cornerRadius="15dp"
@@ -169,6 +170,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:background="@drawable/custom_button"
         android:backgroundTint="#EA4335"
         android:drawableLeft="@drawable/ic_google"
         android:text="@string/google_sign_in"
