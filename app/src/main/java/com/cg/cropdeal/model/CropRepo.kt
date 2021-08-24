@@ -19,4 +19,7 @@ class CropRepo(private var application: Application?) {
         firebaseDatabase?.reference?.child("crops")?.child(UUID.randomUUID().toString())?.setValue(crop)
         crops?.postValue(crop)
     }
+
+
+
 }

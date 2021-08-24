@@ -1,7 +1,6 @@
 package com.cg.cropdeal.model
 
 import androidx.room.*
-import com.airbnb.lottie.L
 
 @Dao
 interface UserIdDAO {
