@@ -125,4 +125,6 @@ class SettingsRepo(private var application:Application) {
     fun setEmailID():String? {
         return firebaseAuth?.currentUser?.email
     }
+
+
 }

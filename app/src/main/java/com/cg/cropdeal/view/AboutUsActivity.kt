@@ -23,7 +23,16 @@ class AboutUsActivity:AppCompatActivity() {
 
         }
         binding.sendFeedbackBtn1.setOnClickListener {
-            viewModel.sendFeedback()
+            val email = Intent(Intent.ACTION_SEND)
+
+            val mail={"cropdeals@gmail.com"}.toString()
+            email.putExtra(Intent.EXTRA_EMAIL, mail)
+            email.putExtra(Intent.EXTRA_SUBJECT, "Feedback")
+            email.type = "message/rfc822"
+
+            startActivity(
+                Intent.createChooser(email, "Choose an Email client :"), null
+            )
         }
     }
 

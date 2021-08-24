@@ -35,10 +35,9 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var viewModel: EditProfileVM
     private var _binding : ActivityEditProfileBinding? = null
     private val binding get() = _binding!!
-    private val firebaseDB = FirebaseDatabase.getInstance()
-    private val fAuth = FirebaseAuth.getInstance()
+
     private var selectedImageFileUri: Uri? = null
-    private var userProfileImageURL: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(EditProfileVM::class.java)
