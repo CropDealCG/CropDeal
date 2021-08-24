@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.SpinnerAdapter
 import com.cg.cropdeal.databinding.PublishCropBinding
 import com.cg.cropdeal.model.Crops
@@ -30,8 +31,9 @@ class CropPublishFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(CropPublishVM::class.java)
-//        val spinnerAdapter = SpinnerAdapter()
-        binding.cropname
+        val spinnerList = listOf<String>("Spinach","Tomato")
+        val spinnerAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_spinner_dropdown_item,spinnerList) as SpinnerAdapter
+        binding.cropname.adapter = spinnerAdapter
         binding.publishBtn.setOnClickListener {
 
             val cropName = binding.cropname.selectedItem.toString()
