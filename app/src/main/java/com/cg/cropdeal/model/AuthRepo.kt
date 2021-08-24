@@ -79,4 +79,6 @@ class AuthRepo(private var application: Application?) {
     fun getFacebookCallBackManager() : CallbackManager?{
         return callbackManager
     }
+
+
 }
