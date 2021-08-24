@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SpinnerAdapter
 import com.cg.cropdeal.databinding.PublishCropBinding
 import com.cg.cropdeal.model.Crops
 import com.cg.cropdeal.viewmodel.CropPublishVM
@@ -29,20 +30,25 @@ class CropPublishFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(CropPublishVM::class.java)
-        val cropName = binding.cropname.selectedItem.toString()
-        val cropDesc = binding.cropDescriptionET.editText.toString()
-        val cropQuantity = binding.quantityET.editText.toString().toInt()
-        val cropRate = binding.rateET.editText.toString().toInt()
-        val address = binding.addressET.editText.toString()
-        val userId = firebaseAuth.currentUser?.uid
-        var cropType = "Fruit"
-        binding.radioGroup.setOnCheckedChangeListener { _, i ->
-             when(i){
-                 binding.fruitRadio.id -> cropType = "Fruit"
-                 binding.vegRadio.id -> cropType = "Vegetable"
-             }
+//        val spinnerAdapter = SpinnerAdapter()
+        binding.cropname
+        binding.publishBtn.setOnClickListener {
+
+            val cropName = binding.cropname.selectedItem.toString()
+            val cropDesc = binding.cropDescriptionET.editText?.text.toString()
+            val cropQuantity = binding.quantityET.editText?.text.toString().toInt()
+            val cropRate = binding.rateET.editText?.text.toString().toInt()
+            val address = binding.addressET.editText?.text.toString()
+            val userId = firebaseAuth.currentUser?.uid
+            var cropType = "Fruit"
+            binding.radioGroup.setOnCheckedChangeListener { _, i ->
+                when(i){
+                    binding.fruitRadio.id -> cropType = "Fruit"
+                    binding.vegRadio.id -> cropType = "Vegetable"
+                }
+            }
+            viewModel.addCrops(Crops(cropName,cropType,cropQuantity,cropRate,address,cropDesc,userId!!))
         }
-        viewModel.addCrops(Crops(cropName,cropType,cropQuantity,cropRate,address,cropDesc,userId!!))
     }
 
 }

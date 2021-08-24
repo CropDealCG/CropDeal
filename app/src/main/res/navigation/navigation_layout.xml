@@ -8,7 +8,15 @@
         android:id="@+id/nav_market"
         android:name="com.cg.cropdeal.view.MarketFragment"
         android:label="Market"
-        tools:layout="@layout/fragment_market"/>
+        tools:layout="@layout/fragment_market">
+        <action
+            android:id="@+id/action_nav_market_to_crop_publish"
+            app:destination="@id/crop_publish" />
+    </fragment>
+    <fragment
+        android:id="@+id/crop_publish"
+        android:name="com.cg.cropdeal.view.CropPublishFragment"
+        tools:layout="@layout/publish_crop"/>
     <fragment
         android:id="@+id/nav_invoice"
         android:name="com.cg.cropdeal.view.InvoiceFragment"

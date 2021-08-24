@@ -70,7 +70,7 @@ class SignUpActivity : AppCompatActivity() {
         val password = binding.passwordE.editText?.text.toString()
         if(email.isNotEmpty() && password.isNotEmpty()){
             signUpVM.register(email,password)
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this,NavigationActivity::class.java))
         }else{
             utilActivity.showSnackbar("Please Enter Data",binding.emailE)
         }
