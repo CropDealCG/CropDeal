@@ -1,23 +1,17 @@
 package com.cg.cropdeal.view
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TimePicker
-import android.widget.Toast
-import androidx.annotation.RequiresApi
+import android.widget.*
 import androidx.lifecycle.ViewModelProvider
-import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivitySignUpBinding
 import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.SignUpVM
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
-import java.time.Year
 import java.util.*
 
 private const val USERS = "users"
@@ -27,7 +21,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var binding : ActivitySignUpBinding
     private var utilActivity = UtilActivity()
 
-    lateinit var name: EditText
+    lateinit var name: TextInputLayout
     lateinit var email: EditText
     lateinit var type: String
     lateinit var isAdmin: String
@@ -89,14 +83,14 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun signUpWithEmailPassword() {
-        val email = binding.emailE.text.toString()
-        val password = binding.passwordE.text.toString()
+        val email = binding.emailE.editText?.text.toString()
+        val password = binding.passwordE.editText?.text.toString()
         if(email.isNotEmpty() && password.isNotEmpty()){
             signUpVM.register(email,password)
             startActivity(Intent(this,NavigationActivity::class.java))
 
             //call Users class
-            val users = Users(name.text.toString(),email,type,isAdmin,date.text.toString(),time.text.toString())
+            val users = Users(name.editText?.text.toString(),email,type,isAdmin,date.text.toString(),time.text.toString())
             reference.child(UUID.randomUUID().toString()).setValue(users)
 
             startActivity(Intent(this,MainActivity::class.java))
