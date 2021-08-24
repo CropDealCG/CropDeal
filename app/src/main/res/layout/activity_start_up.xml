@@ -11,8 +11,8 @@
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="114dp"
+        android:layout_height="40dp"
         android:text="Select User"
         android:textColor="@color/black"
         android:textSize="24sp"

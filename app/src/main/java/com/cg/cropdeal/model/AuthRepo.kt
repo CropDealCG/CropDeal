@@ -13,6 +13,7 @@ import com.google.android.gms.auth.api.signin.*
 
 class AuthRepo(private var application: Application?) {
 
+    private val userIdDAO= UserIdDatabase.getInstance(application?.applicationContext!!).userIdDao()
     private var firebaseAuth: FirebaseAuth? = null
     private var userLiveData: MutableLiveData<FirebaseUser>? = null
     private var loggedOutLiveData: MutableLiveData<Boolean>? = null
