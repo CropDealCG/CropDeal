@@ -88,7 +88,8 @@ class SignUpActivity : AppCompatActivity() {
                     Log.d("Observables","${user?.email}\t$isNew")
                     if(user!=null){
                         if(isNew)   {
-                            reference.child(user.uid).setValue(users)
+                            reference.child(user.uid).setValue(users)   //Addition to Firebase
+
                             startActivity(Intent(this,NavigationActivity::class.java))
                         }
                         else    {

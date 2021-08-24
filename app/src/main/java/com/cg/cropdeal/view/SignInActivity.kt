@@ -1,26 +1,24 @@
 package com.cg.cropdeal.view
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivitySignInBinding
 import com.cg.cropdeal.databinding.CustomForgotPasswordDialogBinding
+import com.cg.cropdeal.model.Users
 import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.SignInVM
 import com.facebook.AccessToken
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.FacebookSdk
-import com.facebook.appevents.AppEventsLogger
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
@@ -28,11 +26,14 @@ import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.FirebaseDatabase
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var signInVM : SignInVM
     private lateinit var binding : ActivitySignInBinding
     private lateinit var auth : FirebaseAuth
+    private lateinit var userType : String
+    private lateinit var firebaseDatabase: FirebaseDatabase
     private var utilActivity = UtilActivity()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +43,8 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+        firebaseDatabase = FirebaseDatabase.getInstance()
+        userType = ""
         FacebookSdk.setApplicationId(getString(R.string.facebook_app_id))
         FacebookSdk.sdkInitialize(this)
 //        AppEventsLogger.activateApp(application)
@@ -53,22 +56,79 @@ class SignInActivity : AppCompatActivity() {
             finish()
         }
         binding.googleLoginBtn.setOnClickListener {
-            googleResultLauncher.launch(signInVM.getGoogleSignInClient()?.signInIntent!!)
+            val dialog = AlertDialog.Builder(this)
+            dialog.setTitle("Are you a?")
+            var dialogBuilder = dialog.create()
+            dialog.setPositiveButton("Farmer",object:DialogInterface.OnClickListener{
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    userType = "farmer"
+                }
+
+            })
+            dialog.setNegativeButton("Dealer",object:DialogInterface.OnClickListener{
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    userType = "dealer"
+                }
+
+            })
+            dialog.setNeutralButton("Cancel",object:DialogInterface.OnClickListener{
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    dialogBuilder.dismiss()
+                }
+
+            })
+            dialogBuilder = dialog.create()
+            dialogBuilder.setCancelable(false)
+            dialogBuilder.show()
+            dialogBuilder.setOnDismissListener {
+                if(userType.isNotEmpty())googleResultLauncher.launch(signInVM.getGoogleSignInClient()?.signInIntent!!)
+            }
         }
         binding.facebookLoginBtn.setPermissions("email", "public_profile")
-        binding.facebookLoginBtn.registerCallback(signInVM.getFacebookCallBackManager(),object :
-            FacebookCallback<LoginResult> {
-            override fun onSuccess(result: LoginResult?) {
-                handleFacebookAccessToken(result?.accessToken!!)
-            }
+        binding.facebookLoginBtn.setOnClickListener {
+            val dialog = AlertDialog.Builder(this)
+            dialog.setTitle("Are you a?")
+            var dialogBuilder = dialog.create()
+            dialog.setPositiveButton("Farmer",object:DialogInterface.OnClickListener{
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    userType = "farmer"
+                }
 
-            override fun onCancel() {
-            }
-            override fun onError(error: FacebookException?) {
-               utilActivity.showSnackbar("${error?.message}",binding.facebookLoginBtn)
-                 }
+            })
+            dialog.setNegativeButton("Dealer",object:DialogInterface.OnClickListener{
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    userType = "dealer"
+                }
 
-        })
+            })
+            dialog.setNeutralButton("Cancel",object:DialogInterface.OnClickListener{
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    dialogBuilder.dismiss()
+                }
+
+            })
+            dialogBuilder = dialog.create()
+            dialogBuilder.setCancelable(false)
+            dialogBuilder.show()
+            dialogBuilder.setOnDismissListener {
+                if(userType.isNotEmpty()){
+                    binding.facebookLoginBtn.registerCallback(signInVM.getFacebookCallBackManager(),object :
+                        FacebookCallback<LoginResult> {
+                        override fun onSuccess(result: LoginResult?) {
+                            handleFacebookAccessToken(result?.accessToken!!)
+                        }
+
+                        override fun onCancel() {
+                        }
+                        override fun onError(error: FacebookException?) {
+                            utilActivity.showSnackbar("${error?.message}",binding.facebookLoginBtn)
+                        }
+
+                    })
+                }
+            }
+        }
+
         binding.forgotPasswordT.setOnClickListener {_->
             val dialog = signInVM.getForgotPasswordDialog(this,R.layout.custom_forgot_password_dialog)
             val customBinding = CustomForgotPasswordDialogBinding.inflate(layoutInflater)
@@ -124,8 +184,15 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val user = auth.currentUser
-                    updateUI(user)
+                    val facebookUser = auth.currentUser
+                    if (task.result.additionalUserInfo?.isNewUser!!) {
+                        val user = Users(facebookUser?.displayName!!,facebookUser?.email!!,userType,"false","","")
+                        firebaseDatabase.reference.child("users").child(task.result.user?.uid!!).setValue(user)
+                        updateUI(facebookUser)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        updateUI(facebookUser)
+                    }
                 } else {
                     // If sign in fails, display a message to the user.
                     utilActivity.showSnackbar(
@@ -153,11 +220,15 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val user = auth.currentUser
-                    updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    updateUI(null)
+                    val googleUser = auth.currentUser
+                    if (task.result.additionalUserInfo?.isNewUser!!) {
+                        val user = Users(googleUser?.displayName!!,googleUser?.email!!,userType,"false","","")
+                        firebaseDatabase.reference.child("users").child(task.result.user?.uid!!).setValue(user)
+                        updateUI(googleUser)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        updateUI(googleUser)
+                    }
                 }
             }
     }

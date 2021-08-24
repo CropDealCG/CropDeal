@@ -1,6 +1,7 @@
 package com.cg.cropdeal.model
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 
 import com.google.firebase.auth.FirebaseAuth
@@ -10,6 +11,9 @@ import android.widget.Toast
 import com.cg.cropdeal.R
 import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class AuthRepo(private var application: Application?) {
 
@@ -45,6 +49,14 @@ class AuthRepo(private var application: Application?) {
                     if (task.isSuccessful) {
                         userLiveData!!.postValue(firebaseAuth!!.currentUser)
                         newUser!!.postValue(task.result.additionalUserInfo?.isNewUser)
+                        if(task.result.additionalUserInfo?.isNewUser!!)
+                        {
+                            CoroutineScope(Dispatchers.Default).launch {
+//                                Log.d("Observables","${task.result?.user?.uid!!},${task.result?.additionalUserInfo?.username},${task.result?.user?.email!!}")
+                                val userId = UsersIDRepo(task.result?.user?.uid!!,task.result?.user?.email!!)
+                                userIdDAO.insert(userId)
+                            }
+                        }
                     } else {
                         Toast.makeText(application!!.applicationContext,
                             "Registration Failure: ${task.exception?.message}" + task.exception?.message,
