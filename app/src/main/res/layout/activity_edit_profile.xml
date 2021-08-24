@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/editProfileLyt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.EditProfileActivity">
@@ -71,22 +72,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editPhoneET"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/phone"
-                android:backgroundTint="@color/lemonYellowFade"
-                android:layout_marginTop="20dp"
-                android:inputType="phone" />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editLocationET"
@@ -98,9 +83,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/location"
-                android:backgroundTint="@color/lemonYellowFade"
                 android:layout_marginTop="20dp"
+                android:backgroundTint="@color/lemonYellowFade"
+                android:hint="@string/location"
                 android:inputType="textPersonName" />
 
         </com.google.android.material.textfield.TextInputLayout>
