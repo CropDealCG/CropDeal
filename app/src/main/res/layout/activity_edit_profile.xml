@@ -22,7 +22,7 @@
             android:gravity="center_horizontal"
             android:padding="2dp"
             android:text="COMPLETE PROFILE "
-            android:textColor="@color/white"
+            android:textColor="#5E35B1"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -38,15 +38,18 @@
             android:id="@+id/editUserNameET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/first_name"
+
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="20dp"
-                android:inputType="textPersonName" />
+                android:backgroundTint="@color/lemonYellowFade"
+                android:hint="@string/first_name"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,15 +57,17 @@
             android:id="@+id/editEmailET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email_id"
+
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="20dp"
-                android:inputType="textEmailAddress" />
+                android:backgroundTint="@color/lemonYellowFade"
+                android:hint="@string/email_id"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,13 +75,14 @@
             android:id="@+id/editPhoneET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/phone"
+
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:hint="@string/phone"
+                android:backgroundTint="@color/lemonYellowFade"
                 android:layout_marginTop="20dp"
                 android:inputType="phone" />
 
@@ -86,13 +92,14 @@
             android:id="@+id/editLocationET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/location"
+
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:hint="@string/location"
+                android:backgroundTint="@color/lemonYellowFade"
                 android:layout_marginTop="20dp"
                 android:inputType="textPersonName" />
 

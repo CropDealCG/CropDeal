@@ -50,5 +50,7 @@
     <string name="aboutUsText2"> Our app provides hassle-free experience to users. We\'re commited to
     provide best user-experience by bringing out new updates regularly. Feel free to provide your valuable
     feedback and help us improve.</string>
+    <string name="crop_names">Crop Names</string>
+    <string name="description">Description</string>
 
 </resources>
