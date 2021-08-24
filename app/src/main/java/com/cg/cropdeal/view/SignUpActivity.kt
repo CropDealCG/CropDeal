@@ -80,10 +80,11 @@ class SignUpActivity : AppCompatActivity() {
         val password = binding.passwordE.editText?.text.toString()
         if(email.isNotEmpty() && password.isNotEmpty()){
             signUpVM.register(email,password)
+            val signedInUser = signUpVM.getUserData()
             startActivity(Intent(this,NavigationActivity::class.java))
             //call Users class
             val users = Users(binding.nameE.editText?.text.toString(),email,userType,"false",binding.selectedDateTV.text.toString(),binding.selectedTimeTV.text.toString())
-            reference.child(UUID.randomUUID().toString()).setValue(users)
+            reference.child(signedInUser?.value?.uid!!).setValue(users)
 
             startActivity(Intent(this,MainActivity::class.java))
         }else{

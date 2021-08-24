@@ -1,6 +1,11 @@
 package com.cg.cropdeal.model
 
+import androidx.room.*
+
+@Entity(tableName = "crops")
 data class Crops(
+    @PrimaryKey
+    val cropId : String,
     val cropName : String,
     val cropType : String,
     val cropQuantity : Int,
@@ -9,5 +14,5 @@ data class Crops(
     val cropDesc : String,
     val userId : String
 ){
-    constructor() : this("","",0,0,"","","")
+    constructor() : this("","","",0,0,"","","")
 }

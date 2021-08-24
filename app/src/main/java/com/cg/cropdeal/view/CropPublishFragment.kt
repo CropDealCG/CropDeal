@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.SpinnerAdapter
+import android.widget.Toast
+import androidx.navigation.Navigation
 import com.cg.cropdeal.databinding.PublishCropBinding
 import com.cg.cropdeal.model.Crops
 import com.cg.cropdeal.viewmodel.CropPublishVM
@@ -30,6 +32,8 @@ class CropPublishFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val a = Navigation.findNavController(view).currentBackStackEntry?.savedStateHandle?.getLiveData<String>("Demo")?.value
+        Toast.makeText(view.context,"$a",Toast.LENGTH_LONG).show()
         viewModel = ViewModelProvider(this).get(CropPublishVM::class.java)
         val spinnerList = listOf<String>("Spinach","Tomato")
         val spinnerAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_spinner_dropdown_item,spinnerList) as SpinnerAdapter
@@ -49,7 +53,7 @@ class CropPublishFragment : Fragment() {
                     binding.vegRadio.id -> cropType = "Vegetable"
                 }
             }
-            viewModel.addCrops(Crops(cropName,cropType,cropQuantity,cropRate,address,cropDesc,userId!!))
+            viewModel.addCrops(Crops("",cropName,cropType,cropQuantity,cropRate,address,cropDesc,userId!!))
         }
     }
 

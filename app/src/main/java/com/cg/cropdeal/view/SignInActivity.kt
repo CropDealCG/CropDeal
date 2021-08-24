@@ -77,12 +77,12 @@ class SignInActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
             customBinding.btnOkay.setOnClickListener {
-                if(customBinding.txtInput.text.isEmpty()){
+                if(customBinding.txtInput.editText?.text?.isEmpty()!!){
                     customBinding.txtInput.error = "Please Enter Email"
                     customBinding.txtInput.requestFocus()
                 }
                 else{
-                    auth.sendPasswordResetEmail(customBinding.txtInput.text.toString())
+                    auth.sendPasswordResetEmail(customBinding.txtInput.editText?.text.toString())
                         .addOnCompleteListener{
                             if(it.isSuccessful){
                                 Toast.makeText(this,"Password Reset Mail Sent Successfully", Toast.LENGTH_LONG).show()
@@ -137,8 +137,8 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun signInWithEmailPassword() {
-        val email = binding.emailLoginE.text.toString()
-        val password = binding.passwordLoginE.text.toString()
+        val email = binding.emailLoginE.editText?.text.toString()
+        val password = binding.passwordLoginE.editText?.text.toString()
         if(email.isNotEmpty() && password.isNotEmpty()){
             signInVM.login(email,password)
             startActivity(Intent(this,NavigationActivity::class.java))

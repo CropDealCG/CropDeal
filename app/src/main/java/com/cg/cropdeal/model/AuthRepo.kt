@@ -17,6 +17,7 @@ class AuthRepo(private var application: Application?) {
     private var firebaseAuth: FirebaseAuth? = null
     private var userLiveData: MutableLiveData<FirebaseUser>? = null
     private var loggedOutLiveData: MutableLiveData<Boolean>? = null
+    private var newUser : MutableLiveData<Boolean>?= null
     private val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
         .requestIdToken(application?.getString(R.string.default_web_client_id)!!)
         .requestEmail().build()
@@ -28,6 +29,7 @@ class AuthRepo(private var application: Application?) {
         firebaseAuth = FirebaseAuth.getInstance()
         userLiveData = MutableLiveData()
         loggedOutLiveData = MutableLiveData()
+        newUser = MutableLiveData()
         if (firebaseAuth!!.currentUser != null) {
             userLiveData!!.postValue(firebaseAuth!!.currentUser)
             loggedOutLiveData!!.postValue(false)
@@ -42,6 +44,7 @@ class AuthRepo(private var application: Application?) {
             .addOnCompleteListener{task ->
                     if (task.isSuccessful) {
                         userLiveData!!.postValue(firebaseAuth!!.currentUser)
+                        newUser!!.postValue(task.result.additionalUserInfo?.isNewUser)
                     } else {
                         Toast.makeText(application!!.applicationContext,
                             "Registration Failure: ${task.exception?.message}" + task.exception?.message,
