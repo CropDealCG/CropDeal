@@ -3,6 +3,7 @@ package com.cg.cropdeal.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.databinding.ActivitySignUpBinding
@@ -10,6 +11,7 @@ import com.cg.cropdeal.model.Users
 import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.SignUpVM
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
@@ -80,13 +82,24 @@ class SignUpActivity : AppCompatActivity() {
         val password = binding.passwordE.editText?.text.toString()
         if(email.isNotEmpty() && password.isNotEmpty()){
             signUpVM.register(email,password)
-            val signedInUser = signUpVM.getUserData()
-            startActivity(Intent(this,NavigationActivity::class.java))
-            //call Users class
             val users = Users(binding.nameE.editText?.text.toString(),email,userType,"false",binding.selectedDateTV.text.toString(),binding.selectedTimeTV.text.toString())
-            reference.child(signedInUser?.value?.uid!!).setValue(users)
+            signUpVM.getUserData()?.observe(this,{user->
+                signUpVM.isNewUser()?.observe(this,{isNew->
+                    Log.d("Observables","${user?.email}\t$isNew")
+                    if(user!=null){
+                        if(isNew)   {
+                            reference.child(user.uid).setValue(users)
+                            startActivity(Intent(this,NavigationActivity::class.java))
+                        }
+                        else    {
+                            Toast.makeText(this,"You are already an user",Toast.LENGTH_LONG).show()
+                            startActivity(Intent(this,NavigationActivity::class.java))
+                        }
+                    }
+                })
+            })
 
-            startActivity(Intent(this,MainActivity::class.java))
+            //call Users class
         }else{
             utilActivity.showSnackbar("Please Enter Data",binding.emailE)
         }

@@ -71,14 +71,13 @@ class SettingsFragment : Fragment() {
             logoutBinding.settingsExitButton.setOnClickListener {
                 activity?.finish()
             }
-            logoutBinding.settingsExitButton.setOnClickListener{
+            logoutBinding.settingsLogoutButton.setOnClickListener{
                 FirebaseAuth.getInstance().signOut()
                 val intent = Intent(activity, SignInActivity::class.java)
-                ContextCompat.startActivity(requireContext(),intent,null)
+                startActivity(intent)
                 activity?.finish()
             }
             dialog.show()
-
         }
 
     }

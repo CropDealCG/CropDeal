@@ -15,11 +15,13 @@ class SignUpVM(application: Application) : AndroidViewModel(application) {
 
     private var authRepo: AuthRepo? = null
     private var userLiveData: MutableLiveData<FirebaseUser>? = null
+    private var isNewUser : MutableLiveData<Boolean>?= null
     private var utilRepo : UtilRepo? = null
 
     init{
         authRepo = AuthRepo(application)
         userLiveData = authRepo!!.getUserLiveData()
+        isNewUser = authRepo!!.isNewUser()
         utilRepo = UtilRepo(application)
     }
 
@@ -34,6 +36,9 @@ class SignUpVM(application: Application) : AndroidViewModel(application) {
     }
     fun getUserData() : MutableLiveData<FirebaseUser>?{
         return userLiveData
+    }
+    fun isNewUser() : MutableLiveData<Boolean>?{
+        return isNewUser
     }
 
 }
