@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:contentDescription="Crop Names"
-        android:entries="Spinach, Tomato, Potato, Carrot"
+        android:entries='["Spinach","Tomato"]'
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

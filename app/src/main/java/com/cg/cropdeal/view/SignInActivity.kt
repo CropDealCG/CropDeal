@@ -141,7 +141,7 @@ class SignInActivity : AppCompatActivity() {
         val password = binding.passwordLoginE.text.toString()
         if(email.isNotEmpty() && password.isNotEmpty()){
             signInVM.login(email,password)
-            startActivity(Intent(this,EditProfileActivity::class.java))
+            startActivity(Intent(this,NavigationActivity::class.java))
         }else{
             utilActivity.showSnackbar("Please Enter Data",binding.passwordLoginE)
         }
@@ -163,7 +163,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun updateUI(currentUser : FirebaseUser?){
-        startActivity(Intent(this,EditProfileActivity::class.java))
+        startActivity(Intent(this,NavigationActivity::class.java))
         finish()
     }
 
