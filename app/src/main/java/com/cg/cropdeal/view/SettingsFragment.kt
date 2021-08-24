@@ -3,6 +3,7 @@ package com.cg.cropdeal.view
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.os.UserHandle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +14,10 @@ import androidx.lifecycle.Observer
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.LogoutDialogBinding
 import com.cg.cropdeal.databinding.SettingsFragmentBinding
+import com.cg.cropdeal.model.Users
 import com.cg.cropdeal.viewmodel.SettingsVM
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
-
 
 class SettingsFragment : Fragment() {
 
