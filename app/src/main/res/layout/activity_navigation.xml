@@ -9,10 +9,10 @@
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:backgroundColor="@color/signBtnBG"
+        app:backgroundColor="@color/paperWhite"
         app:iconSize="24dp"
-        app:iconTint="@color/iconTint"
-        app:iconTintActive="@color/iconTintActive"
+        app:iconTint="@color/black"
+        app:iconTintActive="@color/crimsonRed"
         app:indicatorColor="@color/indicatorColor"
         app:indicatorRadius="10dp"
         app:itemPadding="10dp"
@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu"
         app:sideMargins="10dp"
-        app:textColor="@color/white"
+        app:textColor="@color/crimsonRed"
         app:textSize="14sp" />
 
 

@@ -47,6 +47,7 @@ class SignInActivity : AppCompatActivity() {
 
         progressDialog = UtilRepo(application).loadingDialog(this)
         auth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()   //initialize the FirebaseAuth instance
         firebaseDatabase = FirebaseDatabase.getInstance()
         userType = ""
         FacebookSdk.setApplicationId(getString(R.string.facebook_app_id))
