@@ -3,6 +3,7 @@ package com.cg.cropdeal.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.cg.cropdeal.model.CropDatabase
 import com.cg.cropdeal.model.Crops
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -11,6 +12,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class MarketVM(application: Application) : AndroidViewModel(application) {
+    private val cropDB = CropDatabase.getInstance(application.applicationContext).cropDao()
     private var cropsList : MutableLiveData<List<Crops>>? = null
     private var currentCropList : MutableList<Crops>? = null
     private var firebaseDatabase : FirebaseDatabase? = null
@@ -21,13 +23,8 @@ class MarketVM(application: Application) : AndroidViewModel(application) {
         currentCropList = mutableListOf()
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseDatabase = FirebaseDatabase.getInstance()
-        initializeList()
-    }
-
-    private fun initializeList() {
         populateList()
     }
-
     private fun populateList() {
         firebaseDatabase?.reference?.child("crops")?.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {

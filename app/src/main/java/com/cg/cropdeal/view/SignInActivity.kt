@@ -1,12 +1,13 @@
 package com.cg.cropdeal.view
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.R
@@ -14,6 +15,7 @@ import com.cg.cropdeal.databinding.ActivitySignInBinding
 import com.cg.cropdeal.databinding.CustomForgotPasswordDialogBinding
 import com.cg.cropdeal.model.Users
 import com.cg.cropdeal.model.UtilActivity
+import com.cg.cropdeal.model.UtilRepo
 import com.cg.cropdeal.viewmodel.SignInVM
 import com.facebook.AccessToken
 import com.facebook.FacebookCallback
@@ -34,6 +36,7 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var auth : FirebaseAuth
     private lateinit var userType : String
     private lateinit var firebaseDatabase: FirebaseDatabase
+    private lateinit var progressDialog : AlertDialog
     private var utilActivity = UtilActivity()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +45,7 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        progressDialog = UtilRepo(application).loadingDialog(this)
         auth = FirebaseAuth.getInstance()
         firebaseDatabase = FirebaseDatabase.getInstance()
         userType = ""
@@ -160,7 +164,15 @@ class SignInActivity : AppCompatActivity() {
 
         signInVM.getUserLiveData()?.observe(this,{
             if(it!=null){
+                progressDialog.dismiss()
                 updateUI(it)
+            }
+        })
+        signInVM.isSignInFailed()?.observe(this,{
+            Log.d("Observables","Dialog ert")
+            if(it!=null && it==true){
+                Log.d("Observables","Dialog")
+                progressDialog.dismiss()
             }
         })
     }
@@ -204,6 +216,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun signInWithEmailPassword() {
+        progressDialog.show()
         val email = binding.emailLoginE.editText?.text.toString()
         val password = binding.passwordLoginE.editText?.text.toString()
         if(email.isNotEmpty() && password.isNotEmpty()){
@@ -213,6 +226,9 @@ class SignInActivity : AppCompatActivity() {
                 finish()
             }
         }else{
+            progressDialog.cancel()
+            progressDialog.hide()
+            progressDialog.dismiss()
             utilActivity.showSnackbar("Please Enter Data",binding.passwordLoginE)
         }
     }

@@ -4,13 +4,11 @@ import android.app.Application
 import android.content.Context
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
+import com.cg.cropdeal.R
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
-import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.timepicker.MaterialTimePicker
-import com.google.android.material.timepicker.TimeFormat
 
 class UtilRepo(private var application: Application?) {
 
@@ -32,7 +30,15 @@ class UtilRepo(private var application: Application?) {
         val customView = layoutInflater.inflate(layout,null,false)
         dialog.setView(customView)
         val materialDialog = dialog.create()
-        materialDialog.setCancelable(false)
+        materialDialog.setCancelable(true)
         return materialDialog
+    }
+    fun loadingDialog(context: Context) : AlertDialog{
+        val dialog = MaterialAlertDialogBuilder(context)
+        val layoutInflater = LayoutInflater.from(context)
+        val customView = layoutInflater.inflate(R.layout.custom_progress_dialog,null,false)
+        dialog.setView(customView)
+        dialog.setCancelable(false)
+        return dialog.create()
     }
 }

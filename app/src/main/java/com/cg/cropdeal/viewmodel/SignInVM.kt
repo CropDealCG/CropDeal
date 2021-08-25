@@ -18,12 +18,14 @@ class SignInVM(application: Application) : AndroidViewModel(application) {
     private var userLiveData: MutableLiveData<FirebaseUser>? = null
     private var googleSignInClient : GoogleSignInClient? = null
     private var facebookCallBackManager : CallbackManager? = null
+    private var signInFailed : MutableLiveData<Boolean>? = null
 
     init{
         authRepo = AuthRepo(application)
         userLiveData = authRepo!!.getUserLiveData()
         googleSignInClient = authRepo!!.getGoogleSignInClient()
         facebookCallBackManager = authRepo!!.getFacebookCallBackManager()
+        signInFailed = authRepo!!.isSignInFailed()
         utilRepo = UtilRepo(application)
     }
     fun login(email: String?, password: String?) {
@@ -41,4 +43,5 @@ class SignInVM(application: Application) : AndroidViewModel(application) {
     fun getForgotPasswordDialog(context: Context, layout: Int) : AlertDialog{
         return utilRepo?.customDialog(context,layout)!!
     }
+    fun isSignInFailed():MutableLiveData<Boolean>? = signInFailed
 }
