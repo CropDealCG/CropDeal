@@ -14,10 +14,12 @@ import androidx.lifecycle.Observer
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.LogoutDialogBinding
 import com.cg.cropdeal.databinding.SettingsFragmentBinding
+import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.model.Users
 import com.cg.cropdeal.viewmodel.SettingsVM
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
 
 class SettingsFragment : Fragment() {
 
@@ -41,12 +43,30 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProvider(this).get(SettingsVM::class.java)
+        val liveData = viewModel.getDataSnapshotLiveData()
+        liveData.observe(viewLifecycleOwner, object : Observer<DataSnapshot?> {
+            override fun onChanged(dataSnapshot: DataSnapshot?) {
+                if (dataSnapshot != null) {
+
+                    val username =
+                        dataSnapshot.child(Constants.USERNAME).value.toString()
+                    binding.profileUserName.setText(username)
+
+                    val email = dataSnapshot.child(Constants.EMAIL).value.toString()
+                    binding.profileUserEmail.setText(email)
+                }
+            }
+        })
+
+
         binding.editProfTV.setOnClickListener {
-//            viewModel.activityToStart.observe(viewLifecycleOwner, Observer { value ->
+
                 val intent = Intent(activity, EditProfileActivity::class.java)
 
                 startActivity(intent)
-           // })
+
         }
 
         binding.changePassTV.setOnClickListener {
@@ -94,7 +114,6 @@ class SettingsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SettingsVM::class.java)
 
     }
 

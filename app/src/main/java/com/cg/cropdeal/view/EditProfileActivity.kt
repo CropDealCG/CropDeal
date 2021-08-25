@@ -30,11 +30,17 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import java.io.IOException
+import com.cg.cropdeal.model.FirebaseQueryLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+
 
 class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var viewModel: EditProfileVM
     private var _binding : ActivityEditProfileBinding? = null
     private val binding get() = _binding!!
+
+
 
     private var selectedImageFileUri: Uri? = null
 
@@ -45,32 +51,41 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
         val view = binding.root
         setContentView(view)
 
-        setUsername()
-
-
         binding.editEmailET.isEnabled = false
-        setEmailID()
+        val liveData = viewModel.getDataSnapshotLiveData()
+
+        liveData.observe(this, object : Observer<DataSnapshot?> {
+            override fun onChanged(dataSnapshot: DataSnapshot?) {
+                if (dataSnapshot != null) {
+
+                    val username =
+                        dataSnapshot.child(Constants.USERNAME).value.toString()
+                    binding.editUserNameET.editText?.setText(username)
+
+                    val email = dataSnapshot.child(Constants.EMAIL).value.toString()
+                    binding.editEmailET.editText?.setText(email)
+                }
+            }
+        })
+
+
+
 
         val profile_image_ref = getSharedPreferences(Constants.PROFILE_IMAGE_REF,0)
         val uri = profile_image_ref?.getString("profile_image","")
 
+
         Glide.with(this )
             .load(uri)
+            .centerInside()
+            .placeholder(R.drawable.blank_profile)
             .into(binding.profileImage)
 
         binding.profileImage.setOnClickListener(this@EditProfileActivity)
         binding.saveProfileButton.setOnClickListener(this@EditProfileActivity)
     }
 
-    private fun setEmailID() {
-        val email = viewModel.setEmailID()
-        binding.editEmailET.editText?.setText(email)
-    }
 
-    private fun setUsername() {
-        val username = viewModel.setUsername(binding.editProfileLyt)
-        binding.editUserNameET.editText?.setText(username)
-    }
 
     override fun onClick(v: View?) {
         when(v?.id){

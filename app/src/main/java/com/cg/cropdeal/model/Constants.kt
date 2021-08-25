@@ -12,7 +12,7 @@ object Constants {
     const val APP_PREFERENCES: String = "AppPrefs"
 
     const val USERNAME:String = "name"
-
+    const val EMAIL:String = "email"
 
     const val READ_STORAGE_PERMISSION_CODE = 2
     const val PICK_IMAGE_REQUEST_CODE = 1
