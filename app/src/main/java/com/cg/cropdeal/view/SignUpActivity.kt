@@ -68,13 +68,11 @@ class SignUpActivity : AppCompatActivity() {
         })
 
         //Linking button to Time Picker
-        binding.timeBtn.setOnClickListener {
-            val timePickerDialog = signUpVM.selectTime(this)
-            timePickerDialog.addOnPositiveButtonClickListener { _ ->
-                binding.selectedTimeTV.text = "${timePickerDialog.hour}:${timePickerDialog.minute}"
-            }
-            timePickerDialog.show(supportFragmentManager,"Time")
-        }
+        val cal  = Calendar.getInstance()
+        val hour = cal.get(Calendar.HOUR_OF_DAY)
+        val min = cal.get(Calendar.MINUTE)
+        binding.selectedTimeTV.setText("$hour:$min")
+
         binding.userTypeRG.setOnCheckedChangeListener { _, i ->
             when(i){
                 binding.farmerRB.id-> userType = "farmer"
@@ -89,7 +87,8 @@ class SignUpActivity : AppCompatActivity() {
         val password = binding.passwordE.editText?.text.toString()
         if(email.isNotEmpty() && password.isNotEmpty()){
             signUpVM.register(email,password)
-            val users = Users(binding.nameE.editText?.text.toString(),email,userType,"false",binding.selectedDateTV.text.toString(),binding.selectedTimeTV.text.toString())
+            val users = Users(binding.nameE.editText?.text.toString(),email,userType,"false"
+                ,binding.selectedDateTV.text.toString(),binding.selectedTimeTV.text.toString())
             signUpVM.getUserData()?.observe(this,{user->
                 signUpVM.isNewUser()?.observe(this,{isNew->
                     //Log.d("Observables","${user?.email}\t$isNew")

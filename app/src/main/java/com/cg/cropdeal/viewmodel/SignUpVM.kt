@@ -31,9 +31,7 @@ class SignUpVM(application: Application) : AndroidViewModel(application) {
     fun selectDate(context: Context) : MaterialDatePicker<Long>{
         return utilRepo?.selectDate(context)!!
     }
-    fun selectTime(context: Context) : MaterialTimePicker{
-        return utilRepo?.selectTime(context)!!
-    }
+
     fun getUserData() : MutableLiveData<FirebaseUser>?{
         return userLiveData
     }
