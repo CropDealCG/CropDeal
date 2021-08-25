@@ -32,7 +32,6 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
-            android:background="@android:drawable/ic_menu_camera"
             app:srcCompat="@android:drawable/ic_menu_camera" />
 
         <com.google.android.material.textfield.TextInputLayout

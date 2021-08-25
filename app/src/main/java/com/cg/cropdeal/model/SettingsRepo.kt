@@ -12,16 +12,32 @@ import androidx.lifecycle.MutableLiveData
 import com.cg.cropdeal.view.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
+import java.lang.Exception
+import com.google.firebase.database.DatabaseError
+
+import com.google.firebase.database.DataSnapshot
+
+import com.google.firebase.database.ValueEventListener
+import androidx.databinding.adapters.NumberPickerBindingAdapter.setValue
+
+import com.google.firebase.database.DatabaseReference
+
+import androidx.lifecycle.LiveData
+
+
+
+
+
+
 
 private var firebaseAuth: FirebaseAuth? = null
 private var userLiveData: MutableLiveData<FirebaseUser>? = null
 private var firebaseDB:FirebaseDatabase?= null
-class SettingsRepo(private var application:Application) {
+
+class SettingsRepo(private var application: Application?) {
+
 
     private var userProfileImageURL: String = ""
     init {
@@ -101,30 +117,48 @@ class SettingsRepo(private var application:Application) {
 
     }
 
-    fun setUsername(view: View):String{
-        val user = firebaseAuth?.currentUser
-        val reference = firebaseDB?.getReference(Constants.USERS)?.child(user?.uid!!)
-        var username = ""
-        reference?.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                username =
-                    dataSnapshot.child(Constants.USERNAME).value.toString()
-
-
-
-            }
-
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                UtilActivity().showSnackbar(databaseError.message,view)
-            }
-        })
-        return username
-    }
-
-    fun setEmailID():String? {
-        return firebaseAuth?.currentUser?.email
-    }
-
 
 }
+
+
+class FirebaseQueryLiveData : LiveData<DataSnapshot?> {
+    private val query: Query
+    private val listener: MyValueEventListener = MyValueEventListener()
+
+    constructor(query: Query) {
+        this.query = query
+    }
+
+    constructor(ref: DatabaseReference) {
+        query = ref
+    }
+
+    override fun onActive() {
+        Log.d(LOG_TAG, "onActive")
+        query.addValueEventListener(listener)
+    }
+
+    override fun onInactive() {
+        Log.d(LOG_TAG, "onInactive")
+        query.removeEventListener(listener)
+    }
+
+    private inner class MyValueEventListener : ValueEventListener {
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+            value = dataSnapshot
+        }
+
+        override fun onCancelled(databaseError: DatabaseError) {
+            Log.e(
+                LOG_TAG,
+                "Can't listen to query $query", databaseError.toException()
+            )
+        }
+    }
+
+    companion object {
+        private const val LOG_TAG = "FirebaseQueryLiveData"
+    }
+}
+
+
