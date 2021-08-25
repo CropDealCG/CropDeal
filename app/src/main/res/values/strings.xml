@@ -26,6 +26,8 @@
     <string name="confirm_new_password">Confirm New Password</string>
     <string name="change_password">Change Password</string>
     <string name="confirm">confirm</string>
+    <string name="select_dob">Select DOB</string>
+
 
 
     //Facebook Strings, Do Not Touch

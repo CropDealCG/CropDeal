@@ -8,6 +8,7 @@ import android.provider.MediaStore
 import android.webkit.MimeTypeMap
 
 object Constants {
+    const val DATE: String = "date"
     const val USERS:String = "users"
     const val APP_PREFERENCES: String = "AppPrefs"
 
@@ -17,6 +18,8 @@ object Constants {
     const val READ_STORAGE_PERMISSION_CODE = 2
     const val PICK_IMAGE_REQUEST_CODE = 1
 
+    const val FARMER: String = "farmer"
+    const val DEALER:String = "dealer"
 
     const val IMAGE:String = "image"
     const val LOCATION_PREF :String = "LOCATION_PREF"

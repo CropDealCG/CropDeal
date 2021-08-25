@@ -80,6 +80,19 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
+        <TextView
+            android:id="@+id/editDobTV"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/editTextBG"
+            android:gravity="center_vertical"
+            android:hint="@string/select_dob"
+            android:paddingStart="15dp"
+            android:textSize="16sp"
+            app:drawableEndCompat="@android:drawable/ic_menu_my_calendar" />
+
         <Button
             android:id="@+id/saveProfileButton"
             android:layout_width="300dp"
