@@ -7,7 +7,7 @@ data class UsersIDRepo
     (
     @PrimaryKey
     @ColumnInfo(name = "id")
-    val userID : String,
+    var userID : String,
     @ColumnInfo(name = "userEmail")
-    val userEmail : String,
+    var userEmail : String,
     )

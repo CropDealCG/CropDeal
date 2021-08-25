@@ -37,11 +37,17 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/crop_Description_ET"
-            android:layout_width="409dp"
+            android:layout_width="0dp"
             android:layout_height="75dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="35dp"
+            android:layout_marginEnd="20dp"
             android:hint="Description"
             android:textAlignment="center"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,8 +55,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:backgroundTint="@color/lemonYellowFade" />
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/editTextBG" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <RadioGroup
@@ -58,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:background="@color/lemonYellowFade"
+            android:background="@color/editTextBG"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -97,6 +103,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:hint="Quantity (in KGs)"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +115,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/lemonYellowFade"
+                android:backgroundTint="@color/editTextBG"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,6 +125,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:hint="Rate per KG"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -123,16 +137,22 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/lemonYellowFade"
+                android:backgroundTint="@color/editTextBG"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/address_ET"
-            android:layout_width="409dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
             android:hint="Address"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +161,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/lemonYellowFade" />
+                android:backgroundTint="@color/editTextBG" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

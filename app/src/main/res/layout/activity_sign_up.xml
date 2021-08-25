@@ -48,6 +48,10 @@
 
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:backgroundTint="@color/lemonYellowFade"
+            android:backgroundTint="@color/editTextBG"
             android:hint="@string/name"
             android:inputType="textPersonName"
             android:textSize="16sp" />
@@ -72,6 +76,10 @@
 
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:backgroundTint="@color/lemonYellowFade"
+            android:backgroundTint="@color/editTextBG"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:textSize="16sp" />
@@ -96,6 +104,10 @@
 
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:backgroundTint="@color/lemonYellowFade"
+            android:backgroundTint="@color/editTextBG"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textSize="16sp" />
@@ -188,7 +200,7 @@
         android:layout_marginTop="21dp"
         android:layout_marginEnd="5dp"
         android:background="@drawable/round_edittext"
-        android:hint="Age"
+        android:hint="DOB: "
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/DOBbtn"
@@ -215,6 +227,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:background="@color/editTextBG"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

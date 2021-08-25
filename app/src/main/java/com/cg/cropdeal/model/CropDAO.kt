@@ -5,13 +5,13 @@ import androidx.room.*
 @Dao
 interface CropDAO {
     @Insert
-    suspend fun insert(crop : CropRepo)
+    suspend fun insert(crop : Crops)
     @Update
-    suspend fun update(crop: CropRepo)
+    suspend fun update(crop: Crops)
     @Delete
-    suspend fun delete(crop: CropRepo)
-    @Query("select * from crops")
-    suspend fun getCrops():List<CropRepo>
-    @Query("select * from crops where cropId=:cropId")
-    suspend fun getCropByID(cropId:String):List<CropRepo>
+    suspend fun delete(crop: Crops)
+    @Query("select * from cropsDb")
+    suspend fun getCrops():List<Crops>
+    @Query("select * from cropsDb where cropId=:cropId")
+    suspend fun getCropByID(cropId:String):List<Crops>
 }

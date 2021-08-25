@@ -32,7 +32,7 @@ class CropPublishFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val a = Navigation.findNavController(view).currentBackStackEntry?.savedStateHandle?.getLiveData<String>("Demo")?.value
+        val a = arguments?.get("Demo")
         Toast.makeText(view.context,"$a",Toast.LENGTH_LONG).show()
         viewModel = ViewModelProvider(this).get(CropPublishVM::class.java)
         val spinnerList = listOf<String>("Spinach","Tomato")

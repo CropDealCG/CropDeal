@@ -60,6 +60,13 @@ class SignUpActivity : AppCompatActivity() {
             datePickerDialog.show(supportFragmentManager,"Date")
         }
 
+        signUpVM.getUserData()?.observe(this,{
+            if(it!=null){
+                startActivity(Intent(this,NavigationActivity::class.java))
+                finish()
+            }
+        })
+
         //Linking button to Time Picker
         binding.timeBtn.setOnClickListener {
             val timePickerDialog = signUpVM.selectTime(this)
@@ -91,10 +98,12 @@ class SignUpActivity : AppCompatActivity() {
                             reference.child(user.uid).setValue(users)   //Addition to Firebase
 
                             startActivity(Intent(this,NavigationActivity::class.java))
+                            finish()
                         }
                         else    {
                             Toast.makeText(this,"You are already an user",Toast.LENGTH_LONG).show()
                             startActivity(Intent(this,NavigationActivity::class.java))
+                            finish()
                         }
                     }
                 })

@@ -100,4 +100,5 @@
     <color name="tealv2">#06AA97</color>
     <color name="originalYellow">#FF0</color>
     <color name="bgColor2">#92D5D2</color>
+    <color name="editTextBG">#90CAF9</color>
 </resources>
