@@ -26,7 +26,7 @@ class MarketFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.addCropsFAB.setOnClickListener {
-            val bundle = Bundle().apply { putString("Demo","First Frag") }
+            val bundle = bundleOf("Demo" to "First Frag")
             Navigation.findNavController(view).navigate(R.id.action_nav_market_to_crop_publish,bundle)
         }
     }

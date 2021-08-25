@@ -209,6 +209,7 @@ class SignInActivity : AppCompatActivity() {
         if(email.isNotEmpty() && password.isNotEmpty()){
             signInVM.login(email,password)
             startActivity(Intent(this,NavigationActivity::class.java))
+            finish()
         }else{
             utilActivity.showSnackbar("Please Enter Data",binding.passwordLoginE)
         }
