@@ -144,6 +144,7 @@
 
     <Button
         android:id="@+id/signUpBtn"
+        style="@style/positive_button"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

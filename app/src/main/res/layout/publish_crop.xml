@@ -167,10 +167,10 @@
 
         <Button
             android:id="@+id/publish_btn"
+            style="@style/positive_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:background="@drawable/custom_button"
             android:text="Publish Crop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

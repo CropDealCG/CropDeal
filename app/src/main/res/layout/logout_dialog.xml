@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
+        android:fontFamily="sans-serif"
         android:text="@string/confirmation"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -36,10 +37,10 @@
 
     <Button
         android:id="@+id/settings_logout_button"
+        style="@style/negative_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@drawable/custom_button"
 
         android:text="@string/logout"
         android:textStyle="bold"
@@ -51,11 +52,10 @@
 
     <Button
         android:id="@+id/settings_exit_button"
+        style="@style/positive_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@drawable/custom_button"
-
         android:text="@string/exit"
         android:textStyle="bold"
         app:cornerRadius="15dp"

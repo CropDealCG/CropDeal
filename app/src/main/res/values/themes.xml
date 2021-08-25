@@ -26,4 +26,31 @@
         // Set the theme of the Activity that directly follows your splash screen.
         <item name="postSplashScreenTheme">@style/Theme.MaterialComponents.DayNight.DarkActionBar</item>  # Required.
     </style>
+    <style name="custom_button" parent="TextAppearance.AppCompat.Widget.Button">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:fontFamily">@font/lobster</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/lemonYellow</item>
+    </style>
+    <style name="positive_button" parent="TextAppearance.AppCompat.Widget.Button">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:fontFamily">@font/lobster</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">#00A300</item>
+    </style>
+    <style name="negative_button" parent="TextAppearance.AppCompat.Widget.Button">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:fontFamily">@font/lobster</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/red</item>
+    </style>
 </resources>

@@ -54,13 +54,12 @@
 
     <Button
         android:id="@+id/sendFeedbackBtn1"
+        style="@style/positive_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        android:background="@drawable/custom_button"
 
+        android:layout_marginTop="31dp"
         android:text="@string/send_feedback"
-        android:textColor="@color/black"
         android:textSize="10sp"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,13 +68,13 @@
 
     <Button
         android:id="@+id/rateUSBtn1"
+        style="@style/custom_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/custom_button"
 
+        android:layout_marginTop="36dp"
         android:text="@string/Rate_Us"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

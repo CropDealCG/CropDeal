@@ -111,14 +111,14 @@
 
     <Button
         android:id="@+id/signInBtn"
+        style="@style/positive_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_button"
 
+        android:layout_marginTop="20dp"
         android:text="@string/sign_in"
-        android:textColor="@color/white"
+
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -175,6 +175,7 @@
 
     <Button
         android:id="@+id/googleLoginBtn"
+        style="@style/positive_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

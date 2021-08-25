@@ -95,12 +95,12 @@
 
         <Button
             android:id="@+id/saveProfileButton"
+            style="@style/positive_button"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
 
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
-            android:background="@drawable/custom_button"
             android:text="SAVE"
             app:cornerRadius="15dp" />
 
