@@ -33,6 +33,8 @@ import java.io.IOException
 import com.cg.cropdeal.model.FirebaseQueryLiveData
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
@@ -64,6 +66,9 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
                     val email = dataSnapshot.child(Constants.EMAIL).value.toString()
                     binding.editEmailET.editText?.setText(email)
+
+                    val dob = dataSnapshot.child(Constants.DATE).value.toString()
+                    binding.editDobTV.setText(dob)
                 }
             })
 
@@ -82,7 +87,20 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.profileImage.setOnClickListener(this@EditProfileActivity)
         binding.saveProfileButton.setOnClickListener(this@EditProfileActivity)
+
+        binding.editDobTV.setOnClickListener{
+            val datePickerDialog = viewModel.selectDate(this)
+            datePickerDialog.addOnPositiveButtonClickListener { dateInMillis->
+                val date = SimpleDateFormat("MMM dd, yyyy",
+                    Locale.getDefault()).format(Date(dateInMillis))
+                binding.editDobTV.setText(date)
+            }
+            datePickerDialog.show(supportFragmentManager,"Date")
+        }
     }
+
+
+
 
 
 
@@ -165,8 +183,8 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
     fun updateUserProfileDetails(){
         val username = binding.editUserNameET.editText?.text.toString().trim{it<=' '}
-
-        viewModel.updateUserProfileDetails(username)
+        val dob = binding.editDobTV.text.toString().trim{it<=' '}
+        viewModel.updateUserProfileDetails(username,dob)
 
 
         UtilActivity().showSnackbar("Profile updated successfully",
@@ -182,6 +200,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
     fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?) {
         val username = binding.editUserNameET.editText?.text.toString().trim{it<=' '}
-        viewModel.uploadImageToCloudStorage(activity,imageFileUri,username)
+        val dob = binding.editDobTV.text.toString().trim{it<=' '}
+        viewModel.uploadImageToCloudStorage(activity,imageFileUri,username,dob)
     }
 }

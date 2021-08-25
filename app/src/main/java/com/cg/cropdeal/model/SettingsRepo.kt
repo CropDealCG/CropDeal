@@ -53,7 +53,7 @@ class SettingsRepo(private var application: Application?) {
 
 
     fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?,context: Context,
-    username: String){
+    username: String,dob:String){
         val fStorage = FirebaseStorage.getInstance()
             .reference.child(
                 FirebaseAuth.getInstance().currentUser?.email
@@ -74,7 +74,7 @@ class SettingsRepo(private var application: Application?) {
                     editor.apply()
 
 
-                    imageUploadSuccess(uri.toString(),username)
+                    imageUploadSuccess(uri.toString(),username,dob)
                 }
         }
             .addOnFailureListener{exception ->
@@ -83,15 +83,15 @@ class SettingsRepo(private var application: Application?) {
                     exception.message,exception)
             }
     }
-    fun imageUploadSuccess(imageURL : String,username: String){
+    fun imageUploadSuccess(imageURL : String,username: String,dob:String){
         //hideProgressDialog()
 
         userProfileImageURL = imageURL
 
-        updateUserProfileDetails(username)
+        updateUserProfileDetails(username,dob)
     }
 
-    fun updateUserProfileDetails(username:String){
+    fun updateUserProfileDetails(username:String,dob:String){
         val userHashMap = HashMap<String,Any>()
 
 
@@ -99,6 +99,9 @@ class SettingsRepo(private var application: Application?) {
         if(username.isNotEmpty()){
             userHashMap[Constants.USERNAME] = username
 
+        }
+        if(dob.isNotEmpty()){
+            userHashMap[Constants.DATE] = dob
         }
 
 

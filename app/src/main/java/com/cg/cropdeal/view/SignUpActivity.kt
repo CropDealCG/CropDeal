@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.databinding.ActivitySignUpBinding
+import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.model.Users
 import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.SignUpVM
@@ -17,13 +18,13 @@ import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
 import java.util.*
 
-private const val USERS = "users"
+
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var signUpVM : SignUpVM
     private lateinit var binding : ActivitySignUpBinding
     private var utilActivity = UtilActivity()
-    private var userType = "farmer"
+    private var userType = Constants.FARMER
 //    private lateinit var users: Users
 
     private lateinit var rootNode : FirebaseDatabase
@@ -36,7 +37,7 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         rootNode = FirebaseDatabase.getInstance()
-        reference = rootNode.getReference().child(USERS)
+        reference = rootNode.getReference().child(Constants.USERS)
 
         //Hooks to all xml elements in activity_sign_up.xml using view binding
 
@@ -75,8 +76,8 @@ class SignUpActivity : AppCompatActivity() {
 
         binding.userTypeRG.setOnCheckedChangeListener { _, i ->
             when(i){
-                binding.farmerRB.id-> userType = "farmer"
-                binding.delaerRB.id-> userType = "dealer"
+                binding.farmerRB.id-> userType = Constants.FARMER
+                binding.delaerRB.id-> userType = Constants.DEALER
             }
         }
         binding.userTypeRG.check(binding.farmerRB.id)
