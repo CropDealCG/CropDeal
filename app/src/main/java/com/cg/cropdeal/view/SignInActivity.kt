@@ -160,7 +160,7 @@ class SignInActivity : AppCompatActivity() {
 
         signInVM.getUserLiveData()?.observe(this,{
             if(it!=null){
-                updateUI(null)
+                updateUI(it)
             }
         })
     }

@@ -2,6 +2,7 @@ package com.cg.cropdeal.view
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,14 +33,17 @@ class CropPublishFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val a = arguments?.get("Demo")
         Toast.makeText(view.context,"$a",Toast.LENGTH_LONG).show()
+
         viewModel = ViewModelProvider(this).get(CropPublishVM::class.java)
         val spinnerList = listOf<String>("Spinach","Tomato")
         val spinnerAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_spinner_dropdown_item,spinnerList) as SpinnerAdapter
         binding.cropname.adapter = spinnerAdapter
         binding.publishBtn.setOnClickListener {
 
+            binding.publishCropProgressBar.visibility = View.VISIBLE
             val cropName = binding.cropname.selectedItem.toString()
             val cropDesc = binding.cropDescriptionET.editText?.text.toString()
             val cropQuantity = binding.quantityET.editText?.text.toString().toInt()
@@ -53,8 +57,16 @@ class CropPublishFragment : Fragment() {
                     binding.vegRadio.id -> cropType = "Vegetable"
                 }
             }
-            viewModel.addCrops(Crops("",cropName,cropType,cropQuantity,cropRate,address,cropDesc,userId!!))
+            val uuid = viewModel.returnUUID()
+            val crop = Crops(uuid,cropName,cropType,cropQuantity,cropRate,address,cropDesc,userId!!)
+            viewModel.returnCrop()?.postValue(crop)
+            viewModel.addCrops(crop,uuid)
+            binding.publishCropProgressBar.visibility = View.GONE
+            Log.d("Observables","$crop")
+
+
         }
     }
+
 
 }
