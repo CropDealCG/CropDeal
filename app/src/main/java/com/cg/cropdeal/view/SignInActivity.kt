@@ -208,8 +208,10 @@ class SignInActivity : AppCompatActivity() {
         val password = binding.passwordLoginE.editText?.text.toString()
         if(email.isNotEmpty() && password.isNotEmpty()){
             signInVM.login(email,password)
-            startActivity(Intent(this,NavigationActivity::class.java))
-            finish()
+            if(auth.currentUser!=null){
+                startActivity(Intent(this,NavigationActivity::class.java))
+                finish()
+            }
         }else{
             utilActivity.showSnackbar("Please Enter Data",binding.passwordLoginE)
         }
