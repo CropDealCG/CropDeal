@@ -25,8 +25,11 @@
             android:name=".view.EditProfileActivity"
             android:exported="true" />
         <activity
+            android:name=".view.AboutUsActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.SignUpActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".view.SignInActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
