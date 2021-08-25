@@ -46,7 +46,6 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         progressDialog = UtilRepo(application).loadingDialog(this)
-        auth = FirebaseAuth.getInstance()
         auth = FirebaseAuth.getInstance()   //initialize the FirebaseAuth instance
         firebaseDatabase = FirebaseDatabase.getInstance()
         userType = ""

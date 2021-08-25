@@ -19,10 +19,12 @@ class CropRepo(private var application: Application?) {
     private var firebaseAuth: FirebaseAuth? = null
     private var firebaseDatabase : FirebaseDatabase? = null
     private var crops : MutableLiveData<Crops>? = null
+    private var isCropAdded : MutableLiveData<Boolean>? = null
     init{
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseDatabase = FirebaseDatabase.getInstance()
         crops = MutableLiveData()
+        isCropAdded = MutableLiveData(false)
     }
     fun addCrops(crop : Crops, uuid:String){
         Log.d("Observables","$crop")
@@ -31,6 +33,7 @@ class CropRepo(private var application: Application?) {
                 cropDao.insert(it)
             }
             firebaseDatabase?.reference?.child("crops")?.child(uuid)?.setValue(it)
+            isCropAdded?.postValue(true)
         })
 
     }
@@ -54,5 +57,6 @@ class CropRepo(private var application: Application?) {
     fun returnCrop():MutableLiveData<Crops>?{
         return crops
     }
+    fun isCropAdded() : MutableLiveData<Boolean>? = isCropAdded
 
 }

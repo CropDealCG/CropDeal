@@ -9,9 +9,11 @@ import com.cg.cropdeal.model.Crops
 class CropPublishVM(application: Application) : AndroidViewModel(application) {
     private var cropRepo : CropRepo? = null
     private var crops : MutableLiveData<Crops>? = null
+    private var isCropAdded : MutableLiveData<Boolean>? = null
     init{
         cropRepo = CropRepo(application)
         crops = cropRepo!!.returnCrop()
+        isCropAdded = cropRepo!!.isCropAdded()
     }
     fun addCrops(crop : Crops,uuid:String){
         cropRepo?.addCrops(crop,uuid)
@@ -22,4 +24,5 @@ class CropPublishVM(application: Application) : AndroidViewModel(application) {
     fun returnUUID():String{
         return cropRepo?.getUUID()!!
     }
+    fun isCropAdded() : MutableLiveData<Boolean>? = isCropAdded
 }
