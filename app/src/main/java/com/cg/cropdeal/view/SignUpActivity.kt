@@ -3,15 +3,14 @@ package com.cg.cropdeal.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.databinding.ActivitySignUpBinding
 import com.cg.cropdeal.model.Users
 import com.cg.cropdeal.model.UtilActivity
+import com.cg.cropdeal.model.UtilRepo
 import com.cg.cropdeal.viewmodel.SignUpVM
-import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
@@ -24,6 +23,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var binding : ActivitySignUpBinding
     private var utilActivity = UtilActivity()
     private var userType = "farmer"
+    private lateinit var progressDialog : AlertDialog
 //    private lateinit var users: Users
 
     private lateinit var rootNode : FirebaseDatabase
@@ -38,6 +38,7 @@ class SignUpActivity : AppCompatActivity() {
         rootNode = FirebaseDatabase.getInstance()
         reference = rootNode.getReference().child(USERS)
 
+        progressDialog = UtilRepo(application).loadingDialog(this)
         //Hooks to all xml elements in activity_sign_up.xml using view binding
 
         //save the data in the Firebase on button click
@@ -62,8 +63,12 @@ class SignUpActivity : AppCompatActivity() {
 
         signUpVM.getUserData()?.observe(this,{
             if(it!=null){
-                startActivity(Intent(this,NavigationActivity::class.java))
-                finish()
+                updateUI()
+            }
+        })
+        signUpVM.isSignInFailed()?.observe(this,{
+            if(it!=null && it==true){
+                progressDialog.dismiss()
             }
         })
 
@@ -83,6 +88,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun signUpWithEmailPassword() {
+        progressDialog.show()
         val email = binding.emailE.editText?.text.toString()
         val password = binding.passwordE.editText?.text.toString()
         if(email.isNotEmpty() && password.isNotEmpty()){
@@ -96,13 +102,11 @@ class SignUpActivity : AppCompatActivity() {
                         if(isNew)   {
                             reference.child(user.uid).setValue(users)   //Addition to Firebase
 
-                            startActivity(Intent(this,NavigationActivity::class.java))
-                            finish()
+                            updateUI()
                         }
                         else    {
                             Toast.makeText(this,"You are already an user",Toast.LENGTH_LONG).show()
-                            startActivity(Intent(this,NavigationActivity::class.java))
-                            finish()
+                            updateUI()
                         }
                     }
                 })
@@ -110,7 +114,13 @@ class SignUpActivity : AppCompatActivity() {
 
             //call Users class
         }else{
+            progressDialog.dismiss()
             utilActivity.showSnackbar("Please Enter Data",binding.emailE)
         }
+    }
+
+    private fun updateUI() {
+        startActivity(Intent(this, NavigationActivity::class.java))
+        finish()
     }
 }

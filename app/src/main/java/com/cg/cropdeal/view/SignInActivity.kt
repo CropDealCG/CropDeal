@@ -169,9 +169,7 @@ class SignInActivity : AppCompatActivity() {
             }
         })
         signInVM.isSignInFailed()?.observe(this,{
-            Log.d("Observables","Dialog ert")
             if(it!=null && it==true){
-                Log.d("Observables","Dialog")
                 progressDialog.dismiss()
             }
         })
@@ -182,9 +180,11 @@ class SignInActivity : AppCompatActivity() {
         if (it.resultCode == Activity.RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
             try {
+                progressDialog.show()
                 val account = task.getResult(ApiException::class.java)!!
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: Exception) {
+                progressDialog.dismiss()
                 utilActivity.showSnackbar("$e - ${e.message}", binding.googleLoginBtn)
             }
         }
@@ -226,8 +226,6 @@ class SignInActivity : AppCompatActivity() {
                 finish()
             }
         }else{
-            progressDialog.cancel()
-            progressDialog.hide()
             progressDialog.dismiss()
             utilActivity.showSnackbar("Please Enter Data",binding.passwordLoginE)
         }
@@ -253,6 +251,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun updateUI(currentUser : FirebaseUser?){
+        progressDialog.dismiss()
         startActivity(Intent(this,NavigationActivity::class.java))
         finish()
     }

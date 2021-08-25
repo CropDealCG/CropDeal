@@ -17,11 +17,13 @@ class SignUpVM(application: Application) : AndroidViewModel(application) {
     private var userLiveData: MutableLiveData<FirebaseUser>? = null
     private var isNewUser : MutableLiveData<Boolean>?= null
     private var utilRepo : UtilRepo? = null
+    private var signInFailed : MutableLiveData<Boolean>? = null
 
     init{
         authRepo = AuthRepo(application)
         userLiveData = authRepo!!.getUserLiveData()
         isNewUser = authRepo!!.isNewUser()
+        signInFailed = authRepo!!.isSignInFailed()
         utilRepo = UtilRepo(application)
     }
 
@@ -38,5 +40,6 @@ class SignUpVM(application: Application) : AndroidViewModel(application) {
     fun isNewUser() : MutableLiveData<Boolean>?{
         return isNewUser
     }
+    fun isSignInFailed():MutableLiveData<Boolean>? = signInFailed
 
 }
