@@ -24,10 +24,7 @@ class UtilRepo(private var application: Application?) {
             .build()
 
     }
-    fun selectTime(context: Context) : MaterialTimePicker{
-        return MaterialTimePicker.Builder().setTimeFormat(TimeFormat.CLOCK_24H).setHour(12).setMinute(0)
-            .setTitleText("Select Time").build()
-    }
+
     fun customDialog(context: Context,layout: Int) : AlertDialog {
         val dialog =MaterialAlertDialogBuilder(context)
 //        return dialog.create()

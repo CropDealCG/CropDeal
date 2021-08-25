@@ -54,8 +54,8 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
         binding.editEmailET.isEnabled = false
         val liveData = viewModel.getDataSnapshotLiveData()
 
-        liveData.observe(this, object : Observer<DataSnapshot?> {
-            override fun onChanged(dataSnapshot: DataSnapshot?) {
+        liveData.observe(this,
+            { dataSnapshot ->
                 if (dataSnapshot != null) {
 
                     val username =
@@ -65,8 +65,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
                     val email = dataSnapshot.child(Constants.EMAIL).value.toString()
                     binding.editEmailET.editText?.setText(email)
                 }
-            }
-        })
+            })
 
 
 
@@ -77,7 +76,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
         Glide.with(this )
             .load(uri)
-            .centerInside()
+            .circleCrop()
             .placeholder(R.drawable.blank_profile)
             .into(binding.profileImage)
 

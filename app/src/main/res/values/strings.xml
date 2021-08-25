@@ -22,7 +22,7 @@
     <string name="user_name">User Name</string>
     <string name="user_email">User Email</string>
     <string name="current_password">Current Password</string>
-    <string name="new_password_min_6_char">New Password (min 6 char)</string>
+    <string name="new_password_min_9_char">New Password (min 9 char)</string>
     <string name="confirm_new_password">Confirm New Password</string>
     <string name="change_password">Change Password</string>
     <string name="confirm">confirm</string>

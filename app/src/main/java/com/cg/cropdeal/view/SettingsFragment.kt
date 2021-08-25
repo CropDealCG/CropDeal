@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.LogoutDialogBinding
 import com.cg.cropdeal.databinding.SettingsFragmentBinding
@@ -44,10 +45,20 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val profile_image_ref = activity?.getSharedPreferences(Constants.PROFILE_IMAGE_REF,0)
+        val uri = profile_image_ref?.getString("profile_image","")
+
+
+        Glide.with(this )
+            .load(uri)
+            .circleCrop()
+            .placeholder(R.drawable.blank_profile)
+            .into(binding.profileUserImage)
+
         viewModel = ViewModelProvider(this).get(SettingsVM::class.java)
         val liveData = viewModel.getDataSnapshotLiveData()
-        liveData.observe(viewLifecycleOwner, object : Observer<DataSnapshot?> {
-            override fun onChanged(dataSnapshot: DataSnapshot?) {
+        liveData.observe(viewLifecycleOwner,
+            { dataSnapshot ->
                 if (dataSnapshot != null) {
 
                     val username =
@@ -57,8 +68,7 @@ class SettingsFragment : Fragment() {
                     val email = dataSnapshot.child(Constants.EMAIL).value.toString()
                     binding.profileUserEmail.setText(email)
                 }
-            }
-        })
+            })
 
 
         binding.editProfTV.setOnClickListener {
