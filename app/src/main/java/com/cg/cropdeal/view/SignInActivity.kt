@@ -31,7 +31,7 @@ import com.google.firebase.database.FirebaseDatabase
 class SignInActivity : AppCompatActivity() {
     private lateinit var signInVM : SignInVM
     private lateinit var binding : ActivitySignInBinding
-    private lateinit var auth : FirebaseAuth
+    private lateinit var auth : FirebaseAuth    //declare an instance of FirebaseAuth
     private lateinit var userType : String
     private lateinit var firebaseDatabase: FirebaseDatabase
     private var utilActivity = UtilActivity()
@@ -42,7 +42,7 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()   //initialize the FirebaseAuth instance
         firebaseDatabase = FirebaseDatabase.getInstance()
         userType = ""
         FacebookSdk.setApplicationId(getString(R.string.facebook_app_id))
