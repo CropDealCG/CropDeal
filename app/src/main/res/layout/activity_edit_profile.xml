@@ -37,16 +37,20 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editUserNameET"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
 
-            >
+            android:layout_gravity="center_horizontal"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/lemonYellowFade"
+                android:backgroundTint="@color/editTextBG"
                 android:hint="@string/user_name"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
@@ -56,16 +60,20 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editEmailET"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
 
-            >
+            android:layout_gravity="center_horizontal"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/lemonYellowFade"
+                android:backgroundTint="@color/editTextBG"
                 android:hint="@string/email_id"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp" />
@@ -75,12 +83,12 @@
 
         <Button
             android:id="@+id/saveProfileButton"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal"
 
+            android:layout_marginTop="40dp"
             android:background="@drawable/custom_button"
-
             android:text="SAVE"
             app:cornerRadius="15dp" />
 

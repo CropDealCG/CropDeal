@@ -47,17 +47,21 @@
 
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:ignore="TouchTargetSizeCheck" >
+        tools:ignore="TouchTargetSizeCheck">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:backgroundTint="@color/lemonYellowFade"
+            android:backgroundTint="@color/editTextBG"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:textSize="16sp" />
@@ -83,17 +87,21 @@
 
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailLoginE"
-        tools:ignore="TouchTargetSizeCheck" >
+        tools:ignore="TouchTargetSizeCheck">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:backgroundTint="@color/lemonYellowFade"
+            android:backgroundTint="@color/editTextBG"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textSize="16sp" />
@@ -170,7 +178,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/custom_button"
         android:backgroundTint="#EA4335"
         android:drawableLeft="@drawable/ic_google"
         android:text="@string/google_sign_in"

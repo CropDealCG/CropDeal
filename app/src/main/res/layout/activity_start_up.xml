@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center|center_vertical"
-    android:background="@color/brightYellow">
-<!--    tools:context=".view.StartUpActivity"-->
+    android:background="@color/editTextBG">
+    <!--    tools:context=".view.StartUpActivity"-->
 
     <TextView
         android:id="@+id/textView8"
@@ -60,7 +59,7 @@
             android:id="@+id/userCV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/turquoiseFade"
+            app:cardBackgroundColor="@color/lightOrange"
             app:cardCornerRadius="30dp"
             app:cardElevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -72,7 +71,7 @@
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp" />
-<!--                app:srcCompat="@drawable/user_img"-->
+            <!--                app:srcCompat="@drawable/user_img"-->
 
         </androidx.cardview.widget.CardView>
 
