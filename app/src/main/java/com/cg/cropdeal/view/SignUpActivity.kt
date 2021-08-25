@@ -85,7 +85,7 @@ class SignUpActivity : AppCompatActivity() {
             val users = Users(binding.nameE.editText?.text.toString(),email,userType,"false",binding.selectedDateTV.text.toString(),binding.selectedTimeTV.text.toString())
             signUpVM.getUserData()?.observe(this,{user->
                 signUpVM.isNewUser()?.observe(this,{isNew->
-                    Log.d("Observables","${user?.email}\t$isNew")
+                    //Log.d("Observables","${user?.email}\t$isNew")
                     if(user!=null){
                         if(isNew)   {
                             reference.child(user.uid).setValue(users)   //Addition to Firebase

@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".view.MarketFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/marketRview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:listitem="@layout/market_post_design_layout" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addCropsFAB"
         android:layout_width="wrap_content"
@@ -17,5 +25,6 @@
         android:src="@drawable/add_post"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
