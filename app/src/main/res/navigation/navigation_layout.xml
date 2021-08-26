@@ -37,12 +37,12 @@
     <fragment
         android:id="@+id/paymentDetailsFragment"
         android:name="com.cg.cropdeal.view.PaymentDetailsFragment"
-        android:label="fragment_payment_details"
+        android:label="Payment Details"
         tools:layout="@layout/fragment_payment_details" />
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="com.cg.cropdeal.view.AboutUsFragment"
-        android:label="fragment_about_us"
+        android:label="About Us"
         tools:layout="@layout/fragment_about_us" />
 
 </navigation>

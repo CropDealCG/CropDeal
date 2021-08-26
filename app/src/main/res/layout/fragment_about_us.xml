@@ -53,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <Button
-        android:id="@+id/sendFeedbackBtn1"
+        android:id="@+id/sendFeedbackBtn"
         style="@style/positive_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <Button
-        android:id="@+id/rateUSBtn1"
+        android:id="@+id/rateUSBtn"
         style="@style/custom_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sendFeedbackBtn1" />
+        app:layout_constraintTop_toBottomOf="@+id/sendFeedbackBtn" />
 
     <TextView
         android:id="@+id/textView17"
