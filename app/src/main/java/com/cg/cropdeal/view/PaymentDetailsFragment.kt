@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.FragmentPaymentDetailsBinding
 import com.cg.cropdeal.model.Constants
@@ -52,7 +53,7 @@ class PaymentDetailsFragment : Fragment() {
                 )
             }
             UtilActivity().showSnackbar("Updated successfully!", binding.paymentDetailsLyt)
-            fragmentManager?.popBackStack()
+            Navigation.findNavController(view).navigate(R.id.action_paymentDetailsFragment_to_nav_setting)
         }
     }
 
