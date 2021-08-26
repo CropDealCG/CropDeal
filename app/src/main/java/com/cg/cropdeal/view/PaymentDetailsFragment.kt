@@ -5,23 +5,55 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.R
+import com.cg.cropdeal.databinding.FragmentPaymentDetailsBinding
+import com.cg.cropdeal.model.UtilActivity
+import com.cg.cropdeal.viewmodel.PaymentDetailsVM
 
-
+private lateinit var binding:FragmentPaymentDetailsBinding
+private lateinit var viewModel : PaymentDetailsVM
 class PaymentDetailsFragment : Fragment() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_payment_details, container, false)
+        binding = FragmentPaymentDetailsBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(PaymentDetailsVM::class.java)
+
+        binding.savePaymentDetailsButton.setOnClickListener {
+            if (checkDetails()) {
+                viewModel.uploadPaymentDetails(
+                    binding.addBankNameET.editText?.text.toString(),
+                    binding.addAccountET.editText?.text.toString().toLong(),
+                    binding.addIFSCET.editText?.text.toString()
+                )
+            }
+            UtilActivity().showSnackbar("Updated successfully!", binding.paymentDetailsLyt)
+            fragmentManager?.popBackStack()
+        }
+    }
+
+    fun checkDetails():Boolean{
+        if(binding.addAccountET.editText?.text.isNullOrEmpty() ||
+                binding.addBankNameET.editText?.text.isNullOrEmpty() ||
+                binding.addIFSCET.editText?.text.isNullOrEmpty()
+        ) {
+            UtilActivity().showSnackbar(
+                "Please enter all the details",
+                binding.paymentDetailsLyt
+            )
+            return false
+        }
+        return true
+
+    }
 }

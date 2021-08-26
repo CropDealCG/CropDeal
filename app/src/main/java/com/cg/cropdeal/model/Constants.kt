@@ -8,6 +8,11 @@ import android.provider.MediaStore
 import android.webkit.MimeTypeMap
 
 object Constants {
+    const val USERID: String = "userId"
+    const val BANK: String = "bank"
+    const val ACCOUNT:String = "account"
+    const val IFSC:String = "ifsc"
+    const val PAYMENT: String = "payment"
     const val DATE: String = "date"
     const val USERS:String = "users"
     const val APP_PREFERENCES: String = "AppPrefs"

@@ -1,35 +1,31 @@
 package com.cg.cropdeal.model
 
+
 import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.text.BoringLayout
+
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import com.cg.cropdeal.view.MainActivity
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
-import java.lang.Exception
 import com.google.firebase.database.DatabaseError
 
 import com.google.firebase.database.DataSnapshot
 
 import com.google.firebase.database.ValueEventListener
-import androidx.databinding.adapters.NumberPickerBindingAdapter.setValue
 
 import com.google.firebase.database.DatabaseReference
 
 import androidx.lifecycle.LiveData
-
-
-
-
-
+import java.util.*
+import kotlin.collections.HashMap
 
 
 private var firebaseAuth: FirebaseAuth? = null
@@ -118,6 +114,21 @@ class SettingsRepo(private var application: Application?) {
 
         //reference.setValue(userHashMap)
 
+    }
+
+    fun uploadPaymentDetails(bank:String,account: Long,ifsc:String) {
+        val user = firebaseAuth?.currentUser
+
+        val paymentHashMap = HashMap<String,Any>()
+
+        paymentHashMap[Constants.BANK] = bank
+        paymentHashMap[Constants.ACCOUNT] = account
+        paymentHashMap[Constants.IFSC] = ifsc
+        paymentHashMap[Constants.USERID] = user?.uid!!
+
+
+        val reference = firebaseDB?.getReference(Constants.PAYMENT)?.child("payment"+user.uid)
+        reference?.updateChildren(paymentHashMap)
     }
 
 
