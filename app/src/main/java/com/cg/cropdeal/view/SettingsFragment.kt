@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.LogoutDialogBinding
@@ -30,6 +32,7 @@ class SettingsFragment : Fragment() {
 
     private lateinit var viewModel: SettingsVM
     private var _binding : SettingsFragmentBinding? = null
+
 
     private val binding get() = _binding!!
     override fun onCreateView(
@@ -84,22 +87,15 @@ class SettingsFragment : Fragment() {
             startActivity(intent)
         }
 
-        binding.sendFeedbackTV.setOnClickListener{
-            val email = Intent(Intent.ACTION_SEND)
+        binding.paymentDetailsTV.setOnClickListener{
 
-            val mail={"cropdeals@gmail.com"}.toString()
-            email.putExtra(Intent.EXTRA_EMAIL, mail)
-            email.putExtra(Intent.EXTRA_SUBJECT, "Feedback")
-            email.type = "message/rfc822"
-
-            startActivity(
-                Intent.createChooser(email, "Choose an Email client :"), null
-            )
+            Navigation.findNavController(view)
+                .navigate(R.id.action_nav_setting_to_paymentDetailsFragment)
         }
 
         binding.aboutUsTV.setOnClickListener {
-            val intent = Intent(activity,AboutUsActivity::class.java)
-            startActivity(intent)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_nav_setting_to_aboutUsFragment)
         }
 
         binding.logoutTV.setOnClickListener {
