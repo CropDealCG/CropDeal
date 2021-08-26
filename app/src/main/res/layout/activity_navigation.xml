@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu"
         app:sideMargins="10dp"
-        app:textColor="@color/crimsonRed"
+        app:textColor="#EF5350"
         app:textSize="14sp" />
 
 

@@ -30,7 +30,8 @@ class CropRepo(private var application: Application?) {
         Log.d("Observables","$crop")
         crops?.observe(ProcessLifecycleOwner.get(),{
             CoroutineScope(Dispatchers.Default).launch {
-                cropDao.insert(it)
+                cropDao.insert(it) 
+            //store in local room
             }
             firebaseDatabase?.reference?.child("crops")?.child(uuid)?.setValue(it)
             isCropAdded?.postValue(true)
@@ -40,6 +41,7 @@ class CropRepo(private var application: Application?) {
 
     private fun randomUUID() : String = UUID.randomUUID().toString()
 
+    //Checking if UUID against a crop is present or not
     private fun uuidIsAvailable(uuid : String) : String{
         var list : List<Crops>?=null
         CoroutineScope(Dispatchers.Main).launch {
@@ -47,8 +49,10 @@ class CropRepo(private var application: Application?) {
                 cropDao.getCropByID(uuid)
             }
             list = response.await()
+            //if the list is not empty means UUID exists, recall function
             if(list?.isNotEmpty()!!)   uuidIsAvailable(randomUUID())
         }
+        //else send the UUID
         return uuid
     }
     fun getUUID():String{
