@@ -12,8 +12,8 @@ import com.cg.cropdeal.viewmodel.SettingsVM
 class AboutUsActivity:AppCompatActivity() {
         private lateinit var binding : AboutUsActivityBinding
         private lateinit var viewModel: SettingsVM
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(SettingsVM::class.java)
         binding = AboutUsActivityBinding.inflate(layoutInflater)

@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.cg.cropdeal.model.CropDatabase
 import com.cg.cropdeal.model.Crops
+import com.cg.cropdeal.model.MarketAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -17,6 +18,7 @@ class MarketVM(application: Application) : AndroidViewModel(application) {
     private var currentCropList : MutableList<Crops>? = null
     private var firebaseDatabase : FirebaseDatabase? = null
     private var firebaseAuth : FirebaseAuth? = null
+    private var marketAdapter : MarketAdapter? = null
 
     init {
         cropsList = MutableLiveData()
