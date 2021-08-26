@@ -1,5 +1,6 @@
 package com.cg.cropdeal.view
 
+
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -26,6 +27,7 @@ class CropPublishFragment : Fragment() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var progressDialog : AlertDialog
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +39,7 @@ class CropPublishFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
 
