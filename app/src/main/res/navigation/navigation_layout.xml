@@ -26,6 +26,23 @@
         android:id="@+id/nav_setting"
         android:name="com.cg.cropdeal.view.SettingsFragment"
         android:label="Settings"
-        tools:layout="@layout/settings_fragment" />
+        tools:layout="@layout/settings_fragment" >
+        <action
+            android:id="@+id/action_nav_setting_to_paymentDetailsFragment"
+            app:destination="@id/paymentDetailsFragment" />
+        <action
+            android:id="@+id/action_nav_setting_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentDetailsFragment"
+        android:name="com.cg.cropdeal.view.PaymentDetailsFragment"
+        android:label="fragment_payment_details"
+        tools:layout="@layout/fragment_payment_details" />
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.cg.cropdeal.view.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
 
 </navigation>

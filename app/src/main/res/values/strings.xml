@@ -29,7 +29,6 @@
     <string name="select_dob">Select DOB</string>
 
 
-
     //Facebook Strings, Do Not Touch
 
     <string name="facebook_app_id">1149003122597016</string>
@@ -55,6 +54,7 @@
     <string name="crop_names">Crop Names</string>
     <string name="description">Description</string>
     <string name="enter_email_id">Enter Email ID</string>
-<!--    <string name="default_web_client_id">571175692324-7fs44r8e5hfaicks94eh4dlfet8dt6gc.apps.googleusercontent.com</string>-->
+    <string name="payment_details">Payment Details</string>
+    <!--    <string name="default_web_client_id">571175692324-7fs44r8e5hfaicks94eh4dlfet8dt6gc.apps.googleusercontent.com</string>-->
 
 </resources>
