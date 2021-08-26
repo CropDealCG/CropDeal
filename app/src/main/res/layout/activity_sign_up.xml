@@ -6,229 +6,277 @@
     android:id="@+id/signup_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/appbg"
+    android:background="@drawable/background2"
     android:fillViewport="true"
     tools:context=".view.SignUpActivity">
 
 
-    <ImageView
-        android:id="@+id/logoImg"
-        android:layout_width="208dp"
-        android:layout_height="84dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="24dp"
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="339dp"
+        android:text="Hello,"
+        android:textColor="@color/White"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_without_text" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="9dp"
         android:padding="4dp"
         android:text="@string/sign_up"
-        android:textColor="@color/teal_700"
-        android:textSize="24sp"
+        android:textColor="@color/White"
+        android:textSize="34sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImg" />
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameE"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        app:boxCornerRadiusBottomEnd="5dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:backgroundTint="@color/editTextBG"
-            android:hint="@string/name"
-            android:inputType="textPersonName"
-            android:textSize="16sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailE"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        app:boxCornerRadiusBottomEnd="5dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameE">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:backgroundTint="@color/editTextBG"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            android:textSize="16sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordE"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        app:boxCornerRadiusBottomEnd="5dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailE">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:backgroundTint="@color/editTextBG"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:textSize="16sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <Button
-        android:id="@+id/DOBbtn"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="51dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="100dp"
-        android:backgroundTint="@color/signBtnBG"
-        android:drawableLeft="@android:drawable/ic_menu_my_calendar"
-        android:drawableTint="@color/black"
-        app:cornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/selectedDateTV"
-        app:layout_constraintTop_toBottomOf="@+id/passwordE"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/signUpBtn"
-        style="@style/positive_button"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="9dp"
-        android:hapticFeedbackEnabled="true"
-        android:text="@string/sign_up"
-        android:textColor="@color/white"
-        app:cornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userTypeRG" />
 
     <TextView
         android:id="@+id/existingUserT"
         android:layout_width="wrap_content"
         android:layout_height="31dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="15dp"
         android:hapticFeedbackEnabled="true"
         android:padding="2dp"
         android:text="@string/existing_user"
-        android:textColor="@color/teal_700"
+        android:textColor="@color/signBtnBG"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
-    <TextView
-        android:id="@+id/selectedDateTV"
-        android:layout_width="153dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/round_edittext"
-        android:hint="DOB: "
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/DOBbtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordE" />
-
-    <TextView
-        android:id="@+id/selectedTimeTV"
-        android:layout_width="153dp"
-        android:layout_height="27dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/round_edittext"
-        android:hint="Current Time"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectedDateTV" />
-
-    <RadioGroup
-        android:id="@+id/userTypeRG"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@color/editTextBG"
-        android:orientation="horizontal"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectedTimeTV">
+        app:layout_constraintTop_toBottomOf="@+id/imageView10">
 
-        <RadioButton
-            android:id="@+id/farmerRB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/farmer" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/White">
 
-        <RadioButton
-            android:id="@+id/delaerRB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/dealer" />
-    </RadioGroup>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameE"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="10dp"
+                android:textColorHint="@color/black"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:backgroundTint="@color/White"
+                    android:hint="@string/name"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailE"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="5dp"
+                android:textColorHint="@color/black"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameE">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:backgroundTint="@color/White"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordE"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="5dp"
+                android:textColorHint="@color/black"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emailE">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:backgroundTint="@color/White"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/DOBbtn"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="51dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/signBtnBG"
+                android:drawableLeft="@android:drawable/ic_menu_my_calendar"
+                android:drawableTint="@color/black"
+                app:cornerRadius="15dp"
+                app:layout_constraintStart_toEndOf="@+id/selectedDateTV"
+                app:layout_constraintTop_toBottomOf="@+id/passwordE"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/signUpBtn"
+                style="@style/positive_button"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:hapticFeedbackEnabled="true"
+                android:text="@string/sign_up"
+                android:textColor="@color/white"
+                app:cornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userTypeRG" />
+
+            <TextView
+                android:id="@+id/selectedDateTV"
+                android:layout_width="153dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="99dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/White"
+                android:hint="DOB: "
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/passwordE" />
+
+            <TextView
+                android:id="@+id/selectedTimeTV"
+                android:layout_width="153dp"
+                android:layout_height="27dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/White"
+                android:hint="Current Time"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/selectedDateTV" />
+
+            <RadioGroup
+                android:id="@+id/userTypeRG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@color/White"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/selectedTimeTV">
+
+                <RadioButton
+                    android:id="@+id/farmerRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/farmer"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+
+                <RadioButton
+                    android:id="@+id/delaerRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/dealer"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+            </RadioGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:srcCompat="@drawable/logo_without_text" />
+
+    <View
+        android:id="@+id/divider7"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/White"
+        app:layout_constraintBottom_toTopOf="@+id/imageView10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

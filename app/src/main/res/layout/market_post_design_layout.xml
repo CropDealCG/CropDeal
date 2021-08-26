@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="5dp"
+    android:layout_marginBottom="5dp"
     app:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/market_card">
+        android:background="@color/black">
 
         <TextView
             android:id="@+id/cropName_TV"
@@ -19,7 +20,7 @@
             android:layout_marginTop="16dp"
             android:text="Crop Name Here"
             android:textAlignment="textStart"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/textView22"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +33,7 @@
             android:layout_marginEnd="16dp"
             android:text="Crop Type"
             android:textAlignment="textEnd"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +44,7 @@
             android:layout_height="90dp"
             android:text="Description"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +57,7 @@
             android:layout_marginStart="16dp"
             android:text="Quantity"
             android:textAlignment="textStart"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView24" />
@@ -68,7 +69,7 @@
             android:layout_marginStart="16dp"
             android:text="Rate Here"
             android:textAlignment="textStart"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView25" />
@@ -80,6 +81,7 @@
             android:layout_height="50dp"
             android:layout_marginEnd="16dp"
             android:drawableLeft="@drawable/cart_icon"
+            android:drawableTint="@color/White"
             android:text="BUY NOW"
             android:textSize="10dp"
             app:cornerRadius="20dp"
@@ -92,7 +94,7 @@
             android:layout_height="35dp"
             android:layout_marginStart="16dp"
             android:text="Address Here"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView28" />
@@ -104,7 +106,7 @@
             android:layout_marginStart="13dp"
             android:layout_marginTop="16dp"
             android:text="Crop Name: "
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -114,7 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Crop Type: "
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/cropType_TV"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -125,7 +127,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="15dp"
             android:text="Quantity (in KGs)"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider3" />
@@ -137,7 +139,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="15dp"
             android:text="Total Rate (INR)"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/quantity_TV" />
@@ -149,7 +151,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="16dp"
             android:text="Seller Name"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="10dp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
@@ -161,7 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="Anonymous"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
@@ -174,7 +176,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="11dp"
             android:text="Address"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rate_TV" />
@@ -184,8 +186,8 @@
             android:layout_width="400dp"
             android:layout_height="1dp"
             android:layout_marginTop="4dp"
-            android:background="@color/black"
-            android:backgroundTint="@color/black"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -197,7 +199,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
             android:text="Crop Description"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="10dp"
             app:layout_constraintEnd_toStartOf="@+id/textView26"
             app:layout_constraintHorizontal_bias="0.5"

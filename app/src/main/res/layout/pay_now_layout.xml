@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/market_card">
+    android:background="@drawable/background3">
 
     <TextView
         android:id="@+id/textView30"
@@ -21,10 +21,10 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="409dp"
+        android:layout_width="400dp"
         android:layout_height="200dp"
         android:layout_margin="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -133,7 +133,7 @@
         android:id="@+id/divider5"
         android:layout_width="200dp"
         android:layout_height="1dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="211dp"
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -235,7 +235,7 @@
         style="@style/positive_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:text="PAY NOW"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"

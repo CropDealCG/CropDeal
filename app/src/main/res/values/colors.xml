@@ -101,4 +101,6 @@
     <color name="originalYellow">#FF0</color>
     <color name="bgColor2">#92D5D2</color>
     <color name="editTextBG">#90CAF9</color>
+
+    <color name="cardBackground">#FFFFFF</color>
 </resources>
