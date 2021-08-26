@@ -149,6 +149,7 @@
             android:text="Seller Name"
             android:textColor="@color/black"
             android:textSize="10dp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
@@ -160,6 +161,7 @@
             android:text="Anonymous"
             android:textColor="@color/black"
             android:textStyle="bold"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView26" />
 

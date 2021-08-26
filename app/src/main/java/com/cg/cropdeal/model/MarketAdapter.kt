@@ -39,34 +39,23 @@ class MarketAdapter(private val list:List<Crops>) : RecyclerView.Adapter<Recycle
         binding.descriptionMarketTV.text = crop.cropDesc
         binding.quantityTV.text = crop.cropQuantity.toString()
         binding.rateTV.text = (crop.cropQuantity*crop.cropPrice).toString()
-        sellerName = MutableLiveData<String>("Anonymous")
 
-        fDatabase.reference.child("users").child(crop.userId).addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.exists()){
-                    CoroutineScope(Dispatchers.Main).launch {
-                        val name = CoroutineScope(Dispatchers.Default).async {
-                            snapshot.child("name").value.toString()
-                        }
-                        binding.sellerNameTV.text = name.await()
-                    }
-//                    sellerName.postValue(snapshot.child("name").value.toString())
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-
-        })
-        sellerName.observe(ProcessLifecycleOwner.get(),{
-            Log.d("Observabless","$it")
-            binding.sellerNameTV.text = it
-
-        })
+//        fDatabase.reference.child("users").child(crop.userId).addValueEventListener(object : ValueEventListener{
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                if(snapshot.exists()){
+//                    val farmerName = snapshot.child("name").value.toString()
+//                    binding.sellerNameTV.text = farmerName
+//                    Log.d("Observable2","$farmerName - $position")
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//            }
+//
+//        })
 
     }
 
     override fun getItemCount(): Int = list.size
-    open class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
-    }
+    open class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 }
