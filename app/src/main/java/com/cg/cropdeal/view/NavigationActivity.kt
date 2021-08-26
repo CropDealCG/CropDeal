@@ -23,27 +23,27 @@ class NavigationActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
         setupSmoothBottomMenu()
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.bottom_nav_menu, menu)
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.bottom_nav_menu, menu)
+//        return true
+//    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.layout.fragment_market -> {
-
-            }
-
-            R.layout.fragment_invoice -> {
-
-            }
-
-            R.layout.settings_fragment -> {
-
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
+//            R.layout.fragment_market -> {
+//
+//            }
+//
+//            R.layout.fragment_invoice -> {
+//
+//            }
+//
+//            R.layout.settings_fragment -> {
+//
+//            }
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
 
 

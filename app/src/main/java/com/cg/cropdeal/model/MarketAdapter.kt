@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ProcessLifecycleOwner
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.cg.cropdeal.databinding.MarketPostDesignLayoutBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -24,7 +25,6 @@ class MarketAdapter(private val list:List<Crops>) : RecyclerView.Adapter<Recycle
 
     private lateinit var binding: MarketPostDesignLayoutBinding
     private lateinit var fDatabase : FirebaseDatabase
-    private lateinit var sellerName : MutableLiveData<String>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarketAdapter.ViewHolder {
         binding = MarketPostDesignLayoutBinding.inflate(LayoutInflater.from(parent.context))
         fDatabase = FirebaseDatabase.getInstance()
@@ -53,6 +53,9 @@ class MarketAdapter(private val list:List<Crops>) : RecyclerView.Adapter<Recycle
 //            }
 //
 //        })
+        binding.buyBtn.setOnClickListener {
+            Navigation.findNavController(it)
+        }
 
     }
 
