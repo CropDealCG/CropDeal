@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_nav_setting_to_subscriptionsFragment"
             app:destination="@id/subscriptionsFragment" />
+        <action
+            android:id="@+id/action_nav_setting_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/paymentDetailsFragment"
@@ -62,5 +65,13 @@
         android:name="com.cg.cropdeal.view.SubscriptionsFragment"
         android:label="Subscriptions Fragment"
         tools:layout="@layout/fragment_subscriptions" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.cg.cropdeal.view.ChangePasswordFragment"
+        android:label="ChangePasswordFragment" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_nav_setting"
+            app:destination="@id/nav_setting" />
+    </fragment>
 
 </navigation>

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.iterator
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.FragmentSubscriptionsBinding
@@ -29,6 +30,8 @@ class SubscriptionsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(EditProfileVM::class.java)
+
+        val chipGrp = binding.chipGroup
 
     }
 
