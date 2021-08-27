@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.Navigation
 import com.cg.cropdeal.databinding.PublishCropBinding
+import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.model.Crops
 import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.model.UtilRepo
@@ -45,7 +46,7 @@ class CropPublishFragment : Fragment() {
 
 
         viewModel = ViewModelProvider(this).get(CropPublishVM::class.java)
-        val spinnerList = listOf<String>("Spinach","Tomato")
+        val spinnerList = Constants.cropList
         val spinnerAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_spinner_dropdown_item,spinnerList) as SpinnerAdapter
         binding.cropname.adapter = spinnerAdapter
         var cropType = "Fruit"
