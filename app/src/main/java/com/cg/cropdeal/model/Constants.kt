@@ -44,5 +44,7 @@ object Constants {
             .getExtensionFromMimeType(activity.contentResolver.getType(uri!!))
     }
 
+    val cropList = listOf<String>("Tomato","Potato","Wheat","Rice","Mango","Barley"
+    ,"Strawberry","Spinach","Orange","Mustard","Pumpkin","Corn")
 
 }
