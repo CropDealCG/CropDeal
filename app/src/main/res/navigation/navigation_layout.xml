@@ -26,7 +26,11 @@
     <fragment
         android:id="@+id/crop_buy"
         android:name="com.cg.cropdeal.view.CropBuyFragment"
-        tools:layout="@layout/pay_now_layout"/>
+        tools:layout="@layout/pay_now_layout">
+        <action
+            android:id="@+id/action_crop_buy_to_invoiceDetailsFragment"
+            app:destination="@id/invoiceDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_invoice"
         android:name="com.cg.cropdeal.view.InvoiceFragment"
@@ -62,5 +66,11 @@
         android:name="com.cg.cropdeal.view.SubscriptionsFragment"
         android:label="Subscriptions Fragment"
         tools:layout="@layout/fragment_subscriptions" />
+    <fragment
+        android:id="@+id/invoiceDetailsFragment"
+        android:name="com.cg.cropdeal.view.InvoiceDetailsFragment"
+        android:label="Invoice Fragment"
+        tools:layout="@layout/invoice_layout">
+    </fragment>
 
 </navigation>

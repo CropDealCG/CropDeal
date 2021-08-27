@@ -1,19 +1,26 @@
 package com.cg.cropdeal.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.PayNowLayoutBinding
 import com.cg.cropdeal.model.Constants
+import com.cg.cropdeal.model.Invoice
 import com.cg.cropdeal.model.UtilRepo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CropBuyFragment : Fragment() {
     private lateinit var binding : PayNowLayoutBinding
@@ -36,20 +43,25 @@ class CropBuyFragment : Fragment() {
         progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
         progressDialog.show()
         val farmerId = arguments?.getString("farmerId")
+        val cropId = arguments?.getString("cropId")
         val cropPrice = arguments?.getString("cropPrice")
-        firebaseDatabase.reference.child("users").addValueEventListener(object : ValueEventListener{
+        val cropQuantity = arguments?.getInt("cropQuantity")
+        val cropRate = arguments?.getInt("cropRate")
+        Log.d("Observable2","$cropPrice $cropQuantity $cropRate")
+
+        firebaseDatabase.reference.child(Constants.USERS).addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.child(firebaseAuth?.currentUser?.uid!!).child(Constants.PAYMENT).exists()){
+                if(snapshot.child(firebaseAuth.currentUser?.uid!!).child(Constants.PAYMENT).exists()){
                     binding.bankNameTV.text =
-                        snapshot.child(firebaseAuth?.currentUser?.uid!!).child(Constants.PAYMENT).child("bank").value.toString()
+                        snapshot.child(firebaseAuth.currentUser?.uid!!).child(Constants.PAYMENT).child("bank").value.toString()
                     binding.accountNumberPaymentTV.text =
-                        snapshot.child(firebaseAuth?.currentUser?.uid!!).child(Constants.PAYMENT).child("account").value.toString()
+                        snapshot.child(firebaseAuth.currentUser?.uid!!).child(Constants.PAYMENT).child("account").value.toString()
                     binding.ifscPaymentTV.text =
-                        snapshot.child(firebaseAuth?.currentUser?.uid!!).child(Constants.PAYMENT).child("ifsc").value.toString()
+                        snapshot.child(firebaseAuth.currentUser?.uid!!).child(Constants.PAYMENT).child("ifsc").value.toString()
                 }
                 if(snapshot.child(farmerId!!).exists()){
                     binding.farmerNameTV.text =
-                        snapshot.child(farmerId!!).child("name").value.toString()
+                        snapshot.child(farmerId).child("name").value.toString()
                     binding.totalPayAmountTV.text = cropPrice
                 }
                 progressDialog.dismiss()
@@ -60,5 +72,16 @@ class CropBuyFragment : Fragment() {
             }
 
         })
+
+        binding.payNowBtn.setOnClickListener {
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val timeFormat = SimpleDateFormat("hh:mm", Locale.getDefault())
+            val invoice = Invoice(cropId!!,farmerId!!,firebaseAuth.currentUser?.uid!!,dateFormat.format(Calendar.getInstance().time),timeFormat.format(Calendar.getInstance().time),cropQuantity!!.toInt(),cropRate!!.toInt(),cropPrice!!.toInt())
+            firebaseDatabase.reference.child("invoice").child(cropId).setValue(invoice)
+            firebaseDatabase.reference.child("crops").child(cropId).removeValue()
+
+            val bundle = bundleOf("cropId" to cropId)
+            Navigation.findNavController(view).navigate(R.id.action_crop_buy_to_invoiceDetailsFragment)
+        }
     }
 }
