@@ -43,8 +43,6 @@ class CropPublishFragment : Fragment() {
 
         progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
 
-        val a = arguments?.get("Demo")
-        Toast.makeText(view.context,"$a",Toast.LENGTH_LONG).show()
 
         viewModel = ViewModelProvider(this).get(CropPublishVM::class.java)
         val spinnerList = listOf<String>("Spinach","Tomato")

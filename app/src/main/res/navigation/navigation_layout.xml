@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_nav_market_to_crop_buy"
             app:destination="@id/crop_buy" />
+        <action
+            android:id="@+id/action_nav_market_to_paymentDetailsFragment"
+            app:destination="@id/paymentDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/crop_publish"
@@ -48,11 +51,7 @@
         android:id="@+id/paymentDetailsFragment"
         android:name="com.cg.cropdeal.view.PaymentDetailsFragment"
         android:label="Payment Details"
-        tools:layout="@layout/fragment_payment_details" >
-        <action
-            android:id="@+id/action_paymentDetailsFragment_to_nav_setting"
-            app:destination="@id/nav_setting" />
-    </fragment>
+        tools:layout="@layout/fragment_payment_details" />
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="com.cg.cropdeal.view.AboutUsFragment"
