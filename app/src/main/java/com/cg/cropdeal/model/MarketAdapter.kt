@@ -59,7 +59,7 @@ class MarketAdapter(private val list:List<Crops>,private val areBankDetailsAvail
         binding.buyBtn.setOnClickListener {
             if(areBankDetailsAvailable)
             {
-                val bundle = bundleOf("farmerId" to crop.userId,"cropPrice" to (crop.cropQuantity*crop.cropPrice).toString())
+                val bundle = bundleOf("farmerId" to crop.userId,"cropPrice" to (crop.cropQuantity*crop.cropPrice).toString(),"cropId" to crop.cropId,"cropQuantity" to crop.cropQuantity,"cropRate" to crop.cropPrice)
                 Navigation.findNavController(it).navigate(R.id.action_nav_market_to_crop_buy,bundle)
             }
             else{

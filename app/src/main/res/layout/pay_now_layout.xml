@@ -231,7 +231,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/payNowBtn"
         style="@style/positive_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
