@@ -53,7 +53,7 @@ class PaymentDetailsFragment : Fragment() {
                 )
             }
             UtilActivity().showSnackbar("Updated successfully!", binding.paymentDetailsLyt)
-            Navigation.findNavController(view).navigate(R.id.action_paymentDetailsFragment_to_nav_setting)
+            Navigation.findNavController(view).popBackStack()
         }
     }
 

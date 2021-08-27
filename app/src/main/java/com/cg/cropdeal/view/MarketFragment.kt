@@ -1,5 +1,6 @@
 package com.cg.cropdeal.view
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -36,17 +37,41 @@ class MarketFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
-       progressDialog.show()
+        progressDialog.show()
         binding.addCropsFAB.setOnClickListener {
-            val bundle = bundleOf("Demo" to "First Frag")
-            Navigation.findNavController(view).navigate(R.id.action_nav_market_to_crop_publish,bundle)
+            viewModel.areBankDetailsAvailable()?.observe(viewLifecycleOwner,{
+                if(it!=null){
+                    if(it==true)    Navigation.findNavController(view).navigate(R.id.action_nav_market_to_crop_publish)
+                    else    {
+                        val dialog = AlertDialog.Builder(view.context)
+                        dialog.setTitle("You cannot Add new Crops without adding your bank account details")
+                        dialog.setMessage("Do you want to add now?")
+                        var dialogBuilder = dialog.create()
+                        dialog.setPositiveButton("OK") { _, _ ->
+                            Navigation.findNavController(view).navigate(R.id.action_nav_market_to_paymentDetailsFragment)
+                        }
+                        dialog.setNegativeButton("No"){_,_->
+                            dialogBuilder.dismiss()
+                        }
+                        dialogBuilder = dialog.create()
+                        dialogBuilder.setCancelable(false)
+                        dialogBuilder.show()
+                    }
+                }
+            })
+
         }
-        viewModel.getCropList()?.observe(viewLifecycleOwner,{
-            Log.d("Observables","Here\t$it")
+        viewModel.getCropList()?.observe(viewLifecycleOwner,{list->
+            Log.d("Observable","First")
             binding.marketRview.layoutManager = LinearLayoutManager(view.context)
-            if(it!=null) {
-                binding.marketRview.adapter = MarketAdapter(it)
-               progressDialog.dismiss()
+            if(list!=null) {
+                viewModel.areBankDetailsAvailable()?.observe(viewLifecycleOwner,{bank->
+                    Log.d("Observable","Second")
+                    if(bank!=null){
+                        binding.marketRview.adapter = MarketAdapter(list,bank)
+                        progressDialog.dismiss()
+                    }
+                })
             }
         })
 
