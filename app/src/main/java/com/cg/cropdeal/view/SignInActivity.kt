@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivitySignInBinding
 import com.cg.cropdeal.databinding.CustomForgotPasswordDialogBinding
+import com.cg.cropdeal.model.Payment
 import com.cg.cropdeal.model.Users
 import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.model.UtilRepo
@@ -198,7 +199,9 @@ class SignInActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     val facebookUser = auth.currentUser
                     if (task.result.additionalUserInfo?.isNewUser!!) {
-                        val user = Users(facebookUser?.displayName!!,facebookUser?.email!!,userType,"false","","")
+                        val user = Users(facebookUser?.displayName!!,facebookUser?.email!!
+                            ,userType,"false","","", Payment()
+                        )
                         firebaseDatabase.reference.child("users").child(task.result.user?.uid!!).setValue(user)
                         updateUI(facebookUser)
                     } else {
@@ -239,7 +242,8 @@ class SignInActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     val googleUser = auth.currentUser
                     if (task.result.additionalUserInfo?.isNewUser!!) {
-                        val user = Users(googleUser?.displayName!!,googleUser?.email!!,userType,"false","","")
+                        val user = Users(googleUser?.displayName!!,googleUser?.email!!,userType,
+                            "false","","",Payment())
                         firebaseDatabase.reference.child("users").child(task.result.user?.uid!!).setValue(user)
                         updateUI(googleUser)
                     } else {

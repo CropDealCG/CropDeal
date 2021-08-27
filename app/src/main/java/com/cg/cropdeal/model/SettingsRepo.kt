@@ -52,8 +52,7 @@ class SettingsRepo(private var application: Application?) {
     username: String,dob:String){
         val fStorage = FirebaseStorage.getInstance()
             .reference.child(
-                FirebaseAuth.getInstance().currentUser?.email
-                        + "." + Constants.getFileExtension(activity,imageFileUri)
+                "img"+FirebaseAuth.getInstance().currentUser?.email
             )
 
         fStorage.putFile(imageFileUri!!).addOnSuccessListener { taskSnapshot ->
@@ -62,14 +61,6 @@ class SettingsRepo(private var application: Application?) {
 
             taskSnapshot.metadata!!.reference!!.downloadUrl
                 .addOnSuccessListener { uri ->
-                    val profile_image_ref =  context
-                        .getSharedPreferences(Constants.PROFILE_IMAGE_REF,0)
-
-                    val editor = profile_image_ref.edit()
-                    editor.putString("profile_image",uri.toString())
-                    editor.apply()
-
-
                     imageUploadSuccess(uri.toString(),username,dob)
                 }
         }
@@ -127,7 +118,8 @@ class SettingsRepo(private var application: Application?) {
         paymentHashMap[Constants.USERID] = user?.uid!!
 
 
-        val reference = firebaseDB?.getReference(Constants.PAYMENT)?.child("payment"+user.uid)
+        val reference = firebaseDB?.getReference(Constants.USERS)?.child(user.uid)
+            ?.child(Constants.PAYMENT)
         reference?.updateChildren(paymentHashMap)
     }
 

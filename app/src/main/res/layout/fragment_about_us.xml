@@ -62,27 +62,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
         android:text="@string/send_feedback"
         android:textSize="10sp"
         app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider9" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <Button
         android:id="@+id/rateUSBtn"
-        style="@style/custom_button"
+        style="@style/positive_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="50dp"
         android:text="@string/Rate_Us"
         android:textColor="@color/white"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sendFeedbackBtn" />
+        app:layout_constraintStart_toEndOf="@+id/sendFeedbackBtn"
+        app:layout_constraintTop_toTopOf="@+id/sendFeedbackBtn" />
 
     <TextView
         android:id="@+id/textView17"
@@ -99,7 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="200dp"
         android:text="About Us"
         android:textColor="@color/White"

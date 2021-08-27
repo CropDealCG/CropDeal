@@ -7,10 +7,7 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.databinding.ActivitySignUpBinding
-import com.cg.cropdeal.model.Constants
-import com.cg.cropdeal.model.Users
-import com.cg.cropdeal.model.UtilActivity
-import com.cg.cropdeal.model.UtilRepo
+import com.cg.cropdeal.model.*
 import com.cg.cropdeal.viewmodel.SignUpVM
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -95,7 +92,9 @@ class SignUpActivity : AppCompatActivity() {
         if(email.isNotEmpty() && password.isNotEmpty()){
             signUpVM.register(email,password)
             val users = Users(binding.nameE.editText?.text.toString(),email,userType,"false"
-                ,binding.selectedDateTV.text.toString(),binding.selectedTimeTV.text.toString())
+                ,binding.selectedDateTV.text.toString(),binding.selectedTimeTV.text.toString(),
+                Payment()
+            )
             signUpVM.getUserData()?.observe(this,{user->
                 signUpVM.isNewUser()?.observe(this,{isNew->
                     //Log.d("Observables","${user?.email}\t$isNew")

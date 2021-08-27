@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.MarketPostDesignLayoutBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -54,7 +55,7 @@ class MarketAdapter(private val list:List<Crops>) : RecyclerView.Adapter<Recycle
 //
 //        })
         binding.buyBtn.setOnClickListener {
-            Navigation.findNavController(it)
+            Navigation.findNavController(it).navigate(R.id.action_nav_market_to_crop_buy)
         }
 
     }

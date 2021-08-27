@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.FragmentPaymentDetailsBinding
+import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.PaymentDetailsVM
 
@@ -20,7 +22,7 @@ class PaymentDetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentPaymentDetailsBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -28,7 +30,20 @@ class PaymentDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(PaymentDetailsVM::class.java)
+        val liveData = viewModel.getDataSnapshotLiveData()
+        liveData.observe(viewLifecycleOwner,{
+            dataSnapshot ->
+            if(dataSnapshot!=null){
+                val bank = dataSnapshot.child(Constants.BANK).value.toString()
+                binding.addBankNameET.editText?.setText(bank)
 
+                val account = dataSnapshot.child(Constants.ACCOUNT).value.toString()
+                binding.addAccountET.editText?.setText(account)
+
+                val ifsc = dataSnapshot.child(Constants.IFSC).value.toString()
+                binding.addIFSCET.editText?.setText(ifsc)
+            }
+        })
         binding.savePaymentDetailsButton.setOnClickListener {
             if (checkDetails()) {
                 viewModel.uploadPaymentDetails(
@@ -38,7 +53,7 @@ class PaymentDetailsFragment : Fragment() {
                 )
             }
             UtilActivity().showSnackbar("Updated successfully!", binding.paymentDetailsLyt)
-            fragmentManager?.popBackStack()
+            Navigation.findNavController(view).navigate(R.id.action_paymentDetailsFragment_to_nav_setting)
         }
     }
 

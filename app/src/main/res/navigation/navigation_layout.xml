@@ -12,11 +12,18 @@
         <action
             android:id="@+id/action_nav_market_to_crop_publish"
             app:destination="@id/crop_publish" />
+        <action
+            android:id="@+id/action_nav_market_to_crop_buy"
+            app:destination="@id/crop_buy" />
     </fragment>
     <fragment
         android:id="@+id/crop_publish"
         android:name="com.cg.cropdeal.view.CropPublishFragment"
         tools:layout="@layout/publish_crop"/>
+    <fragment
+        android:id="@+id/crop_buy"
+        android:name="com.cg.cropdeal.view.CropBuyFragment"
+        tools:layout="@layout/pay_now_layout"/>
     <fragment
         android:id="@+id/nav_invoice"
         android:name="com.cg.cropdeal.view.InvoiceFragment"
