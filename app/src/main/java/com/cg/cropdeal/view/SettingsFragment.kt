@@ -59,7 +59,9 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val uri ="img"+FirebaseAuth.getInstance().currentUser?.email
+        val profile_image_ref = activity?.getSharedPreferences(
+            FirebaseAuth.getInstance().currentUser?.email,0)
+        val uri = profile_image_ref?.getString("profile_image","")
 
         val src = BitmapFactory.decodeResource(resources, R.drawable.blank_profile)
         val dr = RoundedBitmapDrawableFactory.create(resources, src)
@@ -71,17 +73,6 @@ class SettingsFragment : Fragment() {
             .placeholder(dr)
             .circleCrop()
             .into(binding.profileUserImage)
-
-//        Glide.with(this).load(uri).asBitmap().centerCrop()
-//            .into(object : BitmapImageViewTarget(binding.profileUserImage) {
-//                override fun setResource(resource: Bitmap?) {
-//                    val circularBitmapDrawable = RoundedBitmapDrawableFactory.create(
-//                        context!!.resources, resource
-//                    )
-//                    circularBitmapDrawable.isCircular = true
-//                    binding.profileUserImage.setImageDrawable(circularBitmapDrawable)
-//                }
-//            })
 
 
         viewModel = ViewModelProvider(this).get(SettingsVM::class.java)

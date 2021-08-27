@@ -8,11 +8,10 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Log
+
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
+
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
@@ -20,21 +19,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivityEditProfileBinding
-import com.cg.cropdeal.databinding.SettingsFragmentBinding
 import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.EditProfileVM
-import com.cg.cropdeal.viewmodel.SettingsVM
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.storage.FirebaseStorage
 import java.io.IOException
-import com.cg.cropdeal.model.FirebaseQueryLiveData
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -76,9 +65,11 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
+        val profile_image_ref = getSharedPreferences(
+            FirebaseAuth.getInstance().currentUser?.email,0)
+        val uri = profile_image_ref?.getString("profile_image","")
 
 
-        val uri = "img"+FirebaseAuth.getInstance().currentUser?.email
         val src = BitmapFactory.decodeResource(resources, R.drawable.blank_profile)
         val dr = RoundedBitmapDrawableFactory.create(resources, src)
         dr.cornerRadius = Math.max(src.width, src.height) / 2.0f
@@ -102,11 +93,6 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
             datePickerDialog.show(supportFragmentManager,"Date")
         }
     }
-
-
-
-
-
 
     override fun onClick(v: View?) {
         when(v?.id){

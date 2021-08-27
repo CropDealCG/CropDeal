@@ -62,6 +62,12 @@ class SettingsRepo(private var application: Application?) {
             taskSnapshot.metadata!!.reference!!.downloadUrl
                 .addOnSuccessListener { uri ->
                     imageUploadSuccess(uri.toString(),username,dob)
+                    val profile_image_ref =  context
+                        .getSharedPreferences(FirebaseAuth.getInstance().currentUser?.email,0)
+
+                    val editor = profile_image_ref.edit()
+                    editor.putString("profile_image",uri.toString())
+                    editor.apply()
                 }
         }
             .addOnFailureListener{exception ->
