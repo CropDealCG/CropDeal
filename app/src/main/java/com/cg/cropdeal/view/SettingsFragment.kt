@@ -27,6 +27,10 @@ import android.graphics.Bitmap
 import com.bumptech.glide.request.RequestOptions
 
 import com.bumptech.glide.request.target.BitmapImageViewTarget
+import android.graphics.BitmapFactory
+
+
+
 
 
 
@@ -57,10 +61,14 @@ class SettingsFragment : Fragment() {
 
         val uri ="img"+FirebaseAuth.getInstance().currentUser?.email
 
+        val src = BitmapFactory.decodeResource(resources, R.drawable.blank_profile)
+        val dr = RoundedBitmapDrawableFactory.create(resources, src)
+        dr.cornerRadius = Math.max(src.width, src.height) / 2.0f
+        //binding.profileUserImage.setImageDrawable(dr)
 
         Glide.with(this )
             .load(uri)
-            .placeholder(R.drawable.blank_profile)
+            .placeholder(dr)
             .circleCrop()
             .into(binding.profileUserImage)
 

@@ -26,9 +26,7 @@
         <activity
             android:name=".view.EditProfileActivity"
             android:exported="true" />
-        <activity
-            android:name=".view.AboutUsActivity"
-            android:exported="true" />
+
         <activity
             android:name=".view.SignUpActivity"
             android:exported="true" />

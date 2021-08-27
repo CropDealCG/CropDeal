@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.cg.cropdeal.R
@@ -77,11 +79,13 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
 
         val uri = "img"+FirebaseAuth.getInstance().currentUser?.email
-
+        val src = BitmapFactory.decodeResource(resources, R.drawable.blank_profile)
+        val dr = RoundedBitmapDrawableFactory.create(resources, src)
+        dr.cornerRadius = Math.max(src.width, src.height) / 2.0f
 
         Glide.with(this )
             .load(uri)
-            .placeholder(R.drawable.blank_profile)
+            .placeholder(dr)
             .circleCrop()
             .into(binding.profileImage)
 
