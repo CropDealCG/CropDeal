@@ -3,26 +3,33 @@ package com.cg.cropdeal.view
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.os.UserHandle
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.LogoutDialogBinding
 import com.cg.cropdeal.databinding.SettingsFragmentBinding
 import com.cg.cropdeal.model.Constants
-import com.cg.cropdeal.model.Users
+
 import com.cg.cropdeal.viewmodel.SettingsVM
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
+
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
+
+import androidx.core.graphics.drawable.RoundedBitmapDrawable
+
+import android.graphics.Bitmap
+import com.bumptech.glide.request.RequestOptions
+
+import com.bumptech.glide.request.target.BitmapImageViewTarget
+
+
+
 
 class SettingsFragment : Fragment() {
 
@@ -48,15 +55,26 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val profile_image_ref = activity?.getSharedPreferences(Constants.PROFILE_IMAGE_REF,0)
-        val uri = profile_image_ref?.getString("profile_image","")
+        val uri ="img"+FirebaseAuth.getInstance().currentUser?.email
 
 
         Glide.with(this )
             .load(uri)
-            .circleCrop()
             .placeholder(R.drawable.blank_profile)
+            .circleCrop()
             .into(binding.profileUserImage)
+
+//        Glide.with(this).load(uri).asBitmap().centerCrop()
+//            .into(object : BitmapImageViewTarget(binding.profileUserImage) {
+//                override fun setResource(resource: Bitmap?) {
+//                    val circularBitmapDrawable = RoundedBitmapDrawableFactory.create(
+//                        context!!.resources, resource
+//                    )
+//                    circularBitmapDrawable.isCircular = true
+//                    binding.profileUserImage.setImageDrawable(circularBitmapDrawable)
+//                }
+//            })
+
 
         viewModel = ViewModelProvider(this).get(SettingsVM::class.java)
         val liveData = viewModel.getDataSnapshotLiveData()

@@ -18,8 +18,8 @@
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@drawable/blank_profile" />
+        app:srcCompat="@drawable/blank_profile"
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/profile_user_name"

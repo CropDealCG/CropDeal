@@ -75,14 +75,14 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-        val profile_image_ref = getSharedPreferences(Constants.PROFILE_IMAGE_REF,0)
-        val uri = profile_image_ref?.getString("profile_image","")
+
+        val uri = "img"+FirebaseAuth.getInstance().currentUser?.email
 
 
         Glide.with(this )
             .load(uri)
-            .circleCrop()
             .placeholder(R.drawable.blank_profile)
+            .circleCrop()
             .into(binding.profileImage)
 
         binding.profileImage.setOnClickListener(this@EditProfileActivity)
@@ -132,6 +132,9 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
                     else{
                         updateUserProfileDetails()
                     }
+
+                UtilActivity().showSnackbar("Profile Updated!",binding.editProfileLyt)
+                finish()
 
             }
         }

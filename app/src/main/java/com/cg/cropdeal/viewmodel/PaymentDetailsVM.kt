@@ -14,7 +14,7 @@ private var settingsRepo:SettingsRepo? = null
 class PaymentDetailsVM(application: Application):AndroidViewModel(application) {
     private val user = FirebaseAuth.getInstance().currentUser
     private val dbRef = FirebaseDatabase.getInstance()
-        .getReference(Constants.PAYMENT).child("payment" +user?.uid!!)
+        .getReference(Constants.USERS).child(user?.uid!!).child(Constants.PAYMENT)
     private val liveData = FirebaseQueryLiveData(dbRef)
     init{
         settingsRepo = SettingsRepo(application)
