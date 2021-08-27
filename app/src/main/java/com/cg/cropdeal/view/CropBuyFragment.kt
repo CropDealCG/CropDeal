@@ -47,6 +47,7 @@ class CropBuyFragment : Fragment() {
         val cropPrice = arguments?.getString("cropPrice")
         val cropQuantity = arguments?.getInt("cropQuantity")
         val cropRate = arguments?.getInt("cropRate")
+        val cropName = arguments?.getString("cropName")
         Log.d("Observable2","$cropPrice $cropQuantity $cropRate")
 
         firebaseDatabase.reference.child(Constants.USERS).addValueEventListener(object : ValueEventListener{
@@ -75,13 +76,13 @@ class CropBuyFragment : Fragment() {
 
         binding.payNowBtn.setOnClickListener {
             val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-            val timeFormat = SimpleDateFormat("hh:mm", Locale.getDefault())
-            val invoice = Invoice(cropId!!,farmerId!!,firebaseAuth.currentUser?.uid!!,dateFormat.format(Calendar.getInstance().time),timeFormat.format(Calendar.getInstance().time),cropQuantity!!.toInt(),cropRate!!.toInt(),cropPrice!!.toInt())
+            val timeFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
+            val invoice = Invoice(cropId!!,farmerId!!,firebaseAuth.currentUser?.uid!!,dateFormat.format(Calendar.getInstance().time),timeFormat.format(Calendar.getInstance().time),cropQuantity!!.toInt(),cropRate!!.toInt(),cropPrice!!.toInt(),cropName!!)
             firebaseDatabase.reference.child("invoice").child(cropId).setValue(invoice)
             firebaseDatabase.reference.child("crops").child(cropId).removeValue()
 
             val bundle = bundleOf("cropId" to cropId)
-            Navigation.findNavController(view).navigate(R.id.action_crop_buy_to_invoiceDetailsFragment)
+            Navigation.findNavController(view).navigate(R.id.action_crop_buy_to_invoiceDetailsFragment,bundle)
         }
     }
 }

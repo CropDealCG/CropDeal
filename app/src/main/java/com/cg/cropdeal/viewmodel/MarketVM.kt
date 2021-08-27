@@ -33,14 +33,13 @@ class MarketVM(application: Application) : AndroidViewModel(application) {
     private fun populateList() {
         firebaseDatabase?.reference?.child("crops")?.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.exists()){
                     currentCropList?.clear()
                     for(child in snapshot.children){
                         val crop = child.getValue(Crops::class.java)
                         currentCropList?.add(crop!!)
                         cropsList?.value = currentCropList
                     }
-                }
+                cropsList?.value = currentCropList
             }
 
             override fun onCancelled(error: DatabaseError) {

@@ -61,10 +61,10 @@ class MarketFragment : Fragment() {
             })
 
         }
+        binding.marketRview.layoutManager = LinearLayoutManager(view.context)
         viewModel.getCropList()?.observe(viewLifecycleOwner,{list->
             Log.d("Observable","First")
-            binding.marketRview.layoutManager = LinearLayoutManager(view.context)
-            if(list!=null) {
+            if(list.isEmpty() || list!=null) {
                 viewModel.areBankDetailsAvailable()?.observe(viewLifecycleOwner,{bank->
                     Log.d("Observable","Second")
                     if(bank!=null){

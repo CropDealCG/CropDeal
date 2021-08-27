@@ -29,13 +29,18 @@
         tools:layout="@layout/pay_now_layout">
         <action
             android:id="@+id/action_crop_buy_to_invoiceDetailsFragment"
-            app:destination="@id/invoiceDetailsFragment" />
+            app:destination="@id/invoiceDetailsFragment"
+            app:popUpTo="@id/nav_market" />
     </fragment>
     <fragment
         android:id="@+id/nav_invoice"
         android:name="com.cg.cropdeal.view.InvoiceFragment"
         android:label="Invoice"
-        tools:layout="@layout/fragment_invoice" />
+        tools:layout="@layout/fragment_invoice" >
+        <action
+            android:id="@+id/action_nav_invoice_to_invoiceDetailsFragment"
+            app:destination="@id/invoiceDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_setting"
         android:name="com.cg.cropdeal.view.SettingsFragment"

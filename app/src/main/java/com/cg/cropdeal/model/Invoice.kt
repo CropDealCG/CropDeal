@@ -9,5 +9,8 @@ data class Invoice
         val time : String,
         val quantity : Int,
         val rate : Int,
-        val totalPrice : Int
-    )
+        val totalPrice : Int,
+        val cropName : String
+    ){
+        constructor():this("","","","","",0,0,0,"")
+    }

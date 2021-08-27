@@ -1,28 +1,15 @@
 package com.cg.cropdeal.model
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.MarketPostDesignLayoutBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.core.Context
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 
 class MarketAdapter(private val list:List<Crops>,private val areBankDetailsAvailable:Boolean) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -43,6 +30,7 @@ class MarketAdapter(private val list:List<Crops>,private val areBankDetailsAvail
         binding.quantityTV.text = crop.cropQuantity.toString()
         binding.rateTV.text = (crop.cropQuantity*crop.cropPrice).toString()
 
+
 //        fDatabase.reference.child("users").child(crop.userId).addValueEventListener(object : ValueEventListener{
 //            override fun onDataChange(snapshot: DataSnapshot) {
 //                if(snapshot.exists()){
@@ -59,7 +47,7 @@ class MarketAdapter(private val list:List<Crops>,private val areBankDetailsAvail
         binding.buyBtn.setOnClickListener {
             if(areBankDetailsAvailable)
             {
-                val bundle = bundleOf("farmerId" to crop.userId,"cropPrice" to (crop.cropQuantity*crop.cropPrice).toString(),"cropId" to crop.cropId,"cropQuantity" to crop.cropQuantity,"cropRate" to crop.cropPrice)
+                val bundle = bundleOf("farmerId" to crop.userId,"cropPrice" to (crop.cropQuantity*crop.cropPrice).toString(),"cropId" to crop.cropId,"cropQuantity" to crop.cropQuantity,"cropRate" to crop.cropPrice,"cropName" to crop.cropName)
                 Navigation.findNavController(it).navigate(R.id.action_nav_market_to_crop_buy,bundle)
             }
             else{

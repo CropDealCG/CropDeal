@@ -229,34 +229,34 @@
                 android:id="@+id/quantity_invoice_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="73dp"
                 android:layout_marginTop="5dp"
                 android:text="Quantity Here"
                 android:textAlignment="textStart"
                 android:textColor="@color/darkGrey2"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView47"
+                app:layout_constraintStart_toStartOf="@+id/textView47"
                 app:layout_constraintTop_toBottomOf="@+id/divider12" />
 
             <TextView
                 android:id="@+id/rate_invoice_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="43dp"
                 android:layout_marginTop="5dp"
                 android:text="Rate Here"
                 android:textColor="@color/darkGrey2"
-                app:layout_constraintStart_toEndOf="@+id/quantity_invoice_TV"
+                app:layout_constraintEnd_toEndOf="@+id/textView48"
+                app:layout_constraintStart_toStartOf="@+id/textView48"
                 app:layout_constraintTop_toBottomOf="@+id/divider12" />
 
             <TextView
                 android:id="@+id/total_invoice_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="41dp"
                 android:layout_marginTop="5dp"
                 android:text="Total Here"
                 android:textColor="@color/darkGrey2"
-                app:layout_constraintStart_toEndOf="@+id/rate_invoice_TV"
+                app:layout_constraintEnd_toEndOf="@+id/textView49"
+                app:layout_constraintStart_toStartOf="@+id/textView49"
                 app:layout_constraintTop_toBottomOf="@+id/divider12" />
 
             <TextView
