@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_nav_setting_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_nav_setting_to_subscriptionsFragment"
+            app:destination="@id/subscriptionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/paymentDetailsFragment"
@@ -54,5 +57,10 @@
         android:name="com.cg.cropdeal.view.AboutUsFragment"
         android:label="About Us"
         tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/subscriptionsFragment"
+        android:name="com.cg.cropdeal.view.SubscriptionsFragment"
+        android:label="Subscriptions Fragment"
+        tools:layout="@layout/fragment_subscriptions" />
 
 </navigation>

@@ -110,6 +110,11 @@ class SettingsFragment : Fragment() {
                 .navigate(R.id.action_nav_setting_to_paymentDetailsFragment)
         }
 
+        binding.subscriptionsTV.setOnClickListener {
+            Navigation.findNavController(view)
+                .navigate(R.id.action_nav_setting_to_subscriptionsFragment)
+        }
+
         binding.aboutUsTV.setOnClickListener {
             Navigation.findNavController(view)
                 .navigate(R.id.action_nav_setting_to_aboutUsFragment)
