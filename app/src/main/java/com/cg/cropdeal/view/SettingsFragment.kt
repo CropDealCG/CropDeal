@@ -100,8 +100,7 @@ class SettingsFragment : Fragment() {
         }
 
         binding.changePassTV.setOnClickListener {
-            val intent = Intent(activity,ChangePasswordActivity::class.java)
-            startActivity(intent)
+           Navigation.findNavController(view).navigate(R.id.action_nav_setting_to_fragmentChangePassword)
         }
 
         binding.paymentDetailsTV.setOnClickListener{

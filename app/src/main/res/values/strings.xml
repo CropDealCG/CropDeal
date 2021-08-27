@@ -59,6 +59,7 @@
     <string name="account_number">Account Number</string>
     <string name="bank_name">Bank Name</string>
     <string name="add_payment_details">ADD PAYMENT DETAILS</string>
+    <string name="change_password_description">ChangePasswordDescription</string>
     <!--    <string name="default_web_client_id">571175692324-7fs44r8e5hfaicks94eh4dlfet8dt6gc.apps.googleusercontent.com</string>-->
 
 </resources>

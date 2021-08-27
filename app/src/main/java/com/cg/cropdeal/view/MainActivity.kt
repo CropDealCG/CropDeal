@@ -1,6 +1,9 @@
 package com.cg.cropdeal.view
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -14,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         startActivity(Intent(this,SignUpActivity::class.java))
         finish()
+
     }
 
 }

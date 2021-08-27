@@ -3,11 +3,10 @@ package com.cg.cropdeal.viewmodel
 import android.app.Application
 import android.content.Intent
 import android.text.TextUtils
-import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 
 import androidx.lifecycle.AndroidViewModel
-import com.cg.cropdeal.databinding.ActivityChangePasswordBinding
+import com.cg.cropdeal.databinding.FragmentChangePasswordBinding
 import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.view.MainActivity
 import com.google.firebase.auth.EmailAuthProvider
@@ -18,7 +17,7 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
     private val context = getApplication<Application>().applicationContext
     val utilActivity= UtilActivity()
 
-    fun changePassword(binding: ActivityChangePasswordBinding){
+    fun changePassword(binding: FragmentChangePasswordBinding){
         if (validatePasswordDetails(binding)) {
             val user = Firebase.auth.currentUser
             val credential = EmailAuthProvider
@@ -52,7 +51,7 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
     }
 
 
-    private fun validatePasswordDetails(binding: ActivityChangePasswordBinding):Boolean{
+    private fun validatePasswordDetails(binding: FragmentChangePasswordBinding):Boolean{
 
         if(TextUtils.isEmpty(binding.editTextNewPassword.editText?.text.toString().trim { it<= ' ' })) {
             utilActivity.showSnackbar("Please enter New Password",
