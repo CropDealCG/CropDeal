@@ -10,6 +10,7 @@ import android.webkit.MimeTypeMap
 import com.google.android.material.snackbar.Snackbar
 
 object Constants {
+    const val TOPIC_PREF: String = "TOPIC_PREF"
     const val USERID: String = "userId"
     const val BANK: String = "bank"
     const val ACCOUNT:String = "account"
@@ -32,7 +33,7 @@ object Constants {
     const val LOCATION_PREF :String = "LOCATION_PREF"
 
 
-    const val PROFILE_IMAGE_REF:String = "PROFILE_IMAGE_REF"
+
 
 
     fun showImageChooser(activity: Activity){

@@ -27,7 +27,7 @@ class ChangePasswordFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ChangePasswordVM::class.java)
         binding.changePasswordBtn.setOnClickListener {
             if(viewModel.validatePasswordDetails(binding)) {
-                viewModel.changePassword(binding)
+               if(viewModel.changePassword(binding))
                 Navigation.findNavController(view).popBackStack()
             }
         }

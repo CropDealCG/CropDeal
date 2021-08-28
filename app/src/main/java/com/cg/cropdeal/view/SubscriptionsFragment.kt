@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.children
 
 import androidx.lifecycle.ViewModelProvider
 
@@ -54,8 +55,12 @@ fun ChipGroup.addChip(context: Context, label: String){
         }
         binding.saveSubscriptionBtn.setOnClickListener {
 
-
-           Constants.showSnackbar("${chipGrp.checkedChipIds}",binding.root)
+            var topicPref = activity?.getSharedPreferences(Constants.TOPIC_PREF,0)
+            val selectedTopic = chipGrp.findViewById<Chip>(chipGrp.checkedChipId).text.toString()
+            topicPref?.edit()
+                ?.putString("topic",selectedTopic)
+                ?.apply()
+           Constants.showSnackbar("$selectedTopic",binding.root)
         }
 
 

@@ -19,9 +19,9 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
         utilRepo = UtilRepo(application)
     }
 
-    fun changePassword(binding: FragmentChangePasswordBinding){
+    fun changePassword(binding: FragmentChangePasswordBinding):Boolean{
 
-
+        var result = false
             val user = Firebase.auth.currentUser
             val credential = EmailAuthProvider
                 .getCredential(user?.email!!, binding.editTextCurrentPassword.editText?.text.toString().trim { it<=' ' })
@@ -41,7 +41,7 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
                                 "Couldn't update password. Please try again",
                                 binding.root)
                         }
-
+                        result = true
 
                     }
             }
@@ -50,7 +50,7 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
                         binding.changePasswordBtn)
                 }
 
-
+                return result
 
 
     }
