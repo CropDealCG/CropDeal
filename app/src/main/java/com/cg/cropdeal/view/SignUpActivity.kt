@@ -19,7 +19,7 @@ import java.util.*
 class SignUpActivity : AppCompatActivity() {
     private lateinit var signUpVM : SignUpVM
     private lateinit var binding : ActivitySignUpBinding
-    private var utilActivity = UtilActivity()
+
     private lateinit var progressDialog : AlertDialog
     private var userType = Constants.FARMER
 //    private lateinit var users: Users
@@ -115,7 +115,7 @@ class SignUpActivity : AppCompatActivity() {
             //call Users class
         }else{
             progressDialog.dismiss()
-            utilActivity.showSnackbar("Please Enter Data",binding.emailE)
+            Constants.showSnackbar("Please Enter Data",binding.root)
         }
     }
 

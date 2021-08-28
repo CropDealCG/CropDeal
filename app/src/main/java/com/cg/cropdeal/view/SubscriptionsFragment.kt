@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.cg.cropdeal.databinding.FragmentSubscriptionsBinding
 import com.cg.cropdeal.model.Constants
-import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.EditProfileVM
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -56,7 +55,7 @@ fun ChipGroup.addChip(context: Context, label: String){
         binding.saveSubscriptionBtn.setOnClickListener {
 
 
-           UtilActivity().showSnackbar("${chipGrp.checkedChipIds}",binding.subscriptionLyt)
+           Constants.showSnackbar("${chipGrp.checkedChipIds}",binding.root)
         }
 
 

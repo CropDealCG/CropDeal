@@ -5,7 +5,9 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
+import android.view.View
 import android.webkit.MimeTypeMap
+import com.google.android.material.snackbar.Snackbar
 
 object Constants {
     const val USERID: String = "userId"
@@ -42,6 +44,11 @@ object Constants {
     fun getFileExtension(activity: Activity, uri: Uri?):String?{
         return MimeTypeMap.getSingleton()
             .getExtensionFromMimeType(activity.contentResolver.getType(uri!!))
+    }
+    fun showSnackbar(message:String,view: View){
+        val snackbar = Snackbar.make(view,message, Snackbar.LENGTH_LONG)
+        snackbar.duration
+        snackbar.show()
     }
 
     val cropList = listOf<String>("Tomato","Potato","Wheat","Rice","Mango","Barley"

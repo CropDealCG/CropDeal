@@ -1,26 +1,27 @@
 package com.cg.cropdeal.viewmodel
 
 import android.app.Application
-import android.content.Intent
 import android.text.TextUtils
-import androidx.core.content.ContextCompat.startActivity
 
 import androidx.lifecycle.AndroidViewModel
-import androidx.navigation.Navigation
 import com.cg.cropdeal.databinding.FragmentChangePasswordBinding
-import com.cg.cropdeal.model.UtilActivity
-import com.cg.cropdeal.view.MainActivity
+import com.cg.cropdeal.model.Constants
+import com.cg.cropdeal.model.UtilRepo
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class ChangePasswordVM(application: Application): AndroidViewModel(application) {
     //private val context = getApplication<Application>().applicationContext
-    val utilActivity= UtilActivity()
+
+    private var utilRepo:UtilRepo?=null
+    init {
+        utilRepo = UtilRepo(application)
+    }
 
     fun changePassword(binding: FragmentChangePasswordBinding){
 
-        if (validatePasswordDetails(binding)) {
+
             val user = Firebase.auth.currentUser
             val credential = EmailAuthProvider
                 .getCredential(user?.email!!, binding.editTextCurrentPassword.editText?.text.toString().trim { it<=' ' })
@@ -32,57 +33,64 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
                 user!!.updatePassword(newPassword)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            utilActivity.showSnackbar("User Password Updated",
-                                binding.changePasswordBtn)
+                            Constants.showSnackbar("User Password Updated",
+                                binding.root)
 
                         } else {
-                            utilActivity.showSnackbar(
+                            Constants.showSnackbar(
                                 "Couldn't update password. Please try again",
-                                binding.changePasswordBtn)
+                                binding.root)
                         }
 
 
                     }
             }
                 .addOnFailureListener {
-                    utilActivity.showSnackbar("Incorrect Current Password",
+                   Constants.showSnackbar("${it.message}",
                         binding.changePasswordBtn)
                 }
 
-        }
+
+
 
     }
 
 
-    private fun validatePasswordDetails(binding: FragmentChangePasswordBinding):Boolean{
+    fun validatePasswordDetails(binding: FragmentChangePasswordBinding):Boolean{
 
         if(TextUtils.isEmpty(binding.editTextNewPassword.editText?.text.toString().trim { it<= ' ' })) {
-            utilActivity.showSnackbar("Please enter New Password",
-                binding.editTextCurrentPassword)
+            Constants.showSnackbar("Please enter New Password"
+                ,binding.root)
+            return false
+        }
+        if(binding.editTextNewPassword.editText?.text?.length!! < 9)
+        {
+            Constants.showSnackbar("Password length should be min 9 char"
+                ,binding.root)
             return false
         }
 
         if(TextUtils.isEmpty(binding.editTextConfirmNewPassword.editText?.text.toString()
                 .trim { it<= ' ' })) {
-            utilActivity.showSnackbar("Please confirm New Password",
-                binding.editTextConfirmNewPassword)
+            Constants.showSnackbar("Please confirm New Password",
+                binding.root)
             return false
         }
 
 
         if(binding.editTextConfirmNewPassword.editText?.text.toString() !=
             binding.editTextNewPassword.editText?.text.toString()) {
-            utilActivity.showSnackbar(
-                "New Password is not matching with Confirm New Password",
-                binding.changePasswordBtn)
+            Constants.showSnackbar(
+                "New Password is not matching with Confirm New Password"
+                ,binding.root)
             return false
         }
 
         if(binding.editTextCurrentPassword.editText?.text.toString() ==
             binding.editTextNewPassword.editText?.text.toString()) {
-            utilActivity.showSnackbar(
-                "New Password shouldn't be same as Current Password",
-                binding.changePasswordBtn
+            Constants.showSnackbar(
+                "New Password shouldn't be same as Current Password"
+                ,binding.root
             )
             return false
         }

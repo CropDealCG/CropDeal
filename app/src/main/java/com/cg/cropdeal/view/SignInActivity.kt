@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -13,9 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivitySignInBinding
 import com.cg.cropdeal.databinding.CustomForgotPasswordDialogBinding
+import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.model.Payment
 import com.cg.cropdeal.model.Users
-import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.model.UtilRepo
 import com.cg.cropdeal.viewmodel.SignInVM
 import com.facebook.AccessToken
@@ -38,7 +37,7 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var userType : String
     private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var progressDialog : AlertDialog
-    private var utilActivity = UtilActivity()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -126,7 +125,7 @@ class SignInActivity : AppCompatActivity() {
                         override fun onCancel() {
                         }
                         override fun onError(error: FacebookException?) {
-                            utilActivity.showSnackbar("${error?.message}",binding.facebookLoginBtn)
+                            Constants.showSnackbar("${error?.message}",binding.facebookLoginBtn)
                         }
 
                     })
@@ -186,7 +185,7 @@ class SignInActivity : AppCompatActivity() {
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: Exception) {
                 progressDialog.dismiss()
-                utilActivity.showSnackbar("$e - ${e.message}", binding.googleLoginBtn)
+                Constants.showSnackbar("$e - ${e.message}", binding.root)
             }
         }
     }
@@ -210,9 +209,9 @@ class SignInActivity : AppCompatActivity() {
                     }
                 } else {
                     // If sign in fails, display a message to the user.
-                    utilActivity.showSnackbar(
+                    Constants.showSnackbar(
                         "Authentication failed. ${task.exception?.message}",
-                            binding.facebookLoginBtn)
+                            binding.root)
                     updateUI(null)
                 }
             }
@@ -230,7 +229,7 @@ class SignInActivity : AppCompatActivity() {
             }
         }else{
             progressDialog.dismiss()
-            utilActivity.showSnackbar("Please Enter Data",binding.passwordLoginE)
+            Constants.showSnackbar("Please Enter Data",binding.root)
         }
     }
 

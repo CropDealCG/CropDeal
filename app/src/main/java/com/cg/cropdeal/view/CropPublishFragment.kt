@@ -10,13 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.SpinnerAdapter
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.Navigation
 import com.cg.cropdeal.databinding.PublishCropBinding
 import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.model.Crops
-import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.model.UtilRepo
 import com.cg.cropdeal.viewmodel.CropPublishVM
 import com.google.firebase.auth.FirebaseAuth
@@ -65,8 +63,10 @@ class CropPublishFragment : Fragment() {
             val cropRate = binding.rateET.editText?.text.toString()
             val address = binding.addressET.editText?.text.toString()
             val userId = firebaseAuth.currentUser?.uid
-            if(cropName.isEmpty() || cropDesc.isEmpty() || address.isEmpty() || binding.quantityET.editText?.text.toString().isEmpty() || binding.rateET.editText?.text.toString().isEmpty()){
-                UtilActivity().showSnackbar("Please Enter all the details",view)
+            if(cropName.isEmpty() || cropDesc.isEmpty() || address.isEmpty()
+                || binding.quantityET.editText?.text.toString().isEmpty()
+                || binding.rateET.editText?.text.toString().isEmpty()){
+                Constants.showSnackbar("Please Enter all the details",view)
             }else{
                 progressDialog.show()
 

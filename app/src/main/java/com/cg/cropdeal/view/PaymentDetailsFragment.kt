@@ -7,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.FragmentPaymentDetailsBinding
 import com.cg.cropdeal.model.Constants
-import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.PaymentDetailsVM
 
 private lateinit var binding:FragmentPaymentDetailsBinding
@@ -52,7 +50,7 @@ class PaymentDetailsFragment : Fragment() {
                     binding.addIFSCET.editText?.text.toString()
                 )
             }
-            UtilActivity().showSnackbar("Updated successfully!", binding.paymentDetailsLyt)
+            Constants.showSnackbar("Updated successfully!", binding.paymentDetailsLyt)
             Navigation.findNavController(view).popBackStack()
         }
     }
@@ -62,7 +60,7 @@ class PaymentDetailsFragment : Fragment() {
                 binding.addBankNameET.editText?.text.isNullOrEmpty() ||
                 binding.addIFSCET.editText?.text.isNullOrEmpty()
         ) {
-            UtilActivity().showSnackbar(
+            Constants.showSnackbar(
                 "Please enter all the details",
                 binding.paymentDetailsLyt
             )

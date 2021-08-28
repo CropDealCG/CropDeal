@@ -12,23 +12,24 @@ import com.cg.cropdeal.viewmodel.ChangePasswordVM
 private lateinit var binding: FragmentChangePasswordBinding
 
 class ChangePasswordFragment : Fragment() {
-    private lateinit var viewModel : ChangePasswordVM
+    private lateinit var viewModel: ChangePasswordVM
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentChangePasswordBinding.inflate(inflater,container,false)
+        binding = FragmentChangePasswordBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(ChangePasswordVM::class.java)
         binding.changePasswordBtn.setOnClickListener {
-            viewModel.changePassword(binding)
-            Navigation.findNavController(view)
-                .navigate(R.id.action_changePasswordFragment_to_nav_setting)
+            if(viewModel.validatePasswordDetails(binding)) {
+                viewModel.changePassword(binding)
+                Navigation.findNavController(view).popBackStack()
+            }
         }
-
     }
 }

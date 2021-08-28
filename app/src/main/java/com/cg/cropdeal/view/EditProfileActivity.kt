@@ -20,7 +20,6 @@ import com.bumptech.glide.Glide
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivityEditProfileBinding
 import com.cg.cropdeal.model.Constants
-import com.cg.cropdeal.model.UtilActivity
 import com.cg.cropdeal.viewmodel.EditProfileVM
 import com.google.firebase.auth.FirebaseAuth
 import java.io.IOException
@@ -100,7 +99,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
                 if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED){
 
-                        UtilActivity().showSnackbar(
+                        Constants.showSnackbar(
                             "Storage permission already granted",
                             binding.editProfileLyt
                         )
@@ -123,7 +122,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
                         updateUserProfileDetails()
                     }
 
-                UtilActivity().showSnackbar("Profile Updated!",binding.editProfileLyt)
+                Constants.showSnackbar("Profile Updated!",binding.editProfileLyt)
                 finish()
 
             }
@@ -138,7 +137,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
                 Constants.showImageChooser(this)
             }else{
-            UtilActivity().showSnackbar("Storage permission Denied",binding.editProfileLyt)
+            Constants.showSnackbar("Storage permission Denied",binding.editProfileLyt)
             }
         }
     }
@@ -154,7 +153,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
                         loadUserPicture(selectedImageFileUri!!,binding.profileImage)
                     } catch (e: IOException){
                         e.printStackTrace()
-                        UtilActivity().showSnackbar("Image selection failed",
+                        Constants.showSnackbar("Image selection failed",
                             binding.editProfileLyt)
                     }
                 }
@@ -180,7 +179,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
         viewModel.updateUserProfileDetails(username,dob)
 
 
-        UtilActivity().showSnackbar("Profile updated successfully",
+        Constants.showSnackbar("Profile updated successfully",
             binding.editProfileLyt)
 
         startActivity(Intent(this@EditProfileActivity, MainActivity::class.java))

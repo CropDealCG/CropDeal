@@ -83,10 +83,6 @@
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.cg.cropdeal.view.ChangePasswordFragment"
-        android:label="ChangePasswordFragment" >
-        <action
-            android:id="@+id/action_changePasswordFragment_to_nav_setting"
-            app:destination="@id/nav_setting" />
-    </fragment>
+        android:label="ChangePasswordFragment" />
 
 </navigation>

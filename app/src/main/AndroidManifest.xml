@@ -17,12 +17,8 @@
         <activity
             android:name=".view.NavigationActivity"
             android:exported="true" />
-        <activity
-            android:name=".model.UtilActivity"
-            android:exported="true" />
-        <activity
-            android:name=".view.ChangePasswordActivity"
-            android:exported="true" />
+
+
         <activity
             android:name=".view.EditProfileActivity"
             android:exported="true" />
