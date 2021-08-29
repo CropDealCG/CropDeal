@@ -33,6 +33,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.FirebaseMessagingService
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var signInVM : SignInVM
@@ -48,6 +50,7 @@ class SignInActivity : AppCompatActivity() {
         signInVM = ViewModelProvider(this).get(SignInVM::class.java)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         progressDialog = UtilRepo(application).loadingDialog(this)
         auth = FirebaseAuth.getInstance()   //initialize the FirebaseAuth instance

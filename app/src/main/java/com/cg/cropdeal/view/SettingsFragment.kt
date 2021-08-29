@@ -1,6 +1,5 @@
 package com.cg.cropdeal.view
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
@@ -23,26 +22,16 @@ import com.google.firebase.auth.FirebaseAuth
 
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 
-import androidx.core.graphics.drawable.RoundedBitmapDrawable
-
-import android.graphics.Bitmap
-import com.bumptech.glide.request.RequestOptions
-
-import com.bumptech.glide.request.target.BitmapImageViewTarget
 import android.graphics.BitmapFactory
 import androidx.core.content.edit
-import com.facebook.CallbackManager
 import com.facebook.login.LoginManager
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
 
 
 class SettingsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = SettingsFragment()
-    }
 
     private lateinit var viewModel: SettingsVM
+    private var userType = ""
     private var _binding : SettingsFragmentBinding? = null
 
 
@@ -53,13 +42,14 @@ class SettingsFragment : Fragment() {
     ): View? {
 //        return inflater.inflate(R.layout.settings_fragment, container, false)
         _binding = SettingsFragmentBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        userType = activity?.getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?.getString("userType","")!!
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if(userType=="farmer")  _binding?.subsciptionLayout?.visibility = View.GONE
         val profile_image_ref = activity?.getSharedPreferences(
             FirebaseAuth.getInstance().currentUser?.email,0)
         val uri = profile_image_ref?.getString("profile_image","")

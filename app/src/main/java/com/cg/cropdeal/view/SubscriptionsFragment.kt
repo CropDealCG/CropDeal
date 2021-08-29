@@ -50,8 +50,8 @@ fun ChipGroup.addChip(context: Context, label: String){
     }
 }
         val chipGrp = binding.chipGroup
-        for(crop in Constants.cropList) {
-            if(crop!="All") chipGrp.addChip(requireContext(), crop)
+        for(crop in Constants.cropListWithoutAll) {
+            chipGrp.addChip(requireContext(), crop)
         }
         binding.saveSubscriptionBtn.setOnClickListener {
 
@@ -60,7 +60,7 @@ fun ChipGroup.addChip(context: Context, label: String){
             topicPref?.edit()
                 ?.putString("topic",selectedTopic)
                 ?.apply()
-           Constants.showSnackbar(selectedTopic,binding.root)
+           Constants.showSnackbar("Details of $selectedTopic subscribed",binding.root)
         }
 
 
