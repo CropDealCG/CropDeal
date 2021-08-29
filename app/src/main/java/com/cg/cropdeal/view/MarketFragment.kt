@@ -2,6 +2,7 @@ package com.cg.cropdeal.view
 
 
 import android.app.Dialog
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
@@ -28,6 +29,7 @@ class MarketFragment : Fragment() {
     private lateinit var viewModel : MarketVM
     private lateinit var progressDialog : AlertDialog
     private var cropForFilter:String = "Potato" //default
+    private var userType = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +39,8 @@ class MarketFragment : Fragment() {
         setHasOptionsMenu(true)
         binding = FragmentMarketBinding.inflate(inflater,container,false)
         viewModel = ViewModelProvider(this).get(MarketVM::class.java)
+        userType = activity?.getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)
+             ?.getString("userType","")!!
         return binding.root
     }
 
@@ -46,8 +50,8 @@ class MarketFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
         progressDialog.show()
-
-
+        Log.d("Observable",userType)
+        if(userType=="dealer")  binding.addCropsFAB.visibility = View.GONE
         binding.addCropsFAB.setOnClickListener {
             viewModel.areBankDetailsAvailable()?.observe(viewLifecycleOwner,{
                 if(it!=null){
@@ -83,10 +87,9 @@ class MarketFragment : Fragment() {
     private fun loadCrops() {
         binding.marketRview.layoutManager = LinearLayoutManager(context)
         viewModel.getCropList()?.observe(viewLifecycleOwner,{list->
-            Log.d("Observable","First")
             if(list.isEmpty() || list!=null) {
                 viewModel.areBankDetailsAvailable()?.observe(viewLifecycleOwner,{bank->
-                    Log.d("Observable","Second")
+
                     if(bank!=null){
                         binding.marketRview.adapter = MarketAdapter(list,bank)
                         progressDialog.dismiss()
@@ -120,7 +123,7 @@ class MarketFragment : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Select any crop")
             .setItems(Constants.cropList.toTypedArray(),
-                DialogInterface.OnClickListener { dialog, which ->
+                DialogInterface.OnClickListener { _, which ->
                     cropForFilter = Constants.cropList[which]
                     Log.d("cropFilter",cropForFilter)
 

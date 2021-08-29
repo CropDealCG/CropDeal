@@ -43,14 +43,14 @@ class CropRepo(private var application: Application?) {
 
     //Checking if UUID against a crop is present or not
     private fun uuidIsAvailable(uuid : String) : String{
-        var list : List<Crops>?=null
+        var list : List<Crops>
         CoroutineScope(Dispatchers.Main).launch {
             val response = CoroutineScope(Dispatchers.Default).async {
                 cropDao.getCropByID(uuid)
             }
             list = response.await()
             //if the list is not empty means UUID exists, recall function
-            if(list?.isNotEmpty()!!)   uuidIsAvailable(randomUUID())
+            if(list.isNotEmpty())   uuidIsAvailable(randomUUID())
         }
         //else send the UUID
         return uuid

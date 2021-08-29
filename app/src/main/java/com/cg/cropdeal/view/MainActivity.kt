@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivityMainBinding
+import com.facebook.FacebookSdk
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -25,6 +27,8 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+        FacebookSdk.setApplicationId(getString(R.string.facebook_app_id))
+        FacebookSdk.sdkInitialize(this)
         startActivity(Intent(this,SignUpActivity::class.java))
         finish()
 

@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.*
 
 
-@Database(entities = [UsersIDRepo::class], version = 1)
+@Database(entities = [UsersIDRepo::class], version = 1, exportSchema = false)
 
 abstract class UserIdDatabase: RoomDatabase() {
     abstract fun userIdDao(): UserIdDAO

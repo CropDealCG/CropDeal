@@ -3,7 +3,7 @@ package com.cg.cropdeal.model
 import android.content.Context
 import androidx.room.*
 
-@Database(entities = [Crops::class],version = 1)
+@Database(entities = [Crops::class],version = 1, exportSchema = false)
 
 abstract class CropDatabase: RoomDatabase() {
     abstract  fun cropDao(): CropDAO

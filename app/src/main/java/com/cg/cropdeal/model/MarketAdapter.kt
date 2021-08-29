@@ -1,5 +1,7 @@
 package com.cg.cropdeal.model
 
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,14 +18,19 @@ class MarketAdapter(private val list:List<Crops>,private val areBankDetailsAvail
 
     private lateinit var binding: MarketPostDesignLayoutBinding
     private lateinit var fDatabase : FirebaseDatabase
+    private var userType = ""
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarketAdapter.ViewHolder {
         binding = MarketPostDesignLayoutBinding.inflate(LayoutInflater.from(parent.context))
         fDatabase = FirebaseDatabase.getInstance()
+        userType = parent.context.getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
+            ?.getString("userType","")!!
         return ViewHolder(binding.root)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val crop = list[position]
+        Log.d("Observable",userType)
+        if(userType=="farmer")  binding.buyBtn.visibility = View.INVISIBLE
         binding.cropNameTV.text = crop.cropName
         binding.addressTV.text = crop.cropLocation
         binding.cropTypeTV.text = crop.cropType

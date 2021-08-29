@@ -1,5 +1,7 @@
 package com.cg.cropdeal.view
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -28,11 +30,10 @@ import com.bumptech.glide.request.RequestOptions
 
 import com.bumptech.glide.request.target.BitmapImageViewTarget
 import android.graphics.BitmapFactory
-
-
-
-
-
+import androidx.core.content.edit
+import com.facebook.CallbackManager
+import com.facebook.login.LoginManager
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 
 
 class SettingsFragment : Fragment() {
@@ -131,6 +132,11 @@ class SettingsFragment : Fragment() {
             }
             logoutBinding.settingsLogoutButton.setOnClickListener{
                 FirebaseAuth.getInstance().signOut()
+                activity?.getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?.edit {
+                    clear()
+                    apply()
+                }
+                LoginManager.getInstance().logOut()
                 val intent = Intent(activity, SignInActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
@@ -140,10 +146,6 @@ class SettingsFragment : Fragment() {
 
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

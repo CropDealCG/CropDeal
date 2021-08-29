@@ -3,10 +3,14 @@ package com.cg.cropdeal.model
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.provider.MediaStore
 import android.view.View
 import android.webkit.MimeTypeMap
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import com.google.android.material.behavior.SwipeDismissBehavior
+import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 
 object Constants {
@@ -48,7 +52,14 @@ object Constants {
     }
     fun showSnackbar(message:String,view: View){
         val snackbar = Snackbar.make(view,message, Snackbar.LENGTH_LONG)
-        snackbar.duration
+        snackbar.duration = 4000
+        snackbar.animationMode = Snackbar.ANIMATION_MODE_FADE
+        snackbar.behavior = BaseTransientBottomBar.Behavior().apply { setSwipeDirection(SwipeDismissBehavior.SWIPE_DIRECTION_ANY) }
+        snackbar.setAction("Dismiss"){
+            snackbar.dismiss()
+        }
+
+        snackbar.setActionTextColor(Color.parseColor("#ffff2222"))
         snackbar.show()
     }
 

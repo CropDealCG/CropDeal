@@ -1,6 +1,7 @@
 package com.cg.cropdeal.view
 
 import android.app.Activity
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -53,6 +54,7 @@ class SignInActivity : AppCompatActivity() {
         FacebookSdk.sdkInitialize(this)
 //        AppEventsLogger.activateApp(application)
         binding.signInBtn.setOnClickListener {
+            progressDialog.show()
             signInWithEmailPassword()
         }
         binding.NewUserT.setOnClickListener {
@@ -162,12 +164,12 @@ class SignInActivity : AppCompatActivity() {
             dialog.show()
         }
 
-        signInVM.getUserLiveData()?.observe(this,{
-            if(it!=null){
-                progressDialog.dismiss()
-                updateUI(it)
-            }
-        })
+//        signInVM.getUserLiveData()?.observe(this,{
+//            if(it!=null){
+//                progressDialog.dismiss()
+//                updateUI(it)
+//            }
+//        })
         signInVM.isSignInFailed()?.observe(this,{
             if(it!=null && it==true){
                 progressDialog.dismiss()
@@ -198,7 +200,7 @@ class SignInActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     val facebookUser = auth.currentUser
                     if (task.result.additionalUserInfo?.isNewUser!!) {
-                        val user = Users(facebookUser?.displayName!!,facebookUser?.email!!
+                        val user = Users(facebookUser?.displayName!!,facebookUser.email!!
                             ,userType,"false","","", Payment()
                         )
                         firebaseDatabase.reference.child("users").child(task.result.user?.uid!!).setValue(user)
@@ -218,15 +220,23 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun signInWithEmailPassword() {
-        progressDialog.show()
         val email = binding.emailLoginE.editText?.text.toString()
         val password = binding.passwordLoginE.editText?.text.toString()
         if(email.isNotEmpty() && password.isNotEmpty()){
             signInVM.login(email,password)
-            if(auth.currentUser!=null){
-                startActivity(Intent(this,NavigationActivity::class.java))
-                finish()
-            }
+            signInVM.isSignInFailed()?.observe(this,{
+                progressDialog.dismiss()
+                if(it!=null){
+                    if(!it){
+                        updateUI(null)
+                    }
+                }
+            })
+//            if(auth.currentUser!=null){
+//                progressDialog.dismiss()
+//                startActivity(Intent(this,NavigationActivity::class.java))
+//                finish()
+//            }
         }else{
             progressDialog.dismiss()
             Constants.showSnackbar("Please Enter Data",binding.root)
@@ -241,8 +251,13 @@ class SignInActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     val googleUser = auth.currentUser
                     if (task.result.additionalUserInfo?.isNewUser!!) {
-                        val user = Users(googleUser?.displayName!!,googleUser?.email!!,userType,
+                        val user = Users(googleUser?.displayName!!,googleUser.email!!,userType,
                             "false","","",Payment())
+                        val sharedPref = getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
+                        with(sharedPref!!.edit()){
+                            putString("userType",userType)
+                            apply()
+                        }
                         firebaseDatabase.reference.child("users").child(task.result.user?.uid!!).setValue(user)
                         updateUI(googleUser)
                     } else {

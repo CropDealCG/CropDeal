@@ -28,9 +28,9 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
 
             val newPassword = binding.editTextNewPassword.editText?.text.toString().trim{it<= ' '}
 
-            user?.reauthenticate(credential)?.addOnSuccessListener {
+            user.reauthenticate(credential).addOnSuccessListener {
 
-                user!!.updatePassword(newPassword)
+                user.updatePassword(newPassword)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Constants.showSnackbar("User Password Updated",

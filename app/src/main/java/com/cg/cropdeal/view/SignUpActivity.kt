@@ -1,16 +1,17 @@
 package com.cg.cropdeal.view
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.databinding.ActivitySignUpBinding
 import com.cg.cropdeal.model.*
 import com.cg.cropdeal.viewmodel.SignUpVM
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -61,7 +62,31 @@ class SignUpActivity : AppCompatActivity() {
 
         signUpVM.getUserData()?.observe(this,{
             if(it!=null){
-                updateUI()
+                if(getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE).getString("userType","").isNullOrEmpty())
+                {
+                    progressDialog.show()
+                    reference.child(it.uid).addListenerForSingleValueEvent(object : ValueEventListener{
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if(snapshot.exists()){
+                                val userType = snapshot.child("type").value.toString()
+                                val sharedPref = getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?:return
+                                with(sharedPref.edit()){
+                                    putString("userType",userType)
+                                    apply()
+                                }
+                                progressDialog.dismiss()
+                                updateUI()
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                        }
+
+                    })
+                }
+                else{
+                    updateUI()
+                }
             }
         })
         signUpVM.isSignInFailed()?.observe(this,{

@@ -1,6 +1,7 @@
 package com.cg.cropdeal.model
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 
@@ -8,9 +9,14 @@ import com.google.firebase.auth.FirebaseAuth
 
 import com.google.firebase.auth.FirebaseUser
 import android.widget.Toast
+import androidx.core.content.edit
 import com.cg.cropdeal.R
 import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -72,8 +78,24 @@ class AuthRepo(private var application: Application?) {
         firebaseAuth!!.signInWithEmailAndPassword(email!!, password!!)
             .addOnCompleteListener{ task ->
                     if (task.isSuccessful) {
-                        signInFailed!!.postValue(false)
-                        userLiveData!!.postValue(firebaseAuth!!.currentUser)
+                        FirebaseDatabase.getInstance().reference.child(Constants.USERS)
+                            .child(task.result.user?.uid!!)
+                            .addListenerForSingleValueEvent(object : ValueEventListener{
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    application!!.getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
+                                        .edit {
+                                            putString("userType",snapshot.child("type").value.toString())
+                                            apply()
+                                        }
+                                    signInFailed!!.postValue(false)
+                                    userLiveData!!.postValue(firebaseAuth!!.currentUser)
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+                                }
+
+                            })
+
                     }
                     else {
                         signInFailed!!.postValue(true)
