@@ -55,12 +55,12 @@ fun ChipGroup.addChip(context: Context, label: String){
         }
         binding.saveSubscriptionBtn.setOnClickListener {
 
-            var topicPref = activity?.getSharedPreferences(Constants.TOPIC_PREF,0)
+            val topicPref = activity?.getSharedPreferences(Constants.TOPIC_PREF,0)
             val selectedTopic = chipGrp.findViewById<Chip>(chipGrp.checkedChipId).text.toString()
             topicPref?.edit()
                 ?.putString("topic",selectedTopic)
                 ?.apply()
-           Constants.showSnackbar("$selectedTopic",binding.root)
+           Constants.showSnackbar(selectedTopic,binding.root)
         }
 
 

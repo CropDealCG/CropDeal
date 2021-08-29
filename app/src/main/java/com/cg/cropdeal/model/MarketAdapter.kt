@@ -11,7 +11,8 @@ import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.MarketPostDesignLayoutBinding
 import com.google.firebase.database.FirebaseDatabase
 
-class MarketAdapter(private val list:List<Crops>,private val areBankDetailsAvailable:Boolean) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MarketAdapter(private val list:List<Crops>,private val areBankDetailsAvailable:Boolean)
+    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var binding: MarketPostDesignLayoutBinding
     private lateinit var fDatabase : FirebaseDatabase
@@ -47,7 +48,10 @@ class MarketAdapter(private val list:List<Crops>,private val areBankDetailsAvail
         binding.buyBtn.setOnClickListener {
             if(areBankDetailsAvailable)
             {
-                val bundle = bundleOf("farmerId" to crop.userId,"cropPrice" to (crop.cropQuantity*crop.cropPrice).toString(),"cropId" to crop.cropId,"cropQuantity" to crop.cropQuantity,"cropRate" to crop.cropPrice,"cropName" to crop.cropName)
+                val bundle = bundleOf("farmerId" to crop.userId,
+                    "cropPrice" to (crop.cropQuantity*crop.cropPrice).toString(),
+                    "cropId" to crop.cropId,"cropQuantity" to crop.cropQuantity,
+                    "cropRate" to crop.cropPrice,"cropName" to crop.cropName)
                 Navigation.findNavController(it).navigate(R.id.action_nav_market_to_crop_buy,bundle)
             }
             else{

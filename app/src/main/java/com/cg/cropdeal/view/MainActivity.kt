@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         })
         startActivity(Intent(this,SignUpActivity::class.java))
         finish()
+
     }
 
 }

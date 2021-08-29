@@ -67,5 +67,15 @@ class MarketVM(application: Application) : AndroidViewModel(application) {
     fun getCropList():MutableLiveData<List<Crops>>?{
         return cropsList
     }
+    fun getFilteredList(cropForFilter:String):List<Crops>{
+        var filteredList : MutableList<Crops> = mutableListOf()
+        for(crop in currentCropList!!){
+                if(crop.cropName==cropForFilter){
+                    filteredList.add(crop)
+                }
+        }
+        return filteredList
+    }
+
     fun areBankDetailsAvailable() : MutableLiveData<Boolean>? = bankDetailsAvailable
 }
