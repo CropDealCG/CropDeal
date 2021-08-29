@@ -1,16 +1,13 @@
 package com.cg.cropdeal.view
 
 
-import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AlertDialog
-import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -50,7 +47,6 @@ class MarketFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
         progressDialog.show()
-        Log.d("Observable",userType)
         if(userType=="dealer")  binding.addCropsFAB.visibility = View.GONE
         binding.addCropsFAB.setOnClickListener {
             viewModel.areBankDetailsAvailable()?.observe(viewLifecycleOwner,{
@@ -81,9 +77,6 @@ class MarketFragment : Fragment() {
 
 
     }
-
-
-
     private fun loadCrops() {
         binding.marketRview.layoutManager = LinearLayoutManager(context)
         viewModel.getCropList()?.observe(viewLifecycleOwner,{list->

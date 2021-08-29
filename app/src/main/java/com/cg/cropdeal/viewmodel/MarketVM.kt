@@ -68,6 +68,7 @@ class MarketVM(application: Application) : AndroidViewModel(application) {
         return cropsList
     }
     fun getFilteredList(cropForFilter:String):List<Crops>{
+        if(cropForFilter=="All")    return currentCropList!!
         var filteredList : MutableList<Crops> = mutableListOf()
         for(crop in currentCropList!!){
                 if(crop.cropName==cropForFilter){

@@ -63,7 +63,7 @@ object Constants {
         snackbar.show()
     }
 
-    val cropList = listOf<String>("Tomato","Potato","Wheat","Rice","Mango","Barley"
+    val cropList = listOf<String>("All","Tomato","Potato","Wheat","Rice","Mango","Barley"
     ,"Strawberry","Spinach","Orange","Mustard","Pumpkin","Corn")
 
 }
