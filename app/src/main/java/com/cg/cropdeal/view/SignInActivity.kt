@@ -29,7 +29,10 @@ import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var signInVM : SignInVM
@@ -62,6 +65,7 @@ class SignInActivity : AppCompatActivity() {
             finish()
         }
         binding.googleLoginBtn.setOnClickListener {
+
             val dialog = AlertDialog.Builder(this)
             dialog.setTitle("Are you a?")
             var dialogBuilder = dialog.create()
@@ -87,7 +91,7 @@ class SignInActivity : AppCompatActivity() {
             dialogBuilder.setCancelable(false)
             dialogBuilder.show()
             dialogBuilder.setOnDismissListener {
-                if(userType.isNotEmpty())googleResultLauncher.launch(signInVM.getGoogleSignInClient()?.signInIntent!!)
+                if(userType.isNotEmpty())   googleResultLauncher.launch(signInVM.getGoogleSignInClient()?.signInIntent!!)
             }
         }
         binding.facebookLoginBtn.setPermissions("email", "public_profile")
@@ -261,10 +265,30 @@ class SignInActivity : AppCompatActivity() {
                         firebaseDatabase.reference.child("users").child(task.result.user?.uid!!).setValue(user)
                         updateUI(googleUser)
                     } else {
-                        // If sign in fails, display a message to the user.
-                        updateUI(googleUser)
+                        firebaseDatabase.reference.child("users").child(task.result.user?.uid!!)
+                            .addListenerForSingleValueEvent(object : ValueEventListener{
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    val dbUserType = snapshot.child("type").value.toString()
+                                    val sharedPref = getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
+                                    with(sharedPref!!.edit()){
+                                        putString("userType",dbUserType)
+                                        apply()
+                                    }
+                                    if(userType!=dbUserType){
+                                        Toast.makeText(applicationContext,"You are already registered as an $dbUserType",Toast.LENGTH_LONG).show()
+                                    }
+                                    updateUI(googleUser)
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+                                }
+
+                            })
+
+
+
                     }
-                }
+                }// If sign in fails, display a message to the user.
             }
     }
 

@@ -69,13 +69,19 @@ class SignUpActivity : AppCompatActivity() {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             if(snapshot.exists()){
                                 val userType = snapshot.child("type").value.toString()
-                                val sharedPref = getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?:return
-                                with(sharedPref.edit()){
-                                    putString("userType",userType)
-                                    apply()
+                                if(userType.isNullOrEmpty()){
+                                    progressDialog.dismiss()
                                 }
-                                progressDialog.dismiss()
-                                updateUI()
+                                else{
+                                    val sharedPref = getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?:return
+                                    with(sharedPref.edit()){
+                                        putString("userType",userType)
+                                        apply()
+                                    }
+                                    progressDialog.dismiss()
+                                    updateUI()
+                                }
+
                             }
                         }
 

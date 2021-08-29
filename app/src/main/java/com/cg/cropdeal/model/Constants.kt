@@ -65,5 +65,7 @@ object Constants {
 
     val cropList = listOf<String>("All","Tomato","Potato","Wheat","Rice","Mango","Barley"
     ,"Strawberry","Spinach","Orange","Mustard","Pumpkin","Corn")
+    val cropListWithoutAll = listOf<String>("Tomato","Potato","Wheat","Rice","Mango","Barley"
+        ,"Strawberry","Spinach","Orange","Mustard","Pumpkin","Corn")
 
 }

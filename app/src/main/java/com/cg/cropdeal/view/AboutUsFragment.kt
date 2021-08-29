@@ -34,7 +34,7 @@ class AboutUsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity?.actionBar?.setTitle("About Us")
         binding.rateUSBtn.setOnClickListener {
-            val packageName = "Crop Deals"
+            val packageName = "com.cg.cropdeal"
             val uri: Uri = Uri.parse("market://details?id=$packageName")
             val goToMarket = Intent(Intent.ACTION_VIEW, uri)
 
