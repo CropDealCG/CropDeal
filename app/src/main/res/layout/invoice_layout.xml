@@ -260,7 +260,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/divider12" />
 
             <TextView
-                android:id="@+id/textView53"
+                android:id="@+id/report_Management_TV"
                 style="@style/font_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -276,7 +276,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="35dp"
-                app:layout_constraintStart_toEndOf="@+id/textView53"
+                app:layout_constraintStart_toEndOf="@+id/report_Management_TV"
                 app:layout_constraintTop_toBottomOf="@+id/quantity_invoice_TV"
                 app:srcCompat="@drawable/paid" />
         </androidx.constraintlayout.widget.ConstraintLayout>
