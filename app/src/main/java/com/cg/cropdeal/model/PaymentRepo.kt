@@ -6,11 +6,12 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
-private var firebaseAuth: FirebaseAuth? = null
-private var firebaseDB : FirebaseDatabase?=null
-private var paymentLiveData:MutableLiveData<Payment>? = null
-private var isPaymentDetailsAdded : MutableLiveData<Boolean>? = null
+
 class PaymentRepo(private var application: Application) {
+    private var firebaseAuth: FirebaseAuth? = null
+    private var firebaseDB : FirebaseDatabase?=null
+    private var paymentLiveData:MutableLiveData<Payment>? = null
+    private var isPaymentDetailsAdded : MutableLiveData<Boolean>? = null
     init {
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseDB = FirebaseDatabase.getInstance()

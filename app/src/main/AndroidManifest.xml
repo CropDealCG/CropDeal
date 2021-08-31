@@ -3,7 +3,7 @@
     package="com.cg.cropdeal">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -15,14 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CropDeal">
         <activity
+            android:name=".view.AdminActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.NavigationActivity"
             android:exported="true" />
-
-
         <activity
             android:name=".view.EditProfileActivity"
             android:exported="true" />
-
         <activity
             android:name=".view.SignUpActivity"
             android:exported="true" />
@@ -41,6 +41,13 @@
             android:name=".view.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.App.Starting">
+            <meta-data
+                android:name="com.facebook.sdk.ApplicationId"
+                android:value="@string/facebook_app_id" />
+            <meta-data
+                android:name="com.facebook.sdk.ClientToken"
+                android:value="@string/facebook_client_token" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

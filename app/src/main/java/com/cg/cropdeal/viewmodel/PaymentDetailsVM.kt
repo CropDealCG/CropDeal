@@ -10,8 +10,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 
-private var settingsRepo:SettingsRepo? = null
 class PaymentDetailsVM(application: Application):AndroidViewModel(application) {
+    private var settingsRepo:SettingsRepo? = null
     private val user = FirebaseAuth.getInstance().currentUser
     private val dbRef = FirebaseDatabase.getInstance()
         .getReference(Constants.USERS).child(user?.uid!!).child(Constants.PAYMENT)

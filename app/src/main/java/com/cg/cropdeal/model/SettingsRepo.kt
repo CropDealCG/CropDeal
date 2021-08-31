@@ -4,11 +4,9 @@ package com.cg.cropdeal.model
 import android.app.Activity
 import android.app.Application
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 
 import com.google.firebase.auth.FirebaseAuth
@@ -24,17 +22,12 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.DatabaseReference
 
 import androidx.lifecycle.LiveData
-import java.util.*
 import kotlin.collections.HashMap
 
-
-private var firebaseAuth: FirebaseAuth? = null
-private var userLiveData: MutableLiveData<FirebaseUser>? = null
-private var firebaseDB:FirebaseDatabase?= null
-
 class SettingsRepo(private var application: Application?) {
-
-
+    private var firebaseAuth: FirebaseAuth? = null
+    private var userLiveData: MutableLiveData<FirebaseUser>? = null
+    private var firebaseDB:FirebaseDatabase?= null
     private var userProfileImageURL: String = ""
     init {
         firebaseAuth = FirebaseAuth.getInstance()

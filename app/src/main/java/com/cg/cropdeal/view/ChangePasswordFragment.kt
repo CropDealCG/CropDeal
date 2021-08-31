@@ -9,10 +9,11 @@ import androidx.navigation.Navigation
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.FragmentChangePasswordBinding
 import com.cg.cropdeal.viewmodel.ChangePasswordVM
-private lateinit var binding: FragmentChangePasswordBinding
+
 
 class ChangePasswordFragment : Fragment() {
     private lateinit var viewModel: ChangePasswordVM
+    private lateinit var binding: FragmentChangePasswordBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
