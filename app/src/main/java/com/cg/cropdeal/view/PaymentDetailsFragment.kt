@@ -11,10 +11,10 @@ import com.cg.cropdeal.databinding.FragmentPaymentDetailsBinding
 import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.viewmodel.PaymentDetailsVM
 
-private lateinit var binding:FragmentPaymentDetailsBinding
-private lateinit var viewModel : PaymentDetailsVM
-class PaymentDetailsFragment : Fragment() {
 
+class PaymentDetailsFragment : Fragment() {
+    private lateinit var binding:FragmentPaymentDetailsBinding
+    private lateinit var viewModel : PaymentDetailsVM
 
 
     override fun onCreateView(
