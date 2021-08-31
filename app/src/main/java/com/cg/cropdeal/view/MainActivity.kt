@@ -27,20 +27,24 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         val splashScreen =  installSplashScreen()
         setContentView(binding.root)
 
-
+        //Crop Subscription Notification
         val sharedPref = getSharedPreferences(Constants.TOPIC_PREF,Context.MODE_PRIVATE)
         sharedPref.registerOnSharedPreferenceChangeListener(this)
+        //take single topic
         subscribedTopic = sharedPref.getString("topic","")!!
+        //ChildEventListener to be notified about new child data(Crops)
         if(!subscribedTopic.isNullOrEmpty()){
             FirebaseDatabase.getInstance().reference.child("crops").addChildEventListener(object : ChildEventListener{
                 override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                     if(snapshot.exists()){
+                        //if new data is there, create a notification
                         val nManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
                         val builder: Notification.Builder = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {//checks version
                             val channel = NotificationChannel("Subscriptions", "Work Done", NotificationManager.IMPORTANCE_DEFAULT)
                             nManager.createNotificationChannel(channel)
                             Notification.Builder(applicationContext, "Subscriptions")
                         } else  Notification.Builder(applicationContext)
+                        //Notification bar configuration(look)
                         builder.setSmallIcon(R.drawable.logo_without_text)
                         builder.setContentTitle("$subscribedTopic is available!")
                         builder.setContentText("Buy NOW")
