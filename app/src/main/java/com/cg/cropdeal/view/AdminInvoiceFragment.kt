@@ -2,10 +2,8 @@ package com.cg.cropdeal.view
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -22,10 +20,12 @@ class AdminInvoiceFragment : Fragment() {
     private lateinit var viewModel:AdminReportVM
     private lateinit var progressDialog : AlertDialog
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         // Inflate the layout for this fragment
         binding = FragmentAdminInvoiceBinding.inflate(inflater,container,false)
         return binding.root
@@ -49,8 +49,38 @@ class AdminInvoiceFragment : Fragment() {
         })
 
     }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.invoice_filter_menu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 
-        companion object{
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.filter_by_date-> {
+                filterByDate()
+                true
+            }
+            R.id.filter_by_crop ->{
+                filterByCrop()
+                true
+            }
+            else ->
+                return super.onOptionsItemSelected(item)
+
+
+        }
+
+    }
+
+    private fun filterByCrop(){
+
+    }
+
+    private fun filterByDate() {
+        TODO("Not yet implemented")
+    }
+
+    companion object{
 
         }
 }
