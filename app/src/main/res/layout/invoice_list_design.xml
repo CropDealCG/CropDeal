@@ -21,7 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:background="@color/darkGrey">
+            android:background="#262440 ">
 
             <TextView
                 android:id="@+id/textView32"
@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="Crop Name : "
+                android:textColor="@color/White"
                 app:layout_constraintBottom_toTopOf="@+id/textView34"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -41,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="Date : "
+                android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView32" />
@@ -52,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="120dp"
                 android:text="Total :"
+                android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/total_invoiceList_TV"
                 app:layout_constraintStart_toEndOf="@+id/cropName_InvoiceList_TV"
@@ -64,6 +67,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
                 android:text="name here"
+                android:textColor="@color/White"
                 app:layout_constraintBottom_toTopOf="@+id/date_invoiceList_TV"
                 app:layout_constraintStart_toEndOf="@+id/textView32"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -77,6 +81,7 @@
                 android:layout_marginEnd="140dp"
                 android:text="date here"
                 android:textAlignment="textEnd"
+                android:textColor="@color/White"
                 app:layout_constraintEnd_toStartOf="@+id/textView42"
                 app:layout_constraintStart_toEndOf="@+id/textView34"
                 app:layout_constraintTop_toBottomOf="@+id/textView32" />
@@ -89,6 +94,7 @@
                 android:layout_marginEnd="19dp"
                 android:layout_marginBottom="28dp"
                 android:text="Total Here"
+                android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

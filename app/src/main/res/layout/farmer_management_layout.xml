@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="5dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -18,7 +19,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp">
+            android:layout_height="75dp"
+            android:background="#262440 ">
 
             <TextView
                 android:id="@+id/textView46"
@@ -27,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="Farmer UID : "
+                android:textColor="@color/White"
                 app:layout_constraintBottom_toTopOf="@+id/textView50"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -38,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="Farmer Name : "
+                android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView46" />
@@ -48,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:text="Inactive"
+                android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView51"
@@ -59,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:text="UID Here"
                 android:textAlignment="textStart"
+                android:textColor="@color/White"
                 app:layout_constraintBottom_toTopOf="@+id/textView50"
                 app:layout_constraintStart_toEndOf="@+id/textView46"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -68,6 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name here"
+                android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView50"
                 app:layout_constraintTop_toBottomOf="@+id/farmer_UID_TV" />
@@ -79,6 +86,7 @@
                 android:layout_marginEnd="16dp"
                 android:drawableStart="@android:drawable/btn_star_big_on"
                 android:text="Rating"
+                android:textColor="@color/White"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/farmer_toggle"
                 app:layout_constraintEnd_toEndOf="parent"
