@@ -26,5 +26,14 @@
         <action
             android:id="@+id/action_adminHomeFragment_to_adminCropsReportFragment"
             app:destination="@id/adminCropsReportFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_adminDealerFragment"
+            app:destination="@id/adminDealerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminDealerFragment"
+        android:name="com.cg.cropdeal.view.AdminDealerFragment"
+        android:label="AdminDealerFragment"
+        tools:layout="@layout/fragment_dealer_management">
     </fragment>
 </navigation>

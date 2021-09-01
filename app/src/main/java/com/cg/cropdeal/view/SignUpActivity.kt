@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
@@ -137,7 +136,7 @@ class SignUpActivity : AppCompatActivity() {
         val cal  = Calendar.getInstance()
         val hour = cal.get(Calendar.HOUR_OF_DAY)
         val min = cal.get(Calendar.MINUTE)
-        binding.selectedTimeTV.setText("$hour:$min")
+        binding.selectedTimeTV.text = "$hour:$min"
 
         binding.userTypeRG.setOnCheckedChangeListener { _, i ->
             when(i){

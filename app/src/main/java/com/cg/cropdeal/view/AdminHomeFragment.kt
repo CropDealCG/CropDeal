@@ -54,6 +54,10 @@ class AdminHomeFragment : Fragment() {
             popup.show()
         }
 
+        binding.dealerManagementTV.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_adminHomeFragment_to_adminDealerFragment)
+        }
+
         binding.adminLogoutTV.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             startActivity(Intent(activity,SignInActivity::class.java))
