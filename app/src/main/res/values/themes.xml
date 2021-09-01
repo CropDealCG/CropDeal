@@ -52,7 +52,7 @@
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:backgroundTint">@color/red</item>
+        <item name="android:backgroundTint">#B22222</item>
     </style>
 
     <style name="font_style">
