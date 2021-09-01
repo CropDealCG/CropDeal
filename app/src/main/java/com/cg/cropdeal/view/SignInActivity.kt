@@ -206,7 +206,7 @@ class SignInActivity : AppCompatActivity() {
                             val facebookUser = auth.currentUser
                             if (task.result.additionalUserInfo?.isNewUser!!) {
                                 val user = Users(facebookUser?.displayName!!,facebookUser.email!!
-                                    ,userType,"false","","", Payment(),true
+                                    ,userType,"false","","", Payment(),true,0.0,0,1
                                 )
                                 val sharedPref = getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
                                 with(sharedPref!!.edit()){
@@ -267,7 +267,7 @@ class SignInActivity : AppCompatActivity() {
                     val googleUser = auth.currentUser
                     if (task.result.additionalUserInfo?.isNewUser!!) {
                         val user = Users(googleUser?.displayName!!,googleUser.email!!,userType,
-                            "false","","",Payment(),true)
+                            "false","","",Payment(),true,0.0,0,1)
                         val sharedPref = getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
                         with(sharedPref!!.edit()){
                             putString("userType",userType)
