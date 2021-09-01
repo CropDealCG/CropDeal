@@ -13,6 +13,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivityMainBinding
 import com.cg.cropdeal.model.Constants
@@ -27,11 +29,22 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         val splashScreen =  installSplashScreen()
         setContentView(binding.root)
 
+        val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
+        val masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
+
+        val sharedPreferences = EncryptedSharedPreferences.create(
+            "subscriptions",
+            masterKeyAlias,
+            this,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
+
         //Crop Subscription Notification
-        val sharedPref = getSharedPreferences(Constants.TOPIC_PREF,Context.MODE_PRIVATE)
-        sharedPref.registerOnSharedPreferenceChangeListener(this)
+
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this)
         //take single topic
-        subscribedTopic = sharedPref.getString("topic","")!!
+        subscribedTopic = sharedPreferences.getString("topic","")!!
         //ChildEventListener to be notified about new child data(Crops)
         if(!subscribedTopic.isNullOrEmpty()){
             FirebaseDatabase.getInstance().reference.child("crops").addChildEventListener(object : ChildEventListener{
