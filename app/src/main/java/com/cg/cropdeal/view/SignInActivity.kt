@@ -168,7 +168,11 @@ class SignInActivity : AppCompatActivity() {
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 if(snapshot.exists()){
                                     if(snapshot.child("active").value.toString()=="true"){
-                                        updateUI(null)
+                                        if(snapshot.child("type").value.toString()=="admin")    {
+                                            startActivity(Intent(this@SignInActivity,AdminActivity::class.java))
+                                            finish()
+                                        }
+                                        else    updateUI(null)
                                     }
                                     else    {
                                         Constants.showSnackbar("Your account has been disabled",binding.root)

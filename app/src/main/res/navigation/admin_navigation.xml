@@ -18,7 +18,8 @@
     <fragment
         android:id="@+id/adminHomeFragment"
         android:name="com.cg.cropdeal.view.AdminHomeFragment"
-        android:label="AdminHomeFragment" >
+        android:label="AdminHomeFragment"
+        tools:layout="@layout/fragment_admin_home">
         <action
             android:id="@+id/action_adminHomeFragment_to_adminInvoiceFragment"
             app:destination="@id/adminInvoiceFragment" />

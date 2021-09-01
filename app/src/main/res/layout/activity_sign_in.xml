@@ -276,6 +276,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="46dp"
         android:text="Admin"
+        android:visibility="gone"
         app:layout_constraintStart_toEndOf="@+id/forgotPasswordT"
         app:layout_constraintTop_toTopOf="@+id/forgotPasswordT" />
 

@@ -76,6 +76,16 @@ class SignUpActivity : AppCompatActivity() {
                                             if(userType.isNullOrEmpty()){
                                                 progressDialog.dismiss()
                                             }
+                                            else if (userType=="admin"){
+                                                val sharedPref = getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?:return
+                                                with(sharedPref.edit()){
+                                                    putString("userType",userType)
+                                                    apply()
+                                                }
+                                                progressDialog.dismiss()
+                                                startActivity(Intent(this@SignUpActivity,AdminActivity::class.java))
+                                                finish()
+                                            }
                                             else{
                                                 val sharedPref = getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?:return
                                                 with(sharedPref.edit()){
@@ -95,7 +105,12 @@ class SignUpActivity : AppCompatActivity() {
                                 })
                             }
                             else{
-                                updateUI()
+                                val sharedPref = getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?:return
+                                if(sharedPref.getString("userType","")=="admin"){
+                                    startActivity(Intent(this@SignUpActivity,AdminActivity::class.java))
+                                    finish()
+                                }
+                                else    updateUI()
                             }
                         }
                         else    {
