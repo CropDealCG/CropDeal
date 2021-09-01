@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.core.view.children
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 
 import com.cg.cropdeal.databinding.FragmentSubscriptionsBinding
 import com.cg.cropdeal.model.Constants
@@ -32,7 +34,19 @@ class SubscriptionsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
+
+        val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
+        val masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
+
+        val sharedPreferences = EncryptedSharedPreferences.create(
+            "subscriptions",
+            masterKeyAlias,
+            view.context,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
 
         viewModel = ViewModelProvider(this).get(EditProfileVM::class.java)
 
@@ -55,9 +69,8 @@ fun ChipGroup.addChip(context: Context, label: String){
         }
         binding.saveSubscriptionBtn.setOnClickListener {
 
-            val topicPref = activity?.getSharedPreferences(Constants.TOPIC_PREF,0)
             val selectedTopic = chipGrp.findViewById<Chip>(chipGrp.checkedChipId).text.toString()
-            topicPref?.edit()
+            sharedPreferences?.edit()
                 ?.putString("topic",selectedTopic)
                 ?.apply()
            Constants.showSnackbar("Details of $selectedTopic subscribed",binding.root)
