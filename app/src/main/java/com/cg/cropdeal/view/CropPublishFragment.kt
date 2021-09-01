@@ -44,9 +44,12 @@ class CropPublishFragment : Fragment() {
 
 
         viewModel = ViewModelProvider(this).get(CropPublishVM::class.java)
-        val spinnerList = Constants.cropListWithoutAll
-        val spinnerAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_spinner_dropdown_item,spinnerList) as SpinnerAdapter
-        binding.cropname.adapter = spinnerAdapter
+        Constants.cropsList.observe(viewLifecycleOwner,{
+            val listOfCrops : MutableList<String> = mutableListOf()
+            for(crop in it) if(crop!="All")   listOfCrops.add(crop)
+            val spinnerAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_spinner_dropdown_item,listOfCrops) as SpinnerAdapter
+            binding.cropname.adapter = spinnerAdapter
+        })
         var cropType = "Fruit"
         binding.radioGroup.setOnCheckedChangeListener { _, i ->
             when(i){

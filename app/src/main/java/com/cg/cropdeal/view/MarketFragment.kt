@@ -115,13 +115,14 @@ class MarketFragment : Fragment() {
 
     private fun filterCrops(): Boolean {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Select any crop")
-            .setItems(Constants.cropList.toTypedArray(),
-                DialogInterface.OnClickListener { _, which ->
-                    cropForFilter = Constants.cropList[which]
-                    Log.d("cropFilter",cropForFilter)
+        Constants.cropsList.observe(viewLifecycleOwner,{
+            builder.setTitle("Select any crop")
+                .setItems(it.toTypedArray(),
+                    DialogInterface.OnClickListener { _, which ->
+                        cropForFilter = it[which]
+                        Log.d("cropFilter",cropForFilter)
 
-                    val list = viewModel.getFilteredList(cropForFilter)
+                        val list = viewModel.getFilteredList(cropForFilter)
 
                         viewModel.areBankDetailsAvailable()?.observe(viewLifecycleOwner,{bank->
                             Log.d("Observable","Second")
@@ -132,7 +133,9 @@ class MarketFragment : Fragment() {
                         })
 
 
-                })
+                    })
+        })
+
         builder.create().show()
 
 

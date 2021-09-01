@@ -68,20 +68,23 @@ class AdminCropsReportFragment : Fragment() {
 
     private fun filterCrops(): Boolean {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Select any crop")
-            .setItems(
-                Constants.cropList.toTypedArray(),
-                DialogInterface.OnClickListener { _, which ->
-                    cropForFilter = Constants.cropList[which]
-                    Log.d("cropFilter", cropForFilter)
+        Constants.cropsList.observe(viewLifecycleOwner,{
+            builder.setTitle("Select any crop")
+                .setItems(
+                    it.toTypedArray(),
+                    DialogInterface.OnClickListener { _, which ->
+                        cropForFilter = it.get(which)
+                        Log.d("cropFilter", cropForFilter)
 
-                    val list = viewModel.getFilteredCropList(cropForFilter)
+                        val list = viewModel.getFilteredCropList(cropForFilter)
 
-                    binding.cropsRview.adapter = CropsReportAdapter(list)
-                    //progressDialog.dismiss()
+                        binding.cropsRview.adapter = CropsReportAdapter(list)
+                        //progressDialog.dismiss()
 
 
-                })
+                    })
+        })
+
         builder.create().show()
 
 

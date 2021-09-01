@@ -66,9 +66,13 @@ fun ChipGroup.addChip(context: Context, label: String){
     }
 }
         val chipGrp = binding.chipGroup
-        for(crop in Constants.cropListWithoutAll) {
-            chipGrp.addChip(requireContext(), crop)
-        }
+        Constants.cropsList.observe(viewLifecycleOwner,{
+            for(crop in it) {
+                if(crop!="All")
+                    chipGrp.addChip(requireContext(), crop)
+            }
+        })
+
         val selectedSet = mutableSetOf<String>()
 
         binding.saveSubscriptionBtn.setOnClickListener {

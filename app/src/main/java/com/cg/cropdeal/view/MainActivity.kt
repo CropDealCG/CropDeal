@@ -23,6 +23,7 @@ import com.google.firebase.database.*
 
 class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
     private lateinit var subscribedTopic : MutableSet<String>
+    private var cropsList : MutableList<String> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -92,19 +93,29 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
             })
         }
-        FirebaseDatabase.getInstance().reference.child("crops").addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
 
+        FacebookSdk.setApplicationId(getString(R.string.facebook_app_id))
+        FacebookSdk.sdkInitialize(this)
+
+        addCrops()
+        startActivity(Intent(this,SignUpActivity::class.java))
+        finish()
+    }
+
+    private fun addCrops() {
+        FirebaseDatabase.getInstance().reference.child("cropList").child("-MiVmI45YZTkIdxU1UB6").addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                cropsList.clear()
+                for(child in snapshot.children){
+                    cropsList.add(child.value.toString())
+                }
+                Constants.cropsList.postValue(cropsList)
             }
 
             override fun onCancelled(error: DatabaseError) {
             }
 
         })
-        FacebookSdk.setApplicationId(getString(R.string.facebook_app_id))
-        FacebookSdk.sdkInitialize(this)
-        startActivity(Intent(this,SignUpActivity::class.java))
-        finish()
     }
 
     override fun onSharedPreferenceChanged(p0: SharedPreferences?, p1: String?) {

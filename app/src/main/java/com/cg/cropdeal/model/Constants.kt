@@ -9,6 +9,8 @@ import android.provider.MediaStore
 import android.view.View
 import android.webkit.MimeTypeMap
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
 import com.google.android.material.behavior.SwipeDismissBehavior
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -38,6 +40,8 @@ object Constants {
     const val IMAGE:String = "image"
     const val LOCATION_PREF :String = "LOCATION_PREF"
 
+    var cropsList : MutableLiveData<MutableList<String>> = MutableLiveData()
+
 
 
 
@@ -65,9 +69,10 @@ object Constants {
         snackbar.show()
     }
 
-    val cropList = listOf<String>("All","Tomato","Potato","Wheat","Rice","Mango","Barley"
-    ,"Strawberry","Spinach","Orange","Mustard","Pumpkin","Corn")
+    var cropList = mutableListOf<String>()
     val cropListWithoutAll = listOf<String>("Tomato","Potato","Wheat","Rice","Mango","Barley"
         ,"Strawberry","Spinach","Orange","Mustard","Pumpkin","Corn")
+
+
 
 }
