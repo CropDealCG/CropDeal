@@ -50,7 +50,7 @@
                 android:text="Inactive"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView51"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
@@ -71,6 +71,18 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView50"
                 app:layout_constraintTop_toBottomOf="@+id/farmer_UID_TV" />
+
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="80dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="16dp"
+                android:drawableStart="@android:drawable/btn_star_big_on"
+                android:text="Rating"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/farmer_toggle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
