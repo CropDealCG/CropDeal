@@ -24,7 +24,7 @@ class AdminAddOnVM(application: Application) : AndroidViewModel(application) {
             override fun onDataChange(snapshot: DataSnapshot) {
                 currentAddOnList?.clear()
                 for(child in snapshot.children){
-                    currentAddOnList?.add(child.value.toString())
+                    currentAddOnList?.add(child.key.toString())
                     addOnList?.value = currentAddOnList
                 }
                 addOnList?.value = currentAddOnList
@@ -34,6 +34,10 @@ class AdminAddOnVM(application: Application) : AndroidViewModel(application) {
             }
 
         })
+    }
+    fun addCrop(crop : String){
+        firebaseDatabase!!.reference.child("cropList").child("-MiVmI45YZTkIdxU1UB6")
+            .child(crop).setValue(0)
     }
     fun getAddOnList() : MutableLiveData<List<String>>? = addOnList
 }

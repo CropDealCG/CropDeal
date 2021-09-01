@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
             override fun onDataChange(snapshot: DataSnapshot) {
                 cropsList.clear()
                 for(child in snapshot.children){
-                    cropsList.add(child.value.toString())
+                    cropsList.add(child.key.toString())
                 }
                 Constants.cropsList.postValue(cropsList)
             }

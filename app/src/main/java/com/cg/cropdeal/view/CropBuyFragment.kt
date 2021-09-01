@@ -86,6 +86,7 @@ class CropBuyFragment : Fragment() {
             val dialog = MaterialAlertDialogBuilder(view.context)
             val customBinding = FarmerRatingCustomDialogBinding.inflate(layoutInflater)
             dialog.setView(customBinding.root)
+            dialog.setTitle("Please Rate the farmer")
             dialog.setCancelable(false)
             var dialogBuilder = dialog.create()
             customBinding.farmerRatingBtn.setOnClickListener {

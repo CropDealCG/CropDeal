@@ -162,7 +162,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 
-    fun loadUserPicture(imageUri: Uri, imageView: ImageView){
+    private fun loadUserPicture(imageUri: Uri, imageView: ImageView){
         try{
             Glide.with(applicationContext)
                 .load(imageUri)
@@ -173,7 +173,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun updateUserProfileDetails(){
+    private fun updateUserProfileDetails(){
         val username = binding.editUserNameET.editText?.text.toString().trim{it<=' '}
         val dob = binding.editDobTV.text.toString().trim{it<=' '}
         viewModel.updateUserProfileDetails(username,dob)
@@ -190,7 +190,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-    fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?) {
+    private fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?) {
         val username = binding.editUserNameET.editText?.text.toString().trim{it<=' '}
         val dob = binding.editDobTV.text.toString().trim{it<=' '}
         viewModel.uploadImageToCloudStorage(activity,imageFileUri,username,dob)

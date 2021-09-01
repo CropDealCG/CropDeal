@@ -35,22 +35,20 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/addOnCropEditBtn"
                 style="@style/positive_button"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="75dp"
                 android:layout_marginEnd="5dp"
                 android:text="Edit"
                 app:cornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button4"
-                app:layout_constraintStart_toEndOf="@+id/crop_name_addON_TV"
+                app:layout_constraintEnd_toStartOf="@+id/addOnCropDeleteBtn"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.518" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/addOnCropDeleteBtn"
                 style="@style/negative_button"
                 android:layout_width="85dp"
                 android:layout_height="wrap_content"
@@ -65,9 +63,10 @@
                 android:id="@+id/crop_name_addON_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:layout_marginEnd="64dp"
                 android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/addOnCropEditBtn"
                 app:layout_constraintStart_toEndOf="@+id/textView52"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

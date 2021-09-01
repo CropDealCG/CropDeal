@@ -64,6 +64,7 @@
     <string name="you_can_select_more_than_one">You can select more than one</string>
     <string name="save">Save</string>
     <string name="filter">Filter</string>
+    <string name="crop_name">Crop Name</string>
     <!--    <string name="default_web_client_id">571175692324-7fs44r8e5hfaicks94eh4dlfet8dt6gc.apps.googleusercontent.com</string>-->
 
 </resources>
