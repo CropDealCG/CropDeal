@@ -29,11 +29,30 @@
         <action
             android:id="@+id/action_adminHomeFragment_to_adminDealerFragment"
             app:destination="@id/adminDealerFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_adminFarmerFragment"
+            app:destination="@id/adminFarmerFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_adminAddOnFragment"
+            app:destination="@id/adminAddOnFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminDealerFragment"
         android:name="com.cg.cropdeal.view.AdminDealerFragment"
         android:label="AdminDealerFragment"
         tools:layout="@layout/fragment_dealer_management">
+    </fragment>
+    <fragment
+        android:id="@+id/adminFarmerFragment"
+        android:name="com.cg.cropdeal.view.AdminFarmerFragment"
+        android:label="AdminFarmerFragment"
+        tools:layout="@layout/fragment_farmer_management">
+    </fragment>
+    <fragment
+        android:id="@+id/adminAddOnFragment"
+        android:name="com.cg.cropdeal.view.AdminAddOnFragment"
+        android:label="AdminAddOnFragment"
+        tools:layout="@layout/fragment_add_on_management">
+
     </fragment>
 </navigation>

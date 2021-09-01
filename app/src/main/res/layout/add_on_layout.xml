@@ -39,11 +39,13 @@
                 style="@style/positive_button"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="75dp"
                 android:layout_marginEnd="5dp"
                 android:text="Edit"
                 app:cornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/button4"
+                app:layout_constraintStart_toEndOf="@+id/crop_name_addON_TV"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.518" />
 

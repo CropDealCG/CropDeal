@@ -57,6 +57,12 @@ class AdminHomeFragment : Fragment() {
         binding.dealerManagementTV.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_adminHomeFragment_to_adminDealerFragment)
         }
+        binding.farmerManagementTV.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_adminHomeFragment_to_adminFarmerFragment)
+        }
+        binding.addONManagementTV.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_adminHomeFragment_to_adminAddOnFragment)
+        }
 
         binding.adminLogoutTV.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
