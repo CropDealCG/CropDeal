@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.InvoiceLayoutBinding
+import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.model.UtilRepo
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -39,10 +40,10 @@ class InvoiceDetailsFragment : Fragment() {
         progressBar.show()
         val cropId = arguments?.getString("cropId")
         val databaseReference = firebaseDatabase.reference
-        databaseReference.child("invoice").child(cropId!!).addListenerForSingleValueEvent(object : ValueEventListener{
+        databaseReference.child(Constants.INVOICE).child(cropId!!).addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(mainSnapshot: DataSnapshot) {
                 if(mainSnapshot.exists()){
-                    databaseReference.child("users").addListenerForSingleValueEvent(object : ValueEventListener{
+                    databaseReference.child(Constants.USERS).addListenerForSingleValueEvent(object : ValueEventListener{
                         override fun onDataChange(snapshot: DataSnapshot) {
                             if(snapshot.exists()){
                                 binding.sellerNameInvoiceTV.text = snapshot.child(mainSnapshot.child("farmerId").value.toString()).child("name").value.toString()

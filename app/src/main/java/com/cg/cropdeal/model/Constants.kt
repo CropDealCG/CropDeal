@@ -14,6 +14,8 @@ import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 
 object Constants {
+    const val CROPS: String = "crops"
+    const val INVOICE: String = "invoice"
     const val TOPIC_PREF: String = "TOPIC_PREF"
     const val USERID: String = "userId"
     const val BANK: String = "bank"

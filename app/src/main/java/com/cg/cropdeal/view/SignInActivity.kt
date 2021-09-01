@@ -49,7 +49,7 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        supportActionBar?.hide()
         progressDialog = UtilRepo(application).loadingDialog(this)
         auth = FirebaseAuth.getInstance()   //initialize the FirebaseAuth instance
         firebaseDatabase = FirebaseDatabase.getInstance()
@@ -92,6 +92,10 @@ class SignInActivity : AppCompatActivity() {
 
                     })
             }
+
+        binding.adminTV.setOnClickListener {
+            startActivity(Intent(this,AdminActivity::class.java))
+        }
 
         binding.forgotPasswordT.setOnClickListener {_->
             val dialog = signInVM.getForgotPasswordDialog(this,R.layout.custom_forgot_password_dialog)
@@ -322,4 +326,6 @@ class SignInActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
             signInVM.getFacebookCallBackManager()?.onActivityResult(requestCode,resultCode, data)
     }
+
+
 }

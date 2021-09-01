@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.model.Invoice
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -28,7 +29,7 @@ class InvoiceVM(application: Application) : AndroidViewModel(application)  {
     }
 
     private fun populateList(uid: String?) {
-        firebaseDatabase?.reference?.child("invoice")?.addValueEventListener(object : ValueEventListener{
+        firebaseDatabase?.reference?.child(Constants.INVOICE)?.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 currentInvoiceList?.clear()
                 for(child in snapshot.children){

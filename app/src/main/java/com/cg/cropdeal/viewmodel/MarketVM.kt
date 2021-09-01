@@ -31,7 +31,7 @@ class MarketVM(application: Application) : AndroidViewModel(application) {
         checkBankDetails()
     }
     private fun populateList() {
-        firebaseDatabase?.reference?.child("crops")?.addValueEventListener(object : ValueEventListener{
+        firebaseDatabase?.reference?.child(Constants.CROPS)?.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                     currentCropList?.clear()
                     for(child in snapshot.children){

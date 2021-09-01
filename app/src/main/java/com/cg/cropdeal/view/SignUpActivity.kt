@@ -35,6 +35,7 @@ class SignUpActivity : AppCompatActivity() {
         signUpVM = ViewModelProvider(this).get(SignUpVM::class.java)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
         rootNode = FirebaseDatabase.getInstance()
         reference = rootNode.reference.child(Constants.USERS)
 

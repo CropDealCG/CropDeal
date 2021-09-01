@@ -2,6 +2,7 @@ package com.cg.cropdeal.viewmodel
 
 import android.app.Application
 import android.text.TextUtils
+import android.widget.Toast
 
 import androidx.lifecycle.AndroidViewModel
 import com.cg.cropdeal.databinding.FragmentChangePasswordBinding
@@ -12,7 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class ChangePasswordVM(application: Application): AndroidViewModel(application) {
-    //private val context = getApplication<Application>().applicationContext
+    private val context = getApplication<Application>().applicationContext
 
     private var utilRepo:UtilRepo?=null
     init {
@@ -33,21 +34,21 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
                 user.updatePassword(newPassword)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Constants.showSnackbar("User Password Updated",
-                                binding.root)
+                            Toast.makeText(context,"User Password Updated",Toast.LENGTH_LONG)
+                                .show()
 
                         } else {
-                            Constants.showSnackbar(
-                                "Couldn't update password. Please try again",
-                                binding.root)
+                            Toast.makeText(context,
+                                "Couldn't update password. Please try again",Toast.LENGTH_LONG)
+                                .show()
+
                         }
                         result = true
 
                     }
             }
                 .addOnFailureListener {
-                   Constants.showSnackbar("${it.message}",
-                        binding.changePasswordBtn)
+                   Toast.makeText(context,it.message,Toast.LENGTH_LONG)
                 }
 
                 return result

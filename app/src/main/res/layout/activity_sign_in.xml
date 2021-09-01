@@ -150,8 +150,8 @@
         android:id="@+id/forgotPasswordT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginBottom="12dp"
+        android:layout_marginTop="5dp"
         android:text="@string/forgot_password"
         android:textAlignment="center"
         android:textColor="@color/signBtnBG"
@@ -269,6 +269,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/passwordLoginE" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/adminTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:text="Admin"
+        app:layout_constraintStart_toEndOf="@+id/forgotPasswordT"
+        app:layout_constraintTop_toTopOf="@+id/forgotPasswordT" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

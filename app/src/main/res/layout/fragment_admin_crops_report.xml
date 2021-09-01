@@ -2,18 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/invoiceLyt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.InvoiceFragment" >
+    android:background="@color/White"
+    tools:context=".view.AdminCropsReportFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/invoiceRview"
+        android:id="@+id/cropsRview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/invoice_list_design" />
+        tools:listitem="@layout/crops_post_design_layout" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

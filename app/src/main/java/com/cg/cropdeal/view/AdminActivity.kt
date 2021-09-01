@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.PopupMenu
 import com.cg.cropdeal.databinding.AdminMainActivityBinding
-import com.google.firebase.FirebaseOptions
 import com.google.firebase.auth.FirebaseAuth
-import android.widget.Toast
 import com.cg.cropdeal.R
 
 
@@ -31,12 +29,16 @@ class AdminActivity : AppCompatActivity() {
                 when(item.title){
                     INVOICES -> {
                         supportFragmentManager.beginTransaction()
-                            .add(R.id.container,AdminInvoiceFragment(),
+                            .replace(R.id.adminActivityLyt,AdminInvoiceFragment(),
                                 "AdminInvoiceFragment")
                             .addToBackStack(null)
                             .commit()
                     }
-                    CROPS -> {}
+                    CROPS -> {
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.adminActivityLyt,AdminCropsReportFragment(),
+                            "AdminCropsReport")
+                    }
 
                 }
 

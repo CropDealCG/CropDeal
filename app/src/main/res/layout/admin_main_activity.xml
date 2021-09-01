@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/adminActivityLyt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2">
@@ -10,9 +11,9 @@
         android:id="@+id/textView40"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="252dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="65dp"
-        android:layout_marginEnd="252dp"
         android:text="Admin Portal"
         android:textColor="@color/White"
         android:textSize="24sp"
@@ -37,6 +38,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView44"
+                app:srcCompat="@drawable/user_img" />
+
             <TextView
                 android:id="@+id/textView44"
                 style="@style/font_style"
@@ -48,16 +59,6 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView15"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView44"
-                app:srcCompat="@drawable/user_img" />
 
             <TextView
                 android:id="@+id/admin_name_TV"
@@ -76,8 +77,8 @@
                 android:id="@+id/admin_email_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginTop="7dp"
                 android:text="Email of Admin"
                 android:textAlignment="center"
                 android:textColor="@color/darkGrey2"
@@ -113,9 +114,9 @@
             android:id="@+id/farmer_Management_TV"
             android:layout_width="374dp"
             android:layout_height="36dp"
+            android:paddingBottom="7dp"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
-            android:paddingBottom="7dp"
             android:text="Farmer Management"
             android:textColor="@color/black"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
@@ -148,9 +149,9 @@
             android:id="@+id/dealer_Management_TV"
             android:layout_width="374dp"
             android:layout_height="36dp"
+            android:paddingBottom="7dp"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
-            android:paddingBottom="7dp"
             android:text="Dealer Management"
             android:textColor="@color/black"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
@@ -183,9 +184,9 @@
             android:id="@+id/report_Management_TV"
             android:layout_width="374dp"
             android:layout_height="36dp"
+            android:paddingBottom="7dp"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
-            android:paddingBottom="7dp"
             android:text="Report Management"
             android:textColor="@color/black"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
@@ -218,9 +219,9 @@
             android:id="@+id/addON_Management_TV"
             android:layout_width="374dp"
             android:layout_height="36dp"
+            android:paddingBottom="7dp"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
-            android:paddingBottom="7dp"
             android:text="Add-On Management"
             android:textColor="@color/black"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
@@ -252,9 +253,9 @@
             android:id="@+id/admin_Logout_TV"
             android:layout_width="374dp"
             android:layout_height="36dp"
+            android:paddingBottom="7dp"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
-            android:paddingBottom="7dp"
             android:text="Log Out"
             android:textColor="@color/black"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
