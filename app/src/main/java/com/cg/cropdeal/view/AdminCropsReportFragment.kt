@@ -75,7 +75,7 @@ class AdminCropsReportFragment : Fragment() {
                     cropForFilter = Constants.cropList[which]
                     Log.d("cropFilter", cropForFilter)
 
-                    val list = viewModel.getFilteredList(cropForFilter)
+                    val list = viewModel.getFilteredCropList(cropForFilter)
 
                     binding.cropsRview.adapter = CropsReportAdapter(list)
                     //progressDialog.dismiss()

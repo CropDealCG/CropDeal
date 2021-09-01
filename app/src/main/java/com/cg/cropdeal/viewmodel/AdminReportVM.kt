@@ -17,7 +17,7 @@ class AdminReportVM(application: Application):AndroidViewModel(application) {
     private var invoiceList : MutableLiveData<List<Invoice>>? = null
     private var currentInvoiceList : MutableList<Invoice>? = null
     private var firebaseDatabase : FirebaseDatabase? = null
-    private val cropDB = CropDatabase.getInstance(application.applicationContext).cropDao()
+
     private var cropsList : MutableLiveData<List<Crops>>? = null
     private var currentCropList : MutableList<Crops>? = null
 
@@ -26,10 +26,11 @@ class AdminReportVM(application: Application):AndroidViewModel(application) {
         invoiceList = MutableLiveData()
         currentInvoiceList = mutableListOf()
         firebaseDatabase = FirebaseDatabase.getInstance()
+        populateInvoiceList()
         populateCropList()
     }
 
-    private fun populateInvoiceList(uid: String?) {
+    private fun populateInvoiceList() {
         firebaseDatabase?.reference?.child(Constants.INVOICE)?.addValueEventListener(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -73,9 +74,9 @@ class AdminReportVM(application: Application):AndroidViewModel(application) {
         return cropsList
     }
 
-    fun getFilteredList(cropForFilter:String):List<Crops>{
+    fun getFilteredCropList(cropForFilter:String):List<Crops>{
         if(cropForFilter=="All")    return currentCropList!!
-        var filteredList : MutableList<Crops> = mutableListOf()
+        val filteredList : MutableList<Crops> = mutableListOf()
         for(crop in currentCropList!!){
             if(crop.cropName==cropForFilter){
                 filteredList.add(crop)

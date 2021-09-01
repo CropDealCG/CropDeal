@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_navigation"
+    app:startDestination="@id/adminHomeFragment">
+
+    <fragment
+        android:id="@+id/adminInvoiceFragment"
+        android:name="com.cg.cropdeal.view.AdminInvoiceFragment"
+        android:label="fragment_admin_invoice"
+        tools:layout="@layout/fragment_admin_invoice" />
+    <fragment
+        android:id="@+id/adminCropsReportFragment"
+        android:name="com.cg.cropdeal.view.AdminCropsReportFragment"
+        android:label="fragment_admin_crops_report"
+        tools:layout="@layout/fragment_admin_crops_report" />
+    <fragment
+        android:id="@+id/adminHomeFragment"
+        android:name="com.cg.cropdeal.view.AdminHomeFragment"
+        android:label="AdminHomeFragment" >
+        <action
+            android:id="@+id/action_adminHomeFragment_to_adminInvoiceFragment"
+            app:destination="@id/adminInvoiceFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_adminCropsReportFragment"
+            app:destination="@id/adminCropsReportFragment" />
+    </fragment>
+</navigation>

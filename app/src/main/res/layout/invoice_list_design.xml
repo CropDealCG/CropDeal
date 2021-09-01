@@ -76,15 +76,13 @@
                 android:id="@+id/date_invoiceList_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="29dp"
-                android:layout_marginTop="11dp"
-                android:layout_marginEnd="140dp"
+                android:layout_marginStart="20dp"
                 android:text="date here"
                 android:textAlignment="textEnd"
                 android:textColor="@color/White"
                 app:layout_constraintEnd_toStartOf="@+id/textView42"
                 app:layout_constraintStart_toEndOf="@+id/textView34"
-                app:layout_constraintTop_toBottomOf="@+id/textView32" />
+                app:layout_constraintTop_toTopOf="@+id/textView34" />
 
             <TextView
                 android:id="@+id/total_invoiceList_TV"
