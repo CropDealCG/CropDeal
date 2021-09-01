@@ -10,10 +10,12 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.cg.cropdeal.R
+import com.cg.cropdeal.databinding.FarmerRatingCustomDialogBinding
 import com.cg.cropdeal.databinding.PayNowLayoutBinding
 import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.model.Invoice
 import com.cg.cropdeal.model.UtilRepo
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -63,6 +65,7 @@ class CropBuyFragment : Fragment() {
                 if(snapshot.child(farmerId!!).exists()){
                     binding.farmerNameTV.text =
                         snapshot.child(farmerId).child("name").value.toString()
+                    binding.farmerRatingPayTV.text = "${snapshot.child(farmerId).child("rating").value.toString()}(${snapshot.child(farmerId).child("noOfRating").value.toString()})"
                     binding.totalPayAmountTV.text = cropPrice
                 }
                 progressDialog.dismiss()
@@ -80,9 +83,37 @@ class CropBuyFragment : Fragment() {
             val invoice = Invoice(cropId!!,farmerId!!,firebaseAuth.currentUser?.uid!!,dateFormat.format(Calendar.getInstance().time),timeFormat.format(Calendar.getInstance().time),cropQuantity!!.toInt(),cropRate!!.toInt(),cropPrice!!.toInt(),cropName!!)
             firebaseDatabase.reference.child("invoice").child(cropId).setValue(invoice)
             firebaseDatabase.reference.child("crops").child(cropId).removeValue()
+            val dialog = MaterialAlertDialogBuilder(view.context)
+            val customBinding = FarmerRatingCustomDialogBinding.inflate(layoutInflater)
+            dialog.setView(customBinding.root)
+            dialog.setCancelable(false)
+            var dialogBuilder = dialog.create()
+            customBinding.farmerRatingBtn.setOnClickListener {
+                val rating = customBinding.farmerRatingRB.rating
+                if(rating>0){
+                    firebaseDatabase.reference.child("users").child(farmerId).addListenerForSingleValueEvent(object : ValueEventListener{
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            val noOfRatings = snapshot.child("noOfRating").value.toString().toInt()
+                            val currentRating = snapshot.child("rating").value.toString().toDouble()
+                            val newRating = (currentRating*noOfRatings+rating)/(noOfRatings+1)
+                            firebaseDatabase.reference.child("users").child(farmerId).child("noOfRating").setValue(noOfRatings+1)
+                            firebaseDatabase.reference.child("users").child(farmerId).child("rating").setValue(newRating)
+                            dialogBuilder.dismiss()
+                            val bundle = bundleOf("cropId" to cropId)
+                            Navigation.findNavController(view).navigate(R.id.action_crop_buy_to_invoiceDetailsFragment,bundle)
+                        }
 
-            val bundle = bundleOf("cropId" to cropId)
-            Navigation.findNavController(view).navigate(R.id.action_crop_buy_to_invoiceDetailsFragment,bundle)
+                        override fun onCancelled(error: DatabaseError) {
+                        }
+
+                    })
+                }else{
+                    Constants.showSnackbar("Please select a rating",binding.root)
+                }
+            }
+            dialogBuilder = dialog.create()
+            dialogBuilder.show()
+
         }
     }
 }

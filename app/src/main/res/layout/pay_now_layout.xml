@@ -227,6 +227,28 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/textView33"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/farmerNameTV">
+
+                <TextView
+                    android:id="@+id/farmerRatingPayTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:textColor="@color/White" />
+
+                <ImageView
+                    android:id="@+id/imageView23"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:srcCompat="@android:drawable/btn_star_big_on" />
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/textView33"
                 android:layout_width="wrap_content"
