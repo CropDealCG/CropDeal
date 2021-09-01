@@ -52,7 +52,8 @@ class MarketVM(application: Application) : AndroidViewModel(application) {
             ?.child(Constants.PAYMENT)?.addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if(snapshot.exists()){
-                        bankDetailsAvailable!!.postValue(true)
+                        if(snapshot.child("bank").value.toString().isNullOrEmpty()) bankDetailsAvailable!!.postValue(false)
+                        else    bankDetailsAvailable!!.postValue(true)
                     }
                     else{
                         bankDetailsAvailable!!.postValue(false)

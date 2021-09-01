@@ -65,61 +65,20 @@ class SignInActivity : AppCompatActivity() {
             startActivity(Intent(this,SignUpActivity::class.java))
             finish()
         }
+        signInVM.selectedUserType()?.observe(this,{
+            if(it!=null)    userType = it
+        })
         binding.googleLoginBtn.setOnClickListener {
-
-            val dialog = AlertDialog.Builder(this)
-            dialog.setTitle("Are you a?")
-            var dialogBuilder = dialog.create()
-            dialog.setPositiveButton("Farmer",object:DialogInterface.OnClickListener{
-                override fun onClick(p0: DialogInterface?, p1: Int) {
-                    userType = "farmer"
-                }
-
-            })
-            dialog.setNegativeButton("Dealer",object:DialogInterface.OnClickListener{
-                override fun onClick(p0: DialogInterface?, p1: Int) {
-                    userType = "dealer"
-                }
-
-            })
-            dialog.setNeutralButton("Cancel",object:DialogInterface.OnClickListener{
-                override fun onClick(p0: DialogInterface?, p1: Int) {
-                    dialogBuilder.dismiss()
-                }
-
-            })
-            dialogBuilder = dialog.create()
-            dialogBuilder.setCancelable(false)
+            val dialogBuilder = signInVM.userTypeDialog(this)
             dialogBuilder.show()
             dialogBuilder.setOnDismissListener {
                 if(userType.isNotEmpty())   googleResultLauncher.launch(signInVM.getGoogleSignInClient()?.signInIntent!!)
             }
         }
+
         binding.facebookLoginBtn.setPermissions("email", "public_profile")
         binding.facebookLoginBtn.setOnClickListener {
-            val dialog = AlertDialog.Builder(this)
-            dialog.setTitle("Are you a?")
-            var dialogBuilder = dialog.create()
-            dialog.setPositiveButton("Farmer",object:DialogInterface.OnClickListener{
-                override fun onClick(p0: DialogInterface?, p1: Int) {
-                    userType = "farmer"
-                }
-
-            })
-            dialog.setNegativeButton("Dealer",object:DialogInterface.OnClickListener{
-                override fun onClick(p0: DialogInterface?, p1: Int) {
-                    userType = "dealer"
-                }
-
-            })
-            dialog.setNeutralButton("Cancel",object:DialogInterface.OnClickListener{
-                override fun onClick(p0: DialogInterface?, p1: Int) {
-                    dialogBuilder.dismiss()
-                }
-
-            })
-            dialogBuilder = dialog.create()
-            dialogBuilder.setCancelable(false)
+            val dialogBuilder = signInVM.userTypeDialog(this)
             dialogBuilder.show()
             dialogBuilder.setOnDismissListener {
                 if(userType.isNotEmpty()){
@@ -206,7 +165,7 @@ class SignInActivity : AppCompatActivity() {
                     val facebookUser = auth.currentUser
                     if (task.result.additionalUserInfo?.isNewUser!!) {
                         val user = Users(facebookUser?.displayName!!,facebookUser.email!!
-                            ,userType,"false","","", Payment()
+                            ,userType,"false","","", Payment(),true
                         )
                         firebaseDatabase.reference.child("users").child(task.result.user?.uid!!).setValue(user)
                         updateUI(facebookUser)
@@ -233,7 +192,24 @@ class SignInActivity : AppCompatActivity() {
                 progressDialog.dismiss()
                 if(it!=null){
                     if(!it){
-                        updateUI(null)
+                        firebaseDatabase.reference.child("users").child(auth.currentUser?.uid!!).addListenerForSingleValueEvent(object : ValueEventListener{
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                if(snapshot.exists()){
+                                    if(snapshot.child("active").value.toString()=="true"){
+                                        updateUI(null)
+                                    }
+                                    else    {
+                                        Constants.showSnackbar("Your account has been disabled",binding.root)
+                                        auth.signOut()
+                                    }
+                                }
+                            }
+
+                            override fun onCancelled(error: DatabaseError) {
+                            }
+
+                        })
+
                     }
                 }
             })
@@ -257,7 +233,7 @@ class SignInActivity : AppCompatActivity() {
                     val googleUser = auth.currentUser
                     if (task.result.additionalUserInfo?.isNewUser!!) {
                         val user = Users(googleUser?.displayName!!,googleUser.email!!,userType,
-                            "false","","",Payment())
+                            "false","","",Payment(),true)
                         val sharedPref = getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
                         with(sharedPref!!.edit()){
                             putString("userType",userType)
@@ -270,6 +246,7 @@ class SignInActivity : AppCompatActivity() {
                             .addListenerForSingleValueEvent(object : ValueEventListener{
                                 override fun onDataChange(snapshot: DataSnapshot) {
                                     val dbUserType = snapshot.child("type").value.toString()
+
                                     val sharedPref = getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
                                     with(sharedPref!!.edit()){
                                         putString("userType",dbUserType)
@@ -278,7 +255,14 @@ class SignInActivity : AppCompatActivity() {
                                     if(userType!=dbUserType){
                                         Toast.makeText(applicationContext,"You are already registered as an $dbUserType",Toast.LENGTH_LONG).show()
                                     }
-                                    updateUI(googleUser)
+                                    if(snapshot.child("active").value.toString()=="true"){
+                                        updateUI(googleUser)
+                                    }
+                                    else    {
+                                        progressDialog.dismiss()
+                                        Constants.showSnackbar("Your account has been disabled",binding.root)
+                                        auth.signOut()
+                                    }
                                 }
 
                                 override fun onCancelled(error: DatabaseError) {

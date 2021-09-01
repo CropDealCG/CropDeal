@@ -128,6 +128,7 @@ class SettingsFragment : Fragment() {
                 }
                 LoginManager.getInstance().logOut()
                 val intent = Intent(activity, SignInActivity::class.java)
+                dialog.dismiss()
                 startActivity(intent)
                 activity?.finish()
             }

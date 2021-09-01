@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.cg.cropdeal.databinding.ActivitySignUpBinding
 import com.cg.cropdeal.model.*
 import com.cg.cropdeal.viewmodel.SignUpVM
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -35,7 +36,7 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         rootNode = FirebaseDatabase.getInstance()
-        reference = rootNode.getReference().child(Constants.USERS)
+        reference = rootNode.reference.child(Constants.USERS)
 
         progressDialog = UtilRepo(application).loadingDialog(this)
         //Hooks to all xml elements in activity_sign_up.xml using view binding
@@ -59,40 +60,55 @@ class SignUpActivity : AppCompatActivity() {
             }
             datePickerDialog.show(supportFragmentManager,"Date")
         }
-
         signUpVM.getUserData()?.observe(this,{
             if(it!=null){
-                if(getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE).getString("userType","").isNullOrEmpty())
-                {
-                    progressDialog.show()
-                    reference.child(it.uid).addListenerForSingleValueEvent(object : ValueEventListener{
-                        override fun onDataChange(snapshot: DataSnapshot) {
-                            if(snapshot.exists()){
-                                val userType = snapshot.child("type").value.toString()
-                                if(userType.isNullOrEmpty()){
-                                    progressDialog.dismiss()
-                                }
-                                else{
-                                    val sharedPref = getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?:return
-                                    with(sharedPref.edit()){
-                                        putString("userType",userType)
-                                        apply()
-                                    }
-                                    progressDialog.dismiss()
-                                    updateUI()
-                                }
+                progressDialog.show()
+                reference.child(it.uid).addListenerForSingleValueEvent(object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if(snapshot.child("active").value.toString()=="true"){
+                            if(getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE).getString("userType","").isNullOrEmpty())
+                            {
+                                reference.child(it.uid).addListenerForSingleValueEvent(object : ValueEventListener{
+                                    override fun onDataChange(snapshot: DataSnapshot) {
+                                        if(snapshot.exists()){
+                                            val userType = snapshot.child("type").value.toString()
+                                            if(userType.isNullOrEmpty()){
+                                                progressDialog.dismiss()
+                                            }
+                                            else{
+                                                val sharedPref = getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?:return
+                                                with(sharedPref.edit()){
+                                                    putString("userType",userType)
+                                                    apply()
+                                                }
+                                                progressDialog.dismiss()
+                                                updateUI()
+                                            }
 
+                                        }
+                                    }
+
+                                    override fun onCancelled(error: DatabaseError) {
+                                    }
+
+                                })
+                            }
+                            else{
+                                updateUI()
                             }
                         }
-
-                        override fun onCancelled(error: DatabaseError) {
+                        else    {
+                            progressDialog.dismiss()
+                            Constants.showSnackbar("Your account has been disabled",binding.root)
+                            FirebaseAuth.getInstance().signOut()
                         }
+                    }
 
-                    })
-                }
-                else{
-                    updateUI()
-                }
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+
+                })
+
             }
         })
         signUpVM.isSignInFailed()?.observe(this,{
@@ -124,7 +140,7 @@ class SignUpActivity : AppCompatActivity() {
             signUpVM.register(email,password)
             val users = Users(binding.nameE.editText?.text.toString(),email,userType,"false"
                 ,binding.selectedDateTV.text.toString(),binding.selectedTimeTV.text.toString(),
-                Payment()
+                Payment(),true
             )
             signUpVM.getUserData()?.observe(this,{user->
                 signUpVM.isNewUser()?.observe(this,{isNew->
@@ -132,7 +148,6 @@ class SignUpActivity : AppCompatActivity() {
                     if(user!=null){
                         if(isNew)   {
                             reference.child(user.uid).setValue(users)   //Addition to Firebase
-
                             updateUI()
                         }
                         else    {

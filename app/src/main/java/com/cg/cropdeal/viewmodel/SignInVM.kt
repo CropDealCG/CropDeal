@@ -19,6 +19,7 @@ class SignInVM(application: Application) : AndroidViewModel(application) {
     private var googleSignInClient : GoogleSignInClient? = null
     private var facebookCallBackManager : CallbackManager? = null
     private var signInFailed : MutableLiveData<Boolean>? = null
+    private var selectedUserType : MutableLiveData<String>? = null
 
     init{
         authRepo = AuthRepo(application)
@@ -26,6 +27,7 @@ class SignInVM(application: Application) : AndroidViewModel(application) {
         googleSignInClient = authRepo!!.getGoogleSignInClient()
         facebookCallBackManager = authRepo!!.getFacebookCallBackManager()
         signInFailed = authRepo!!.isSignInFailed()
+        selectedUserType = authRepo!!.selectedUserType()
         utilRepo = UtilRepo(application)
     }
     fun login(email: String?, password: String?) {
@@ -44,4 +46,7 @@ class SignInVM(application: Application) : AndroidViewModel(application) {
         return utilRepo?.customDialog(context,layout)!!
     }
     fun isSignInFailed():MutableLiveData<Boolean>? = signInFailed
+    fun userTypeDialog(context : Context) : AlertDialog = authRepo!!.userTypeDialog(context)
+    fun selectedUserType() : MutableLiveData<String>? = selectedUserType
+
 }

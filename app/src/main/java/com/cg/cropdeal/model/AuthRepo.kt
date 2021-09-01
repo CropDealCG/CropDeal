@@ -2,17 +2,18 @@ package com.cg.cropdeal.model
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 
 import com.google.firebase.auth.FirebaseAuth
 
 import com.google.firebase.auth.FirebaseUser
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import com.cg.cropdeal.R
 import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.*
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -29,6 +30,7 @@ class AuthRepo(private var application: Application?) {
     private var loggedOutLiveData: MutableLiveData<Boolean>? = null
     private var newUser : MutableLiveData<Boolean>?= null
     private var signInFailed : MutableLiveData<Boolean>?=null
+    private var selectedUserType : MutableLiveData<String>? = null
     private val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
         .requestIdToken(application?.getString(R.string.default_web_client_id)!!)
         .requestEmail().build()
@@ -42,6 +44,7 @@ class AuthRepo(private var application: Application?) {
         loggedOutLiveData = MutableLiveData()
         newUser = MutableLiveData()
         signInFailed = MutableLiveData()
+        selectedUserType = MutableLiveData()
         if (firebaseAuth!!.currentUser != null) {
             userLiveData!!.postValue(firebaseAuth!!.currentUser)
             loggedOutLiveData!!.postValue(false)
@@ -74,6 +77,7 @@ class AuthRepo(private var application: Application?) {
                     }
                 }
     }
+
     fun login(email: String?, password: String?) {
         firebaseAuth!!.signInWithEmailAndPassword(email!!, password!!)
             .addOnCompleteListener{ task ->
@@ -87,8 +91,8 @@ class AuthRepo(private var application: Application?) {
                                             putString("userType",snapshot.child("type").value.toString())
                                             apply()
                                         }
-                                    signInFailed!!.postValue(false)
-                                    userLiveData!!.postValue(firebaseAuth!!.currentUser)
+                                        signInFailed!!.postValue(false)
+                                        userLiveData!!.postValue(firebaseAuth!!.currentUser)
                                 }
 
                                 override fun onCancelled(error: DatabaseError) {
@@ -105,6 +109,25 @@ class AuthRepo(private var application: Application?) {
                             Toast.LENGTH_SHORT).show()
                     }
                 }
+    }
+    fun userTypeDialog(context : Context) : AlertDialog{
+        val dialog = MaterialAlertDialogBuilder(context)
+        dialog.setTitle("Choose One")
+        dialog.setMessage("Are you a?")
+        var dialogBuilder = dialog.create()
+        dialog.setPositiveButton("Farmer"){_,_->
+            selectedUserType!!.postValue("Farmer")
+        }
+        dialog.setNegativeButton("Dealer"){_,_->
+            selectedUserType!!.postValue("Dealer")
+        }
+        dialog.setNeutralButton("Cancel"){_,_->
+            dialogBuilder.dismiss()
+        }
+        dialogBuilder = dialog.create()
+        dialogBuilder.setCancelable(false)
+        return dialogBuilder
+
     }
     fun logOut() {
         firebaseAuth!!.signOut()
@@ -130,5 +153,6 @@ class AuthRepo(private var application: Application?) {
     fun isSignInFailed() : MutableLiveData<Boolean>?{
         return signInFailed
     }
+    fun selectedUserType() : MutableLiveData<String>? = selectedUserType
 
 }

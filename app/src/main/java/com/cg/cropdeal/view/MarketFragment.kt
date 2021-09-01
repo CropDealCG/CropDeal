@@ -51,6 +51,7 @@ class MarketFragment : Fragment() {
         binding.addCropsFAB.setOnClickListener {
             viewModel.areBankDetailsAvailable()?.observe(viewLifecycleOwner,{
                 if(it!=null){
+                    Log.d("Observable","bank - $it")
                     if(it==true)    Navigation.findNavController(view)
                         .navigate(R.id.action_nav_market_to_crop_publish)
                     else    {

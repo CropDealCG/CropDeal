@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
                             Notification.Builder(applicationContext, "Subscriptions")
                         } else  Notification.Builder(applicationContext)
                         //Notification bar configuration(look)
+
                         builder.setSmallIcon(R.drawable.logo_without_text)
                         builder.setContentTitle("$subscribedTopic is available!")
                         builder.setContentText("Buy NOW")
@@ -57,10 +58,10 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
                         builder.setContentIntent(notifyPendingIntent)
                         builder.setAutoCancel(true)
                         val myNotify =builder.build()
+
                         if(snapshot.child("cropName").value.toString() == subscribedTopic){
                             nManager.notify(99,myNotify)
                         }
-
                     }
                 }
 
