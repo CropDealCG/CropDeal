@@ -78,10 +78,6 @@ class SignInActivity : AppCompatActivity() {
 
         binding.facebookLoginBtn.setPermissions("email", "public_profile")
         binding.facebookLoginBtn.setOnClickListener {
-            val dialogBuilder = signInVM.userTypeDialog(this)
-            dialogBuilder.show()
-            dialogBuilder.setOnDismissListener {
-                if(userType.isNotEmpty()){
                     binding.facebookLoginBtn.registerCallback(signInVM.getFacebookCallBackManager(),object :
                         FacebookCallback<LoginResult> {
                         override fun onSuccess(result: LoginResult?) {
@@ -95,9 +91,7 @@ class SignInActivity : AppCompatActivity() {
                         }
 
                     })
-                }
             }
-        }
 
         binding.forgotPasswordT.setOnClickListener {_->
             val dialog = signInVM.getForgotPasswordDialog(this,R.layout.custom_forgot_password_dialog)
@@ -156,32 +150,6 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleFacebookAccessToken(accessToken: AccessToken) {
-        val credential = FacebookAuthProvider.getCredential(accessToken.token)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    val facebookUser = auth.currentUser
-                    if (task.result.additionalUserInfo?.isNewUser!!) {
-                        val user = Users(facebookUser?.displayName!!,facebookUser.email!!
-                            ,userType,"false","","", Payment(),true
-                        )
-                        firebaseDatabase.reference.child("users").child(task.result.user?.uid!!).setValue(user)
-                        updateUI(facebookUser)
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        updateUI(facebookUser)
-                    }
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Constants.showSnackbar(
-                        "Authentication failed. ${task.exception?.message}",
-                            binding.root)
-                    updateUI(null)
-                }
-            }
-    }
 
     private fun signInWithEmailPassword() {
         val email = binding.emailLoginE.editText?.text.toString()
@@ -222,6 +190,72 @@ class SignInActivity : AppCompatActivity() {
             progressDialog.dismiss()
             Constants.showSnackbar("Please Enter Data",binding.root)
         }
+    }
+
+    private fun handleFacebookAccessToken(accessToken: AccessToken) {
+        val credential = FacebookAuthProvider.getCredential(accessToken.token)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    val dialogBuilder = signInVM.userTypeDialog(this)
+
+                    dialogBuilder.show()
+                    dialogBuilder.setOnDismissListener {
+                        if(userType.isNotEmpty()){
+                            val facebookUser = auth.currentUser
+                            if (task.result.additionalUserInfo?.isNewUser!!) {
+                                val user = Users(facebookUser?.displayName!!,facebookUser.email!!
+                                    ,userType,"false","","", Payment(),true
+                                )
+                                val sharedPref = getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
+                                with(sharedPref!!.edit()){
+                                    putString("userType",userType)
+                                    apply()
+                                }
+                                firebaseDatabase.reference.child("users").child(task.result.user?.uid!!).setValue(user)
+                                updateUI(facebookUser)
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                firebaseDatabase.reference.child("users").child(task.result.user?.uid!!)
+                                    .addListenerForSingleValueEvent(object : ValueEventListener{
+                                        override fun onDataChange(snapshot: DataSnapshot) {
+                                            val dbUserType = snapshot.child("type").value.toString()
+
+                                            val sharedPref = getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
+                                            with(sharedPref!!.edit()){
+                                                putString("userType",dbUserType)
+                                                apply()
+                                            }
+                                            if(userType!=dbUserType){
+                                                Toast.makeText(applicationContext,"You are already registered as an $dbUserType",Toast.LENGTH_LONG).show()
+                                            }
+                                            if(snapshot.child("active").value.toString()=="true"){
+                                                updateUI(facebookUser)
+                                            }
+                                            else    {
+                                                progressDialog.dismiss()
+                                                Constants.showSnackbar("Your account has been disabled",binding.root)
+                                                auth.signOut()
+                                            }
+                                        }
+
+                                        override fun onCancelled(error: DatabaseError) {
+                                        }
+
+                                    })
+                            }
+                        }
+                    }
+
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Constants.showSnackbar(
+                        "Authentication failed. ${task.exception?.message}",
+                        binding.root)
+                    updateUI(null)
+                }
+            }
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {

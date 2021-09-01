@@ -116,13 +116,10 @@ class AuthRepo(private var application: Application?) {
         dialog.setMessage("Are you a?")
         var dialogBuilder = dialog.create()
         dialog.setPositiveButton("Farmer"){_,_->
-            selectedUserType!!.postValue("Farmer")
+            selectedUserType!!.postValue("farmer")
         }
         dialog.setNegativeButton("Dealer"){_,_->
-            selectedUserType!!.postValue("Dealer")
-        }
-        dialog.setNeutralButton("Cancel"){_,_->
-            dialogBuilder.dismiss()
+            selectedUserType!!.postValue("dealer")
         }
         dialogBuilder = dialog.create()
         dialogBuilder.setCancelable(false)
