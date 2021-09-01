@@ -265,7 +265,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:srcCompat="@drawable/logo_without_text" />
+        app:srcCompat="@drawable/logo_without_text"
+        app:tint="#00A300"/>
 
     <View
         android:id="@+id/divider7"

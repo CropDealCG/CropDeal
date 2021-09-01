@@ -110,17 +110,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/farmer_icon"
-            app:tint="@color/black" />
+            app:tint="@color/White" />
 
         <TextView
             android:id="@+id/farmer_Management_TV"
             android:layout_width="374dp"
             android:layout_height="36dp"
-            android:paddingBottom="7dp"
+            android:drawableTint="@color/White"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
+            android:paddingBottom="7dp"
             android:text="Farmer Management"
-            android:textColor="@color/black"
+            android:textColor="@color/White"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView18"
@@ -145,17 +146,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/dealer"
-            app:tint="@color/black" />
+            app:tint="@color/White" />
 
         <TextView
             android:id="@+id/dealer_Management_TV"
             android:layout_width="374dp"
             android:layout_height="36dp"
-            android:paddingBottom="7dp"
+            android:drawableTint="@color/White"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
+            android:paddingBottom="7dp"
             android:text="Dealer Management"
-            android:textColor="@color/black"
+            android:textColor="@color/White"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView19"
@@ -180,17 +182,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/outline_article_white_24"
-            app:tint="@color/black" />
+            app:tint="@color/White" />
 
         <TextView
             android:id="@+id/report_Management_TV"
             android:layout_width="374dp"
             android:layout_height="36dp"
-            android:paddingBottom="7dp"
+            android:drawableTint="@color/White"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
+            android:paddingBottom="7dp"
             android:text="Report Management"
-            android:textColor="@color/black"
+            android:textColor="@color/White"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView20"
@@ -215,17 +218,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_add"
-            app:tint="@color/black" />
+            app:tint="@color/White" />
 
         <TextView
             android:id="@+id/addON_Management_TV"
             android:layout_width="374dp"
             android:layout_height="36dp"
-            android:paddingBottom="7dp"
+            android:drawableTint="@color/White"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
+            android:paddingBottom="7dp"
             android:text="Add-On Management"
-            android:textColor="@color/black"
+            android:textColor="@color/White"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView21"
@@ -249,17 +253,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logout"
-            app:tint="@color/black" />
+            app:tint="@color/White" />
 
         <TextView
             android:id="@+id/admin_Logout_TV"
             android:layout_width="374dp"
             android:layout_height="36dp"
-            android:paddingBottom="7dp"
+            android:drawableTint="@color/White"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
+            android:paddingBottom="7dp"
             android:text="Log Out"
-            android:textColor="@color/black"
+            android:textColor="@color/White"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView22"

@@ -102,5 +102,6 @@
     <color name="bgColor2">#92D5D2</color>
     <color name="editTextBG">#90CAF9</color>
 
-    <color name="cardBackground">#FFFFFF</color>
+    <color name="cardBackground">#FAF9F6</color>
+    <color name="textInputLayout">#FAF9F6</color>
 </resources>
