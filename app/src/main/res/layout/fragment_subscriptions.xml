@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView38"
-        app:singleSelection="true"></com.google.android.material.chip.ChipGroup>
+        app:singleSelection="false"></com.google.android.material.chip.ChipGroup>
 
     <Button
         android:id="@+id/save_subscriptionBtn"

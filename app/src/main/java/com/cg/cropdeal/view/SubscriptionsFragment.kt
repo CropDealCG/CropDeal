@@ -2,6 +2,7 @@ package com.cg.cropdeal.view
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.viewmodel.EditProfileVM
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import java.util.*
 
 
 class SubscriptionsFragment : Fragment() {
@@ -67,13 +69,17 @@ fun ChipGroup.addChip(context: Context, label: String){
         for(crop in Constants.cropListWithoutAll) {
             chipGrp.addChip(requireContext(), crop)
         }
-        binding.saveSubscriptionBtn.setOnClickListener {
+        val selectedSet = mutableSetOf<String>()
 
-            val selectedTopic = chipGrp.findViewById<Chip>(chipGrp.checkedChipId).text.toString()
-            sharedPreferences?.edit()
-                ?.putString("topic",selectedTopic)
-                ?.apply()
-           Constants.showSnackbar("Details of $selectedTopic subscribed",binding.root)
+        binding.saveSubscriptionBtn.setOnClickListener {
+            selectedSet.clear()
+            val list = chipGrp.checkedChipIds
+            for(crop in list){
+                selectedSet.add(chipGrp.findViewById<Chip>(crop).text.toString())
+            }
+            sharedPreferences.edit().clear().apply()
+            sharedPreferences.edit().putStringSet("topic",selectedSet).apply()
+//           Constants.showSnackbar("Details of $selectedTopic subscribed",binding.root)
         }
 
 

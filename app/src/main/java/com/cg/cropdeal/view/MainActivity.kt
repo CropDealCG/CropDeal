@@ -22,7 +22,7 @@ import com.facebook.FacebookSdk
 import com.google.firebase.database.*
 
 class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
-    private lateinit var subscribedTopic : String
+    private lateinit var subscribedTopic : MutableSet<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
         //take single topic
-        subscribedTopic = sharedPreferences.getString("topic","")!!
+        subscribedTopic = sharedPreferences.getStringSet("topic", mutableSetOf())!!
         //ChildEventListener to be notified about new child data(Crops)
         if(!subscribedTopic.isNullOrEmpty()){
             FirebaseDatabase.getInstance().reference.child("crops").addChildEventListener(object : ChildEventListener{
@@ -60,8 +60,8 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
                         //Notification bar configuration(look)
 
                         builder.setSmallIcon(R.drawable.logo_without_text)
-                        builder.setContentTitle("$subscribedTopic is available!")
-                        builder.setContentText("Buy NOW")
+                        builder.setContentTitle("Your subscribed crops are available now!")
+                        builder.setContentText("Click Here To Buy Them")
                         val notifyIntent = Intent(this@MainActivity,NavigationActivity::class.java).apply {
                             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         }
@@ -72,8 +72,8 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
                         builder.setAutoCancel(true)
                         val myNotify =builder.build()
 
-                        if(snapshot.child("cropName").value.toString() == subscribedTopic){
-                            nManager.notify(99,myNotify)
+                        for(crop in subscribedTopic){
+                            if(snapshot.child("cropName").value.toString() == crop) nManager.notify(99,myNotify)
                         }
                     }
                 }
@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
     }
 
     override fun onSharedPreferenceChanged(p0: SharedPreferences?, p1: String?) {
-        subscribedTopic = p0?.getString("topic","")!!
+        subscribedTopic = p0?.getStringSet("topic", mutableSetOf())!!
     }
 
 }
