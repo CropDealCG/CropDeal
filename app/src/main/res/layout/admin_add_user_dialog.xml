@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="300dp">
+    android:layout_height="300dp"
+    android:background="@drawable/background4">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/admin_add_user_dialog_name_TV"
@@ -43,9 +44,9 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/textInputLayout"
             android:hint="@string/user_email"
+            android:inputType="textEmailAddress"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:inputType="textEmailAddress"/>
+            android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -65,9 +66,9 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/textInputLayout"
             android:hint="@string/password"
+            android:inputType="textPassword"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:inputType="textPassword"/>
+            android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

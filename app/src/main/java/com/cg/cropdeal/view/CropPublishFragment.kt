@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.SpinnerAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.Navigation
+import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.PublishCropBinding
 import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.model.Crops
@@ -47,7 +48,7 @@ class CropPublishFragment : Fragment() {
         Constants.cropsList.observe(viewLifecycleOwner,{
             val listOfCrops : MutableList<String> = mutableListOf()
             for(crop in it) if(crop!="All")   listOfCrops.add(crop)
-            val spinnerAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_spinner_dropdown_item,listOfCrops) as SpinnerAdapter
+            val spinnerAdapter = ArrayAdapter<String>(view.context, R.layout.spinner_list,listOfCrops) as SpinnerAdapter
             binding.cropname.adapter = spinnerAdapter
         })
         var cropType = "Fruit"
