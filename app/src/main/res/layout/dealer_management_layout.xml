@@ -66,12 +66,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/dealer_UID_TV" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/switch1"
+                android:id="@+id/dealer_admin_toggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:text="Inactive"
                 android:textColor="@color/White"
+                android:focusableInTouchMode="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

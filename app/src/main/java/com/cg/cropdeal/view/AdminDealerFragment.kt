@@ -1,7 +1,6 @@
 package com.cg.cropdeal.view
 
 import android.Manifest
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.cg.cropdeal.databinding.FragmentDealerManagementBinding
 import com.cg.cropdeal.model.Constants
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
 
@@ -23,31 +21,29 @@ import java.io.InputStreamReader
 import java.lang.StringBuilder
 import java.net.HttpURLConnection
 import java.net.URL
-import android.os.StrictMode
-import android.os.StrictMode.ThreadPolicy
 import android.util.Log
-import android.os.Environment
 
 import android.app.Activity
 
 import androidx.core.app.ActivityCompat
 
 import android.content.pm.PackageManager
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.cg.cropdeal.model.AdminFarmerAdapter
+import com.cg.cropdeal.model.UtilRepo
 import com.cg.cropdeal.viewmodel.AdminDealerVM
-import org.apache.poi.hssf.record.formula.functions.Column
 import org.apache.poi.ss.usermodel.*
 import org.apache.poi.ss.usermodel.CellStyle
 
 import org.apache.poi.ss.usermodel.Cell
 
 
-
-
-
 class AdminDealerFragment : Fragment() {
     private lateinit var binding: FragmentDealerManagementBinding
-    private lateinit var fDatabase:FirebaseDatabase
+    private lateinit var firebaseDatabase:FirebaseDatabase
+    private lateinit var progressDialog : AlertDialog
     private lateinit var viewModel: AdminDealerVM
 
     override fun onCreateView(
@@ -62,12 +58,26 @@ class AdminDealerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(AdminDealerVM::class.java)
-        val dealerList = viewModel.getDealerData()
+
+        progressDialog = UtilRepo().loadingDialog(view.context)
+        progressDialog.show()
+
+        binding.adminDealerRview.layoutManager = LinearLayoutManager(view.context)
+        viewModel.getDealerIdData()?.observe(viewLifecycleOwner,{ idList->
+            viewModel.getDealerData()?.observe(viewLifecycleOwner,{list->
+                if(idList.isEmpty() || idList!=null){
+                    if(list.isEmpty() || list!=null){
+                        binding.adminDealerRview.adapter = AdminFarmerAdapter(list,idList)
+                        progressDialog.dismiss()
+                    }
+                }
+            })
+        })
 
 
         binding.exportBtn.setOnClickListener {
-            fDatabase = FirebaseDatabase.getInstance()
-            val users = fDatabase.getReference(Constants.USERS)
+            firebaseDatabase = FirebaseDatabase.getInstance()
+            val users = firebaseDatabase.getReference(Constants.USERS)
             //val res = JsonTask().execute("Url address here");
 //        val SDK_INT = Build.VERSION.SDK_INT
 //        if (SDK_INT > 8) {
