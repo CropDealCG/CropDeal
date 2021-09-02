@@ -40,7 +40,7 @@ class InvoiceFragment : Fragment() {
         binding.invoiceRview.layoutManager = LinearLayoutManager(view.context)
         viewModel.getInvoice()?.observe(viewLifecycleOwner,{list->
             if(list.isEmpty() || list!=null){
-                binding.invoiceRview.adapter = InvoiceAdapter(list)
+                binding.invoiceRview.adapter = InvoiceAdapter(list,this)
                 progressDialog.dismiss()
             }
         })

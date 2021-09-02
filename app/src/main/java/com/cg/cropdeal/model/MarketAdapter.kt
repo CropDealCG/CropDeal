@@ -13,7 +13,7 @@ import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.MarketPostDesignLayoutBinding
 import com.google.firebase.database.FirebaseDatabase
 
-class MarketAdapter(private val list:List<Crops>,private val areBankDetailsAvailable:Boolean)
+class MarketAdapter(private val list: List<Crops>, private val areBankDetailsAvailable:Boolean)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var binding: MarketPostDesignLayoutBinding

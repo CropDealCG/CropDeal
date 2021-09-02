@@ -13,6 +13,7 @@ import com.cg.cropdeal.databinding.FragmentAdminCropsReportBinding
 import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.model.CropsReportAdapter
 import com.cg.cropdeal.model.MarketAdapter
+import com.cg.cropdeal.model.UtilRepo
 import com.cg.cropdeal.viewmodel.AdminReportVM
 
 
@@ -20,6 +21,7 @@ class AdminCropsReportFragment : Fragment() {
 
     private lateinit var binding:FragmentAdminCropsReportBinding
     private lateinit var viewModel:AdminReportVM
+    private lateinit var progressDialog : AlertDialog
     private var cropForFilter:String = "All" //default
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,13 +37,14 @@ class AdminCropsReportFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(AdminReportVM::class.java)
-
+        progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
+        progressDialog.show()
         binding.cropsRview.layoutManager = LinearLayoutManager(context)
         viewModel.getCropList()?.observe(viewLifecycleOwner,{list->
             if(list.isEmpty() || list!=null) {
 
                         binding.cropsRview.adapter = CropsReportAdapter(list)
-                        //progressDialog.dismiss()
+                        progressDialog.dismiss()
 
             }
         })
@@ -73,7 +76,7 @@ class AdminCropsReportFragment : Fragment() {
                 .setItems(
                     it.toTypedArray(),
                     DialogInterface.OnClickListener { _, which ->
-                        cropForFilter = it.get(which)
+                        cropForFilter = it[which]
                         Log.d("cropFilter", cropForFilter)
 
                         val list = viewModel.getFilteredCropList(cropForFilter)

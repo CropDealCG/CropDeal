@@ -29,6 +29,7 @@ class AdminHomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        binding.adminEmailTV.text = FirebaseAuth.getInstance().currentUser?.email
         binding.reportManagementTV.setOnClickListener {
             val popup = PopupMenu(activity, it)
 

@@ -29,7 +29,7 @@
             android:layout_width="400dp"
             android:layout_height="200dp"
             android:layout_margin="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -45,8 +45,8 @@
                     android:id="@+id/imageView16"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="59dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginStart="59dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView7"
                     app:layout_constraintTop_toTopOf="parent"
@@ -61,6 +61,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/bank_logo" />
+
+                <ImageView
+                    android:id="@+id/imageView17"
+                    android:layout_width="100dp"
+                    android:layout_height="75dp"
+                    android:layout_marginEnd="36dp"
+                    android:layout_marginTop="56dp"
+                    app:layout_constraintEnd_toStartOf="@+id/textView16"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/chip" />
 
                 <TextView
                     android:id="@+id/bank_name_TV"
@@ -98,18 +109,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
-                <View
-                    android:id="@+id/divider4"
-                    android:layout_width="407dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="1dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginEnd="1dp"
-                    android:background="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
                 <TextView
                     android:id="@+id/textView19"
                     android:layout_width="wrap_content"
@@ -143,16 +142,17 @@
                     app:layout_constraintStart_toEndOf="@+id/textView19"
                     app:layout_constraintTop_toBottomOf="@+id/account_number_payment_TV" />
 
-                <ImageView
-                    android:id="@+id/imageView17"
-                    android:layout_width="100dp"
-                    android:layout_height="75dp"
-                    android:layout_marginTop="56dp"
-                    android:layout_marginEnd="36dp"
-                    app:layout_constraintEnd_toStartOf="@+id/textView16"
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="407dp"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/chip" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
@@ -161,8 +161,8 @@
             android:id="@+id/divider5"
             android:layout_width="200dp"
             android:layout_height="1dp"
-            android:layout_marginTop="40dp"
             android:layout_marginEnd="211dp"
+            android:layout_marginTop="30dp"
             android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -195,7 +195,7 @@
             android:id="@+id/cardView2"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             app:cardCornerRadius="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -219,6 +219,28 @@
                     app:srcCompat="@drawable/user_img"
                     app:tint="@android:color/white" />
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/textView33"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/farmerNameTV">
+
+                    <ImageView
+                        android:id="@+id/imageView23"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+                    <TextView
+                        android:id="@+id/farmerRatingPayTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:textColor="@color/White" />
+                </LinearLayout>
+
                 <TextView
                     android:id="@+id/farmerNameTV"
                     android:layout_width="wrap_content"
@@ -231,28 +253,6 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/textView33"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/farmerNameTV">
-
-                <TextView
-                    android:id="@+id/farmerRatingPayTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:textColor="@color/White" />
-
-                <ImageView
-                    android:id="@+id/imageView23"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    app:srcCompat="@android:drawable/btn_star_big_on" />
-            </LinearLayout>
 
                 <TextView
                     android:id="@+id/textView33"
