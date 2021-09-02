@@ -30,7 +30,7 @@ class AdminReportVM(application: Application):AndroidViewModel(application) {
         firebaseDatabase = FirebaseDatabase.getInstance()
         populateInvoiceList()
         populateCropList()
-        utilRepo = UtilRepo(application)
+        utilRepo = UtilRepo()
     }
 
     private fun populateInvoiceList() {

@@ -28,7 +28,7 @@ class SignInVM(application: Application) : AndroidViewModel(application) {
         facebookCallBackManager = authRepo!!.getFacebookCallBackManager()
         signInFailed = authRepo!!.isSignInFailed()
         selectedUserType = authRepo!!.selectedUserType()
-        utilRepo = UtilRepo(application)
+        utilRepo = UtilRepo()
     }
     fun login(email: String?, password: String?) {
         authRepo?.login(email, password)

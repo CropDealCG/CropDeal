@@ -13,7 +13,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
-class UtilRepo(private var application: Application?) {
+class UtilRepo() {
 
     fun selectDate(context: Context) : MaterialDatePicker<Long>{
         val constraintsBuilder =

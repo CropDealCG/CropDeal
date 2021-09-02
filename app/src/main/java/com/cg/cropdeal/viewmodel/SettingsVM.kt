@@ -34,7 +34,7 @@ class SettingsVM(application: Application) : AndroidViewModel(application) {
 
     init{
         settingsRepo = SettingsRepo(application)
-        utilRepo = UtilRepo(application)
+        utilRepo = UtilRepo()
     }
 
 

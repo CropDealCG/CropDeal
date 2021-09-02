@@ -24,7 +24,7 @@ class SignUpVM(application: Application) : AndroidViewModel(application) {
         userLiveData = authRepo!!.getUserLiveData()
         isNewUser = authRepo!!.isNewUser()
         signInFailed = authRepo!!.isSignInFailed()
-        utilRepo = UtilRepo(application)
+        utilRepo = UtilRepo()
     }
 
     fun register(email : String,password : String){

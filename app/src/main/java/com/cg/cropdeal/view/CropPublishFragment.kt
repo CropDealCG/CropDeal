@@ -40,7 +40,7 @@ class CropPublishFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
+        progressDialog = UtilRepo().loadingDialog(view.context)
 
 
         viewModel = ViewModelProvider(this).get(CropPublishVM::class.java)

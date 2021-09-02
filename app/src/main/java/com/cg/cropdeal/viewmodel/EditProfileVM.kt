@@ -33,7 +33,7 @@ class EditProfileVM(application: Application): AndroidViewModel(application) {
 
     init {
         settingsRepo = SettingsRepo(application)
-        utilRepo = UtilRepo(application)
+        utilRepo = UtilRepo()
     }
 
     fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?,username: String,dob:String){

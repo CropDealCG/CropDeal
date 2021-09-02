@@ -36,7 +36,7 @@ class InvoiceDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        progressBar = UtilRepo(activity?.application!!).loadingDialog(view.context)
+        progressBar = UtilRepo().loadingDialog(view.context)
         progressBar.show()
         val cropId = arguments?.getString("cropId")
         val databaseReference = firebaseDatabase.reference

@@ -45,7 +45,7 @@ class MarketFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
+        progressDialog = UtilRepo().loadingDialog(view.context)
         progressDialog.show()
         if(userType=="dealer")  binding.addCropsFAB.visibility = View.GONE
         binding.addCropsFAB.setOnClickListener {

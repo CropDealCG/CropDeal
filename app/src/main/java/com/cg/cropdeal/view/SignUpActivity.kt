@@ -38,7 +38,7 @@ class SignUpActivity : AppCompatActivity() {
         rootNode = FirebaseDatabase.getInstance()
         reference = rootNode.reference.child(Constants.USERS)
 
-        progressDialog = UtilRepo(application).loadingDialog(this)
+        progressDialog = UtilRepo().loadingDialog(this)
         //Hooks to all xml elements in activity_sign_up.xml using view binding
 
         //save the data in the Firebase on button click

@@ -34,7 +34,7 @@ class InvoiceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(InvoiceVM::class.java)
-        progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
+        progressDialog = UtilRepo().loadingDialog(view.context)
         progressDialog.show()
 
         binding.invoiceRview.layoutManager = LinearLayoutManager(view.context)

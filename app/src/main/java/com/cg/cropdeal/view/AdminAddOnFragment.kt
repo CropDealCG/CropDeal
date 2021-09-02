@@ -35,7 +35,7 @@ class AdminAddOnFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(AdminAddOnVM::class.java)
 
-        progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
+        progressDialog = UtilRepo().loadingDialog(view.context)
         progressDialog.show()
 
         binding.addOnRView.layoutManager = LinearLayoutManager(view.context)

@@ -17,7 +17,7 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
 
     private var utilRepo:UtilRepo?=null
     init {
-        utilRepo = UtilRepo(application)
+        utilRepo = UtilRepo()
     }
 
     fun changePassword(binding: FragmentChangePasswordBinding):Boolean{

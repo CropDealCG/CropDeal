@@ -39,7 +39,7 @@ class AdminInvoiceFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(AdminReportVM::class.java)
-        progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
+        progressDialog = UtilRepo().loadingDialog(view.context)
         progressDialog.show()
 
 

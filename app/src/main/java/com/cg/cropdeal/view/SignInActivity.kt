@@ -50,7 +50,7 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
-        progressDialog = UtilRepo(application).loadingDialog(this)
+        progressDialog = UtilRepo().loadingDialog(this)
         auth = FirebaseAuth.getInstance()   //initialize the FirebaseAuth instance
         firebaseDatabase = FirebaseDatabase.getInstance()
         userType = ""

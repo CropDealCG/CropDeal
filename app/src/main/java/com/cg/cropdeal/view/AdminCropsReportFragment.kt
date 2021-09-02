@@ -37,7 +37,7 @@ class AdminCropsReportFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(AdminReportVM::class.java)
-        progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
+        progressDialog = UtilRepo().loadingDialog(view.context)
         progressDialog.show()
         binding.cropsRview.layoutManager = LinearLayoutManager(context)
         viewModel.getCropList()?.observe(viewLifecycleOwner,{list->

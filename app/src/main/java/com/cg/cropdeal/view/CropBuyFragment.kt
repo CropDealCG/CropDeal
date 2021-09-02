@@ -42,7 +42,7 @@ class CropBuyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        progressDialog = UtilRepo(activity?.application!!).loadingDialog(view.context)
+        progressDialog = UtilRepo().loadingDialog(view.context)
         progressDialog.show()
         val farmerId = arguments?.getString("farmerId")
         val cropId = arguments?.getString("cropId")

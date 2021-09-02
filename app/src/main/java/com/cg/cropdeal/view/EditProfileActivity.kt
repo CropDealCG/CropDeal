@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.max
 
 
 class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
@@ -58,7 +59,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
                     binding.editEmailET.editText?.setText(email)
 
                     val dob = dataSnapshot.child(Constants.DATE).value.toString()
-                    binding.editDobTV.setText(dob)
+                    binding.editDobTV.text = dob
                 }
             })
 
@@ -71,7 +72,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
         val src = BitmapFactory.decodeResource(resources, R.drawable.blank_profile)
         val dr = RoundedBitmapDrawableFactory.create(resources, src)
-        dr.cornerRadius = Math.max(src.width, src.height) / 2.0f
+        dr.cornerRadius = max(src.width, src.height) / 2.0f
 
         Glide.with(this )
             .load(uri)
@@ -87,7 +88,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
             datePickerDialog.addOnPositiveButtonClickListener { dateInMillis->
                 val date = SimpleDateFormat("MMM dd, yyyy",
                     Locale.getDefault()).format(Date(dateInMillis))
-                binding.editDobTV.setText(date)
+                binding.editDobTV.text = date
             }
             datePickerDialog.show(supportFragmentManager,"Date")
         }
