@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -18,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="#262440 ">
+            android:background="#3c3a53">
 
             <TextView
                 android:id="@+id/cropName_TV"

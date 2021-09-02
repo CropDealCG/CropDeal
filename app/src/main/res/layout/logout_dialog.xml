@@ -14,7 +14,7 @@
         android:layout_marginTop="65dp"
         android:fontFamily="sans-serif"
         android:text="@string/confirmation"
-        android:textColor="@color/White"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

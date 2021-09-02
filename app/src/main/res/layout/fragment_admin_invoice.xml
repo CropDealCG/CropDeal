@@ -5,13 +5,15 @@
     android:id="@+id/admin_invoiceLyt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.AdminInvoiceFragment" >
+    android:background="@drawable/background2"
+    tools:context=".view.AdminInvoiceFragment">
 
     <TextView
         android:id="@+id/invoiceFilterResultTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="All Invoices"
+        android:textColor="@color/White"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

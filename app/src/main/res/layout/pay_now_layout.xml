@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="150dp"
             android:text="PAYING FROM"
-            android:textColor="@color/White"
+            android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -31,6 +31,7 @@
             android:layout_margin="20dp"
             android:layout_marginTop="5dp"
             app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,14 +40,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#262440 ">
+                android:background="#3c3a53">
 
                 <ImageView
                     android:id="@+id/imageView16"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginStart="59dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView7"
                     app:layout_constraintTop_toTopOf="parent"
@@ -66,8 +67,8 @@
                     android:id="@+id/imageView17"
                     android:layout_width="100dp"
                     android:layout_height="75dp"
-                    android:layout_marginEnd="36dp"
                     android:layout_marginTop="56dp"
+                    android:layout_marginEnd="36dp"
                     app:layout_constraintEnd_toStartOf="@+id/textView16"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -146,9 +147,9 @@
                     android:id="@+id/divider4"
                     android:layout_width="407dp"
                     android:layout_height="1dp"
-                    android:layout_marginEnd="1dp"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="3dp"
+                    android:layout_marginEnd="1dp"
                     android:background="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -174,7 +175,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PAYING TO"
-            android:textColor="@color/White"
+            android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
@@ -197,6 +198,7 @@
             android:layout_height="200dp"
             android:layout_marginTop="5dp"
             app:cardCornerRadius="30dp"
+            app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -205,7 +207,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#262440 ">
+                android:background="#3c3a53  ">
 
                 <ImageView
                     android:id="@+id/imageView9"

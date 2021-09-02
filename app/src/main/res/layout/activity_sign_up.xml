@@ -66,6 +66,7 @@
         android:layout_height="400dp"
         android:layout_marginTop="10dp"
         app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

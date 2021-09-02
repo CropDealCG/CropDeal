@@ -65,22 +65,22 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/White" />
+            app:tint="@color/black" />
 
         <TextView
             android:id="@+id/editProf_TV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawablePadding="5dp"
-            android:drawableTint="@color/White"
+            android:drawableTint="@color/black"
             android:fontFamily="sans-serif"
             android:hapticFeedbackEnabled="true"
-            android:paddingBottom="20dp"
             android:paddingStart="10dp"
             android:paddingTop="20dp"
+            android:paddingBottom="20dp"
             android:text="@string/edit_profile"
             android:textAlignment="textStart"
-            android:textColor="@color/White"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
@@ -107,20 +107,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/White" />
+            app:tint="@color/black" />
 
         <TextView
             android:id="@+id/changePass_TV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawablePadding="5dp"
-            android:drawableTint="@color/White"
+            android:drawableTint="@color/black"
             android:paddingStart="10dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="@string/change_password"
             android:textAlignment="textStart"
-            android:textColor="@color/White"
+            android:textColor="@color/black"
             android:textSize="20sp"
 
             android:textStyle="bold"
@@ -150,20 +150,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/White" />
+            app:tint="@color/black" />
 
         <TextView
             android:id="@+id/payment_details_TV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawablePadding="5dp"
-            android:drawableTint="@color/White"
+            android:drawableTint="@color/black"
             android:paddingStart="10dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="@string/payment_details"
             android:textAlignment="textStart"
-            android:textColor="@color/White"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
@@ -191,20 +191,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/White" />
+            app:tint="@color/black" />
 
         <TextView
             android:id="@+id/subscriptions_TV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawablePadding="5dp"
-            android:drawableTint="@color/White"
+            android:drawableTint="@color/black"
             android:paddingStart="10dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="@string/subscriptions"
             android:textAlignment="textStart"
-            android:textColor="@color/White"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
@@ -234,20 +234,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/White" />
+            app:tint="@color/black" />
 
         <TextView
             android:id="@+id/aboutUs_TV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawablePadding="5dp"
-            android:drawableTint="@color/White"
+            android:drawableTint="@color/black"
             android:paddingStart="10dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="@string/about_us"
             android:textAlignment="textStart"
-            android:textColor="@color/White"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
@@ -278,20 +278,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/White" />
+            app:tint="@color/black" />
 
         <TextView
             android:id="@+id/logout_TV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawablePadding="5dp"
-            android:drawableTint="@color/White"
+            android:drawableTint="@color/black"
             android:paddingStart="10dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="@string/logout"
             android:textAlignment="textStart"
-            android:textColor="@color/White"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:drawableEndCompat="@drawable/mdtp_ic_chevron_right_black_24dp"
@@ -313,7 +313,7 @@
         android:text="CropDeal All Rights Reserved 2021-25"
         android:textAlignment="center"
 
-        android:textColor="@color/White"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

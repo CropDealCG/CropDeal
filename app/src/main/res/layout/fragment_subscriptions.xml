@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -21,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="#262440 "
+            android:background="#3c3a53 "
             tools:context=".view.SubscriptionsFragment">
 
 
@@ -36,16 +37,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
-        style="@style/Widget.MaterialComponents.ChipGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView38"
-        app:singleSelection="false"></com.google.android.material.chip.ChipGroup>
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
+                style="@style/Widget.MaterialComponents.ChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView38"
+                app:singleSelection="false"></com.google.android.material.chip.ChipGroup>
 
             <Button
                 android:id="@+id/save_subscriptionBtn"
