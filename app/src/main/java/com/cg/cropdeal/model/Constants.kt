@@ -31,7 +31,7 @@ object Constants {
     const val DATE: String = "date"
     const val USERS:String = "users"
     const val APP_PREFERENCES: String = "AppPrefs"
-
+    const val NO_OF_CARS:String = "noOfCars"
     const val USERNAME:String = "name"
     const val EMAIL:String = "email"
 

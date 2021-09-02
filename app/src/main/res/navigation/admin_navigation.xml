@@ -41,12 +41,18 @@
         android:name="com.cg.cropdeal.view.AdminDealerFragment"
         android:label="AdminDealerFragment"
         tools:layout="@layout/fragment_dealer_management">
+        <action
+            android:id="@+id/action_adminDealerFragment_to_adminEditProfileFragment"
+            app:destination="@id/adminEditProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminFarmerFragment"
         android:name="com.cg.cropdeal.view.AdminFarmerFragment"
         android:label="AdminFarmerFragment"
         tools:layout="@layout/fragment_farmer_management">
+        <action
+            android:id="@+id/action_adminFarmerFragment_to_adminEditProfileFragment"
+            app:destination="@id/adminEditProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminAddOnFragment"
@@ -55,4 +61,9 @@
         tools:layout="@layout/fragment_add_on_management">
 
     </fragment>
+    <fragment
+        android:id="@+id/adminEditProfileFragment"
+        android:name="com.cg.cropdeal.view.AdminEditProfileFragment"
+        android:label="fragment_admin_edit_profile"
+        tools:layout="@layout/fragment_admin_edit_profile" />
 </navigation>

@@ -4,11 +4,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.DealerManagementLayoutBinding
 import com.google.firebase.database.FirebaseDatabase
 
-class AdminDealerAdapter(private val list : List<Users>, private val userId : List<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
+class AdminDealerAdapter(private val list : List<Users>, private val userId : List<String>)
+    : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
     private lateinit var binding : DealerManagementLayoutBinding
     private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var progressDialog : AlertDialog
@@ -26,7 +30,9 @@ class AdminDealerAdapter(private val list : List<Users>, private val userId : Li
         binding.dealerUIDTV.text = userId[position]
         binding.dealerNameDMTV.text = dealer.name
         holder.itemView.setOnClickListener {
-            //Code Here
+            val bundle = bundleOf("userId" to userId[position])
+            Navigation.findNavController(it).navigate(
+                R.id.action_adminDealerFragment_to_adminEditProfileFragment,bundle)
         }
         if(dealer.active){
             binding.dealerAdminToggle.text = "Active"

@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.FarmerManagementLayoutBinding
 import com.google.firebase.database.FirebaseDatabase
 
@@ -28,7 +31,9 @@ class AdminFarmerAdapter(private val list : List<Users>, private val userId : Li
         binding.farmerAdminRatingTV.text = farmer.rating.toString()
         binding.farmerNameFMTV.text = farmer.name
         holder.itemView.setOnClickListener {
-            // Code Here
+            val bundle = bundleOf("userId" to userId[position])
+            Navigation.findNavController(it).navigate(
+                R.id.action_adminFarmerFragment_to_adminEditProfileFragment,bundle)
         }
         if(farmer.active){
             binding.farmerAdminToggle.text = "Active"
