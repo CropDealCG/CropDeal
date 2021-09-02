@@ -30,16 +30,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         val splashScreen =  installSplashScreen()
         setContentView(binding.root)
 
-        val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
-        val masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
-
-        val sharedPreferences = EncryptedSharedPreferences.create(
-            "subscriptions",
-            masterKeyAlias,
-            this,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
+        val sharedPreferences=Constants.getEncryptedSharedPreference("subscriptions",this)
 
         //Crop Subscription Notification
 

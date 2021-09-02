@@ -39,16 +39,7 @@ class SubscriptionsFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
-        val masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
-
-        val sharedPreferences = EncryptedSharedPreferences.create(
-            "subscriptions",
-            masterKeyAlias,
-            view.context,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
+        val sharedPreferences=Constants.getEncryptedSharedPreference("subscriptions",view.context)
 
         viewModel = ViewModelProvider(this).get(EditProfileVM::class.java)
 

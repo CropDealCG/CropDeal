@@ -2,7 +2,9 @@ package com.cg.cropdeal.model
 
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.net.Uri
 import android.provider.MediaStore
@@ -11,6 +13,8 @@ import android.webkit.MimeTypeMap
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 import com.google.android.material.behavior.SwipeDismissBehavior
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -72,6 +76,20 @@ object Constants {
     var cropList = mutableListOf<String>()
     val cropListWithoutAll = listOf<String>("Tomato","Potato","Wheat","Rice","Mango","Barley"
         ,"Strawberry","Spinach","Orange","Mustard","Pumpkin","Corn")
+
+    fun getEncryptedSharedPreference(name:String, context: Context):SharedPreferences{
+        val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
+        val masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
+
+        val sharedPreferences = EncryptedSharedPreferences.create(
+            name,
+            masterKeyAlias,
+            context,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
+        return sharedPreferences
+    }
 
 
 
