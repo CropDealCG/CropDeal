@@ -60,4 +60,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:backgroundDimAmount">0.75</item>
+    </style>
 </resources>
