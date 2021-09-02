@@ -69,7 +69,7 @@ dependencies {
     implementation 'com.airbnb.android:lottie:4.1.0'
     implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.firebaseui:firebase-ui-database:8.0.0'
-    implementation files('libs\\poi-3.7.jar')
+    implementation files('libs/poi-3.7.jar')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
