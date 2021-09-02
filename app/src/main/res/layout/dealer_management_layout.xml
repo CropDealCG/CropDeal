@@ -8,11 +8,13 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="5dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -26,7 +28,7 @@
                 style="@style/font_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="10dp"
                 android:text="Dealer UID : "
                 android:textColor="@color/White"
                 app:layout_constraintBottom_toTopOf="@+id/textView54"
@@ -38,7 +40,7 @@
                 style="@style/font_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="10dp"
                 android:text="Dealer Name : "
                 android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +52,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dealer UID here"
+                android:textAlignment="textStart"
                 android:textColor="@color/White"
+                android:textSize="10sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView54"
                 app:layout_constraintStart_toEndOf="@+id/textView53"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -69,12 +73,14 @@
                 android:id="@+id/dealer_admin_toggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginEnd="32dp"
+                android:focusableInTouchMode="false"
                 android:text="Inactive"
                 android:textColor="@color/White"
-                android:focusableInTouchMode="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dealer_UID_TV"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TouchTargetSizeCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
