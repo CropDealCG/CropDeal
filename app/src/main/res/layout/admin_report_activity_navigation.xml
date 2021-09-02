@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/bottomBarAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:backgroundColor="@color/paperWhite"
+        app:iconSize="24dp"
+        app:iconTint="@color/black"
+        app:iconTintActive="#533cf3"
+        app:indicatorColor="@color/indicatorColor"
+        app:indicatorRadius="10dp"
+        app:itemPadding="10dp"
+        app:sideMargins="10dp"
+        app:textColor="#533cf3"
+        app:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/admin_report_menu"/>
+
+    <fragment
+        android:id="@+id/bottom_nav_fragment_admin"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#FFFFFF"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBarAdmin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/admin_report_navigation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

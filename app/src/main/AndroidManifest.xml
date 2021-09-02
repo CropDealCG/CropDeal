@@ -18,6 +18,8 @@
         <activity
             android:name=".view.AdminActivity"
             android:exported="true" />
+        <activity android:name=".view.AdminReportActivity"
+            android:exported="true"/>
         <activity
             android:name=".view.NavigationActivity"
             android:exported="true" />

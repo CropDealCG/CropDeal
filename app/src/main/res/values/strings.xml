@@ -68,7 +68,7 @@
     <string name="filter_by_date">Filter By Date</string>
     <string name="filter_by_crop">Filter By Crop</string>
     <string name="complete_profile">Complete Profile</string>
-    <string name="no_of_cars">No. of Cars</string>
+    <string name="no_of_cars">No. of Vehicles</string>
     <!--    <string name="default_web_client_id">571175692324-7fs44r8e5hfaicks94eh4dlfet8dt6gc.apps.googleusercontent.com</string>-->
 
 </resources>

@@ -31,28 +31,31 @@ class AdminHomeFragment : Fragment() {
 
         binding.adminEmailTV.text = FirebaseAuth.getInstance().currentUser?.email
         binding.reportManagementTV.setOnClickListener {
-            val popup = PopupMenu(activity, it)
 
-            popup.menu.add(INVOICES)
-            popup.menu.add(CROPS)
-            popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
-                when(item.title){
-                    INVOICES -> {
-                        Navigation.findNavController(view)
-                            .navigate(R.id.action_adminHomeFragment_to_adminInvoiceFragment)
+            startActivity(Intent(requireActivity(),AdminReportActivity::class.java))
 
-                    }
-                    CROPS -> {
-                        Navigation.findNavController(view)
-                            .navigate(R.id.action_adminHomeFragment_to_adminCropsReportFragment)
-                    }
-
-                }
-
-                true
-            })
-
-            popup.show()
+//            val popup = PopupMenu(activity, it)
+//
+//            popup.menu.add(INVOICES)
+//            popup.menu.add(CROPS)
+//            popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
+//                when(item.title){
+//                    INVOICES -> {
+//                        Navigation.findNavController(view)
+//                            .navigate(R.id.action_adminHomeFragment_to_adminInvoiceFragment)
+//
+//                    }
+//                    CROPS -> {
+//                        Navigation.findNavController(view)
+//                            .navigate(R.id.action_adminHomeFragment_to_adminCropsReportFragment)
+//                    }
+//
+//                }
+//
+//                true
+//            })
+//
+//            popup.show()
         }
 
         binding.dealerManagementTV.setOnClickListener {
