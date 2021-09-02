@@ -26,6 +26,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cg.cropdeal.model.AdminDealerAdapter
 import com.cg.cropdeal.model.AdminFarmerAdapter
 import com.cg.cropdeal.model.UtilRepo
 import com.cg.cropdeal.viewmodel.AdminDealerVM
@@ -63,7 +64,7 @@ class AdminDealerFragment : Fragment() {
             viewModel.getDealerData()?.observe(viewLifecycleOwner,{list->
                 if(idList.isEmpty() || idList!=null){
                     if(list.isEmpty() || list!=null){
-                        binding.adminDealerRview.adapter = AdminFarmerAdapter(list,idList)
+                        binding.adminDealerRview.adapter = AdminDealerAdapter(list,idList)
                         progressDialog.dismiss()
                     }
                 }
