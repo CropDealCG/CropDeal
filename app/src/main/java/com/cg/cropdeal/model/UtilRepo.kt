@@ -27,7 +27,7 @@ class UtilRepo() {
     }
 
     fun customDialog(context: Context,layout: Int) : AlertDialog {
-        val dialog =MaterialAlertDialogBuilder(context)
+        val dialog =MaterialAlertDialogBuilder(context, R.style.ThemeOverlay_App_MaterialAlertDialog)
 //        return dialog.create()
         val layoutInflater =LayoutInflater.from(context)
         val customView = layoutInflater.inflate(layout,null,false)
@@ -37,7 +37,7 @@ class UtilRepo() {
         return materialDialog
     }
     fun loadingDialog(context: Context) : AlertDialog{
-        val dialog = MaterialAlertDialogBuilder(context)
+        val dialog = MaterialAlertDialogBuilder(context, R.style.ThemeOverlay_App_MaterialAlertDialog)
         val layoutInflater = LayoutInflater.from(context)
         val customView = layoutInflater.inflate(R.layout.custom_progress_dialog,null,false)
         dialog.setView(customView)

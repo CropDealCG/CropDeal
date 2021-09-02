@@ -104,6 +104,7 @@ class SignUpActivity : AppCompatActivity() {
                                 })
                             }
                             else{
+                                progressDialog.dismiss()
                                 val sharedPref = getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?:return
                                 if(sharedPref.getString("userType","")=="admin"){
                                     startActivity(Intent(this@SignUpActivity,AdminActivity::class.java))
