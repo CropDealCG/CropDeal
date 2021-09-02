@@ -25,6 +25,9 @@ class AdminDealerAdapter(private val list : List<Users>, private val userId : Li
         val dealer = list[position]
         binding.dealerUIDTV.text = userId[position]
         binding.dealerNameDMTV.text = dealer.name
+        holder.itemView.setOnClickListener {
+            //Code Here
+        }
         if(dealer.active){
             binding.dealerAdminToggle.text = "Active"
             binding.dealerAdminToggle.isChecked = true
