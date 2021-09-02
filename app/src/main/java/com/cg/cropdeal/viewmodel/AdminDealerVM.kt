@@ -16,32 +16,44 @@ class AdminDealerVM(application: Application):AndroidViewModel(application) {
 
     private var usersList : MutableLiveData<List<Users>>? = null
     private var dealersList : MutableList<Users>? = null
-    fun getDealerData(): MutableLiveData<List<Users>>?{
-
-       usersList = MutableLiveData()
+    private var usersIdList : MutableLiveData<List<String>>?=  null
+    private var dealersIdList : MutableList<String>? = null
+    init {
+        usersList = MutableLiveData()
         dealersList= mutableListOf()
-        val rootRef = FirebaseDatabase.getInstance().getReference()
+        usersIdList = MutableLiveData()
+        dealersIdList = mutableListOf()
+        populateList()
+    }
 
-        val usersdRef = rootRef.child(Constants.USERS)
+    private fun populateList() {
+        val rootRef = FirebaseDatabase.getInstance().reference
+
+        rootRef.child(Constants.USERS).orderByChild("type").equalTo("dealer")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    for (data in snapshot.getChildren()) {
-                       val user= data.getValue(Users::class.java)
-                        val type = user?.type
-                        if (type == "dealer") {
-                            dealersList?.add(user)
-                            usersList?.value = dealersList
-                        }
+                    dealersList?.clear()
+                    dealersIdList?.clear()
+                    for(child in snapshot.children){
+                        val dealer = child.getValue(Users::class.java)!!
+                        val dealerId = child.key.toString()
+                        dealersIdList?.add(dealerId)
+                        dealersList?.add(dealer)
+                        usersIdList?.value = dealersIdList
                         usersList?.value = dealersList
                     }
+                    usersIdList?.value = dealersIdList
+                    usersList?.value = dealersList
                 }
 
                 override fun onCancelled(error: DatabaseError) {
 
                 }
             })
-return usersList
     }
+
+    fun getDealerData(): MutableLiveData<List<Users>>? = usersList
+    fun getDealerIdData() : MutableLiveData<List<String>>? = usersIdList
 }
 
 
