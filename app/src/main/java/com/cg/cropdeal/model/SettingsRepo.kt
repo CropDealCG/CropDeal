@@ -42,7 +42,7 @@ class SettingsRepo(private var application: Application?) {
 
 
     fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?,context: Context,
-    username: String,dob:String){
+    username: String,dob:String,cars:Int){
         val fStorage = FirebaseStorage.getInstance()
             .reference.child(
                 "img"+FirebaseAuth.getInstance().currentUser?.email
@@ -54,7 +54,7 @@ class SettingsRepo(private var application: Application?) {
 
             taskSnapshot.metadata!!.reference!!.downloadUrl
                 .addOnSuccessListener { uri ->
-                    imageUploadSuccess(uri.toString(),username,dob)
+                    imageUploadSuccess(uri.toString(),username,dob,cars)
                     val profile_image_ref =  context
                         .getSharedPreferences(FirebaseAuth.getInstance().currentUser?.email,0)
 
@@ -69,15 +69,15 @@ class SettingsRepo(private var application: Application?) {
                     exception.message,exception)
             }
     }
-    fun imageUploadSuccess(imageURL : String,username: String,dob:String){
+    fun imageUploadSuccess(imageURL : String,username: String,dob:String,cars:Int){
         //hideProgressDialog()
 
         userProfileImageURL = imageURL
 
-        updateUserProfileDetails(username,dob)
+        updateUserProfileDetails(username,dob,cars)
     }
 
-    fun updateUserProfileDetails(username:String,dob:String){
+    fun updateUserProfileDetails(username:String,dob:String,cars:Int){
         val userHashMap = HashMap<String,Any>()
 
 
@@ -89,6 +89,8 @@ class SettingsRepo(private var application: Application?) {
         if(dob.isNotEmpty()){
             userHashMap[Constants.DATE] = dob
         }
+
+        userHashMap[Constants.NO_OF_CARS] = cars
 
 
         updateUserProfile(userHashMap)

@@ -11,6 +11,7 @@ import android.os.Bundle
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -57,6 +58,9 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
                     val email = dataSnapshot.child(Constants.EMAIL).value.toString()
                     binding.editEmailET.editText?.setText(email)
+
+                    val cars = dataSnapshot.child(Constants.NO_OF_CARS).value.toString()
+                    binding.editCarsET.editText?.setText(cars)
 
                     val dob = dataSnapshot.child(Constants.DATE).value.toString()
                     binding.editDobTV.text = dob
@@ -122,8 +126,8 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
                     else{
                         updateUserProfileDetails()
                     }
-
-                Constants.showSnackbar("Profile Updated!",binding.editProfileLyt)
+                Toast.makeText(this,"Profile Updated!!",Toast.LENGTH_LONG).show()
+                //Constants.showSnackbar("Profile Updated!",binding.editProfileLyt)
                 finish()
 
             }
@@ -177,7 +181,8 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
     private fun updateUserProfileDetails(){
         val username = binding.editUserNameET.editText?.text.toString().trim{it<=' '}
         val dob = binding.editDobTV.text.toString().trim{it<=' '}
-        viewModel.updateUserProfileDetails(username,dob)
+        val cars = binding.editCarsET.editText?.text.toString().toInt()
+        viewModel.updateUserProfileDetails(username,dob,cars)
 
 
         Constants.showSnackbar("Profile updated successfully",
@@ -194,6 +199,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
     private fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?) {
         val username = binding.editUserNameET.editText?.text.toString().trim{it<=' '}
         val dob = binding.editDobTV.text.toString().trim{it<=' '}
-        viewModel.uploadImageToCloudStorage(activity,imageFileUri,username,dob)
+        val cars = binding.editCarsET.editText?.text.toString().toInt()
+        viewModel.uploadImageToCloudStorage(activity,imageFileUri,username,dob,cars)
     }
 }

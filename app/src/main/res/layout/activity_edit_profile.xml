@@ -114,6 +114,36 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editCarsET"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:textColorHint="@color/black"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editEmailET">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/textInputLayout"
+                    android:hint="@string/no_of_cars"
+                    android:inputType="number"
+                    android:minHeight="48dp"
+                    android:textColor="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
             <TextView
                 android:id="@+id/editDobTV"
                 android:layout_width="300dp"
@@ -132,7 +162,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editEmailET" />
+                app:layout_constraintTop_toBottomOf="@+id/editCarsET" />
 
             <Button
                 android:id="@+id/saveProfileButton"
