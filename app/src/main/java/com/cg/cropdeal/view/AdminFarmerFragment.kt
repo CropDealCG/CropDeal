@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cg.cropdeal.databinding.FragmentFarmerManagementBinding
+import com.cg.cropdeal.model.AdminDealerAdapter
 import com.cg.cropdeal.model.AdminFarmerAdapter
 import com.cg.cropdeal.model.UtilRepo
 import com.cg.cropdeal.viewmodel.AdminFarmerVM
@@ -39,7 +40,7 @@ class AdminFarmerFragment : Fragment() {
             viewModel.getFarmerList()?.observe(viewLifecycleOwner,{list->
                 if(idList.isEmpty() || idList!=null){
                     if(list.isEmpty() || list!=null){
-                        binding.adminFarmerRview.adapter = AdminFarmerAdapter(list,idList)
+                        binding.adminFarmerRview.adapter = AdminDealerAdapter(list,idList)
                         progressDialog.dismiss()
                     }
                 }
