@@ -5,7 +5,7 @@
     android:id="@+id/admin_invoiceLyt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background2"
+    android:background="@drawable/background4"
     tools:context=".view.AdminInvoiceFragment">
 
     <TextView

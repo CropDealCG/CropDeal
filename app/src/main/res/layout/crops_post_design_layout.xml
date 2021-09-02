@@ -19,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="#3c3a53 ">
+            android:background="@color/listCards">
 
             <TextView
                 android:id="@+id/crop_NameTV"
@@ -144,10 +144,10 @@
                 android:layout_marginTop="15dp"
                 android:text="Total Rate (INR)"
 
+                android:textColor="@color/White"
                 android:textSize="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/quantityTV"
-                android:textColor="@color/White" />
+                app:layout_constraintTop_toBottomOf="@+id/quantityTV" />
 
             <TextView
                 android:id="@+id/textView26"

@@ -12,7 +12,7 @@
         app:backgroundColor="@color/paperWhite"
         app:iconSize="24dp"
         app:iconTint="@color/black"
-        app:iconTintActive="@color/crimsonRed"
+        app:iconTintActive="#533cf3"
         app:indicatorColor="@color/indicatorColor"
         app:indicatorRadius="10dp"
         app:itemPadding="10dp"
@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu"
         app:sideMargins="10dp"
-        app:textColor="@color/crimsonRed"
+        app:textColor="#533cf3"
         app:textSize="14sp" />
 
 

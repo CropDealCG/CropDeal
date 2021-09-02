@@ -40,7 +40,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#3c3a53">
+                android:background="@color/listCards">
 
                 <ImageView
                     android:id="@+id/imageView16"
@@ -207,7 +207,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#3c3a53  ">
+                android:background="@color/listCards">
 
                 <ImageView
                     android:id="@+id/imageView9"

@@ -104,4 +104,5 @@
 
     <color name="cardBackground">#FAF9F6</color>
     <color name="textInputLayout">#FAF9F6</color>
+    <color name="listCards">#211961</color>
 </resources>

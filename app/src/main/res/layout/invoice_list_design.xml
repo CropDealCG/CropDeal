@@ -22,7 +22,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:background="#3c3a53 ">
+            android:background="@color/listCards">
 
             <TextView
                 android:id="@+id/textView32"
