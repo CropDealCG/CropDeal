@@ -15,15 +15,10 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle
 
 import org.apache.poi.hssf.util.HSSFColor
 
-import org.json.JSONObject
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.lang.StringBuilder
-import java.net.HttpURLConnection
-import java.net.URL
 import android.util.Log
 
 import android.app.Activity
+import android.content.Context
 
 import androidx.core.app.ActivityCompat
 
@@ -38,6 +33,7 @@ import org.apache.poi.ss.usermodel.*
 import org.apache.poi.ss.usermodel.CellStyle
 
 import org.apache.poi.ss.usermodel.Cell
+import java.io.*
 
 
 class AdminDealerFragment : Fragment() {
@@ -75,24 +71,10 @@ class AdminDealerFragment : Fragment() {
         })
 
 
-        binding.exportBtn.setOnClickListener {
-            firebaseDatabase = FirebaseDatabase.getInstance()
-            val users = firebaseDatabase.getReference(Constants.USERS)
-            //val res = JsonTask().execute("Url address here");
-//        val SDK_INT = Build.VERSION.SDK_INT
-//        if (SDK_INT > 8) {
-//            val policy = ThreadPolicy.Builder()
-//                .permitAll().build()
-//            StrictMode.setThreadPolicy(policy)
-//
-//
-//            val response: JSONObject = getJSONObjectFromURL(
-//                "https://cropdeal-a5248-default-rtdb.firebaseio.com/users/.json"
-//            )
-//
-//        }
-            binding.exportBtn.setOnClickListener {
 
+
+
+            binding.exportBtn.setOnClickListener {
 
                 if (ActivityCompat.checkSelfPermission(
                         requireContext(),
@@ -106,76 +88,69 @@ class AdminDealerFragment : Fragment() {
                         1
                     )
                 }
+
                 val workbook: Workbook = HSSFWorkbook()
                 var  sheet:Sheet? = null
                 val EXCEL_SHEET_NAME = "Dealers"
 
-// Create a new sheet in a Workbook and assign a name to it
+
+
+
                 sheet = workbook.createSheet(EXCEL_SHEET_NAME)
                 val row: Row = sheet.createRow(0)
                 var cell: Cell? = null
 
-// Cell style for a cell
-
-// Cell style for a cell
                 val cellStyle = workbook.createCellStyle()
                 cellStyle.fillForegroundColor = HSSFColor.AQUA.index
                 cellStyle.fillPattern = HSSFCellStyle.SOLID_FOREGROUND
                 cellStyle.alignment = CellStyle.ALIGN_CENTER
 
-// Creating a cell and assigning it to a row
+                cell = row.createCell(0);
+                cell.setCellValue("Name");
+                cell.setCellStyle(cellStyle);
 
-// Creating a cell and assigning it to a row
-                cell = row.createCell(0)
+                cell = row.createCell(1);
+                cell.setCellValue("Email");
+                cell.setCellStyle(cellStyle);
 
-// Setting Value and Style to the cell
+                cell = row.createCell(2);
+                cell.setCellValue("DOB");
+                cell.setCellStyle(cellStyle);
 
-// Setting Value and Style to the cell
-                cell.setCellValue("First Cell")
-                cell.cellStyle = cellStyle
+
+                cell?.cellStyle = cellStyle
+
+                fillDataIntoExcel(sheet)
+                viewModel.storeExcelInStorage(
+                    requireContext(),"Dealers.xls",workbook,view)
             }
-        }
     }
 
-    private fun getJSONObjectFromURL(urlString: String): JSONObject {
-        var urlConnection: HttpURLConnection? = null
+    private fun fillDataIntoExcel(sheet:Sheet) {
+        viewModel.getDealerData()?.observe(viewLifecycleOwner,{list->
+            if(list.isEmpty() || list!=null){
 
-        val url = URL(urlString)
+                for(i in 1..list.size){
+                    val row = sheet.createRow(i)
+                    Log.d("Dealer",list[i-1].name)
+                    var cell = row.createCell(0)
+                    cell?.setCellValue(list[i-1].name)
+                    cell = row.createCell(1)
+                    cell?.setCellValue(list[i-1].email)
+                    cell = row.createCell(2)
+                    cell?.setCellValue(list[i-1].date)
+                }
 
-        urlConnection = url.openConnection() as HttpURLConnection
-
-        urlConnection.setRequestMethod("GET")
-        urlConnection.setReadTimeout(10000 /* milliseconds */)
-        urlConnection.setConnectTimeout(15000 /* milliseconds */)
-
-        urlConnection.setDoOutput(true)
-
-        urlConnection.connect()
-
-        val br = BufferedReader(InputStreamReader(url.openStream()))
-
-        val buffer = CharArray(1024)
-
-        val jsonString: String
-
-        val sb = StringBuilder()
-        var line: String
-        while (br.readLine().also { line = it } != null) {
-            sb.append(
-                """
-            $line
-            
-            """.trimIndent()
-            )
-        }
-        br.close()
-
-        jsonString = sb.toString()
-
-        Log.d("JSON", jsonString)
-        urlConnection.disconnect()
-
-        return JSONObject(jsonString)
+            }
+        })
     }
+
+
+
 
 }
+
+
+
+
+
