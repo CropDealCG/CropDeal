@@ -2,19 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/forgot_layout"
+    android:id="@+id/google_signin_type"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/background2">
+    android:background="@color/textInputLayout">
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="0dp"
+        android:id="@+id/type_info"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:capitalize="none"
-        android:text="@string/forgot_password"
+        android:text="User Type"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -26,65 +26,59 @@
         tools:ignore="TouchTargetSizeCheck" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txt_input"
-        android:layout_width="0dp"
+    <RadioGroup
+        android:id="@+id/type_radioGroup"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:textColorHint="@color/black"
-        app:boxCornerRadiusBottomEnd="5dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
+        android:layout_marginTop="29dp"
+        android:background="@color/White"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:ignore="TouchTargetSizeCheck">
+        app:layout_constraintTop_toBottomOf="@+id/type_info">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+        <RadioButton
+            android:id="@+id/farmer_radio"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:background="@color/textInputLayout"
+            android:text="Farmer"
+            android:textColor="@color/black" />
 
-            android:backgroundTint="@color/textInputLayout"
-            android:hint="@string/enter_email_id"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="16sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
+        <RadioButton
+            android:id="@+id/dealer_radio"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@color/textInputLayout"
+            android:text="Dealer"
+            android:textColor="@color/black" />
+    </RadioGroup>
 
     <Button
-        android:id="@+id/btn_cancel"
+        android:id="@+id/cancel_btn"
         style="@style/negative_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        android:padding="4dp"
+        android:layout_marginTop="38dp"
 
+        android:padding="4dp"
         android:text="@android:string/cancel"
         android:textSize="18sp"
         app:cornerRadius="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_okay"
+        app:layout_constraintEnd_toStartOf="@+id/okay_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_input" />
+        app:layout_constraintTop_toBottomOf="@+id/type_radioGroup" />
 
     <Button
-        android:id="@+id/btn_okay"
+        android:id="@+id/okay_btn"
         style="@style/positive_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="38dp"
         android:padding="4dp"
         android:text="@string/confirm"
         android:textColor="#ffffff"
@@ -93,7 +87,7 @@
         app:iconPadding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_cancel"
-        app:layout_constraintTop_toBottomOf="@+id/txt_input" />
+        app:layout_constraintStart_toEndOf="@+id/cancel_btn"
+        app:layout_constraintTop_toBottomOf="@+id/type_radioGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
