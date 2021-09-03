@@ -84,8 +84,8 @@ class AdminEditProfileFragment : Fragment() {
     private fun updateUserProfileDetails() {
         val username = binding.adminEditUserNameET.editText?.text.toString().trim{it<=' '}
         val dob = binding.adminEditDobTV.text.toString().trim{it<=' '}
-        val cars = binding.adminEditCarsET.editText?.text.toString().toInt()
-        viewModel.updateUserProfileDetails(uid!!,username,dob,cars)
+        val vehicle = binding.adminEditCarsET.editText?.text.toString()
+        viewModel.updateUserProfileDetails(uid!!,username,dob,vehicle)
 
 
         Constants.showSnackbar("Profile updated successfully",
