@@ -52,10 +52,9 @@
             <TextView
                 android:id="@+id/textView42"
                 style="@style/font_style"
-                android:layout_width="40dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="190dp"
-                android:layout_marginEnd="4dp"
                 android:text="Total :"
                 android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -80,27 +79,27 @@
                 android:id="@+id/date_invoiceList_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="11dp"
-                android:layout_marginEnd="140dp"
+                android:layout_marginEnd="173dp"
                 android:text="date here"
                 android:textAlignment="textStart"
                 android:textColor="@color/White"
                 app:layout_constraintEnd_toStartOf="@+id/textView42"
                 app:layout_constraintStart_toEndOf="@+id/textView34"
-                app:layout_constraintTop_toBottomOf="@+id/textView32" />
+                app:layout_constraintTop_toTopOf="@+id/textView34" />
 
             <TextView
                 android:id="@+id/total_invoiceList_TV"
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="8dp"
                 android:text="Total Here"
                 android:textAlignment="textStart"
                 android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/textView42"
+                app:layout_constraintTop_toTopOf="@+id/textView42"
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@
         android:id="@+id/cardView6"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:background="@color/cardBackground"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
@@ -37,7 +37,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/cardBackground">
 
             <ImageView
                 android:id="@+id/imageView15"
@@ -80,7 +81,7 @@
         android:id="@+id/constraintLayout7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,6 +91,7 @@
             android:id="@+id/imageView18"
             android:layout_width="35dp"
             android:layout_height="37dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintEnd_toStartOf="@+id/farmer_Management_TV"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -99,7 +101,8 @@
         <TextView
             android:id="@+id/farmer_Management_TV"
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
             android:drawableTint="@color/black"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
@@ -127,6 +130,7 @@
             android:id="@+id/imageView19"
             android:layout_width="35dp"
             android:layout_height="37dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintEnd_toStartOf="@+id/dealer_Management_TV"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -136,7 +140,8 @@
         <TextView
             android:id="@+id/dealer_Management_TV"
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
             android:drawableTint="@color/black"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
@@ -164,6 +169,7 @@
             android:id="@+id/imageView20"
             android:layout_width="35dp"
             android:layout_height="37dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintEnd_toStartOf="@+id/report_Management_TV"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -173,7 +179,8 @@
         <TextView
             android:id="@+id/report_Management_TV"
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
             android:drawableTint="@color/black"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
@@ -201,6 +208,7 @@
             android:id="@+id/imageView21"
             android:layout_width="35dp"
             android:layout_height="37dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintEnd_toStartOf="@+id/addON_Management_TV"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -210,7 +218,8 @@
         <TextView
             android:id="@+id/addON_Management_TV"
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
             android:drawableTint="@color/black"
             android:paddingStart="10dp"
             android:paddingTop="7dp"
@@ -237,6 +246,7 @@
             android:id="@+id/imageView22"
             android:layout_width="35dp"
             android:layout_height="37dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintEnd_toStartOf="@+id/admin_Logout_TV"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -246,7 +256,8 @@
         <TextView
             android:id="@+id/admin_Logout_TV"
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
             android:drawableTint="@color/black"
             android:paddingStart="10dp"
             android:paddingTop="7dp"

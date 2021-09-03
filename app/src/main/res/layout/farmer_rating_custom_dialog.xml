@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="175dp"
-    android:background="@color/bgColor1">
+    android:background="@color/cardBackground">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/textInputLayout">
+            android:background="@color/cardBackground">
 
             <Button
                 android:id="@+id/farmer_rating_Btn"

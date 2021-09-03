@@ -32,6 +32,7 @@
                 android:layout_marginStart="16dp"
                 android:text="Farmer UID : "
                 android:textColor="@color/White"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView50"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -44,6 +45,7 @@
                 android:layout_marginStart="16dp"
                 android:text="Farmer Name : "
                 android:textColor="@color/White"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView46" />
@@ -79,9 +81,9 @@
                 android:id="@+id/farmer_name_FM_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/pencil_svg"
                 android:text="Name here"
                 android:textColor="@color/White"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView50"
                 app:layout_constraintTop_toBottomOf="@+id/farmer_UID_TV" />
@@ -89,18 +91,25 @@
             <TextView
                 android:id="@+id/farmer_admin_rating_TV"
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="120dp"
-                android:layout_marginTop="4dp"
-                android:drawableStart="@android:drawable/btn_star_big_on"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="15dp"
+                android:drawableStart="@drawable/star1"
                 android:text="Rating"
                 android:textColor="@color/White"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/farmer_UID_TV"
+                app:layout_constraintEnd_toStartOf="@+id/imageView25"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/pencil_svg" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

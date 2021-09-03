@@ -100,15 +100,14 @@
 
     <Button
         android:id="@+id/googleLoginBtn"
-        style="@style/positive_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:backgroundTint="#EA4335"
-        android:drawableLeft="@drawable/ic_google"
+        android:drawableLeft="@drawable/google"
         android:text="@string/google_sign_in"
-        android:textColor="#FBF7F7"
-        app:cornerRadius="15dp"
+        android:textColor="@color/White"
+        android:textSize="11.5sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider2" />
