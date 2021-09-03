@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:background="@color/bgColor1">
+    android:background="@color/textInputLayout">
 
     <Button
         android:id="@+id/custom_addon_dialog_confirm_btn"
