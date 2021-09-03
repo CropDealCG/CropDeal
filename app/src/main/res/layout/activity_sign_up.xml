@@ -154,6 +154,7 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:drawableEndCompat="@android:drawable/ic_menu_my_calendar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -183,7 +184,8 @@
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -211,7 +213,8 @@
                     android:hint="@string/name"
                     android:inputType="textPersonName"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -239,7 +242,8 @@
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -248,6 +252,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Current Time:"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/userTypeRG"
