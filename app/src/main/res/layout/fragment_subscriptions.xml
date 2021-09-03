@@ -26,6 +26,17 @@
             tools:context=".view.SubscriptionsFragment">
 
 
+            <Button
+                android:id="@+id/save_subscriptionBtn"
+                style="@style/positive_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/save"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+
             <TextView
                 android:id="@+id/textView38"
                 android:layout_width="wrap_content"
@@ -47,17 +58,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView38"
                 app:singleSelection="false"></com.google.android.material.chip.ChipGroup>
-
-            <Button
-                android:id="@+id/save_subscriptionBtn"
-                style="@style/positive_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/save"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background4"
+    android:background="@color/bgColor1"
     tools:context=".view.AdminCropsReportFragment">
 
     <androidx.recyclerview.widget.RecyclerView
