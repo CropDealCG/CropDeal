@@ -156,7 +156,7 @@ class SignUpActivity : AppCompatActivity() {
             signUpVM.register(email,password)
             val users = Users(binding.nameE.editText?.text.toString(),email,userType,"false"
                 ,binding.selectedDateTV.text.toString(),binding.selectedTimeTV.text.toString(),
-                Payment(),true,0.0,0,1
+                Payment(),true,0.0,0,""
             )
             signUpVM.getUserData()?.observe(this,{user->
                 signUpVM.isNewUser()?.observe(this,{isNew->
