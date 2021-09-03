@@ -113,7 +113,7 @@ class AuthRepo(private var application: Application?) {
                 }
     }
     fun userTypeDialog(context : Context) : AlertDialog{
-        val dialog = MaterialAlertDialogBuilder(context)
+        val dialog = MaterialAlertDialogBuilder(context,R.style.ThemeOverlay_App_MaterialAlertDialog)
         val customBinding = GoogleSigninPromptBinding.inflate(LayoutInflater.from(context))
         dialog.setView(customBinding.root)
 //        dialog.setTitle("Choose One")
