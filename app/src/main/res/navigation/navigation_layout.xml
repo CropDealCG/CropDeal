@@ -72,17 +72,17 @@
     <fragment
         android:id="@+id/subscriptionsFragment"
         android:name="com.cg.cropdeal.view.SubscriptionsFragment"
-        android:label="Subscriptions Fragment"
+        android:label="Subscriptions"
         tools:layout="@layout/fragment_subscriptions" />
     <fragment
         android:id="@+id/invoiceDetailsFragment"
         android:name="com.cg.cropdeal.view.InvoiceDetailsFragment"
-        android:label="Invoice Fragment"
+        android:label="Invoice"
         tools:layout="@layout/invoice_layout">
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.cg.cropdeal.view.ChangePasswordFragment"
-        android:label="ChangePasswordFragment" />
+        android:label="Change Password" />
 
 </navigation>
