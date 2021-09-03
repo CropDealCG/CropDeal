@@ -56,23 +56,6 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/cancel_btn"
-        style="@style/negative_button"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="38dp"
-
-        android:padding="4dp"
-        android:text="@android:string/cancel"
-        android:textSize="18sp"
-        app:cornerRadius="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/okay_btn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/type_radioGroup" />
-
-    <Button
         android:id="@+id/okay_btn"
         style="@style/positive_button"
         android:layout_width="150dp"
@@ -87,7 +70,7 @@
         app:iconPadding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cancel_btn"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/type_radioGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
