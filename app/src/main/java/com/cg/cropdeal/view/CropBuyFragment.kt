@@ -98,7 +98,7 @@ class CropBuyFragment : Fragment() {
                             val currentRating = snapshot.child("rating").value.toString().toDouble()
                             val newRating = (currentRating*noOfRatings+rating)/(noOfRatings+1)
                             firebaseDatabase.reference.child("users").child(farmerId).child("noOfRating").setValue(noOfRatings+1)
-                            firebaseDatabase.reference.child("users").child(farmerId).child("rating").setValue(newRating)
+                            firebaseDatabase.reference.child("users").child(farmerId).child("rating").setValue("%.1f".format(newRating,Locale.ENGLISH).toDouble())
                             dialogBuilder.dismiss()
                             val bundle = bundleOf("cropId" to cropId)
                             Navigation.findNavController(view).navigate(R.id.action_crop_buy_to_invoiceDetailsFragment,bundle)
