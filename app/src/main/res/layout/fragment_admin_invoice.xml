@@ -5,7 +5,7 @@
     android:id="@+id/admin_invoiceLyt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background4"
+    android:background="@color/bgColor1"
     tools:context=".view.AdminInvoiceFragment">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="All Invoices"
-        android:textColor="@color/White"
+        android:textColor="@color/inputText"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

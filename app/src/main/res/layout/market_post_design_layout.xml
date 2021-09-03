@@ -25,6 +25,7 @@
                 android:id="@+id/cropName_TV"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="16dp"
                 android:text="Crop Name Here"
                 android:textAlignment="textStart"
@@ -35,10 +36,10 @@
 
             <TextView
                 android:id="@+id/cropType_TV"
-                android:layout_width="95dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
                 android:text="Crop Type"
                 android:textAlignment="textEnd"
                 android:textColor="@color/white"
@@ -48,15 +49,18 @@
 
             <TextView
                 android:id="@+id/description_market_TV"
-                android:layout_width="200dp"
-                android:layout_height="90dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:text="Description"
-                android:textAlignment="center"
+                android:textAlignment="viewStart"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView29" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/buy_btn"
+                app:layout_constraintHorizontal_bias="0.04"
+                app:layout_constraintStart_toStartOf="@+id/textView29"
+                app:layout_constraintTop_toBottomOf="@+id/textView29"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/quantity_TV"
@@ -74,25 +78,26 @@
                 android:id="@+id/rate_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:text="Rate Here"
                 android:textAlignment="textStart"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView25"
+                app:layout_constraintStart_toStartOf="@+id/textView25"
                 app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
             <Button
                 android:id="@+id/buy_btn"
                 style="@style/positive_button"
-                android:layout_width="130dp"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="12dp"
                 android:drawableLeft="@drawable/cart_icon"
                 android:drawableTint="@color/white"
                 android:text="BUY NOW"
-                android:textSize="10dp"
-                app:cornerRadius="20dp"
+                android:textSize="12sp"
+                app:cornerRadius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -122,6 +127,7 @@
                 android:id="@+id/textView23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:layout_marginTop="16dp"
                 android:text="Crop Type: "
                 android:textColor="@color/white"
@@ -144,12 +150,11 @@
                 android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="12dp"
                 android:text="Total Rate (INR)"
                 android:textColor="@color/white"
                 android:textSize="10dp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/sellerName_TV"
                 app:layout_constraintTop_toBottomOf="@+id/quantity_TV" />
 
             <TextView
@@ -181,13 +186,12 @@
                 android:id="@+id/textView28"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="12dp"
                 android:text="Address"
                 android:textColor="@color/white"
                 android:textSize="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rate_TV" />
+                app:layout_constraintStart_toStartOf="@+id/quantity_TV"
+                app:layout_constraintTop_toBottomOf="@+id/quantity_TV" />
 
             <View
                 android:id="@+id/divider3"
@@ -205,14 +209,12 @@
                 android:id="@+id/textView29"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="8dp"
                 android:text="Crop Description"
                 android:textColor="@color/white"
                 android:textSize="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/textView26"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/textView24"
-                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+                app:layout_constraintStart_toStartOf="@+id/address_TV"
+                app:layout_constraintTop_toBottomOf="@+id/address_TV" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -62,32 +62,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/admin_name_TV"
-                style="@style/font_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Admin"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView15" />
-
-            <TextView
                 android:id="@+id/admin_email_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="8dp"
                 android:text="Email of Admin"
                 android:textAlignment="center"
                 android:textColor="@color/darkGrey2"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/admin_name_TV" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -180,7 +165,7 @@
             app:layout_constraintEnd_toStartOf="@+id/report_Management_TV"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/outline_article_white_24"
+            app:srcCompat="@drawable/report"
             app:tint="@color/black" />
 
         <TextView
@@ -216,7 +201,7 @@
             app:layout_constraintEnd_toStartOf="@+id/addON_Management_TV"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_add"
+            app:srcCompat="@drawable/add2"
             app:tint="@color/black" />
 
         <TextView

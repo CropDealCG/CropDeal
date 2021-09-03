@@ -81,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="OR"
-        android:textColor="@color/White"
+        android:textColor="@color/black_2"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -120,8 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:backgroundTint="#1877f2"
-        android:drawableLeft="@drawable/ic_facebook"
-        android:text="@string/facebook_sign_in"
+        android:drawableStart="@drawable/ic_facebook"
         android:textColor="#FBF7F7"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -195,34 +194,22 @@
             android:layout_height="match_parent"
             android:background="@color/cardBackground">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/emailLoginE"
-                android:layout_width="300dp"
+            <Button
+                android:id="@+id/signInBtn"
+                style="@style/positive_button"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
 
                 android:layout_marginTop="20dp"
-                android:textColorHint="@color/black"
-                app:boxCornerRadiusBottomEnd="5dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="5dp"
-                app:boxCornerRadiusTopStart="5dp"
+
+                android:hapticFeedbackEnabled="true"
+                android:text="@string/sign_in"
+                app:cornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TouchTargetSizeCheck">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:backgroundTint="@color/textInputLayout"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+                app:layout_constraintTop_toBottomOf="@+id/passwordLoginE" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/passwordLoginE"
@@ -253,22 +240,34 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/signInBtn"
-                style="@style/positive_button"
-                android:layout_width="200dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailLoginE"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
 
                 android:layout_marginTop="20dp"
-
-                android:hapticFeedbackEnabled="true"
-                android:text="@string/sign_in"
-                app:cornerRadius="15dp"
+                android:textColorHint="@color/black"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/passwordLoginE" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:backgroundTint="@color/textInputLayout"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

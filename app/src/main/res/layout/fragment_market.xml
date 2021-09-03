@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background4"
+    android:background="@color/bgColor1"
     tools:context=".view.MarketFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -21,9 +21,9 @@
         android:id="@+id/addCropsFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="320dp"
-        android:layout_marginEnd="35dp"
         android:layout_marginBottom="75dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="320dp"
         android:clickable="true"
         android:src="@drawable/add_post"
         app:layout_constraintBottom_toBottomOf="parent"
