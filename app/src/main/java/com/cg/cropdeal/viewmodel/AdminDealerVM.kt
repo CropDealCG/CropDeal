@@ -1,9 +1,13 @@
 package com.cg.cropdeal.viewmodel
 
+import android.Manifest
 import android.R
 import android.app.Application
+import android.content.ActivityNotFoundException
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -11,9 +15,11 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.cg.cropdeal.model.*
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -114,12 +120,20 @@ class AdminDealerVM(application: Application):AndroidViewModel(application) {
             try {
                 if(uri!=null){
                     workbook.write(resolver.openOutputStream(uri))
-                    Constants.showSnackbar("File created at /Documents/Dealers.xls"
-                        ,view)
+                    Snackbar.make(view,"File created at /Documents/Dealers.xls", Snackbar.LENGTH_LONG)
+                        .setAction("OPEN FILE") {
+                            val intent = Intent(Intent.ACTION_VIEW)
+                            intent.setDataAndType(uri,"application/vnd.ms-excel")
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                            getApplication<Application>().startActivity(intent)
+                        }.setAnimationMode(Snackbar.ANIMATION_MODE_FADE).setActionTextColor(Color.parseColor("#ffff2222"))
+                        .show()
                 }
 //                Log.e("Excel", "Writing file $file")
                 isSuccess = true
-            } catch (e: IOException) {
+            }catch (e : ActivityNotFoundException){
+                Constants.showSnackbar("No application found which can open the file",view)
+            }catch (e: IOException) {
                 Log.e("Excel", "Error writing Exception: ", e)
                 isSuccess = false
             } catch (e: Exception) {

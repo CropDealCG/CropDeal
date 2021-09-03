@@ -34,7 +34,7 @@ class AuthRepo(private var application: Application?) {
     private var signInFailed : MutableLiveData<Boolean>?=null
     private var selectedUserType : MutableLiveData<String>? = null
     private val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-        .requestIdToken(application?.getString(R.string.default_web_client_id)!!)
+        .requestIdToken(application?.getString(R.string.default_web_client_id_1)!!)
         .requestEmail().build()
     private var googleSignInClient : GoogleSignInClient? = null
     //facebook callbackmanager

@@ -19,7 +19,6 @@ import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.viewmodel.EditProfileVM
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import java.util.*
 
 
 class SubscriptionsFragment : Fragment() {

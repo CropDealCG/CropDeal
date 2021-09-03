@@ -143,12 +143,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginStart="41dp"
                 android:layout_marginTop="15dp"
                 android:text="Total Rate (INR) : "
                 android:textColor="@color/White"
                 android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@+id/quantityTV"
+                app:layout_constraintEnd_toStartOf="@+id/rateTV"
                 app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
             <TextView

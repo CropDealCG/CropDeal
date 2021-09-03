@@ -57,7 +57,7 @@
                 android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="32dp"
                 android:text="Delete"
                 app:cornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -69,10 +69,8 @@
                 android:id="@+id/crop_name_addON_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="64dp"
                 android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/addOnCropEditBtn"
                 app:layout_constraintStart_toEndOf="@+id/textView52"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,32 +15,35 @@ import org.apache.poi.hssf.util.HSSFColor
 import android.util.Log
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 
 import androidx.core.app.ActivityCompat
 
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.net.Uri
+import android.provider.Settings
 import android.view.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.AdminAddUserDialogBinding
 import com.cg.cropdeal.model.AdminDealerAdapter
-import com.cg.cropdeal.model.AdminFarmerAdapter
 import com.cg.cropdeal.model.UtilRepo
 import com.cg.cropdeal.viewmodel.AdminDealerVM
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import org.apache.poi.ss.usermodel.*
 import org.apache.poi.ss.usermodel.CellStyle
 
 import org.apache.poi.ss.usermodel.Cell
-import java.io.*
 
 
 class AdminDealerFragment : Fragment() {
     private lateinit var binding: FragmentDealerManagementBinding
+    private lateinit var workbook : Workbook
     private lateinit var firebaseDatabase:FirebaseDatabase
     private lateinit var progressDialog : AlertDialog
     private lateinit var viewModel: AdminDealerVM
@@ -73,15 +76,10 @@ class AdminDealerFragment : Fragment() {
                 }
             })
         })
-
-
-
-
-
             binding.exportBtn.setOnClickListener {
 
 
-                val workbook: Workbook = HSSFWorkbook()
+                workbook= HSSFWorkbook()
                 var  sheet:Sheet? = null
                 val EXCEL_SHEET_NAME = "Dealers"
 
@@ -113,22 +111,7 @@ class AdminDealerFragment : Fragment() {
                 cell?.cellStyle = cellStyle
 
                 fillDataIntoExcel(sheet)
-                if (ActivityCompat.checkSelfPermission(
-                        requireContext(),
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    )
-                    == PackageManager.PERMISSION_GRANTED
-                ){
-                    viewModel.storeExcelInStorage(
-                        requireContext(),"Dealers.xls",workbook,view)
-                }else{
-                    ActivityCompat.requestPermissions(
-                        (context as Activity?)!!,
-                        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                        1
-                    )
-                    Constants.showSnackbar("Please allow Storage Permission",view)
-                }
+                permissionRequest.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
             }
     }
@@ -192,9 +175,32 @@ class AdminDealerFragment : Fragment() {
         dialogBuilder.show()
     }
 
+    val permissionRequest = registerForActivityResult(ActivityResultContracts.RequestPermission()){
+        if(it){
+            viewModel.storeExcelInStorage(
+                requireContext(),"Dealers.xls",workbook,requireView())
+        }else{
+            if(ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                Snackbar.make(requireView(),"Please allow Storage Permission",Snackbar.LENGTH_INDEFINITE)
+                    .setAction("OK", View.OnClickListener {
+
+                        ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),1)
+
+                    }).setAnimationMode(Snackbar.ANIMATION_MODE_FADE).setActionTextColor(Color.parseColor("#ffff2222"))
+                    .show()
+            }else{
+                Snackbar.make(requireView(),"Please Enable Storage Permissions from Settings",Snackbar.LENGTH_INDEFINITE)
+                    .setAction("OK", View.OnClickListener {
+
+                        val intent = Intent()
+                        intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                        val uri = Uri.fromParts("package",requireActivity().packageName,null)
+                        intent.data = uri
+                        startActivity(intent)
+
+                    }).setAnimationMode(Snackbar.ANIMATION_MODE_FADE).setActionTextColor(Color.parseColor("#ffff2222"))
+                    .show()
+            }
+        }
+    }
 }
-
-
-
-
-

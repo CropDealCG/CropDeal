@@ -79,11 +79,9 @@
                 android:id="@+id/date_invoiceList_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="173dp"
                 android:text="date here"
                 android:textAlignment="textStart"
                 android:textColor="@color/White"
-                app:layout_constraintEnd_toStartOf="@+id/textView42"
                 app:layout_constraintStart_toEndOf="@+id/textView34"
                 app:layout_constraintTop_toTopOf="@+id/textView34" />
 
