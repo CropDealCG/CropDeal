@@ -3,11 +3,11 @@
 
     <item
         android:id="@+id/adminInvoiceReportFragment"
-        android:icon="@drawable/add"
-        android:title="Invoice"/>
+        android:icon="@drawable/report"
+        android:title="Invoice" />
     <item
         android:id="@+id/adminCropReportFragment"
-        android:icon="@drawable/add"
-        android:title="Crops"/>
+        android:icon="@drawable/crops"
+        android:title="Crops" />
 
 </menu>

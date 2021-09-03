@@ -9,11 +9,9 @@
         <menu>
             <item
                 android:id="@+id/filter_by_date"
-                android:icon="@drawable/filter"
                 android:title="@string/filter_by_date" />
             <item
                 android:id="@+id/filter_by_crop"
-                android:icon="@drawable/filter"
                 android:title="@string/filter_by_crop" />
         </menu>
     </item>
