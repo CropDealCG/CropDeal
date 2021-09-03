@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.view.children
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 
@@ -74,7 +75,8 @@ fun ChipGroup.addChip(context: Context, label: String){
             }
             sharedPreferences.edit().clear().apply()
             sharedPreferences.edit().putStringSet("topic",selectedSet).apply()
-//           Constants.showSnackbar("Details of $selectedTopic subscribed",binding.root)
+            Constants.showSnackbar("Details of selected crops subscribed",binding.root)
+            Navigation.findNavController(view).popBackStack()
         }
 
 

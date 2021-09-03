@@ -127,6 +127,7 @@ class SettingsFragment : Fragment() {
                     apply()
                 }
                 LoginManager.getInstance().logOut()
+                Constants.getEncryptedSharedPreference("subscriptions",view.context).edit().clear().apply()
                 val intent = Intent(activity, SignInActivity::class.java)
                 dialog.dismiss()
                 startActivity(intent)

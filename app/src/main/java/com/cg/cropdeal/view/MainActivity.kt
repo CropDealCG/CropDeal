@@ -38,53 +38,8 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         //take single topic
         subscribedTopic = sharedPreferences.getStringSet("topic", mutableSetOf())!!
         //ChildEventListener to be notified about new child data(Crops)
-        if(!subscribedTopic.isNullOrEmpty()){
-            FirebaseDatabase.getInstance().reference.child("crops").addChildEventListener(object : ChildEventListener{
-                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                    if(snapshot.exists()){
-                        //if new data is there, create a notification
-                        val nManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-                        val builder: Notification.Builder = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {//checks version
-                            val channel = NotificationChannel("Subscriptions", "Work Done", NotificationManager.IMPORTANCE_DEFAULT)
-                            nManager.createNotificationChannel(channel)
-                            Notification.Builder(applicationContext, "Subscriptions")
-                        } else  Notification.Builder(applicationContext)
-                        //Notification bar configuration(look)
 
-                        builder.setSmallIcon(R.drawable.logo_without_text)
-                        builder.setContentTitle("Your subscribed crops are available now!")
-                        builder.setContentText("Click Here To Buy Them")
-                        val notifyIntent = Intent(this@MainActivity,NavigationActivity::class.java).apply {
-                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        }
-                        val notifyPendingIntent = PendingIntent.getActivity(
-                            applicationContext, 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT
-                        )
-                        builder.setContentIntent(notifyPendingIntent)
-                        builder.setAutoCancel(true)
-                        val myNotify =builder.build()
-
-                        for(crop in subscribedTopic){
-                            if(snapshot.child("cropName").value.toString() == crop) nManager.notify(99,myNotify)
-                        }
-                    }
-                }
-
-                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                }
-
-                override fun onChildRemoved(snapshot: DataSnapshot) {
-                }
-
-                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                }
-
-            })
-        }
-
+        checkSubscriptions()
         FacebookSdk.setApplicationId(getString(R.string.facebook_app_id))
         FacebookSdk.sdkInitialize(this)
 
@@ -111,6 +66,75 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
     override fun onSharedPreferenceChanged(p0: SharedPreferences?, p1: String?) {
         subscribedTopic = p0?.getStringSet("topic", mutableSetOf())!!
+        checkSubscriptions()
     }
+
+    private fun checkSubscriptions() {
+        if (!subscribedTopic.isNullOrEmpty()) {
+            FirebaseDatabase.getInstance().reference.child("crops")
+                .addChildEventListener(object : ChildEventListener {
+                    override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                        if (snapshot.exists()) {
+                            //if new data is there, create a notification
+                            val nManager =
+                                getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+                            val builder: Notification.Builder =
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {//checks version
+                                    val channel = NotificationChannel(
+                                        "Subscriptions",
+                                        "Work Done",
+                                        NotificationManager.IMPORTANCE_DEFAULT
+                                    )
+                                    nManager.createNotificationChannel(channel)
+                                    Notification.Builder(applicationContext, "Subscriptions")
+                                } else Notification.Builder(applicationContext)
+                            //Notification bar configuration(look)
+
+                            builder.setSmallIcon(R.drawable.logo_without_text)
+                            builder.setContentTitle("Your subscribed crops are available now!")
+                            builder.setContentText("Click Here To Buy Them")
+                            val notifyIntent =
+                                Intent(this@MainActivity, NavigationActivity::class.java).apply {
+                                    flags =
+                                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                }
+                            val notifyPendingIntent = PendingIntent.getActivity(
+                                applicationContext,
+                                0,
+                                notifyIntent,
+                                PendingIntent.FLAG_UPDATE_CURRENT
+                            )
+                            builder.setContentIntent(notifyPendingIntent)
+                            builder.setAutoCancel(true)
+                            val myNotify = builder.build()
+
+                            for (crop in subscribedTopic) {
+                                if (snapshot.child("cropName").value.toString() == crop) nManager.notify(
+                                    99,
+                                    myNotify
+                                )
+                            }
+                        }
+                    }
+
+                    override fun onChildChanged(
+                        snapshot: DataSnapshot,
+                        previousChildName: String?
+                    ) {
+                    }
+
+                    override fun onChildRemoved(snapshot: DataSnapshot) {
+                    }
+
+                    override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+
+                })
+        }
+    }
+
 
 }
