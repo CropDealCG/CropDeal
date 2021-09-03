@@ -3,7 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="150dp"
+    android:background="@color/bgColor1">
+
+    <Button
+        android:id="@+id/custom_addon_dialog_confirm_btn"
+        style="@style/positive_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="CONFIRM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/custom_addon_dialog_name" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/custom_addon_dialog_name"
@@ -24,17 +37,5 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/custom_addon_dialog_confirm_btn"
-        style="@style/positive_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="CONFIRM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/custom_addon_dialog_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

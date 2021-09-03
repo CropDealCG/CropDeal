@@ -36,10 +36,10 @@
 
             <TextView
                 android:id="@+id/crop_TypeTV"
-                android:layout_width="95dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
                 android:text="Crop Type"
                 android:textAlignment="textEnd"
 
@@ -50,16 +50,16 @@
 
             <TextView
                 android:id="@+id/descriptionMarket_TV"
-                android:layout_width="200dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+
+                android:layout_marginStart="8dp"
                 android:text="Description"
                 android:textAlignment="center"
-
                 android:textColor="@color/White"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView29" />
+                app:layout_constraintStart_toEndOf="@+id/textView29"
+                app:layout_constraintTop_toTopOf="@+id/textView29" />
 
             <TextView
                 android:id="@+id/quantityTV"
@@ -74,30 +74,29 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
+
             <TextView
                 android:id="@+id/rateTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="Rate Here"
-                android:textAlignment="textStart"
 
+                android:textAlignment="textStart"
                 android:textColor="@color/White"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView25"
                 app:layout_constraintTop_toBottomOf="@+id/textView25" />
-
 
             <TextView
                 android:id="@+id/addressTV"
                 android:layout_width="200dp"
                 android:layout_height="35dp"
-                android:layout_marginStart="16dp"
                 android:text="Address Here"
 
                 android:textColor="@color/White"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView28"
                 app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
             <TextView
@@ -140,21 +139,20 @@
                 android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="15dp"
-                android:text="Total Rate (INR)"
 
+                android:layout_marginTop="10dp"
+                android:text="Total Rate (INR)"
                 android:textColor="@color/White"
                 android:textSize="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/quantityTV" />
+                app:layout_constraintEnd_toEndOf="@+id/seller_NameTV"
+                app:layout_constraintTop_toBottomOf="@+id/seller_NameTV" />
 
             <TextView
                 android:id="@+id/textView26"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginTop="15dp"
                 android:text="Seller Name"
 
                 android:textSize="10dp"
@@ -178,14 +176,25 @@
                 android:id="@+id/textView28"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="11dp"
-                android:text="Address"
+                android:layout_marginTop="10dp"
 
+                android:text="Address"
                 android:textColor="@color/White"
                 android:textSize="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rateTV" />
+                app:layout_constraintStart_toStartOf="@+id/quantityTV"
+                app:layout_constraintTop_toBottomOf="@+id/quantityTV" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+
+                android:text="Crop Description"
+                android:textColor="@color/White"
+                android:textSize="10dp"
+                app:layout_constraintStart_toStartOf="@+id/addressTV"
+                app:layout_constraintTop_toBottomOf="@+id/addressTV" />
 
             <View
                 android:id="@+id/divider3"
@@ -198,20 +207,6 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/crop_NameTV" />
-
-            <TextView
-                android:id="@+id/textView29"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:text="Crop Description"
-
-                android:textColor="@color/White"
-                android:textSize="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/textView26"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/textView24"
-                app:layout_constraintTop_toBottomOf="@+id/divider3" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

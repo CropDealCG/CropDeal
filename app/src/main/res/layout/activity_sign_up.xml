@@ -77,6 +77,128 @@
             android:layout_height="match_parent"
             android:background="@color/White">
 
+            <Button
+                android:id="@+id/DOBbtn"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="51dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="@color/signBtnBG"
+                android:drawableLeft="@android:drawable/ic_menu_my_calendar"
+                android:drawableTint="@color/black"
+                app:cornerRadius="15dp"
+                app:layout_constraintStart_toStartOf="@+id/passwordE"
+                app:layout_constraintTop_toBottomOf="@+id/passwordE"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/signUpBtn"
+                style="@style/positive_button"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:hapticFeedbackEnabled="true"
+                android:text="@string/sign_up"
+                android:textColor="@color/white"
+                app:cornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userTypeRG" />
+
+            <RadioGroup
+                android:id="@+id/userTypeRG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@color/White"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/selectedTimeTV">
+
+                <RadioButton
+                    android:id="@+id/farmerRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/farmer"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+
+                <RadioButton
+                    android:id="@+id/delaerRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/dealer"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+            </RadioGroup>
+
+
+            <TextView
+                android:id="@+id/selectedTimeTV"
+                android:layout_width="153dp"
+                android:layout_height="27dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/White"
+                android:hint="Current Time"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/selectedDateTV" />
+
+            <TextView
+                android:id="@+id/selectedDateTV"
+                android:layout_width="153dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/White"
+                android:hint="DOB: "
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/DOBbtn"
+                app:layout_constraintTop_toBottomOf="@+id/passwordE" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordE"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="5dp"
+                android:textColorHint="@color/black"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emailE">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:backgroundTint="@color/White"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nameE"
                 android:layout_width="312dp"
@@ -132,128 +254,6 @@
                     android:textSize="16sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/passwordE"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-
-                android:layout_marginTop="5dp"
-                android:textColorHint="@color/black"
-                app:boxCornerRadiusBottomEnd="5dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="5dp"
-                app:boxCornerRadiusTopStart="5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emailE">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:backgroundTint="@color/White"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <Button
-                android:id="@+id/DOBbtn"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:layout_width="51dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="5dp"
-                android:backgroundTint="@color/signBtnBG"
-                android:drawableLeft="@android:drawable/ic_menu_my_calendar"
-                android:drawableTint="@color/black"
-                app:cornerRadius="15dp"
-                app:layout_constraintStart_toEndOf="@+id/selectedDateTV"
-                app:layout_constraintTop_toBottomOf="@+id/passwordE"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <Button
-                android:id="@+id/signUpBtn"
-                style="@style/positive_button"
-                android:layout_width="210dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:hapticFeedbackEnabled="true"
-                android:text="@string/sign_up"
-                android:textColor="@color/white"
-                app:cornerRadius="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/userTypeRG" />
-
-            <TextView
-                android:id="@+id/selectedDateTV"
-                android:layout_width="153dp"
-                android:layout_height="27dp"
-                android:layout_marginStart="99dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/White"
-                android:hint="DOB: "
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/passwordE" />
-
-            <TextView
-                android:id="@+id/selectedTimeTV"
-                android:layout_width="153dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/White"
-                android:hint="Current Time"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/selectedDateTV" />
-
-            <RadioGroup
-                android:id="@+id/userTypeRG"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@color/White"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/selectedTimeTV">
-
-                <RadioButton
-                    android:id="@+id/farmerRB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/farmer"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-
-                <RadioButton
-                    android:id="@+id/delaerRB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/dealer"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-            </RadioGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

@@ -52,13 +52,13 @@
                 android:id="@+id/farmer_admin_toggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="111dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="8dp"
                 android:focusableInTouchMode="false"
                 android:text="Inactive"
                 android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/farmer_name_FM_TV"
                 app:layout_constraintTop_toBottomOf="@+id/farmer_admin_rating_TV"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -70,7 +70,7 @@
                 android:text="UID Here"
                 android:textAlignment="textStart"
                 android:textColor="@color/White"
-                android:textSize="10sp"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView50"
                 app:layout_constraintStart_toEndOf="@+id/textView46"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -87,16 +87,17 @@
 
             <TextView
                 android:id="@+id/farmer_admin_rating_TV"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:layout_marginStart="161dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="4dp"
                 android:drawableStart="@android:drawable/btn_star_big_on"
                 android:text="Rating"
                 android:textColor="@color/White"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/farmer_admin_toggle"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/farmer_UID_TV"
                 app:layout_constraintTop_toTopOf="parent" />
 
