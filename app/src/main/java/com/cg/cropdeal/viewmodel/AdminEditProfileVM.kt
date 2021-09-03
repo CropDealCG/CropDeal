@@ -27,8 +27,8 @@ class AdminEditProfileVM(application: Application):AndroidViewModel(application)
         return liveData
     }
 
-    fun updateUserProfileDetails(uid:String,username:String,dob:String,cars:Int){
-        settingsRepo?.updateUserProfileDetails(uid,username,dob,cars)
+    fun updateUserProfileDetails(uid:String,username:String,dob:String,vehicle:String){
+        settingsRepo?.updateUserProfileDetails(uid,username,dob,vehicle)
     }
 
     fun selectDate(context: Context): MaterialDatePicker<Long> {

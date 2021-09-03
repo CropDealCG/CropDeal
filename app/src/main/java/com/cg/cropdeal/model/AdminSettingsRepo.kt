@@ -14,7 +14,7 @@ class AdminSettingsRepo {
         firebaseDB =  FirebaseDatabase.getInstance()
     }
 
-    fun updateUserProfileDetails(uid:String,username: String, dob: String,cars:Int) {
+    fun updateUserProfileDetails(uid:String,username: String, dob: String,vehicle:String) {
         val userHashMap = HashMap<String,Any>()
 
         if(username.isNotEmpty()){
@@ -25,7 +25,7 @@ class AdminSettingsRepo {
             userHashMap[Constants.DATE] = dob
         }
 
-        userHashMap[Constants.NO_OF_CARS] = cars
+        userHashMap[Constants.NO_OF_CARS] = vehicle
 
 
         updateUserProfile(uid,userHashMap)
