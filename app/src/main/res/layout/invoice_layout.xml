@@ -94,7 +94,7 @@
 
             <View
                 android:id="@+id/divider10"
-                android:layout_width="407dp"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="5dp"
                 android:background="@color/black"
@@ -171,7 +171,7 @@
 
             <View
                 android:id="@+id/divider11"
-                android:layout_width="407dp"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="5dp"
                 android:background="@color/black"
@@ -206,7 +206,7 @@
 
             <View
                 android:id="@+id/divider12"
-                android:layout_width="407dp"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="5dp"
                 android:background="@color/black"

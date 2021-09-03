@@ -46,7 +46,7 @@
     <TextView
         android:id="@+id/existingUserT"
         android:layout_width="wrap_content"
-        android:layout_height="31dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
         android:hapticFeedbackEnabled="true"
@@ -63,7 +63,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView4"
         android:layout_width="350dp"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="5dp"
@@ -76,7 +76,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/White">
-
 
 
             <Button
@@ -150,8 +149,8 @@
                 android:drawableTint="@color/black"
                 android:gravity="center_vertical"
                 android:hint="@string/select_dob"
-                android:paddingEnd="20dp"
                 android:paddingStart="15dp"
+                android:paddingEnd="20dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="16sp"

@@ -24,7 +24,7 @@
 
             <TextView
                 android:id="@+id/crop_NameTV"
-                android:layout_width="130dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Crop Name Here"
@@ -179,7 +179,7 @@
 
             <View
                 android:id="@+id/divider3"
-                android:layout_width="400dp"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="4dp"
                 android:background="@color/White"

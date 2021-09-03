@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,14 +17,15 @@
         app:indicatorColor="@color/indicatorColor"
         app:indicatorRadius="10dp"
         app:itemPadding="10dp"
-        app:sideMargins="10dp"
-        app:textColor="#533cf3"
-        app:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/admin_report_menu"/>
+        app:menu="@menu/admin_report_menu"
+        app:sideMargins="10dp"
+        app:textColor="#533cf3"
+        app:textSize="14sp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <fragment
         android:id="@+id/bottom_nav_fragment_admin"
