@@ -20,7 +20,7 @@ class AdminFarmerAdapter(private val list : List<Users>, private val userId : Li
     open class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdminFarmerAdapter.ViewHolder {
-        binding = FarmerManagementLayoutBinding.inflate(LayoutInflater.from(parent.context))
+        binding = FarmerManagementLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         firebaseDatabase = FirebaseDatabase.getInstance()
         return ViewHolder(binding.root)
     }

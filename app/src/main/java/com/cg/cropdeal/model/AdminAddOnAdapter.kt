@@ -15,7 +15,7 @@ class AdminAddOnAdapter(private val list: List<String>) : RecyclerView.Adapter<R
     open class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdminAddOnAdapter.ViewHolder {
-        binding = AddOnLayoutBinding.inflate(LayoutInflater.from(parent.context))
+        binding = AddOnLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         firebaseDatabase = FirebaseDatabase.getInstance()
         return ViewHolder(binding.root)
     }

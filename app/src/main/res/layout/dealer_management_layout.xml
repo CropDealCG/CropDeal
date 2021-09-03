@@ -65,6 +65,7 @@
                 android:id="@+id/dealer_name_DM_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/pencil_svg"
                 android:text="Name Here"
                 android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"

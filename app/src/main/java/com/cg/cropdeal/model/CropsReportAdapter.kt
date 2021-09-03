@@ -12,7 +12,7 @@ class CropsReportAdapter(private val list:List<Crops>)
         private lateinit var binding:CropsPostDesignLayoutBinding
         private lateinit var fDatabase:FirebaseDatabase
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        binding = CropsPostDesignLayoutBinding.inflate(LayoutInflater.from(parent.context))
+        binding = CropsPostDesignLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         fDatabase = FirebaseDatabase.getInstance()
         return MarketAdapter.ViewHolder(binding.root)
     }

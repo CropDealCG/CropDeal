@@ -79,6 +79,7 @@
                 android:id="@+id/farmer_name_FM_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/pencil_svg"
                 android:text="Name here"
                 android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"

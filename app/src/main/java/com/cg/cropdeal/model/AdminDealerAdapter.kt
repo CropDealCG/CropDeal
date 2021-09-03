@@ -20,7 +20,7 @@ class AdminDealerAdapter(private val list : List<Users>, private val userId : Li
     open class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdminDealerAdapter.ViewHolder {
-        binding = DealerManagementLayoutBinding.inflate(LayoutInflater.from(parent.context))
+        binding = DealerManagementLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         firebaseDatabase = FirebaseDatabase.getInstance()
         return ViewHolder(binding.root)
     }

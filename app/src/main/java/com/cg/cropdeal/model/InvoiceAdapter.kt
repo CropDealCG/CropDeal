@@ -12,20 +12,38 @@ import com.cg.cropdeal.databinding.InvoiceListDesignBinding
 import com.cg.cropdeal.view.AdminInvoiceFragment
 
 class InvoiceAdapter(private val list : List<Invoice>,private val fragment: Fragment)
-    : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-    private lateinit var binding: InvoiceListDesignBinding
-    open class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    : RecyclerView.Adapter<InvoiceAdapter.ViewHolder>(){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InvoiceAdapter.ViewHolder {
-        binding = InvoiceListDesignBinding.inflate(LayoutInflater.from(parent.context))
-        return ViewHolder(binding.root)
+//    private lateinit var binding: InvoiceListDesignBinding
+
+    inner class ViewHolder(binding : InvoiceListDesignBinding) : RecyclerView.ViewHolder(binding.root){
+        var binding : InvoiceListDesignBinding
+        init {
+            this.binding = binding
+        }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+//class ViewHolder : RecyclerView.ViewHolder {
+//        //binding class
+//        binding = InvoiceListDesignBinding.inflate()
+//        public ViewHolder(binding class) {
+//            super(binding.getRoot());
+//            this.binding = binding;
+//        }
+//    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InvoiceAdapter.ViewHolder {
+//        binding = InvoiceListDesignBinding.inflate(LayoutInflater.from(parent.context))
+
+        return ViewHolder(InvoiceListDesignBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         val invoice = list[position]
-        binding.cropNameInvoiceListTV.text = invoice.cropName
-        invoice.date.also { binding.dateInvoiceListTV.text = it }
-        binding.totalInvoiceListTV.text = invoice.totalPrice.toString()
+        holder.binding.cropNameInvoiceListTV.text = invoice.cropName
+        invoice.date.also { holder.binding.dateInvoiceListTV.text = it }
+        holder.binding.totalInvoiceListTV.text = invoice.totalPrice.toString()
         if(fragment is AdminInvoiceFragment) {
         }
         else{

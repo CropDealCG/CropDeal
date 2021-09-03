@@ -20,7 +20,7 @@ class MarketAdapter(private val list: List<Crops>, private val areBankDetailsAva
     private lateinit var fDatabase : FirebaseDatabase
     private var userType = ""
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarketAdapter.ViewHolder {
-        binding = MarketPostDesignLayoutBinding.inflate(LayoutInflater.from(parent.context))
+        binding = MarketPostDesignLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         fDatabase = FirebaseDatabase.getInstance()
         userType = parent.context.getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
             ?.getString("userType","")!!
