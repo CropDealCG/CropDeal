@@ -78,7 +78,7 @@ class AdminDealerVM(application: Application):AndroidViewModel(application) {
 //                                Log.d("Observables","${task.result?.user?.uid!!},${task.result?.additionalUserInfo?.username},${task.result?.user?.email!!}")
                         val userId = UsersIDRepo(task.result?.user?.uid!!,task.result?.user?.email!!)
                         userIdDAO.insert(userId)
-                        val user = Users(name,email,"dealer","false","","", Payment(),true,0.0,0,1)
+                        val user = Users(name,email,"dealer","false","","", Payment(),true,0.0,0,"")
                         firebaseDatabase!!.reference.child(Constants.USERS)
                             .child(task.result?.user?.uid!!).setValue(user)
                         firebaseAuth!!.signOut()
