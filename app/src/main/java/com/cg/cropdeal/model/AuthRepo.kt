@@ -2,6 +2,7 @@ package com.cg.cropdeal.model
 
 import android.app.Application
 import android.content.Context
+import android.view.LayoutInflater
 import androidx.lifecycle.MutableLiveData
 
 import com.google.firebase.auth.FirebaseAuth
@@ -11,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import com.cg.cropdeal.R
+import com.cg.cropdeal.databinding.GoogleSigninPromptBinding
 import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -112,14 +114,21 @@ class AuthRepo(private var application: Application?) {
     }
     fun userTypeDialog(context : Context) : AlertDialog{
         val dialog = MaterialAlertDialogBuilder(context)
-        dialog.setTitle("Choose One")
-        dialog.setMessage("Are you a?")
+        val customBinding = GoogleSigninPromptBinding.inflate(LayoutInflater.from(context))
+        dialog.setView(customBinding.root)
+//        dialog.setTitle("Choose One")
+//        dialog.setMessage("Are you a?")
         var dialogBuilder = dialog.create()
-        dialog.setPositiveButton("Farmer"){_,_->
-            selectedUserType!!.postValue("farmer")
+        customBinding.typeInfo.text = "Please Select User Type"
+        customBinding.typeRadioGroup.setOnCheckedChangeListener { radioGroup, i ->
+            when(i){
+                customBinding.dealerRadio.id ->{selectedUserType!!.postValue("dealer")}
+                customBinding.farmerRadio.id -> {selectedUserType!!.postValue("farmer")}
+            }
         }
-        dialog.setNegativeButton("Dealer"){_,_->
-            selectedUserType!!.postValue("dealer")
+        customBinding.typeRadioGroup.check(customBinding.farmerRadio.id)
+        customBinding.okayBtn.setOnClickListener {
+            dialogBuilder.dismiss()
         }
         dialogBuilder = dialog.create()
         dialogBuilder.setCancelable(false)
