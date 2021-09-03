@@ -52,7 +52,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         //Linking button to Date Selector
-        binding.DOBbtn.setOnClickListener {
+        binding.selectedDateTV.setOnClickListener {
             val datePickerDialog = signUpVM.selectDate(this)
             datePickerDialog.addOnPositiveButtonClickListener { dateInMillis->
                 val date = SimpleDateFormat("MMM dd, yyyy",Locale.getDefault()).format(Date(dateInMillis))
