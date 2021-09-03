@@ -2,7 +2,12 @@ package com.cg.cropdeal.viewmodel
 
 import android.R
 import android.app.Application
+import android.content.ContentValues
 import android.content.Context
+import android.net.Uri
+import android.os.Build
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -96,31 +101,64 @@ class AdminDealerVM(application: Application):AndroidViewModel(application) {
     fun getDealerData(): MutableLiveData<List<Users>>? = usersList
     fun getDealerIdData() : MutableLiveData<List<String>>? = usersIdList
     fun storeExcelInStorage(context: Context, fileName: String, workbook: Workbook,view: View):Boolean {
-        var isSuccess: Boolean
-        val file = File(context.getExternalFilesDir(null), fileName)
-        var fileOutputStream: FileOutputStream? = null
-        try {
-            fileOutputStream = FileOutputStream(file)
-            workbook.write(fileOutputStream)
-            Log.e("Excel", "Writing file $file")
-            Constants.showSnackbar("File created at data/com.cg.cropdeal/files/Dealers.xls"
-                ,view)
-            isSuccess = true
-        } catch (e: IOException) {
-            Log.e("Excel", "Error writing Exception: ", e)
-            isSuccess = false
-        } catch (e: Exception) {
-            Log.e("Excel", "Failed to save file due to Exception: ", e)
-            isSuccess = false
-        } finally {
+        var isSuccess: Boolean = false
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+            val resolver = context.contentResolver
+            val contentValues = ContentValues().apply {
+                put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
+                put(MediaStore.MediaColumns.MIME_TYPE, "application/vnd.ms-excel")
+                put(MediaStore.MediaColumns.RELATIVE_PATH, "Documents")
+            }
+            val uri: Uri? = resolver.insert(MediaStore.Files.getContentUri("external"), contentValues)
             try {
-                if (null != fileOutputStream) {
-                    fileOutputStream.close()
+                if(uri!=null){
+                    workbook.write(resolver.openOutputStream(uri))
+                    Constants.showSnackbar("File created at /Documents/Dealers.xls"
+                        ,view)
                 }
-            } catch (ex: Exception) {
-                ex.printStackTrace()
+//                Log.e("Excel", "Writing file $file")
+                isSuccess = true
+            } catch (e: IOException) {
+                Log.e("Excel", "Error writing Exception: ", e)
+                isSuccess = false
+            } catch (e: Exception) {
+                Log.e("Excel", "Failed to save file due to Exception: ", e)
+                isSuccess = false
+            } finally {
+                try {
+
+                } catch (ex: Exception) {
+                    ex.printStackTrace()
+                }
+            }
+
+        }else{
+            val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), fileName)
+            var fileOutputStream: FileOutputStream? = null
+            try {
+
+                fileOutputStream = FileOutputStream(file)
+                workbook.write(fileOutputStream)
+                Log.e("Excel", "Writing file $file")
+                Constants.showSnackbar("File created at Documents/Dealers.xls"
+                    ,view)
+                isSuccess = true
+            } catch (e: IOException) {
+                Log.e("Excel", "Error writing Exception: ", e)
+                isSuccess = false
+            } catch (e: Exception) {
+                Log.e("Excel", "Failed to save file due to Exception: ", e)
+                isSuccess = false
+            } finally {
+                try {
+                    fileOutputStream?.close()
+                } catch (ex: Exception) {
+                    ex.printStackTrace()
+                }
             }
         }
+
         return isSuccess
 
     }

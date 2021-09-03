@@ -80,18 +80,6 @@ class AdminDealerFragment : Fragment() {
 
             binding.exportBtn.setOnClickListener {
 
-                if (ActivityCompat.checkSelfPermission(
-                        requireContext(),
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    )
-                    != PackageManager.PERMISSION_GRANTED
-                ) {
-                    ActivityCompat.requestPermissions(
-                        (context as Activity?)!!,
-                        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                        1
-                    )
-                }
 
                 val workbook: Workbook = HSSFWorkbook()
                 var  sheet:Sheet? = null
@@ -109,24 +97,39 @@ class AdminDealerFragment : Fragment() {
                 cellStyle.fillPattern = HSSFCellStyle.SOLID_FOREGROUND
                 cellStyle.alignment = CellStyle.ALIGN_CENTER
 
-                cell = row.createCell(0);
-                cell.setCellValue("Name");
-                cell.setCellStyle(cellStyle);
+                cell = row.createCell(0)
+                cell.setCellValue("Name")
+                cell.setCellStyle(cellStyle)
 
-                cell = row.createCell(1);
-                cell.setCellValue("Email");
-                cell.setCellStyle(cellStyle);
+                cell = row.createCell(1)
+                cell.setCellValue("Email")
+                cell.setCellStyle(cellStyle)
 
-                cell = row.createCell(2);
-                cell.setCellValue("DOB");
-                cell.setCellStyle(cellStyle);
+                cell = row.createCell(2)
+                cell.setCellValue("DOB")
+                cell.setCellStyle(cellStyle)
 
 
                 cell?.cellStyle = cellStyle
 
                 fillDataIntoExcel(sheet)
-                viewModel.storeExcelInStorage(
-                    requireContext(),"Dealers.xls",workbook,view)
+                if (ActivityCompat.checkSelfPermission(
+                        requireContext(),
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    )
+                    == PackageManager.PERMISSION_GRANTED
+                ){
+                    viewModel.storeExcelInStorage(
+                        requireContext(),"Dealers.xls",workbook,view)
+                }else{
+                    ActivityCompat.requestPermissions(
+                        (context as Activity?)!!,
+                        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                        1
+                    )
+                    Constants.showSnackbar("Please allow Storage Permission",view)
+                }
+
             }
     }
 
