@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/adminInvoiceReportFragment"
         android:name="com.cg.cropdeal.view.AdminInvoiceFragment"
-        android:label="InvoiceReport"
+        android:label="Invoice Report"
         tools:layout="@layout/fragment_admin_invoice"/>
     <fragment
         android:id="@+id/adminCropReportFragment"
         android:name="com.cg.cropdeal.view.AdminCropsReportFragment"
-        android:label="CropReport"
+        android:label="Crop Report"
         tools:layout="@layout/fragment_admin_crops_report"/>
 
 </navigation>
