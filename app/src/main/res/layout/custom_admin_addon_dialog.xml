@@ -34,8 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/textInputLayout"
-            android:drawableEnd="@drawable/pencil"
-            android:hint="@string/crop_name"
+            android:hint="@string/enter_crop_name"
             android:textColor="@color/black"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
