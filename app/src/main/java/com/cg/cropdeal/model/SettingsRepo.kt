@@ -42,7 +42,7 @@ class SettingsRepo(private var application: Application?) {
 
 
     fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?,context: Context,
-    username: String,dob:String,cars:Int){
+    username: String,dob:String,cars:String){
         val fStorage = FirebaseStorage.getInstance()
             .reference.child(
                 "img"+FirebaseAuth.getInstance().currentUser?.email
@@ -69,7 +69,7 @@ class SettingsRepo(private var application: Application?) {
                     exception.message,exception)
             }
     }
-    fun imageUploadSuccess(imageURL : String,username: String,dob:String,cars:Int){
+    fun imageUploadSuccess(imageURL : String,username: String,dob:String,cars:String){
         //hideProgressDialog()
 
         userProfileImageURL = imageURL
@@ -77,7 +77,7 @@ class SettingsRepo(private var application: Application?) {
         updateUserProfileDetails(username,dob,cars)
     }
 
-    fun updateUserProfileDetails(username:String,dob:String,cars:Int){
+    fun updateUserProfileDetails(username:String,dob:String,cars:String){
         val userHashMap = HashMap<String,Any>()
 
 

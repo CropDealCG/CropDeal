@@ -38,9 +38,11 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="340dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,11 +53,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/cardBackground">
+            android:background="@color/cardBackground"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editUserNameET"
-                android:layout_width="300dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
                 android:layout_gravity="center_horizontal"
@@ -87,7 +91,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editEmailET"
-                android:layout_width="300dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
                 android:layout_gravity="center_horizontal"
@@ -117,7 +121,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editCarsET"
-                android:layout_width="300dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
                 android:layout_gravity="center_horizontal"
@@ -157,8 +161,8 @@
                 android:drawableTint="@color/black"
                 android:gravity="center_vertical"
                 android:hint="@string/select_dob"
-                android:paddingEnd="18dp"
                 android:paddingStart="15dp"
+                android:paddingEnd="18dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="16sp"
@@ -170,7 +174,7 @@
             <Button
                 android:id="@+id/saveProfileButton"
                 style="@style/positive_button"
-                android:layout_width="300dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
                 android:layout_gravity="center_horizontal"

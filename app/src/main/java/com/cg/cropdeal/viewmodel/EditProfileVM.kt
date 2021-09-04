@@ -36,11 +36,11 @@ class EditProfileVM(application: Application): AndroidViewModel(application) {
         utilRepo = UtilRepo()
     }
 
-    fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?,username: String,dob:String,cars:Int){
+    fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?,username: String,dob:String,cars:String){
         settingsRepo?.uploadImageToCloudStorage(activity,imageFileUri,context,username,dob,cars)
     }
 
-    fun updateUserProfileDetails(username:String,dob:String,cars:Int){
+    fun updateUserProfileDetails(username:String,dob:String,cars:String){
         settingsRepo?.updateUserProfileDetails(username,dob,cars)
     }
 

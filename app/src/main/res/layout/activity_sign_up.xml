@@ -62,7 +62,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView4"
-        android:layout_width="350dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:cardCornerRadius="20dp"
@@ -75,16 +75,20 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/White">
+            android:background="@color/cardBackground"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp">
 
 
             <Button
                 android:id="@+id/signUpBtn"
                 style="@style/positive_button"
-                android:layout_width="210dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="30dp"
                 android:hapticFeedbackEnabled="true"
                 android:text="@string/sign_up"
                 android:textColor="@color/white"
@@ -111,6 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@color/cardBackground"
                     android:text="@string/farmer"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black" />
@@ -120,6 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@color/cardBackground"
                     android:text="@string/dealer"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black" />
@@ -162,7 +168,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/passwordE"
-                android:layout_width="312dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="5dp"
@@ -180,7 +186,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    android:backgroundTint="@color/White"
+                    android:backgroundTint="@color/cardBackground"
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
@@ -191,7 +197,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nameE"
-                android:layout_width="312dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="10dp"
@@ -209,7 +215,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    android:backgroundTint="@color/White"
+                    android:backgroundTint="@color/cardBackground"
                     android:hint="@string/name"
                     android:inputType="textPersonName"
                     android:textColor="@color/black"
@@ -220,7 +226,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailE"
-                android:layout_width="312dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="5dp"
@@ -238,7 +244,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    android:backgroundTint="@color/White"
+                    android:backgroundTint="@color/cardBackground"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/black"

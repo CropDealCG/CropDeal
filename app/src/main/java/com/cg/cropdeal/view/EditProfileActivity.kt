@@ -181,7 +181,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
     private fun updateUserProfileDetails(){
         val username = binding.editUserNameET.editText?.text.toString().trim{it<=' '}
         val dob = binding.editDobTV.text.toString().trim{it<=' '}
-        val cars = binding.editCarsET.editText?.text.toString().toInt()
+        val cars = binding.editCarsET.editText?.text.toString()
         viewModel.updateUserProfileDetails(username,dob,cars)
 
 
@@ -199,7 +199,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
     private fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?) {
         val username = binding.editUserNameET.editText?.text.toString().trim{it<=' '}
         val dob = binding.editDobTV.text.toString().trim{it<=' '}
-        val cars = binding.editCarsET.editText?.text.toString().toInt()
+        val cars = binding.editCarsET.editText?.text.toString()
         viewModel.uploadImageToCloudStorage(activity,imageFileUri,username,dob,cars)
     }
 }

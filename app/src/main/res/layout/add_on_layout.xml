@@ -22,14 +22,15 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/listCards">
+            android:background="@color/listCards"
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/textView52"
                 style="@style/font_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="10dp"
                 android:text="Crop Name : "
                 android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -39,7 +40,7 @@
             <Button
                 android:id="@+id/addOnCropEditBtn"
                 style="@style/positive_button"
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="137dp"
                 android:layout_marginEnd="5dp"
@@ -54,7 +55,7 @@
             <Button
                 android:id="@+id/addOnCropDeleteBtn"
                 style="@style/negative_button"
-                android:layout_width="85dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="32dp"
