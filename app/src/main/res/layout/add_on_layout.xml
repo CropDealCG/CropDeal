@@ -69,6 +69,7 @@
                 android:id="@+id/crop_name_addON_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAlignment="textStart"
                 android:textColor="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView52"
