@@ -71,5 +71,6 @@
     <string name="no_of_cars">Vehicle number</string>
     <string name="current_time">Current Time:</string>
         <string name="default_web_client_id_1">571175692324-7fs44r8e5hfaicks94eh4dlfet8dt6gc.apps.googleusercontent.com</string>
+    <string name="enter_crop_name">Enter Crop Name</string>
 
 </resources>

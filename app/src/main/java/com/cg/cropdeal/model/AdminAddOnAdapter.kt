@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.AddOnLayoutBinding
 import com.cg.cropdeal.databinding.CustomAdminAddonDialogBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -34,6 +35,7 @@ class AdminAddOnAdapter(private val list: List<String>) : RecyclerView.Adapter<R
             dialog.setView(customDialogBinding.root)
             var dialogBuilder = dialog.create()
             customDialogBinding.customAddonDialogName.editText?.setText(crop)
+            customDialogBinding.customAddonDialogName.hint = "Crop Name"
             customDialogBinding.customAddonDialogConfirmBtn.setOnClickListener {
                 val cropName = customDialogBinding.customAddonDialogName.editText?.text.toString()
                 if(cropName.isNotEmpty()){

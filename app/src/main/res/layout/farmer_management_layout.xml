@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Farmer UID : "
+                android:text="UID : "
                 android:textColor="@color/White"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView50"
@@ -93,12 +93,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="9dp"
-                android:layout_marginEnd="8dp"
                 android:drawableStart="@drawable/star1"
                 android:text="Rating"
                 android:textColor="@color/White"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/imageView25"
+                app:layout_constraintStart_toStartOf="@+id/farmer_admin_toggle"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView

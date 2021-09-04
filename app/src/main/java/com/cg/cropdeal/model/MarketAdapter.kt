@@ -32,9 +32,15 @@ class MarketAdapter(private val list: List<Crops>, private val areBankDetailsAva
         Log.d("Observable",userType)
         if(userType=="farmer")  binding.buyBtn.visibility = View.INVISIBLE
         binding.cropNameTV.text = crop.cropName
-        binding.addressTV.text = crop.cropLocation
+        var address = crop.cropLocation
+        if(address.length>22)
+            address = address.substring(0,22) + ".."
+        binding.addressTV.text = address
         binding.cropTypeTV.text = crop.cropType
-        binding.descriptionMarketTV.text = crop.cropDesc
+        var cropDesc = crop.cropDesc
+        if(cropDesc.length>20)
+            cropDesc = cropDesc.substring(0,20) + ".."
+        binding.descriptionMarketTV.text = cropDesc
         binding.quantityTV.text = crop.cropQuantity.toString()
         binding.rateTV.text = (crop.cropQuantity*crop.cropPrice).toString()
 
