@@ -125,14 +125,16 @@ class AdminDealerVM(application: Application):AndroidViewModel(application) {
                             val intent = Intent(Intent.ACTION_VIEW)
                             intent.setDataAndType(uri,"application/vnd.ms-excel")
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                            getApplication<Application>().startActivity(intent)
+                            try{
+                                getApplication<Application>().startActivity(intent)
+                            }catch (e : ActivityNotFoundException){
+                                Constants.showSnackbar("No application found which can open the file",view)
+                            }
                         }.setAnimationMode(Snackbar.ANIMATION_MODE_FADE).setActionTextColor(Color.parseColor("#ffff2222"))
                         .show()
                 }
 //                Log.e("Excel", "Writing file $file")
                 isSuccess = true
-            }catch (e : ActivityNotFoundException){
-                Constants.showSnackbar("No application found which can open the file",view)
             }catch (e: IOException) {
                 Log.e("Excel", "Error writing Exception: ", e)
                 isSuccess = false

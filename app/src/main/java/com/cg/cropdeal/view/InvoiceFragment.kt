@@ -28,19 +28,30 @@ class InvoiceFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentInvoiceBinding.inflate(inflater,container,false)
+        viewModel = ViewModelProvider(this).get(InvoiceVM::class.java)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(InvoiceVM::class.java)
-        progressDialog = UtilRepo().loadingDialog(view.context)
-        progressDialog.show()
 
-        binding.invoiceRview.layoutManager = LinearLayoutManager(view.context)
-        viewModel.getInvoice()?.observe(viewLifecycleOwner,{list->
-            if(list.isEmpty() || list!=null){
-                binding.invoiceRview.adapter = InvoiceAdapter(list,this)
+        progressDialog = UtilRepo().loadingDialog(view.context)
+//        progressDialog.show()
+        viewModel.isDataChanged()!!.observe(viewLifecycleOwner,{
+            if(it!=null && it) {
+                progressDialog.show()
+            }
+            else    progressDialog.dismiss()
+        })
+
+        loadInvoices()
+    }
+
+    private fun loadInvoices() {
+        binding.invoiceRview.layoutManager = LinearLayoutManager(context)
+        viewModel.getInvoice()?.observe(viewLifecycleOwner, { list ->
+            if (list.isEmpty() || list != null) {
+                binding.invoiceRview.adapter = InvoiceAdapter(list, this)
                 progressDialog.dismiss()
             }
         })

@@ -116,8 +116,4 @@ class AdminInvoiceFragment : Fragment() {
 
 
 
-
-    companion object{
-
-        }
 }

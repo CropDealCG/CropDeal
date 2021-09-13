@@ -20,6 +20,7 @@ class MarketVM(application: Application) : AndroidViewModel(application) {
     private var bankDetailsAvailable : MutableLiveData<Boolean>? = null
     private var firebaseDatabase : FirebaseDatabase? = null
     private var firebaseAuth : FirebaseAuth? = null
+    private var dataChanged : MutableLiveData<Boolean>?  = null
 
     init {
         cropsList = MutableLiveData()
@@ -27,12 +28,15 @@ class MarketVM(application: Application) : AndroidViewModel(application) {
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseDatabase = FirebaseDatabase.getInstance()
         bankDetailsAvailable = MutableLiveData()
+        dataChanged = MutableLiveData()
+        dataChanged!!.value = false
         populateList()
         checkBankDetails()
     }
     private fun populateList() {
         firebaseDatabase?.reference?.child(Constants.CROPS)?.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+                dataChanged!!.postValue(true)
                     currentCropList?.clear()
                     for(child in snapshot.children){
                         val crop = child.getValue(Crops::class.java)
@@ -80,4 +84,5 @@ class MarketVM(application: Application) : AndroidViewModel(application) {
     }
 
     fun areBankDetailsAvailable() : MutableLiveData<Boolean>? = bankDetailsAvailable
+    fun isDataChanged() : MutableLiveData<Boolean>? = dataChanged
 }

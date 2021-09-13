@@ -34,7 +34,7 @@ class AuthRepo(private var application: Application?) {
     private var signInFailed : MutableLiveData<Boolean>?=null
     private var selectedUserType : MutableLiveData<String>? = null
     private val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-        .requestIdToken(application?.getString(R.string.default_web_client_id_1)!!)
+        .requestIdToken(application?.getString(R.string.default_web_client_id)!!)
         .requestEmail().build()
     private var googleSignInClient : GoogleSignInClient? = null
     //facebook callbackmanager
@@ -120,7 +120,7 @@ class AuthRepo(private var application: Application?) {
 //        dialog.setMessage("Are you a?")
         var dialogBuilder = dialog.create()
         customBinding.typeInfo.text = "Please Select User Type"
-        customBinding.typeRadioGroup.setOnCheckedChangeListener { radioGroup, i ->
+        customBinding.typeRadioGroup.setOnCheckedChangeListener { _, i ->
             when(i){
                 customBinding.dealerRadio.id ->{selectedUserType!!.postValue("dealer")}
                 customBinding.farmerRadio.id -> {selectedUserType!!.postValue("farmer")}

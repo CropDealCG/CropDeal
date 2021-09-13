@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -149,8 +150,12 @@ class SignInActivity : AppCompatActivity() {
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: Exception) {
                 progressDialog.dismiss()
+                Log.d("Observables","$task")
                 Constants.showSnackbar("$e - ${e.message}", binding.root)
             }
+        }
+        else{
+            Log.d("Observables","$it")
         }
     }
 
@@ -270,6 +275,7 @@ class SignInActivity : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
+                Log.d("Observables","$task")
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     val googleUser = auth.currentUser
@@ -316,6 +322,9 @@ class SignInActivity : AppCompatActivity() {
 
                     }
                 }// If sign in fails, display a message to the user.
+                else{
+                    Constants.showSnackbar("Error - ${task.exception?.message}",binding.root)
+                }
             }
     }
 
