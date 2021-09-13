@@ -26,8 +26,8 @@ class InvoiceVM(application: Application) : AndroidViewModel(application)  {
         firebaseAuth = FirebaseAuth.getInstance()
         dataChanged = MutableLiveData()
         dataChanged!!.value = false
-        userType = application.getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
-            ?.getString("userType","")!!
+        userType = application.getSharedPreferences(Constants.LOGINPREF, Context.MODE_PRIVATE)
+            ?.getString(Constants.USERTYPE,"")!!
         populateList(firebaseAuth?.currentUser?.uid)
     }
 
@@ -38,7 +38,7 @@ class InvoiceVM(application: Application) : AndroidViewModel(application)  {
                 currentInvoiceList?.clear()
                 for(child in snapshot.children){
                     val invoice = child.getValue(Invoice::class.java)
-                    if(userType=="farmer"){
+                    if(userType==Constants.FARMER){
                         if(invoice?.farmerId == uid!!)  currentInvoiceList?.add(invoice)
                     }
                     else{

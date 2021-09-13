@@ -7,15 +7,14 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import com.cg.cropdeal.databinding.FragmentChangePasswordBinding
 import com.cg.cropdeal.model.Constants
-import com.cg.cropdeal.model.UtilRepo
+import com.cg.cropdeal.model.repo.UtilRepo
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class ChangePasswordVM(application: Application): AndroidViewModel(application) {
-    private val context = getApplication<Application>().applicationContext
 
-    private var utilRepo:UtilRepo?=null
+    private var utilRepo: UtilRepo?=null
     init {
         utilRepo = UtilRepo()
     }
@@ -34,11 +33,11 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
                 user.updatePassword(newPassword)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(context,"User Password Updated",Toast.LENGTH_LONG)
+                            Toast.makeText(getApplication<Application>().applicationContext!!,"User Password Updated",Toast.LENGTH_LONG)
                                 .show()
 
                         } else {
-                            Toast.makeText(context,
+                            Toast.makeText(getApplication<Application>().applicationContext!!,
                                 "Couldn't update password. Please try again",Toast.LENGTH_LONG)
                                 .show()
 
@@ -48,7 +47,7 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
                     }
             }
                 .addOnFailureListener {
-                   Toast.makeText(context,it.message,Toast.LENGTH_LONG)
+                   Toast.makeText(getApplication<Application>().applicationContext!!,it.message,Toast.LENGTH_LONG).show()
                 }
 
                 return result
@@ -87,19 +86,14 @@ class ChangePasswordVM(application: Application): AndroidViewModel(application) 
             return false
         }
 
-        if(binding.editTextCurrentPassword.editText?.text.toString() ==
+        return if(binding.editTextCurrentPassword.editText?.text.toString() ==
             binding.editTextNewPassword.editText?.text.toString()) {
             Constants.showSnackbar(
-                "New Password shouldn't be same as Current Password"
-                ,binding.root
+                "New Password shouldn't be same as Current Password",binding.root
             )
-            return false
-        }
-
-
-
-        else {
-            return true
+            false
+        } else {
+            true
 
         }
 

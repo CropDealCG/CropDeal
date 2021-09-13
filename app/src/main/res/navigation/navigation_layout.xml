@@ -6,7 +6,7 @@
     app:startDestination="@id/nav_market">
     <fragment
         android:id="@+id/nav_market"
-        android:name="com.cg.cropdeal.view.MarketFragment"
+        android:name="com.cg.cropdeal.view.user.MarketFragment"
         android:label="Market"
         tools:layout="@layout/fragment_market">
         <action
@@ -21,11 +21,11 @@
     </fragment>
     <fragment
         android:id="@+id/crop_publish"
-        android:name="com.cg.cropdeal.view.CropPublishFragment"
+        android:name="com.cg.cropdeal.view.user.CropPublishFragment"
         tools:layout="@layout/publish_crop"/>
     <fragment
         android:id="@+id/crop_buy"
-        android:name="com.cg.cropdeal.view.CropBuyFragment"
+        android:name="com.cg.cropdeal.view.user.CropBuyFragment"
         tools:layout="@layout/pay_now_layout">
         <action
             android:id="@+id/action_crop_buy_to_invoiceDetailsFragment"
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_invoice"
-        android:name="com.cg.cropdeal.view.InvoiceFragment"
+        android:name="com.cg.cropdeal.view.user.InvoiceFragment"
         android:label="Invoice"
         tools:layout="@layout/fragment_invoice" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_setting"
-        android:name="com.cg.cropdeal.view.SettingsFragment"
+        android:name="com.cg.cropdeal.view.user.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/settings_fragment" >
         <action
@@ -61,28 +61,28 @@
     </fragment>
     <fragment
         android:id="@+id/paymentDetailsFragment"
-        android:name="com.cg.cropdeal.view.PaymentDetailsFragment"
+        android:name="com.cg.cropdeal.view.user.PaymentDetailsFragment"
         android:label="Payment Details"
         tools:layout="@layout/fragment_payment_details" />
     <fragment
         android:id="@+id/aboutUsFragment"
-        android:name="com.cg.cropdeal.view.AboutUsFragment"
+        android:name="com.cg.cropdeal.view.user.AboutUsFragment"
         android:label="About Us"
         tools:layout="@layout/fragment_about_us" />
     <fragment
         android:id="@+id/subscriptionsFragment"
-        android:name="com.cg.cropdeal.view.SubscriptionsFragment"
+        android:name="com.cg.cropdeal.view.user.SubscriptionsFragment"
         android:label="Subscriptions"
         tools:layout="@layout/fragment_subscriptions" />
     <fragment
         android:id="@+id/invoiceDetailsFragment"
-        android:name="com.cg.cropdeal.view.InvoiceDetailsFragment"
+        android:name="com.cg.cropdeal.view.user.InvoiceDetailsFragment"
         android:label="Invoice"
         tools:layout="@layout/invoice_layout">
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="com.cg.cropdeal.view.ChangePasswordFragment"
+        android:name="com.cg.cropdeal.view.user.ChangePasswordFragment"
         android:label="Change Password" />
 
 </navigation>

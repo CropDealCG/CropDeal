@@ -7,8 +7,11 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
+import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivitySignUpBinding
 import com.cg.cropdeal.model.*
+import com.cg.cropdeal.model.repo.UtilRepo
+import com.cg.cropdeal.view.admin.AdminActivity
 import com.cg.cropdeal.viewmodel.SignUpVM
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -23,7 +26,6 @@ class SignUpActivity : AppCompatActivity() {
 
     private lateinit var progressDialog : AlertDialog
     private var userType = Constants.FARMER
-//    private lateinit var users: Users
 
     private lateinit var rootNode : FirebaseDatabase
     private lateinit var reference: DatabaseReference
@@ -53,7 +55,7 @@ class SignUpActivity : AppCompatActivity() {
 
         //Linking button to Date Selector
         binding.selectedDateTV.setOnClickListener {
-            val datePickerDialog = signUpVM.selectDate(this)
+            val datePickerDialog = signUpVM.selectDate()
             datePickerDialog.addOnPositiveButtonClickListener { dateInMillis->
                 val date = SimpleDateFormat("MMM dd, yyyy",Locale.getDefault()).format(Date(dateInMillis))
                 binding.selectedDateTV.text = date
@@ -65,34 +67,37 @@ class SignUpActivity : AppCompatActivity() {
                 progressDialog.show()
                 reference.child(it.uid).addListenerForSingleValueEvent(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        if(snapshot.child("active").value.toString()=="true"){
-                            if(getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE).getString("userType","").isNullOrEmpty())
+                        if(snapshot.child(Constants.ACTIVE.lowercase()).value.toString()=="true"){
+                            if(getSharedPreferences(Constants.LOGINPREF,Context.MODE_PRIVATE).getString(Constants.USERTYPE,"").isNullOrEmpty())
                             {
                                 reference.child(it.uid).addListenerForSingleValueEvent(object : ValueEventListener{
                                     override fun onDataChange(snapshot: DataSnapshot) {
                                         if(snapshot.exists()){
-                                            val userType = snapshot.child("type").value.toString()
-                                            if(userType.isNullOrEmpty()){
-                                                progressDialog.dismiss()
-                                            }
-                                            else if (userType=="admin"){
-                                                val sharedPref = getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?:return
-                                                with(sharedPref.edit()){
-                                                    putString("userType",userType)
-                                                    apply()
+                                            val userType = snapshot.child(Constants.TYPE).value.toString()
+                                            when {
+                                                userType.isEmpty() -> {
+                                                    progressDialog.dismiss()
                                                 }
-                                                progressDialog.dismiss()
-                                                startActivity(Intent(this@SignUpActivity,AdminActivity::class.java))
-                                                finish()
-                                            }
-                                            else{
-                                                val sharedPref = getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?:return
-                                                with(sharedPref.edit()){
-                                                    putString("userType",userType)
-                                                    apply()
+                                                userType==Constants.ADMIN -> {
+                                                    val sharedPref = getSharedPreferences(Constants.LOGINPREF,Context.MODE_PRIVATE)?:return
+                                                    with(sharedPref.edit()){
+                                                        putString(Constants.USERTYPE,userType)
+                                                        apply()
+                                                    }
+                                                    progressDialog.dismiss()
+                                                    startActivity(Intent(this@SignUpActivity,
+                                                        AdminActivity::class.java))
+                                                    finish()
                                                 }
-                                                progressDialog.dismiss()
-                                                updateUI()
+                                                else -> {
+                                                    val sharedPref = getSharedPreferences(Constants.LOGINPREF,Context.MODE_PRIVATE)?:return
+                                                    with(sharedPref.edit()){
+                                                        putString(Constants.USERTYPE,userType)
+                                                        apply()
+                                                    }
+                                                    progressDialog.dismiss()
+                                                    updateUI()
+                                                }
                                             }
 
                                         }
@@ -105,9 +110,9 @@ class SignUpActivity : AppCompatActivity() {
                             }
                             else{
                                 progressDialog.dismiss()
-                                val sharedPref = getSharedPreferences("LoginSharedPref",Context.MODE_PRIVATE)?:return
-                                if(sharedPref.getString("userType","")=="admin"){
-                                    startActivity(Intent(this@SignUpActivity,AdminActivity::class.java))
+                                val sharedPref = getSharedPreferences(Constants.LOGINPREF,Context.MODE_PRIVATE)?:return
+                                if(sharedPref.getString(Constants.USERTYPE,"")==Constants.ADMIN){
+                                    startActivity(Intent(this@SignUpActivity, AdminActivity::class.java))
                                     finish()
                                 }
                                 else    updateUI()
@@ -115,7 +120,7 @@ class SignUpActivity : AppCompatActivity() {
                         }
                         else    {
                             progressDialog.dismiss()
-                            Constants.showSnackbar("Your account has been disabled",binding.root)
+                            Constants.showSnackbar(getString(R.string.accountDisabled),binding.root)
                             FirebaseAuth.getInstance().signOut()
                         }
                     }
@@ -137,7 +142,7 @@ class SignUpActivity : AppCompatActivity() {
         val cal  = Calendar.getInstance()
         val hour = cal.get(Calendar.HOUR_OF_DAY)
         val min = cal.get(Calendar.MINUTE)
-        binding.selectedTimeTV.text = "$hour:$min"
+        "$hour:$min".also { binding.selectedTimeTV.text = it }
 
         binding.userTypeRG.setOnCheckedChangeListener { _, i ->
             when(i){

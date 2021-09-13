@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background4"
-    tools:context=".view.AdminInvoiceFragment">
+    tools:context=".view.admin.AdminInvoiceFragment">
 
     <TextView
         android:id="@+id/invoiceFilterResultTV"

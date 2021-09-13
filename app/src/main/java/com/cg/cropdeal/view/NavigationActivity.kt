@@ -2,8 +2,6 @@ package com.cg.cropdeal.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.PopupMenu
 import androidx.navigation.NavController
 import androidx.navigation.findNavController

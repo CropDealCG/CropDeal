@@ -16,15 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CropDeal">
         <activity
-            android:name=".view.AdminActivity"
+            android:name=".view.admin.AdminActivity"
             android:exported="true" />
-        <activity android:name=".view.AdminReportActivity"
+        <activity android:name=".view.admin.AdminReportActivity"
             android:exported="true"/>
         <activity
             android:name=".view.NavigationActivity"
             android:exported="true" />
         <activity
-            android:name=".view.EditProfileActivity"
+            android:name=".view.user.EditProfileActivity"
             android:exported="true" />
         <activity
             android:name=".view.SignUpActivity"

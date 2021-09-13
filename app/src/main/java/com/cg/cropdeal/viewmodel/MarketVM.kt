@@ -4,9 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.cg.cropdeal.model.Constants
-import com.cg.cropdeal.model.CropDatabase
 import com.cg.cropdeal.model.Crops
-import com.cg.cropdeal.model.MarketAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -14,7 +12,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class MarketVM(application: Application) : AndroidViewModel(application) {
-    private val cropDB = CropDatabase.getInstance(application.applicationContext).cropDao()
     private var cropsList : MutableLiveData<List<Crops>>? = null
     private var currentCropList : MutableList<Crops>? = null
     private var bankDetailsAvailable : MutableLiveData<Boolean>? = null
@@ -56,7 +53,7 @@ class MarketVM(application: Application) : AndroidViewModel(application) {
             ?.child(Constants.PAYMENT)?.addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if(snapshot.exists()){
-                        if(snapshot.child("bank").value.toString().isNullOrEmpty()) bankDetailsAvailable!!.postValue(false)
+                        if(snapshot.child("bank").value.toString().isEmpty()) bankDetailsAvailable!!.postValue(false)
                         else    bankDetailsAvailable!!.postValue(true)
                     }
                     else{
@@ -74,7 +71,7 @@ class MarketVM(application: Application) : AndroidViewModel(application) {
     }
     fun getFilteredList(cropForFilter:String):List<Crops>{
         if(cropForFilter=="All")    return currentCropList!!
-        var filteredList : MutableList<Crops> = mutableListOf()
+        val filteredList : MutableList<Crops> = mutableListOf()
         for(crop in currentCropList!!){
                 if(crop.cropName==cropForFilter){
                     filteredList.add(crop)

@@ -3,23 +3,18 @@ package com.cg.cropdeal.view
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.core.app.NotificationCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKeys
 import com.cg.cropdeal.R
 import com.cg.cropdeal.databinding.ActivityMainBinding
 import com.cg.cropdeal.model.Constants
 import com.facebook.FacebookSdk
 import com.google.firebase.database.*
+import android.app.PendingIntent as PendingIntent1
 
 class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
     private lateinit var subscribedTopic : MutableSet<String>
@@ -27,7 +22,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
-        val splashScreen =  installSplashScreen()
+        installSplashScreen()
         setContentView(binding.root)
 
         val sharedPreferences=Constants.getEncryptedSharedPreference("subscriptions",this)
@@ -41,6 +36,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
         checkSubscriptions()
         FacebookSdk.setApplicationId(getString(R.string.facebook_app_id))
+        @Suppress("DEPRECATION")
         FacebookSdk.sdkInitialize(this)
 
         addCrops()
@@ -87,7 +83,10 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
                                     )
                                     nManager.createNotificationChannel(channel)
                                     Notification.Builder(applicationContext, "Subscriptions")
-                                } else Notification.Builder(applicationContext)
+                                } else {
+                                    @Suppress("DEPRECATION")
+                                    Notification.Builder(applicationContext)
+                                }
                             //Notification bar configuration(look)
 
                             builder.setSmallIcon(R.drawable.logo_without_text)
@@ -98,11 +97,11 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
                                     flags =
                                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 }
-                            val notifyPendingIntent = PendingIntent.getActivity(
+                            val notifyPendingIntent = PendingIntent1.getActivity(
                                 applicationContext,
                                 0,
                                 notifyIntent,
-                                PendingIntent.FLAG_UPDATE_CURRENT
+                                PendingIntent1.FLAG_IMMUTABLE or PendingIntent1.FLAG_UPDATE_CURRENT
                             )
                             builder.setContentIntent(notifyPendingIntent)
                             builder.setAutoCancel(true)

@@ -2,10 +2,8 @@ package com.cg.cropdeal.view
 
 import android.app.Activity
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -17,7 +15,8 @@ import com.cg.cropdeal.databinding.CustomForgotPasswordDialogBinding
 import com.cg.cropdeal.model.Constants
 import com.cg.cropdeal.model.Payment
 import com.cg.cropdeal.model.Users
-import com.cg.cropdeal.model.UtilRepo
+import com.cg.cropdeal.model.repo.UtilRepo
+import com.cg.cropdeal.view.admin.AdminActivity
 import com.cg.cropdeal.viewmodel.SignInVM
 import com.facebook.AccessToken
 import com.facebook.FacebookCallback
@@ -28,7 +27,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -56,6 +54,7 @@ class SignInActivity : AppCompatActivity() {
         firebaseDatabase = FirebaseDatabase.getInstance()
         userType = ""
         FacebookSdk.setApplicationId(getString(R.string.facebook_app_id))
+        @Suppress("DEPRECATION")
         FacebookSdk.sdkInitialize(this)
 //        AppEventsLogger.activateApp(application)
         binding.signInBtn.setOnClickListener {
@@ -77,7 +76,7 @@ class SignInActivity : AppCompatActivity() {
             }
         }
 
-        binding.facebookLoginBtn.setPermissions("email", "public_profile")
+        binding.facebookLoginBtn.setPermissions(Constants.EMAIL, Constants.PUBLICPROFILE)
         binding.facebookLoginBtn.setOnClickListener {
                     binding.facebookLoginBtn.registerCallback(signInVM.getFacebookCallBackManager(),object :
                         FacebookCallback<LoginResult> {
@@ -95,7 +94,7 @@ class SignInActivity : AppCompatActivity() {
             }
 
         binding.adminTV.setOnClickListener {
-            startActivity(Intent(this,AdminActivity::class.java))
+            startActivity(Intent(this, AdminActivity::class.java))
         }
 
         binding.forgotPasswordT.setOnClickListener {_->
@@ -114,7 +113,7 @@ class SignInActivity : AppCompatActivity() {
                     auth.sendPasswordResetEmail(customBinding.txtInput.editText?.text.toString())
                         .addOnCompleteListener{
                             if(it.isSuccessful){
-                                Toast.makeText(this,"Password Reset Mail Sent Successfully", Toast.LENGTH_LONG).show()
+                                Toast.makeText(this,getString(R.string.resetMailSent), Toast.LENGTH_LONG).show()
                                 dialog.dismiss()
                             }
                             else{
@@ -127,12 +126,6 @@ class SignInActivity : AppCompatActivity() {
             dialog.show()
         }
 
-//        signInVM.getUserLiveData()?.observe(this,{
-//            if(it!=null){
-//                progressDialog.dismiss()
-//                updateUI(it)
-//            }
-//        })
         signInVM.isSignInFailed()?.observe(this,{
             if(it!=null && it==true){
                 progressDialog.dismiss()
@@ -150,12 +143,11 @@ class SignInActivity : AppCompatActivity() {
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: Exception) {
                 progressDialog.dismiss()
-                Log.d("Observables","$task")
                 Constants.showSnackbar("$e - ${e.message}", binding.root)
             }
         }
         else{
-            Log.d("Observables","$it")
+            Constants.showSnackbar("$it", binding.root)
         }
     }
 
@@ -169,18 +161,19 @@ class SignInActivity : AppCompatActivity() {
                 progressDialog.dismiss()
                 if(it!=null){
                     if(!it){
-                        firebaseDatabase.reference.child("users").child(auth.currentUser?.uid!!).addListenerForSingleValueEvent(object : ValueEventListener{
+                        firebaseDatabase.reference.child(Constants.USERS).child(auth.currentUser?.uid!!).addListenerForSingleValueEvent(object : ValueEventListener{
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 if(snapshot.exists()){
-                                    if(snapshot.child("active").value.toString()=="true"){
-                                        if(snapshot.child("type").value.toString()=="admin")    {
-                                            startActivity(Intent(this@SignInActivity,AdminActivity::class.java))
+                                    if(snapshot.child(Constants.ACTIVE.lowercase()).value.toString()=="true"){
+                                        if(snapshot.child(Constants.TYPE).value.toString()==Constants.ADMIN)    {
+                                            startActivity(Intent(this@SignInActivity,
+                                                AdminActivity::class.java))
                                             finish()
                                         }
-                                        else    updateUI(null)
+                                        else    updateUI()
                                     }
                                     else    {
-                                        Constants.showSnackbar("Your account has been disabled",binding.root)
+                                        Constants.showSnackbar(getString(R.string.accountDisabled),binding.root)
                                         auth.signOut()
                                     }
                                 }
@@ -221,34 +214,34 @@ class SignInActivity : AppCompatActivity() {
                                 val user = Users(facebookUser?.displayName!!,facebookUser.email!!
                                     ,userType,"false","","", Payment(),true,0.0,0,""
                                 )
-                                val sharedPref = getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
+                                val sharedPref = getSharedPreferences(Constants.LOGINPREF, Context.MODE_PRIVATE)
                                 with(sharedPref!!.edit()){
-                                    putString("userType",userType)
+                                    putString(Constants.USERTYPE,userType)
                                     apply()
                                 }
-                                firebaseDatabase.reference.child("users").child(task.result.user?.uid!!).setValue(user)
-                                updateUI(facebookUser)
+                                firebaseDatabase.reference.child(Constants.USERS).child(task.result.user?.uid!!).setValue(user)
+                                updateUI()
                             } else {
                                 // If sign in fails, display a message to the user.
-                                firebaseDatabase.reference.child("users").child(task.result.user?.uid!!)
+                                firebaseDatabase.reference.child(Constants.USERS).child(task.result.user?.uid!!)
                                     .addListenerForSingleValueEvent(object : ValueEventListener{
                                         override fun onDataChange(snapshot: DataSnapshot) {
-                                            val dbUserType = snapshot.child("type").value.toString()
+                                            val dbUserType = snapshot.child(Constants.TYPE).value.toString()
 
-                                            val sharedPref = getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
+                                            val sharedPref = getSharedPreferences(Constants.LOGINPREF, Context.MODE_PRIVATE)
                                             with(sharedPref!!.edit()){
-                                                putString("userType",dbUserType)
+                                                putString(Constants.USERTYPE,dbUserType)
                                                 apply()
                                             }
                                             if(userType!=dbUserType){
                                                 Toast.makeText(applicationContext,"You are already registered as an $dbUserType",Toast.LENGTH_LONG).show()
                                             }
-                                            if(snapshot.child("active").value.toString()=="true"){
-                                                updateUI(facebookUser)
+                                            if(snapshot.child(Constants.ACTIVE.lowercase()).value.toString()=="true"){
+                                                updateUI()
                                             }
                                             else    {
                                                 progressDialog.dismiss()
-                                                Constants.showSnackbar("Your account has been disabled",binding.root)
+                                                Constants.showSnackbar(getString(R.string.accountDisabled),binding.root)
                                                 auth.signOut()
                                             }
                                         }
@@ -266,7 +259,7 @@ class SignInActivity : AppCompatActivity() {
                     Constants.showSnackbar(
                         "Authentication failed. ${task.exception?.message}",
                         binding.root)
-                    updateUI(null)
+                    updateUI()
                 }
             }
     }
@@ -275,40 +268,39 @@ class SignInActivity : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
-                Log.d("Observables","$task")
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     val googleUser = auth.currentUser
                     if (task.result.additionalUserInfo?.isNewUser!!) {
                         val user = Users(googleUser?.displayName!!,googleUser.email!!,userType,
                             "false","","",Payment(),true,0.0,0,"")
-                        val sharedPref = getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
+                        val sharedPref = getSharedPreferences(Constants.LOGINPREF, Context.MODE_PRIVATE)
                         with(sharedPref!!.edit()){
-                            putString("userType",userType)
+                            putString(Constants.USERTYPE,userType)
                             apply()
                         }
-                        firebaseDatabase.reference.child("users").child(task.result.user?.uid!!).setValue(user)
-                        updateUI(googleUser)
+                        firebaseDatabase.reference.child(Constants.USERS).child(task.result.user?.uid!!).setValue(user)
+                        updateUI()
                     } else {
-                        firebaseDatabase.reference.child("users").child(task.result.user?.uid!!)
+                        firebaseDatabase.reference.child(Constants.USERS).child(task.result.user?.uid!!)
                             .addListenerForSingleValueEvent(object : ValueEventListener{
                                 override fun onDataChange(snapshot: DataSnapshot) {
-                                    val dbUserType = snapshot.child("type").value.toString()
+                                    val dbUserType = snapshot.child(Constants.TYPE).value.toString()
 
-                                    val sharedPref = getSharedPreferences("LoginSharedPref", Context.MODE_PRIVATE)
+                                    val sharedPref = getSharedPreferences(Constants.LOGINPREF, Context.MODE_PRIVATE)
                                     with(sharedPref!!.edit()){
-                                        putString("userType",dbUserType)
+                                        putString(Constants.USERTYPE,dbUserType)
                                         apply()
                                     }
                                     if(userType!=dbUserType){
                                         Toast.makeText(applicationContext,"You are already registered as an $dbUserType",Toast.LENGTH_LONG).show()
                                     }
-                                    if(snapshot.child("active").value.toString()=="true"){
-                                        updateUI(googleUser)
+                                    if(snapshot.child(Constants.ACTIVE.lowercase()).value.toString()=="true"){
+                                        updateUI()
                                     }
                                     else    {
                                         progressDialog.dismiss()
-                                        Constants.showSnackbar("Your account has been disabled",binding.root)
+                                        Constants.showSnackbar(getString(R.string.accountDisabled),binding.root)
                                         auth.signOut()
                                     }
                                 }
@@ -328,7 +320,7 @@ class SignInActivity : AppCompatActivity() {
             }
     }
 
-    private fun updateUI(currentUser : FirebaseUser?){
+    private fun updateUI(){
         progressDialog.dismiss()
         startActivity(Intent(this,NavigationActivity::class.java))
         finish()
@@ -336,6 +328,7 @@ class SignInActivity : AppCompatActivity() {
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        @Suppress("DEPRECATION")
         super.onActivityResult(requestCode, resultCode, data)
             signInVM.getFacebookCallBackManager()?.onActivityResult(requestCode,resultCode, data)
     }

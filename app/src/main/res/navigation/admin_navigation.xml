@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/adminInvoiceFragment"
-        android:name="com.cg.cropdeal.view.AdminInvoiceFragment"
+        android:name="com.cg.cropdeal.view.admin.AdminInvoiceFragment"
         android:label="Admin Invoice"
         tools:layout="@layout/fragment_admin_invoice" />
     <fragment
         android:id="@+id/adminCropsReportFragment"
-        android:name="com.cg.cropdeal.view.AdminCropsReportFragment"
+        android:name="com.cg.cropdeal.view.admin.AdminCropsReportFragment"
         android:label="Crop Report"
         tools:layout="@layout/fragment_admin_crops_report" />
     <fragment
         android:id="@+id/adminHomeFragment"
-        android:name="com.cg.cropdeal.view.AdminHomeFragment"
+        android:name="com.cg.cropdeal.view.admin.AdminHomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_admin_home">
         <action
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/adminDealerFragment"
-        android:name="com.cg.cropdeal.view.AdminDealerFragment"
+        android:name="com.cg.cropdeal.view.admin.AdminDealerFragment"
         android:label="Admin Dealer Console"
         tools:layout="@layout/fragment_dealer_management">
         <action
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/adminFarmerFragment"
-        android:name="com.cg.cropdeal.view.AdminFarmerFragment"
+        android:name="com.cg.cropdeal.view.admin.AdminFarmerFragment"
         android:label="Admin Farmer Console"
         tools:layout="@layout/fragment_farmer_management">
         <action
@@ -56,14 +56,14 @@
     </fragment>
     <fragment
         android:id="@+id/adminAddOnFragment"
-        android:name="com.cg.cropdeal.view.AdminAddOnFragment"
+        android:name="com.cg.cropdeal.view.admin.AdminAddOnFragment"
         android:label="Admin AddOn Console"
         tools:layout="@layout/fragment_add_on_management">
 
     </fragment>
     <fragment
         android:id="@+id/adminEditProfileFragment"
-        android:name="com.cg.cropdeal.view.AdminEditProfileFragment"
+        android:name="com.cg.cropdeal.view.admin.AdminEditProfileFragment"
         android:label="Edit Profile Console"
         tools:layout="@layout/fragment_admin_edit_profile" />
 </navigation>

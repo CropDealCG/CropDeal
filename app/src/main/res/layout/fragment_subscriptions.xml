@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/listCards"
-            tools:context=".view.SubscriptionsFragment">
+            tools:context=".view.user.SubscriptionsFragment">
 
 
             <Button

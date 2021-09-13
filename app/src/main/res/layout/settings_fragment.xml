@@ -14,7 +14,7 @@
 
     android:background="@drawable/background2"
     android:padding="5dp"
-    tools:context=".view.SettingsFragment">
+    tools:context=".view.user.SettingsFragment">
 
     <ImageView
         android:id="@+id/profile_user_image"

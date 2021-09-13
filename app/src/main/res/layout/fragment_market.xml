@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background4"
-    tools:context=".view.MarketFragment">
+    tools:context=".view.user.MarketFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/marketRview"

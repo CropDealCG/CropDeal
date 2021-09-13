@@ -72,5 +72,11 @@
     <string name="current_time">Current Time:</string>
         <string name="default_web_client_id_1">571175692324-7fs44r8e5hfaicks94eh4dlfet8dt6gc.apps.googleusercontent.com</string>
     <string name="enter_crop_name">Enter Crop Name</string>
+    <string name="noBankDialogTitle">You cannot Add new Crops without adding your bank account details</string>
+    <string name="noBankDialogMessage">Do you want to add now?</string>
+    <string name="selectUserTypeDialogText">Please Select User Type</string>
+    <string name="accountDisabled">Your account has been disabled</string>
+    <string name="resetMailSent">Password Reset Mail Sent Successfully</string>
+    <string name="cropSubbed">Details of selected crops subscribed</string>
 
 </resources>

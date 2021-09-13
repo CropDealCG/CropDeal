@@ -1,14 +1,12 @@
 package com.cg.cropdeal.viewmodel
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import com.google.firebase.auth.FirebaseUser
 import androidx.lifecycle.MutableLiveData
-import com.cg.cropdeal.model.AuthRepo
-import com.cg.cropdeal.model.UtilRepo
+import com.cg.cropdeal.model.repo.AuthRepo
+import com.cg.cropdeal.model.repo.UtilRepo
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.timepicker.MaterialTimePicker
 
 
 class SignUpVM(application: Application) : AndroidViewModel(application) {
@@ -30,8 +28,8 @@ class SignUpVM(application: Application) : AndroidViewModel(application) {
     fun register(email : String,password : String){
         authRepo?.register(email,password)
     }
-    fun selectDate(context: Context) : MaterialDatePicker<Long>{
-        return utilRepo?.selectDate(context)!!
+    fun selectDate() : MaterialDatePicker<Long>{
+        return utilRepo?.selectDate()!!
     }
 
     fun getUserData() : MutableLiveData<FirebaseUser>?{

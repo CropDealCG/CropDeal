@@ -5,8 +5,8 @@ import android.content.Context
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.cg.cropdeal.model.AuthRepo
-import com.cg.cropdeal.model.UtilRepo
+import com.cg.cropdeal.model.repo.AuthRepo
+import com.cg.cropdeal.model.repo.UtilRepo
 import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.FirebaseUser
@@ -33,9 +33,9 @@ class SignInVM(application: Application) : AndroidViewModel(application) {
     fun login(email: String?, password: String?) {
         authRepo?.login(email, password)
     }
-    fun getUserLiveData(): MutableLiveData<FirebaseUser>? {
+    /*fun getUserLiveData(): MutableLiveData<FirebaseUser>? {
         return userLiveData
-    }
+    }*/
     fun getGoogleSignInClient() : GoogleSignInClient?{
         return googleSignInClient
     }
