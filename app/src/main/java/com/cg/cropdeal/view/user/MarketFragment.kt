@@ -44,13 +44,13 @@ class MarketFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         progressDialog = UtilRepo().loadingDialog(view.context)
-//        progressDialog.show()
-        viewModel.isDataChanged()!!.observe(viewLifecycleOwner,{
-            if(it!=null && it) {
-                progressDialog.show()
-            }
-            else    progressDialog.dismiss()
-        })
+        progressDialog.show()
+//        viewModel.isDataChanged()!!.observe(viewLifecycleOwner,{
+//            if(it!=null && it) {
+//                progressDialog.show()
+//            }
+//            else    progressDialog.dismiss()
+//        })
         if(userType==Constants.DEALER)  binding.addCropsFAB.visibility = View.GONE
         binding.addCropsFAB.setOnClickListener {
             viewModel.areBankDetailsAvailable()?.observe(viewLifecycleOwner,{
