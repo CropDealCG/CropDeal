@@ -60,7 +60,7 @@ class AdminFarmerAdapter(private val list : List<Users>, private val userId : Li
                 progressDialog.show()
                 toggleButton.text = Constants.ACTIVE
                 firebaseDatabase.reference.child(Constants.USERS).child(userId[position])
-                    .child(Constants.ACTIVE).setValue(true)
+                    .child(Constants.ACTIVE.lowercase()).setValue(true)
                 progressDialog.dismiss()
             }
         }

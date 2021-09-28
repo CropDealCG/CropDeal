@@ -234,7 +234,7 @@ class SignInActivity : AppCompatActivity() {
                                                 apply()
                                             }
                                             if(userType!=dbUserType){
-                                                Toast.makeText(applicationContext,"You are already registered as an $dbUserType",Toast.LENGTH_LONG).show()
+                                                Toast.makeText(applicationContext,"You are already registered as a $dbUserType",Toast.LENGTH_LONG).show()
                                             }
                                             if(snapshot.child(Constants.ACTIVE.lowercase()).value.toString()=="true"){
                                                 updateUI()
@@ -293,7 +293,7 @@ class SignInActivity : AppCompatActivity() {
                                         apply()
                                     }
                                     if(userType!=dbUserType){
-                                        Toast.makeText(applicationContext,"You are already registered as an $dbUserType",Toast.LENGTH_LONG).show()
+                                        Toast.makeText(applicationContext,"You are already registered as a $dbUserType",Toast.LENGTH_LONG).show()
                                     }
                                     if(snapshot.child(Constants.ACTIVE.lowercase()).value.toString()=="true"){
                                         updateUI()
