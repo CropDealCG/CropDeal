@@ -80,6 +80,7 @@ class CropPublishFragment : Fragment() {
                 viewModel.isCropAdded()?.observe(viewLifecycleOwner,{
                     if(it!=null && it==true) {
                         progressDialog.dismiss()
+                        Constants.showSnackbar("Crop Added Successfully!",view)
                         Navigation.findNavController(view).popBackStack()
                     }
 

@@ -138,11 +138,7 @@ class SignUpActivity : AppCompatActivity() {
             }
         })
 
-        //Linking button to Time Picker
-        val cal  = Calendar.getInstance()
-        val hour = cal.get(Calendar.HOUR_OF_DAY)
-        val min = cal.get(Calendar.MINUTE)
-        "$hour:$min".also { binding.selectedTimeTV.text = it }
+
 
         binding.userTypeRG.setOnCheckedChangeListener { _, i ->
             when(i){
@@ -160,7 +156,7 @@ class SignUpActivity : AppCompatActivity() {
         if(email.isNotEmpty() && password.isNotEmpty()){
             signUpVM.register(email,password)
             val users = Users(binding.nameE.editText?.text.toString(),email,userType,"false"
-                ,binding.selectedDateTV.text.toString(),binding.selectedTimeTV.text.toString(),
+                ,binding.selectedDateTV.text.toString(),"",
                 Payment(),true,0.0,0,""
             )
             signUpVM.getUserData()?.observe(this,{user->
